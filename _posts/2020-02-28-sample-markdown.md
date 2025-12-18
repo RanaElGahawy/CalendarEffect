@@ -1,17 +1,42 @@
 ---
-layout: post
-title: Sample blog post to learn markdown tips
-subtitle: There's lots to learn!
-gh-repo: daattali/beautiful-jekyll
-gh-badge: [star, fork, follow]
-tags: [test]
-comments: true
-mathjax: true
-author: Bill Smith
+# layout: post
+# title: Calendar Effects
+# subtitle: There's lots to learn!
+# gh-repo: daattali/beautiful-jekyll
+# gh-badge: [star, fork, follow]
+# tags: [test]
+# comments: true
+# mathjax: true
+# author: Bill Smith
 ---
 
+# Have you ever heard these phrases?
+
+“Mondays are cursed.” “January is magic.” “Santa always shows up.” “Sell in May and go away.”
+If you’ve ever heard those lines (or traded like you believed them), you’re not alone … but you might be trading a myth.
+
+Welcome to NASDAQ’s secret calendar: where timing is everything, and the market may (or may not) have habits it can’t shake.
+
+**So… what are we doing here?**
+Think of us as your mythbusting team for stock market folklore. We’re putting seven famous “calendar effects” on trial using daily NASDAQ stock data since 1962:
+
+- Monday effect
+- January effect
+- Santa Claus Rally
+- Turn-of-the-Month
+- Half-Month
+- Halloween effect (“Sell in May”)
+- Holiday effect
+
+## How?
+
+By digging into patterns across millions of trading days, we’ll compare returns inside each calendar window versus outside it to spot the batterns, then we’ll check if it is real by stronger tests, then we will turn up the difficulty and use regressions that account for the fact that many stocks move together on the same trading day and we also test robustness by adding controls like volatility, interest rates (Fed Funds), and inflation (CPI). Finally we want to see where it lives, break results down by decade and exchange to test stability.
+
+In other words:
+We start with the folklore… and keep only what survives the data.
+
 {: .box-success}
-This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/tables/etc.<br/>I also encourage you to look at the [code that created this post](https://raw.githubusercontent.com/daattali/beautiful-jekyll/master/_posts/2020-02-28-sample-markdown.md) to learn some more advanced tips about using markdown in Beautiful Jekyll.
+This is a demo post to show you how to write blog posts with markdown. I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/tables/etc.<br/>I also encourage you to look at the [code that created this post](https://raw.githubusercontent.com/daattali/beautiful-jekyll/master/_posts/2020-02-28-sample-markdown.md) to learn some more advanced tips about using markdown in Beautiful Jekyll.
 
 **Here is some bold text**
 
@@ -22,11 +47,11 @@ This is a demo post to show you how to write blog posts with markdown.  I strong
 Here's a table:
 
 | Number | Next number | Previous number |
-| :------ |:--- | :--- |
-| Five | Six | Four |
-| Ten | Eleven | Nine |
-| Seven | Eight | Six |
-| Two | Three | One |
+| :----- | :---------- | :-------------- |
+| Five   | Six         | Four            |
+| Ten    | Eleven      | Nine            |
+| Seven  | Eight       | Six             |
+| Two    | Three       | One             |
 
 You can use [MathJax](https://www.mathjax.org/) to write LaTeX expressions. For example:
 When \\(a \ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
@@ -41,32 +66,33 @@ It can also be centered!
 
 Here's a code chunk:
 
-~~~
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-~~~
-
-And here is the same code with syntax highlighting:
-
-```javascript
+```
 var foo = function(x) {
   return(x + 5);
 }
 foo(3)
 ```
 
+And here is the same code with syntax highlighting:
+
+```javascript
+var foo = function (x) {
+  return x + 5;
+};
+foo(3);
+```
+
 And here is the same code yet again but with line numbers:
 
 {% highlight javascript linenos %}
 var foo = function(x) {
-  return(x + 5);
+return(x + 5);
 }
 foo(3)
 {% endhighlight %}
 
 ## Boxes
+
 You can add notification, warning and error boxes like this:
 
 ### Notification
@@ -86,7 +112,7 @@ You can add notification, warning and error boxes like this:
 
 ## Local URLs in project sites {#local-urls}
 
-When hosting a *project site* on GitHub Pages (for example, `https://USERNAME.github.io/MyProject`), URLs that begin with `/` and refer to local files may not work correctly due to how the root URL (`/`) is interpreted by GitHub Pages. You can read more about it [in the FAQ](https://beautifuljekyll.com/faq/#links-in-project-page). To demonstrate the issue, the following local image will be broken **if your site is a project site:**
+When hosting a _project site_ on GitHub Pages (for example, `https://USERNAME.github.io/MyProject`), URLs that begin with `/` and refer to local files may not work correctly due to how the root URL (`/`) is interpreted by GitHub Pages. You can read more about it [in the FAQ](https://beautifuljekyll.com/faq/#links-in-project-page). To demonstrate the issue, the following local image will be broken **if your site is a project site:**
 
 ![Crepe](/assets/img/crepe.jpg)
 
