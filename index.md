@@ -1,16 +1,14 @@
 ---
 layout: home
 title: Wall Street's Secret Calendar
-subtitle: Analyzing the Seven Calendar-Effect Anomalies in NASDAQ Since 1962
+subtitle: Analyzing Seven Calendar-Effect Anomalies in NASDAQ Since 1962
 ---
 
 # Have you ever heard these phrases?
 
 “Mondays are cursed.” “January is magic.” “Santa always shows up.” “Sell in May and go away.”
 If you’ve ever heard those lines (or traded like you believed them), you’re not alone … but you might be trading a myth.
-
 Welcome to NASDAQ’s secret calendar: where timing is everything, and the market may (or may not) have habits it can’t shake.
-
 **So… what are we doing here?**
 Think of us as your mythbusting team for stock market folklore. We’re putting seven famous “calendar effects” on trial using daily NASDAQ stock data since 1962:
 
@@ -46,7 +44,6 @@ We will explore this question by answering these subquestions:
 If we’re going to put market folklore on trial, we’d better bring serious evidence.
 
 All of our analysis is built on a **large-scale historical dataset of NASDAQ-traded securities**, compiled from Yahoo Finance and distributed on Kaggle. It covers **daily price data from January 1962 to April 1st, 2020**, spanning nearly six decades of market history.
-
 In concrete terms, the dataset includes **5,879 unique tickers** and more than **24 million daily observations**, with each stock observed for an average of **over 4,000 trading days**. This isn’t a hand-picked collection of “interesting” names or a short window chosen to make patterns look good — it’s the market, day after day, through booms, crashes, bubbles, and recoveries.
 
 ---
@@ -80,5 +77,100 @@ That’s a result too.
 From here on, we stop talking about data and start asking the uncomfortable question:
 
 **Which of these famous market “rules” actually survive contact with the numbers?**
-
 ➡️ _Let’s find out._
+
+## Before anything else: what do we mean by a “calendar effect”?
+
+Before testing whether markets really have a favorite day, month, or holiday, we need to be clear about one thing:
+
+**What exactly counts as a calendar effect?**
+
+In finance folklore, calendar effects are often described in vague terms:
+“Mondays are bad.”  
+“January is special.”  
+“Stocks go up before holidays.”
+
+That’s a nice story — but stories don’t run regressions.
+
+---
+
+## From folklore to measurable objects
+
+In our analysis, a calendar effect is defined as a **systematic difference in stock returns** that depends _only_ on where a trading day falls on the calendar.
+
+Concretely, this means comparing:
+
+- **Returns inside a specific calendar window**  
+  (e.g., Mondays, January trading days, pre-holiday sessions)
+
+versus
+
+- **Returns outside that window**, over the same time period
+
+If returns inside the window are consistently higher (or lower) than outside — _and this difference survives statistical scrutiny_ — then we say the calendar effect exists.
+
+---
+
+## Measuring returns
+
+We focus on **daily stock returns**, computed from _adjusted closing prices_ to properly account for dividends and stock splits. For each stock, daily returns are defined as:
+
+$$
+R_{t} = \frac{\text{AdjClose}_{t} - \text{AdjClose}_{t-1}}{\text{AdjClose}_{t-1}}
+$$
+
+Using daily data allows us to:
+
+- Match calendar rules precisely
+- Avoid assumptions about intraday timing
+- Stay consistent across decades and across thousands of stocks
+
+Each trading day becomes one observation, labeled according to its calendar position (weekday, month, holiday proximity, etc.), which allows us to systematically compare returns **inside** and **outside** calendar windows.
+
+---
+
+## Why comparison matters
+
+Markets move for many reasons — firm-specific news, macroeconomic shocks, changes in monetary policy.  
+Looking at raw returns alone would be misleading.
+
+That’s why calendar effects are always measured **relative to a baseline**:
+how stocks behave _when the calendar rule does not apply_.
+
+This comparison-based approach helps ensure that any detected effect is:
+
+- Not driven by a handful of extreme days
+- Not an artifact of overall market trends
+- Not just randomness wearing a seasonal costume
+
+---
+
+## Accounting for the broader market environment
+
+Calendar effects do not operate in a vacuum. Broader economic conditions evolve over time and can influence returns in systematic ways.
+
+To separate calendar-based patterns from macroeconomic influences, we later extend our analysis by controlling for:
+
+- **Inflation**, measured using U.S. consumer price inflation (CPI)
+- **Monetary policy conditions**, proxied by the Federal Funds Effective Rate
+
+These variables allow us to test whether calendar effects persist once we account for changing inflation and interest rate regimes. At this stage, they remain in the background — but they play a key role when we move from simple comparisons to regression-based analysis.
+
+---
+
+## From definition to testing
+
+With definitions in place, we gradually raise the bar:
+
+1. Start with simple comparisons of average returns
+2. Move to formal statistical tests
+3. Estimate regressions that account for cross-stock dependence
+4. Test robustness across decades, exchanges, and market conditions
+
+Only effects that survive all of these steps earn the right to be called “real”.
+
+---
+
+With definitions out of the way, we can finally ask the question that matters:
+
+**Do calendar effects actually exist — or do they disappear once we measure them carefully?**
