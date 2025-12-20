@@ -27,13 +27,18 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 - Holiday effect
 
 ## Are the Calendar effects real ? 
-Reinforced by regressions, the detectives investigate each calendar effect.
+
+Reinforced by rigorous statistical tools, the detectives conduct an in-depth investigation into each calendar effect. 
 
 <p align="center">
   <img src="assets/img/regression_intero.jpeg" width="500">
 </p>
 
+Every suspected anomaly is subjected to intense scrutiny through formal hypothesis testing. For each calendar effect, the team systematically applies t-tests to assess whether average returns during specific periods differ significantly from the rest of the sample.
 
+To further strengthen the analysis, these tests are complemented by regression models that isolate the calendar component while controlling for broader market dynamics. By estimating the statistical significance and economic magnitude of each effect, the detectives are able to determine whether the observed patterns persist beyond random chance.
+
+This dual approach—combining t-tests with regression analysis—allows the investigation to move from simple observation to empirical validation. Only those calendar effects that withstand this rigorous examination can be considered credible candidates for genuine market anomalies, while others are dismissed as statistical illusions. Through this methodical process, the FARZM team seeks to separate myth from measurable reality in financial markets.
 
 ## What we want to find?
 
