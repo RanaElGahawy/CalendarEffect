@@ -148,7 +148,11 @@ In this section, we investigate the **temporal stability** of each calendar effe
 - Do some grow stronger or weaker across decades?    
 - And crucially: **which calendar effects survive consistently over time, and which ones vanish once they become widely known?**
 
-
+<iframe src="/assets/plots/dow_effect.html"
+        width="100%"
+        height="550"
+        frameborder="0">
+</iframe>
 
 
 
