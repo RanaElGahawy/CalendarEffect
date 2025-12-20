@@ -11,6 +11,10 @@ Despite the large body of literature, there is still no clear consensus on wheth
 <p align="center">
   <img src="assets/img/melvyln_detective.jpeg" width="250">
 </p>
+<p align="center">
+  <img src="assets/img/detective_zouhair.jpeg" width="250">
+</p>
+
 
 
 The FARZM set out to investigate these calendar effects. Armed with data and a passion for uncovering hidden market truths, FARZM are on a mission: to determine whether calendar effects still hold power in modern and if they exist.
@@ -24,6 +28,11 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 
 ## Are the Calendar effects real ? 
 Reinforced by regressions, the detectives investigate each calendar effect.
+
+<p align="center">
+  <img src="assets/img/regression_intero.jpeg" width="500">
+</p>
+
 
 
 ## What we want to find?
