@@ -150,6 +150,17 @@ And if they don’t?
 That’s a result too.
 
 --- -->
+<details open>
+  <summary><strong>📉 Monday Effect — Myth or Reality?</strong></summary>
+
+  <p>
+    Mondays are often said to deliver negative returns.
+    Let’s see what the data actually says.
+  </p>
+
+  <div id="monday-plot" style="height:450px;"></div>
+</details>
+
 
 ## Do calendar effects survive through the years?
 
