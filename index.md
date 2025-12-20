@@ -4,7 +4,7 @@ title:  Market Detectives - Investigating Calendar Effects
 subtitle: Analyzing Seven Calendar-Effect Anomalies in NASDAQ Since 1962
 ---
 
-# Have you ever heard these phrases?
+# Market detectives
 
 Over the past decades, academic studies and market commentary have documented recurring patterns in stock returns linked to the calendar. These so-called calendar effects have sparked long-standing debates about their existence, persistence, and economic relevance
 Despite the large body of literature, there is still no clear consensus on whether these effects represent genuine market inefficiencies or merely statistical artifacts that fade once widely known. Some studies argue that calendar effects reflect behavioral biases and institutional trading practices, while others suggest that they weaken over time as markets become more efficient. This is when our team of market detectives Furkan, Aitor, Rana, Zouhair and Melvyn appear, also called the FARZM.  
@@ -52,18 +52,7 @@ This dual approach—combining t-tests with regression analysis—allows the inv
 
 ## Calendar effect during crises ?
 
-## Why this dataset works for calendar effects
-
-Calendar anomalies are subtle by nature. If they exist at all, they tend to be **small, noisy, and easy to overstate**.
-
-That’s exactly why scale matters:
-
-- **Long time span** → lets us test whether effects persist or fade over time
-- **Large cross-section** → reduces the risk that results are driven by a few unusual stocks
-- **Daily frequency** → aligns precisely with calendar-based trading rules
-
-Together, these dimensions give us enough statistical power to separate **real patterns** from **lucky coincidences**.
-
+## Calendar effects through excahnges 
 <!-- ---
 
 ## A quick reality check
