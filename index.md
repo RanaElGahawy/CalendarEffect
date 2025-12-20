@@ -26,6 +26,13 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 - Halloween effect (“Sell in May”)
 - Holiday effect
 
+## Initial data visualization
+
+Before engaging in formal hypothesis testing, the detectives begin with an initial exploratory analysis aimed at visualizing potential calendar effects. This preliminary step allows for an intuitive understanding of return patterns and helps identify periods where anomalies may appear more pronounced.
+
+For each calendar effect, average returns are computed and compared across relevant time windows. By examining these averages, the team seeks to detect systematic differences in returns that may be associated with specific calendar periods. While this approach does not provide statistical validation, it offers valuable insights and guides the subsequent empirical investigation.
+
+
 ## Are the Calendar effects real ? 
 
 Reinforced by rigorous statistical tools, the detectives conduct an in-depth investigation into each calendar effect. 
@@ -34,7 +41,7 @@ Reinforced by rigorous statistical tools, the detectives conduct an in-depth inv
   <img src="assets/img/regression_intero.jpeg" width="500">
 </p>
 
-Every suspected anomaly is subjected to intense scrutiny through formal hypothesis testing. For each calendar effect, the team systematically applies t-tests to assess whether average returns during specific periods differ significantly from the rest of the sample.
+Every suspected anomaly is subjected to rigorous evaluation through formal hypothesis testing.
 
 To further strengthen the analysis, these tests are complemented by regression models that isolate the calendar component while controlling for broader market dynamics. By estimating the statistical significance and economic magnitude of each effect, the detectives are able to determine whether the observed patterns persist beyond random chance.
 
