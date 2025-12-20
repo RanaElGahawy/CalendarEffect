@@ -114,7 +114,7 @@ For these tests to be valid, several underlying assumptions must be satisfied, m
 // Plots of normality check//
 
 <details>
-  <summary><strong>📈 Monday Effect</strong></summary>
+  <summary><strong>📈 Monday Effect</strong></summary
 <!-- ---
   <p>
     Mondays are often said to deliver negative returns.
@@ -123,7 +123,11 @@ For these tests to be valid, several underlying assumptions must be satisfied, m
 --- -->
   <div id="monday-plot" style="height:450px;"></div>
 </details>
-
+<iframe src="assets/img/plot_month_effect_dec.html"
+        width="100%"
+        height="550"
+        frameborder="0">
+</iframe>
 <details>
   <summary><strong>📉 January Effect</strong></summary>
 <!-- ---
