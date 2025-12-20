@@ -55,7 +55,54 @@ The detectives begin with an initial exploratory analysis aimed at visualizing p
 
 Profile of each suspect pattern
 
-// plots demonstrating each effect //
+1. Monday effect
+// plot  //
+Known as a sneaky and disruptive suspect… He is always lurking around the worst day of the week. Isn't that strange ? This repeat offender has triggered alerts across the entire dataset, making it one of our top suspects for calendar-driven anomalies.
+Time window: Mondays
+Crime: Abnormally low average returns
+Territory: Equity markets, particularly pronounced in the U.S.
+
+2.  January effect
+// plot //
+Small but potentially dangerous... especially for the small caps. He tends to strike the hardest among small-capitalization stcocks. Its recurring presence makses it a subtle yet  persistent suspect in calendar-driven anomalies.
+Time window: First weeks of January
+Crime: Excess returns, especially among small-cap stocks
+Territory: Equity markets, strongest in small capitalizations
+
+3. Santa claus effect
+// plot //
+Often portrayed as generous and benevolent, this suspect appears precisely when optimism is already expected. Its tendency to deliver unusually strong returns during a period of reduced activity raises suspicion, challenging the idea that seasonal goodwill alone explains its presence.
+Time window: Last 5 trading days of December, First 2 trading days of January
+Crime: Abnormally high average returns during this short window
+Territory: Mostly equity markets (US and developed markets)
+
+4. Turn-of-the-month effect
+// plot //
+Quiet but punctual, this suspect resurfaces at every month boundary. By repeatedly concentrating returns around month-end and month-start, it aligns too closely with institutional cash-flow schedules to be dismissed as coincidence.
+Time window: Last trading day of the month, First 3 trading days of the next month
+Crime: Disproportionately high average returns during a narrow window
+Territory: Equity markets, globally observed
+
+6. Half-month
+// plot //
+This suspect shows a clear preference for the beginning of the month, gradually fading as time passes. Its uneven distribution of returns within the month suggests a front-loaded pattern rather than a uniform market behavior.
+Time window: First half vs second half of the month
+Crime: Uneven intra-monthly return distribution
+Territory: Equity market
+
+8. Halloween effect
+// plot //
+Seasonal and strategic, this suspect thrives during the colder months while largely disappearing in the summer. Its persistent outperformance between November and April makes it one of the longest-running calendar anomalies on record.
+Time window: November to April vs May to October
+Crime: Markedly higher returns during winter months
+Territory: Equity markets, especially developed economie
+
+8. Holiday effect
+// plot //
+This suspect tends to act when attention fades. Appearing just before market holidays, it benefits from thin trading conditions, delivering positive returns with unusually low volatility a suspicious combination.
+Time window: Trading days preceding market holidays
+Crime: Abnormally positive returns with subdued volatility
+Territory: Major equity markets
 
 
 <p align="center">
