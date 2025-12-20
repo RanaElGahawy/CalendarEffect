@@ -129,8 +129,18 @@ Territory: Major equity markets
 </table>
 
 </p>
+<div style="overflow-x: auto; white-space: nowrap; width: 100%;">
 
-<div class="flourish-embed flourish-cards" data-src="visualisation/26917943"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/26917943/thumbnail" width="100%" alt="cards visualization" /></noscript></div>
+  <div style="display: inline-block; min-width: 800px;">
+    <div class="flourish-embed flourish-cards" data-src="visualisation/26917943">
+      <script src="https://public.flourish.studio/resources/embed.js"></script>
+      <noscript>
+        <img src="https://public.flourish.studio/visualisation/26917943/thumbnail" width="100%" alt="cards visualization" />
+      </noscript>
+    </div>
+  </div>
+
+</div>
 
 
 The visual evidence reveals several intriguing regularities. Returns appear to differ depending on the timing within the trading week, with certain days consistently exhibiting weaker performance than others. Seasonal variations also emerge, as returns during the early part of the year seem marginally higher compared to the remainder of the sample. These patterns are consistent with what the literature commonly refers to as calendar effects.
