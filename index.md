@@ -7,15 +7,7 @@ subtitle: Analyzing Seven Calendar-Effect Anomalies in NASDAQ Since 1962
 # Have you ever heard these phrases?
 
 Over the past decades, academic studies and market commentary have documented recurring patterns in stock returns linked to the calendar. These so-called calendar effects have sparked long-standing debates about their existence, persistence, and economic relevance
-Despite the large body of literature, there is still no clear consensus on whether these effects represent genuine market inefficiencies or merely statistical artifacts that fade once widely known. Some studies argue that calendar effects reflect behavioral biases and institutional trading practices, while others suggest that they weaken over time as markets become more efficient. This is when our team of market detectives Furkan, Aitor, Rana, Zouhair and Melvyn appear, also called the FARZM.  The FARZM set out to investigate these calendar effects
-
-
-“Mondays are cursed.” “January is magic.” “Santa always shows up.” “Sell in May and go away.”
-If you’ve ever heard those lines (or traded like you believed them), you’re not alone … but you might be trading a myth.
-Welcome to NASDAQ’s secret calendar: where timing is everything, and the market may (or may not) have habits it can’t shake.
-**So… what are we doing here?**
-Think of us as your mythbusting team for stock market folklore. We’re putting seven famous “calendar effects” on trial using daily NASDAQ stock data since 1962:
-
+Despite the large body of literature, there is still no clear consensus on whether these effects represent genuine market inefficiencies or merely statistical artifacts that fade once widely known. Some studies argue that calendar effects reflect behavioral biases and institutional trading practices, while others suggest that they weaken over time as markets become more efficient. This is when our team of market detectives Furkan, Aitor, Rana, Zouhair and Melvyn appear, also called the FARZM.  The FARZM set out to investigate these calendar effects. Armed with data and a passion for uncovering hidden market truths, FARZM are on a mission: to determine whether calendar effects still hold power in modern and if they exist.
 - Monday effect
 - January effect
 - Santa Claus Rally
@@ -24,12 +16,9 @@ Think of us as your mythbusting team for stock market folklore. We’re putting 
 - Halloween effect (“Sell in May”)
 - Holiday effect
 
-## How?
+## Are the Calendar effects real ? 
+Reinforced by regressions, the detectives investigate each calendar effect.
 
-By digging into patterns across millions of trading days, we’ll compare returns inside each calendar window versus outside it to spot the patterns, then we’ll check if it is real by stronger statistical tests, then we will turn up the difficulty and use regressions that account for the fact that many stocks move together on the same trading day, and test robustness with controls like volatility, interest rates (Fed Funds), and inflation (CPI). Finally we want to see where they live by breaking the results down by decade and exchange to see what’s stable (and what fades).
-
-In other words:
-We start with the folklore… and keep only what survives the data.
 
 ## What we want to find?
 
