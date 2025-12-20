@@ -70,7 +70,7 @@ That’s a result too.
 From here on, we stop talking about data and start asking the uncomfortable question:
 
 **Which of these famous market “rules” actually survive contact with the numbers?**
-➡️ _Let’s find out._
+_Let’s find out._
 
 ## Before anything else: what do we mean by a “calendar effect”?
 
