@@ -26,7 +26,7 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 - Halloween effect (“Sell in May”)
 - Holiday effect
 
-## Initial data visualization
+## Getting an initial sense of the calendar effects
 
 Before engaging in formal hypothesis testing, the detectives begin with an initial exploratory analysis aimed at visualizing potential calendar effects. This preliminary step allows for an intuitive understanding of return patterns and helps identify periods where anomalies may appear more pronounced.
 
@@ -47,26 +47,10 @@ To further strengthen the analysis, these tests are complemented by regression m
 
 This dual approach—combining t-tests with regression analysis—allows the investigation to move from simple observation to empirical validation. Only those calendar effects that withstand this rigorous examination can be considered credible candidates for genuine market anomalies, while others are dismissed as statistical illusions. Through this methodical process, the FARZM team seeks to separate myth from measurable reality in financial markets.
 
-## What we want to find?
+## Do the calendar effect survive in time ?
 
-**Do calendar effects show up in NASDAQ stocks? and which ones survive strickter checks?**
 
-We will explore this question by answering these subquestions:
-
-1. Which of the seven calendar effects appear in NASDAQ returns since 1962?
-2. Which effects remain after stricter inference (e.g., regressions with clustered standard errors)?
-3. Are these effects consistent across decades, or do they weaken/flip over time?
-4. Do these effects differ across exchanges (e.g., NASDAQ vs NYSE listings in your dataset metadata)?
-5. Do volatility and macro conditions (Fed Funds, CPI) meaningfully change the estimated effects?
-
-## Where does our data come from?
-
-If we’re going to put market folklore on trial, we’d better bring serious evidence.
-
-All of our analysis is built on a **large-scale historical dataset of NASDAQ-traded securities**, compiled from Yahoo Finance and distributed on Kaggle. It covers **daily price data from January 1962 to April 1st, 2020**, spanning nearly six decades of market history.
-In concrete terms, the dataset includes **5,879 unique tickers** and more than **24 million daily observations**, with each stock observed for an average of **over 4,000 trading days**. This isn’t a hand-picked collection of “interesting” names or a short window chosen to make patterns look good — it’s the market, day after day, through booms, crashes, bubbles, and recoveries.
-
----
+## Calendar effect during crises ?
 
 ## Why this dataset works for calendar effects
 
