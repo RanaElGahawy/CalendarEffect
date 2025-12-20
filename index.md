@@ -14,7 +14,7 @@ Despite the large body of literature, there is still no clear consensus on wheth
       <img src="assets/img/littlezouhair.png" width="200" height="200"><br>
       Zouhair
     </td>
-    <td align="center">
+    <td align="center"> 
       <img src="assets/img/littlemelvyn.png" width="200" height="200"><br>
       Melvyn
     </td>
@@ -52,7 +52,7 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 The investigation begins with the dataset itself. Diving into the NASDAQ data allows us to demystify the alleged calendar effects by first understanding the underlying market dynamics.
 
 
-<iframe src="plot_number_of_companies_per_year.html"
+<iframe src="assets/img/plot_company_year.html"
         width="100%"
         height="550"
         frameborder="0">
