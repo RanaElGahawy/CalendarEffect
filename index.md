@@ -9,22 +9,78 @@ subtitle: Analyzing Seven Calendar-Effect Anomalies in NASDAQ Since 1962
 Over the past decades, academic studies and market commentary have documented recurring patterns in stock returns linked to the calendar. These so-called calendar effects have sparked long-standing debates about their existence, persistence, and economic relevance
 Despite the large body of literature, there is still no clear consensus on whether these effects represent genuine market inefficiencies or merely statistical artifacts that fade once widely known. Some studies argue that calendar effects reflect behavioral biases and institutional trading practices, while others suggest that they weaken over time as markets become more efficient. This is when our team of market detectives Furkan, Aitor, Rana, Zouhair and Melvyn appear, also called the FARZM.  
 
-<table align="center">
-  <tr>
-    <td align="center">
-      <img src="assets/img/littlezouhair.png" width="200" height="200"><br>
-      Zouhair
-    </td>
-    <td align="center"> 
-      <img src="assets/img/littlemelvyn.png" width="200" height="200"><br>
-      Melvyn
-    </td>
-    <td align="center">
-      <img src="assets/img/littlefurkan.png" width="200" height="200"><br>
-      Furkan
-    </td>
-  </tr>
-</table>
+<style>
+.team5{max-width:1100px;margin:2.5rem auto;padding:0 1rem;font-family:system-ui}
+.team5-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:1100px){.team5-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.team5-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.team5-grid{grid-template-columns:1fr}}
+
+.team5-card{background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:16px;overflow:hidden;cursor:pointer}
+.team5-card img{width:100%;height:180px;object-fit:cover;display:block}
+.team5-body{padding:10px 12px}
+.team5-name{margin:0;font-weight:700;font-size:.98rem}
+.team5-role{margin:6px 0 0;font-size:.85rem;opacity:.7}
+
+.team5-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:9999}
+.team5-backdrop.open{display:flex}
+.team5-modal{background:#fff;border-radius:16px;max-width:720px;width:100%;overflow:hidden}
+.team5-modalTop{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:14px;background:#fafafa}
+.team5-modalTop img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px}
+.team5-story{padding:14px;font-size:.98rem;line-height:1.5}
+.team5-actions{text-align:right;padding:12px}
+.team5-btn{border:1px solid rgba(0,0,0,.15);background:#fff;border-radius:12px;padding:8px 12px;cursor:pointer}
+</style>
+
+<div class="team5">
+<div class="team5-grid">
+
+<div class="team5-card" data-name="Zouhair" data-role="Investigation Lead"
+data-img="assets/img/littlezouhair.png"
+data-story="Zouhair works on.">
+<img src="assets/img/littlezouhair.png">
+<div class="team5-body"><p class="team5-name">Zouhair</p><p class="team5-role">Investigation Lead</p></div>
+</div>
+
+<div class="team5-card" data-name="Melvyn" data-role="Paris"
+data-img="assets/img/littlemelvyn.png"
+data-story="Melvyn builds .">
+<img src="assets/img/littlemelvyn.png">
+<div class="team5-body"><p class="team5-name">Melvyn</p><p class="team5-role">Paris</p></div>
+</div>
+
+<div class="team5-card" data-name="Furkan" data-role="Paris"
+data-img="assets/img/littlefurkan.png"
+data-story="Furkan works on ">
+<img src="assets/img/littlefurkan.png">
+<div class="team5-body"><p class="team5-name">Furkan</p><p class="team5-role">Paris</p></div>
+</div>
+
+</div>
+</div>
+
+<div class="team5-backdrop" id="m">
+<div class="team5-modal">
+<div class="team5-modalTop">
+<img id="mi"><div><strong id="mt"></strong><br><span id="mr"></span></div>
+</div>
+<div class="team5-story" id="ms"></div>
+<div class="team5-actions"><button class="team5-btn" onclick="c()">Close</button></div>
+</div>
+</div>
+
+<script>
+const q=s=>document.querySelector(s),
+cards=[...document.querySelectorAll('.team5-card')],
+m=q('#m'),mi=q('#mi'),mt=q('#mt'),mr=q('#mr'),ms=q('#ms');
+cards.forEach(c=>c.onclick=()=>{mt.textContent=c.dataset.name;
+mr.textContent=c.dataset.role;ms.textContent=c.dataset.story;
+mi.src=c.dataset.img;m.classList.add('open')});
+const c=()=>m.classList.remove('open');
+m.onclick=e=>e.target===m&&c();
+</script>
+
+
 
 
 
