@@ -49,13 +49,13 @@ The investigation begins with the dataset itself. Diving into the NASDAQ data al
         frameborder="0">
 </iframe>
 
-<iframe src="plot_volume_per_year.html"
+<iframe src="assets/img/plot_volume_per_year.html"
         width="100%"
         height="550"
         frameborder="0">
 </iframe>
 
-<iframe src="plot_return_avg_per_year.html"
+<iframe src="assets/img/plot_return_avg_per_year.html"
         width="100%"
         height="550"
         frameborder="0">
