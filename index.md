@@ -51,25 +51,25 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 
 The investigation begins with the dataset itself. Diving into the NASDAQ data allows us to demystify the alleged calendar effects by first understanding the underlying market dynamics.
 
-<!-- ---
+
 <iframe src="plot_number_of_companies_per_year.html"
         width="100%"
         height="550"
         frameborder="0">
 </iframe>
---- -->
+
 <iframe src="assets/img/plot_volume_per_year.html"
         width="100%"
         height="550"
         frameborder="0">
 </iframe>
-<!-- ---
+
 <iframe src="assets/img/plot_return_avg_per_year.html"
         width="100%"
         height="550"
         frameborder="0">
 </iframe>
---- -->
+
 
 <p>The plot shows the evolution of annual trading volume from 1962 to 2020. Overall, trading activity exhibits a strong upward long-term trend, indicating a substantial increase in market participation and liquidity over time. Since calendar effects are often linked to investor behavior and trading activity, failing to account for volume dynamics may confound calendar effect estimate. So incorporating volume as a control variable or analyzing calendar effects within homogeneous sub-periods becomes essential. <br>
 The plot shows the average annual return from 1962 to 2020. Overall, returns are predominantly positive, fluctuating around a small positive mean. It means that returns are positive on average over the long run, despite year-to-year volatility. There are occasional negative returns (for example mid-1970s, late 2000s). Since the unconditional mean return is small, any calendar effects are expected to be weak relative to overall volatility. Moreover, the absence of a strong time trend in average returns supports a key assumption of calendar effect studies: return stationarity over time. This makes the dataset appropriate for isolating return differences attributable to calendar variables rather than structural change. It allows calendar-related differences to be analyzed without being confounded by structural market changes. </p>
