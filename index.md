@@ -8,19 +8,22 @@ subtitle: Analyzing Seven Calendar-Effect Anomalies in NASDAQ Since 1962
 
 Over the past decades, academic studies and market commentary have documented recurring patterns in stock returns linked to the calendar. These so-called calendar effects have sparked long-standing debates about their existence, persistence, and economic relevance
 Despite the large body of literature, there is still no clear consensus on whether these effects represent genuine market inefficiencies or merely statistical artifacts that fade once widely known. Some studies argue that calendar effects reflect behavioral biases and institutional trading practices, while others suggest that they weaken over time as markets become more efficient. This is when our team of market detectives Furkan, Aitor, Rana, Zouhair and Melvyn appear, also called the FARZM.  
-<p align="center">
-  <img src="assets/img/littlezouhair.png"
-       style="width:200px; height:200px; object-fit:cover; margin-right:20px;">
-  <p>Zouhair</p>
-  <img src="assets/img/littlemelvyn.png"
-       style="width:200px; height:200px; object-fit:cover;">
-  <p>Melvyn</p>
-  <img src="assets/img/littlefurkan.png"
-       style="width:200px; height:200px; object-fit:cover;">
-  <p>Furkan</p>
-</p>
-
-
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="assets/img/littlezouhair.png" width="200" height="200"><br>
+      Zouhair
+    </td>
+    <td align="center">
+      <img src="assets/img/littlemelvyn.png" width="200" height="200"><br>
+      Melvyn
+    </td>
+    <td align="center">
+      <img src="assets/img/littlefurkan.png" width="200" height="200"><br>
+      Furkan
+    </td>
+  </tr>
+</table>
 
 
 The FARZM set out to investigate these calendar effects. Armed with data and a passion for uncovering hidden market truths, FARZM are on a mission: to determine whether calendar effects still hold power in modern and if they exist.
