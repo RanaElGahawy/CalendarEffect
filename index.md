@@ -105,6 +105,84 @@ For these tests to be valid, several underlying assumptions must be satisfied, m
 
 // Plots of normality check//
 
+<details>
+  <summary><strong>📈 Monday Effect</strong></summary>
+<!-- ---
+  <p>
+    Mondays are often said to deliver negative returns.
+    Let’s see what the data actually says.
+  </p>
+--- -->
+  <div id="monday-plot" style="height:450px;"></div>
+</details>
+
+<details>
+  <summary><strong>📉 January Effect</strong></summary>
+<!-- ---
+  <p>
+    Mondays are often said to deliver negative returns.
+    Let’s see what the data actually says.
+  </p>
+--- -->
+  <div id="january-plot" style="height:450px;"></div>
+</details>
+
+<details>
+  <summary><strong>🎅 Santa Claus Rally Effect</strong></summary>
+<!-- ---
+  <p>
+    Mondays are often said to deliver negative returns.
+    Let’s see what the data actually says.
+  </p>
+--- -->
+  <div id="santa_claus_rally-plot" style="height:450px;"></div>
+</details>
+
+
+<details>
+  <summary><strong>📉 Turn-of-the-Month Effect</strong></summary>
+<!-- ---
+  <p>
+    Mondays are often said to deliver negative returns.
+    Let’s see what the data actually says.
+  </p>
+--- -->
+  <div id="turn-of-the-Month-plot" style="height:450px;"></div>
+</details>
+
+<details>
+  <summary><strong>📆 Half-Month Effect</strong></summary>
+<!-- ---
+  <p>
+    Mondays are often said to deliver negative returns.
+    Let’s see what the data actually says.
+  </p>
+--- -->
+  <div id="half-Month-plot" style="height:450px;"></div>
+</details>
+
+<details>
+  <summary><strong>🎃 Halloween Effect</strong></summary>
+<!-- ---
+  <p>
+    Mondays are often said to deliver negative returns.
+    Let’s see what the data actually says.
+  </p>
+--- -->
+  <div id="halloween-plot" style="height:450px;"></div>
+</details>
+
+<details>
+  <summary><strong>🎉 Holiday Effect</strong></summary>
+<!-- ---
+  <p>
+    Mondays are often said to deliver negative returns.
+    Let’s see what the data actually says.
+  </p>
+--- -->
+  <div id="holiday-plot" style="height:450px;"></div>
+</details>
+
 Interpretation of the normality check
 
 // Results of t-tests //             
