@@ -28,13 +28,13 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 
 ## Getting an initial sense of the calendar effects
 
-Before engaging in formal stistical testing, the detectives begin with an initial exploratory analysis aimed at visualizing potential calendar effects. 
+The detectives begin with an initial exploratory analysis aimed at visualizing potential calendar effects. 
 
 // plots demonstrating each effect //
 
-The visual evidence reveals several intriguing regularities. Returns appear to differ depending on the timing within the trading week, with certain days consistently exhibiting weaker performance than others. Seasonal variations also emerge, as returns during the early part of the year seem marginally higher compared to the remainder of the sample. These patterns are consistent with what the literature commonly refers to as calendar effects. ( //Interpretation //) Indeed, plots demonstrate ____ .
+The visual evidence reveals several intriguing regularities. Returns appear to differ depending on the timing within the trading week, with certain days consistently exhibiting weaker performance than others. Seasonal variations also emerge, as returns during the early part of the year seem marginally higher compared to the remainder of the sample. These patterns are consistent with what the literature commonly refers to as calendar effects.
 
-
+( //Interpretation //) Indeed, plots demonstrate ____ .
  For each calendar effect, average returns are computed and compared across relevant time periods. By examining these averages, the team aims to determine whether any of the proposed calendar effects already appear detectable at the mean level.
 
 Of course, simply looking at mean returns is not sufficient to conclude whether a calendar effect is real or statistically valid. Average differences may offer intuition, but they do not prove significance. These preliminary comparisons serve only as an initial diagnostic.  
