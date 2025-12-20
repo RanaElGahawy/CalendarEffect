@@ -24,7 +24,7 @@ Despite the large body of literature, there is still no clear consensus on wheth
       Furkan
     </td>
   </tr>
-</div>
+</table>
 
 
 
