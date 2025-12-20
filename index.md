@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Market Detectives: Investigating Calendar Effects 
+title:  Market Detectives - Investigating Calendar Effects 
 subtitle: Analyzing Seven Calendar-Effect Anomalies in NASDAQ Since 1962
 ---
 
