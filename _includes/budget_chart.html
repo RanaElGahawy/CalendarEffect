@@ -115,8 +115,9 @@
   }
 
   function onScroll(){
-    const range = 50;
-    const t = clamp01(window.scrollY / range);
+    const range = 2000;
+    const raw = Math.max(0, Math.min(1, window.scrollY / range));
+    const t = raw * raw * (3 - 2 * raw);
 
     const col = moodColor(t);
     candles.style.color = col;
