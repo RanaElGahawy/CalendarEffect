@@ -34,6 +34,27 @@ Profile of each suspect pattern
 
 // plots demonstrating each effect //
 
+
+<p align="center">
+
+<table>
+  <tr>
+    <td align="center"><img src="assets/img/monday_suspect.jpeg" width="200"></td>
+    <td align="center"><img src="assets/img/january_suspect.jpeg" width="200"></td>
+    <td align="center"><img src="assets/img/noel_suspect.jpeg" width="200"></td>
+    <td align="center"><img src="assets/img/Tom_suspect.jpeg" width="200"></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/img/middle_suspect.jpeg" width="200"></td>
+    <td align="center"><img src="assets/img/halloween_suspect.jpeg" width="200"></td>
+    <td align="center"><img src="assets/img/holiday_suspect.jpeg" width="200"></td>
+    <td align="center"></td>
+  </tr>
+</table>
+
+</p>
+
+
 The visual evidence reveals several intriguing regularities. Returns appear to differ depending on the timing within the trading week, with certain days consistently exhibiting weaker performance than others. Seasonal variations also emerge, as returns during the early part of the year seem marginally higher compared to the remainder of the sample. These patterns are consistent with what the literature commonly refers to as calendar effects.
 
 ( //Interpretation //) Indeed, plots demonstrate ____ .
