@@ -126,7 +126,7 @@ For these tests to be valid, several underlying assumptions must be satisfied, m
   <div id="monday-plot" style="height:450px;"></div>
 </details>
 <iframe src="assets/img/plot_monday_effect_dec.html"
-        width="100%"
+        width="100%" 
         height="550"
         frameborder="0">
 </iframe>
