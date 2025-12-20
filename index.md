@@ -67,12 +67,6 @@ The plot shows the evolution of annual trading volume from 1962 to 2020. Overall
 The plot shows the average annual return from 1962 to 2020. Overall, returns are predominantly positive, fluctuating around a small positive mean. It means that returns are positive on average over the long run, despite year-to-year volatility. There are occasional negative returns (for example mid-1970s, late 2000s). Since the unconditional mean return is small, any calendar effects are expected to be weak relative to overall volatility. Moreover, the absence of a strong time trend in average returns supports a key assumption of calendar effect studies: return stationarity over time. This makes the dataset appropriate for isolating return differences attributable to calendar variables rather than structural change. It allows calendar-related differences to be analyzed without being confounded by structural market changes.
 
 
-## Investigating the dataset
-
-The investigation begins with the dataset itself. Diving into the NASDAQ data allows us to demystify the alleged calendar effects by first understanding the underlying market dynamics.
-
-//plot of the number of companies per year, average return, trading volüme per year //
-
 ## Getting an initial sense of the calendar effects
 
 The detectives begin with an initial exploratory analysis aimed at visualizing potential calendar effects. 
