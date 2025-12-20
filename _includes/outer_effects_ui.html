@@ -1,108 +1,536 @@
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
 
 <style>
-  .outer-ui{max-width:1100px;margin:2rem auto;padding:0 1rem;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
-  .fx-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
-  @media(max-width:900px){.fx-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:520px){.fx-grid{grid-template-columns:1fr}}
+  :root{
+    --bg: #0b0f19;
+    --panel: rgba(255,255,255,.06);
+    --panel2: rgba(255,255,255,.08);
+    --text: rgba(255,255,255,.92);
+    --muted: rgba(255,255,255,.68);
+    --line: rgba(255,255,255,.12);
+    --accent: #7aa2f7;
+    --accent2:#a78bfa;
+    --shadow: 0 18px 55px rgba(0,0,0,.22);
+  }
 
-  .fx-btn{
-    text-align:left; cursor:pointer; user-select:none;
-    background:#fff; border:1px solid rgba(0,0,0,.12);
-    border-radius:14px; padding:12px 14px;
-    box-shadow:0 10px 28px rgba(0,0,0,.06);
-    transition:transform .12s ease, box-shadow .12s ease;
+  /* Light mode (Beautiful Jekyll çoğu tema light) */
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#f6f7fb;
+      --panel: rgba(0,0,0,.04);
+      --panel2: rgba(0,0,0,.06);
+      --text: rgba(15,23,42,.92);
+      --muted: rgba(15,23,42,.62);
+      --line: rgba(15,23,42,.10);
+      --accent:#4f46e5;
+      --accent2:#9333ea;
+      --shadow: 0 18px 55px rgba(15,23,42,.10);
+    }
   }
-  .fx-btn:hover{transform:translateY(-1px); box-shadow:0 14px 34px rgba(0,0,0,.08)}
-  .fx-btn.active{border-color:rgba(0,0,0,.35)}
-  .fx-title{font-weight:800;margin:0 0 4px}
-  .fx-sub{margin:0;opacity:.65;font-size:.9rem}
 
-  .param-card{
-    display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    background:#fff; border:1px solid rgba(0,0,0,.12);
-    border-radius:14px; padding:10px 12px; margin:10px 0 12px;
+  .outer-ui{
+    max-width:1180px;
+    margin:2rem auto;
+    padding: 18px;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    border-radius: 24px;
+    background:
+      radial-gradient(1200px 600px at 8% -10%, rgba(122,162,247,.25), transparent 60%),
+      radial-gradient(1000px 500px at 92% 0%, rgba(167,139,250,.20), transparent 55%),
+      var(--bg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
   }
-  .param-card b{opacity:.85}
-  .param-card label{opacity:.75;font-weight:700}
-  .param-select{
-    padding:8px 10px;border-radius:12px;border:1px solid rgba(0,0,0,.15);background:#fff;
+
+  /* HERO */
+  .fx-hero{
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+    padding: 8px 8px 14px;
+    align-items:flex-start;
   }
-  .hidden{display:none}
+  .fx-badge{
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    padding:6px 10px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background: var(--panel);
+    color: var(--muted);
+    backdrop-filter: blur(10px);
+    font-size: 12px;
+  }
+  .fx-title{
+    margin:10px 0 6px;
+    font-size: 30px;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    font-weight: 900;
+  }
+  .fx-sub{
+    margin:0;
+    color: var(--muted);
+    max-width: 62ch;
+  }
+
+  .kpis{
+    display:grid;
+    grid-template-columns: repeat(3, minmax(120px, 1fr));
+    gap:10px;
+    min-width: 420px;
+  }
+  .kpi{
+    border:1px solid var(--line);
+    background: linear-gradient(180deg, var(--panel2), var(--panel));
+    border-radius: 18px;
+    padding: 12px;
+    backdrop-filter: blur(10px);
+  }
+  .kpi .k1{ color: var(--muted); font-size: 12px; }
+  .kpi .k2{ color: var(--text); font-weight: 900; margin-top: 6px; }
+
+  /* LAYOUT */
+  .fx-main{
+    display:grid;
+    grid-template-columns: 350px 1fr;
+    gap:14px;
+    padding: 0 8px 8px;
+  }
+
+  @media(max-width: 980px){
+    .fx-hero{ flex-direction: column; }
+    .kpis{ min-width: unset; grid-template-columns: 1fr; width:100%; }
+    .fx-main{ grid-template-columns: 1fr; }
+  }
+
+  /* TABS (pills) */
+  .tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    padding: 6px 8px 12px;
+  }
+
+  .tab{
+    cursor:pointer;
+    user-select:none;
+    border:1px solid var(--line);
+    background: var(--panel);
+    border-radius: 18px;
+    padding: 12px 14px;
+    min-width: 210px;
+    transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .tab:hover{
+    transform: translateY(-2px);
+    border-color: rgba(122,162,247,.45);
+    box-shadow: 0 14px 32px rgba(0,0,0,.14);
+  }
+  .tab.active{
+    border-color: rgba(122,162,247,.65);
+    box-shadow: 0 18px 45px rgba(0,0,0,.16);
+  }
+  .tab .t1{ color: var(--text); font-weight: 900; margin:0 0 3px; }
+  .tab .t2{ color: var(--muted); font-size: 12px; margin:0; }
+
+  /* LEFT PANEL */
+  .panel{
+    position: sticky;
+    top: 14px;
+    align-self: start;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  @media(max-width: 980px){
+    .panel{ position: static; }
+  }
+
+  .card{
+    border:1px solid var(--line);
+    background: linear-gradient(180deg, var(--panel2), var(--panel));
+    border-radius: 18px;
+    padding: 14px;
+    backdrop-filter: blur(10px);
+  }
+  .card-title{
+    color: var(--text);
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+  .divider{
+    height:1px;
+    background: var(--line);
+    margin: 12px 0;
+  }
+
+  .label{
+    display:block;
+    color: var(--muted);
+    font-size: 12px;
+    margin: 10px 0 6px;
+    font-weight: 700;
+  }
+
+  .input{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,.04);
+  }
+  .input span{ color: var(--muted); }
+  .input input{
+    width:100%;
+    border:none;
+    outline:none;
+    background: transparent;
+    color: var(--text);
+  }
+
+  .row{ display:flex; gap:10px; }
+  .col{ flex:1; }
+
+  .select{
+    width:100%;
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,.04);
+    color: var(--text);
+    outline:none;
+  }
+
+  .actions{
+    display:flex;
+    gap:10px;
+    margin-top: 12px;
+  }
+
+  .btn{
+    cursor:pointer;
+    border-radius: 14px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,.04);
+    color: var(--text);
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .btn:hover{ transform: translateY(-1px); box-shadow: 0 12px 22px rgba(0,0,0,.12); }
+  .btn.primary{
+    border-color: rgba(122,162,247,.65);
+    background: linear-gradient(90deg, rgba(122,162,247,.22), rgba(167,139,250,.18));
+  }
+  .hint{
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  /* RIGHT CHART */
+  .chart{
+    border:1px solid var(--line);
+    background: linear-gradient(180deg, var(--panel2), var(--panel));
+    border-radius: 20px;
+    padding: 14px;
+    backdrop-filter: blur(10px);
+    min-height: 560px;
+  }
+
+  .chart-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+    margin-bottom: 12px;
+  }
+  .chart-title{
+    color: var(--text);
+    font-weight: 1000;
+    font-size: 18px;
+    margin:0;
+  }
+  .chart-sub{
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .chips{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+  .chip{
+    font-size: 12px;
+    border:1px solid var(--line);
+    background: rgba(255,255,255,.04);
+    padding: 6px 10px;
+    border-radius: 999px;
+    color: var(--text);
+  }
+  .chip.soft{ color: var(--muted); }
 
   .plot-card{
-    background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:10px;
-    box-shadow:0 14px 40px rgba(0,0,0,.08)
+    position:relative;
+    border-radius: 16px;
+    border:1px solid var(--line);
+    background: rgba(0,0,0,.06);
+    overflow:hidden;
+    min-height: 480px;
+  }
+  #outerPlot{ height: 480px; }
+
+  /* Skeleton */
+  .skeleton{
+    position:absolute;
+    inset:0;
+    padding: 18px;
+    display:none;
+    pointer-events:none;
+  }
+  .sk{
+    height: 16px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(255,255,255,.06), rgba(255,255,255,.14), rgba(255,255,255,.06));
+    background-size: 200% 100%;
+    animation: shimmer 1.15s infinite;
+    margin-bottom: 12px;
+  }
+  .sk.w2{ width: 70%; }
+  .sk.w3{ width: 52%; }
+  @keyframes shimmer{
+    0%{ background-position: 200% 0; }
+    100%{ background-position: -200% 0; }
+  }
+
+  /* Empty / Error state (şık) */
+  .empty{
+    position:absolute;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 20px;
+    color: var(--muted);
+  }
+  .empty .emo{ font-size: 34px; margin-bottom: 6px; }
+  .empty .t{ color: var(--text); font-weight: 1000; margin-bottom: 4px; }
+  .empty code{
+    display:inline-block;
+    margin-top: 10px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,.04);
+    color: var(--text);
+    max-width: 100%;
+    overflow:auto;
   }
 </style>
 
 <div class="outer-ui">
+  <div class="fx-hero">
+    <div>
+      <div class="fx-badge">📈 NASDAQ • Calendar Effects</div>
+      <div class="fx-title">Interactive Effect Explorer</div>
+      <p class="fx-sub">
+        Bir efekti seç → parametreleri ayarla → grafikte şirket bazlı etkiyi gör.
+      </p>
+    </div>
 
-  <div class="fx-grid" id="fxGrid">
-    <div class="fx-btn active" data-eff="monday">
-      <p class="fx-title">Monday effect</p><p class="fx-sub">Mon avg vs non-Mon avg</p>
-    </div>
-    <div class="fx-btn" data-eff="january">
-      <p class="fx-title">January effect</p><p class="fx-sub">Jan avg vs other months</p>
-    </div>
-    <div class="fx-btn" data-eff="tom">
-      <p class="fx-title">Turn-of-the-Month</p><p class="fx-sub">ToM avg vs non-ToM avg</p>
-    </div>
-    <div class="fx-btn" data-eff="holiday">
-      <p class="fx-title">Holiday effect</p><p class="fx-sub">Pre/Post vs normal days</p>
-    </div>
-    <div class="fx-btn" data-eff="sellinmay">
-      <p class="fx-title">Sell in May</p><p class="fx-sub">Winter vs summer</p>
-    </div>
-    <div class="fx-btn" data-eff="halfmonth">
-      <p class="fx-title">Half-month</p><p class="fx-sub">First half vs second half</p>
+    <div class="kpis">
+      <div class="kpi">
+        <div class="k1">Selected effect</div>
+        <div class="k2" id="kpiEffect">—</div>
+      </div>
+      <div class="kpi">
+        <div class="k1">Top impacted</div>
+        <div class="k2" id="kpiTop">—</div>
+      </div>
+      <div class="kpi">
+        <div class="k1">Impact score</div>
+        <div class="k2" id="kpiScore">—</div>
+      </div>
     </div>
   </div>
 
-  <div class="param-card hidden" id="paramPanel">
-    <b id="paramTitle">Parameters</b>
-
-    <span class="hidden" id="param-tom">
-      <label for="tomWindow">Window</label>
-      <select id="tomWindow" class="param-select">
-        <option value="w4">4</option>
-        <option value="w6" selected>6</option>
-        <option value="w8">8</option>
-        <option value="w10">10</option>
-      </select>
-    </span>
-
-    <span class="hidden" id="param-holiday">
-      <label for="holidayK">k-days</label>
-      <select id="holidayK" class="param-select">
-        <option value="k1">1</option>
-        <option value="k2" selected>2</option>
-        <option value="k3">3</option>
-      </select>
-    </span>
+  <div class="tabs" id="fxTabs">
+    <div class="tab active" data-eff="monday">
+      <p class="t1">Monday effect</p><p class="t2">Mon avg vs non-Mon avg</p>
+    </div>
+    <div class="tab" data-eff="january">
+      <p class="t1">January effect</p><p class="t2">Jan avg vs other months</p>
+    </div>
+    <div class="tab" data-eff="tom">
+      <p class="t1">Turn-of-the-Month</p><p class="t2">ToM avg vs non-ToM avg</p>
+    </div>
+    <div class="tab" data-eff="holiday">
+      <p class="t1">Holiday effect</p><p class="t2">Pre/Post vs normal days</p>
+    </div>
+    <div class="tab" data-eff="sellinmay">
+      <p class="t1">Sell in May</p><p class="t2">Winter vs summer</p>
+    </div>
+    <div class="tab" data-eff="halfmonth">
+      <p class="t1">Half-month</p><p class="t2">First half vs second half</p>
+    </div>
   </div>
 
-  <div class="plot-card">
-    <div id="outerPlot" style="height:460px"></div>
+  <div class="fx-main">
+    <!-- LEFT -->
+    <aside class="panel">
+      <div class="card">
+        <div class="card-title">Controls</div>
+
+        <label class="label">Search ticker (optional)</label>
+        <div class="input">
+          <span>⌕</span>
+          <input id="tickerSearch" placeholder="AAPL, MSFT, NVDA..." />
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label class="label">Sort</label>
+            <select id="sortMode" class="select">
+              <option value="impact_desc" selected>Impact ↓</option>
+              <option value="impact_asc">Impact ↑</option>
+              <option value="name_asc">Ticker A→Z</option>
+            </select>
+          </div>
+          <div class="col">
+            <label class="label">Min years</label>
+            <select id="minYears" class="select">
+              <option>3</option>
+              <option selected>6</option>
+              <option>10</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Dynamic params (sadece gereken efektlerde görünsün) -->
+        <div id="paramPanel" style="display:none;">
+          <div class="card-title" style="margin:0 0 6px; font-size:14px;" id="paramTitle">Parameters</div>
+
+          <div id="param-tom" style="display:none;">
+            <label class="label">ToM window</label>
+            <select id="tomWindow" class="select">
+              <option value="w4">4</option>
+              <option value="w6" selected>6</option>
+              <option value="w8">8</option>
+              <option value="w10">10</option>
+            </select>
+          </div>
+
+          <div id="param-holiday" style="display:none;">
+            <label class="label">Holiday k-days</label>
+            <select id="holidayK" class="select">
+              <option value="k1">1</option>
+              <option value="k2" selected>2</option>
+              <option value="k3">3</option>
+              <option value="k4">4</option>
+              <option value="k5">5</option>
+            </select>
+          </div>
+
+          <div class="hint">.</div>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" id="btnApply">Apply</button>
+          <button class="btn" id="btnReset">Reset</button>
+        </div>
+
+        <div class="hint">
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT -->
+    <section class="chart">
+      <div class="chart-head">
+        <div>
+          <p class="chart-title" id="chartTitle">Monday effect</p>
+          <div class="chart-sub" id="chartSubtitle">Mon avg vs non-Mon avg</div>
+        </div>
+        <div class="chips">
+          <span class="chip" id="chipParam">—</span>
+          <span class="chip soft" id="chipFile">—</span>
+        </div>
+      </div>
+
+      <div class="plot-card">
+        <div class="skeleton" id="skeleton">
+          <div class="sk"></div>
+          <div class="sk w2"></div>
+          <div class="sk w3"></div>
+        </div>
+
+        <div id="outerPlot"></div>
+
+        <div class="empty" id="emptyState">
+          <div>
+            <div class="emo">🪄</div>
+            <div class="t" id="emptyTitle">Grafik hazır</div>
+            <div id="emptySub">Bir effect seç ve parametreleri oyna.</div>
+            <code id="emptyCode"></code>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </div>
 
 <script>
 (() => {
-  const grid = document.getElementById("fxGrid");
-  const buttons = [...grid.querySelectorAll(".fx-btn")];
+  const tabs = document.getElementById("fxTabs");
+  const buttons = [...tabs.querySelectorAll(".tab")];
 
-  const panel = document.getElementById("paramPanel");
+  const plotDiv = document.getElementById("outerPlot");
+  const skeleton = document.getElementById("skeleton");
+  const emptyState = document.getElementById("emptyState");
+  const emptyTitle = document.getElementById("emptyTitle");
+  const emptySub = document.getElementById("emptySub");
+  const emptyCode = document.getElementById("emptyCode");
+
+  const paramPanel = document.getElementById("paramPanel");
   const paramTitle = document.getElementById("paramTitle");
-
   const pTom = document.getElementById("param-tom");
   const pHoliday = document.getElementById("param-holiday");
-
   const tomWindow = document.getElementById("tomWindow");
   const holidayK = document.getElementById("holidayK");
 
-  const plotDiv = document.getElementById("outerPlot");
-  const hasParam = { tom:true, holiday:true }; 
+  const chartTitle = document.getElementById("chartTitle");
+  const chartSubtitle = document.getElementById("chartSubtitle");
+  const chipParam = document.getElementById("chipParam");
+  const chipFile = document.getElementById("chipFile");
+
+  const kpiEffect = document.getElementById("kpiEffect");
+  const kpiTop = document.getElementById("kpiTop");
+  const kpiScore = document.getElementById("kpiScore");
+
+  const tickerSearch = document.getElementById("tickerSearch");
+  const sortMode = document.getElementById("sortMode");
+  const minYears = document.getElementById("minYears");
+
+  const btnApply = document.getElementById("btnApply");
+  const btnReset = document.getElementById("btnReset");
+
+  const META = {
+    monday:   { t:"Monday effect",       s:"Mon avg vs non-Mon avg" },
+    january:  { t:"January effect",      s:"Jan avg vs other months" },
+    tom:      { t:"Turn-of-the-Month",   s:"ToM avg vs non-ToM avg" },
+    holiday:  { t:"Holiday effect",      s:"Pre/Post vs normal days" },
+    sellinmay:{ t:"Sell in May",         s:"Winter vs summer" },
+    halfmonth:{ t:"Half-month",          s:"First half vs second half" }
+  };
+
+  const hasParam = { tom:true, holiday:true };
 
   function activeEffect(){
     return (buttons.find(b => b.classList.contains("active")) || buttons[0]).dataset.eff;
@@ -110,59 +538,129 @@
 
   function setActive(eff){
     buttons.forEach(b => b.classList.toggle("active", b.dataset.eff === eff));
-    syncParams();
+    syncUI();
     loadPlot();
   }
 
-  function syncParams(){
+  function syncUI(){
     const eff = activeEffect();
+    chartTitle.textContent = META[eff].t;
+    chartSubtitle.textContent = META[eff].s;
+    kpiEffect.textContent = META[eff].t;
+
     const show = !!hasParam[eff];
-    panel.classList.toggle("hidden", !show);
+    paramPanel.style.display = show ? "block" : "none";
+    pTom.style.display = "none";
+    pHoliday.style.display = "none";
 
-    pTom.classList.add("hidden");
-    pHoliday.classList.add("hidden");
-
-    if(!show) return;
+    if(!show){
+      chipParam.textContent = "No parameters";
+      return;
+    }
 
     if(eff === "tom"){
       paramTitle.textContent = "Parameters • ToM";
-      pTom.classList.remove("hidden");
+      pTom.style.display = "block";
+      chipParam.textContent = `window: ${tomWindow.value.replace("w","")}`;
     }
+
     if(eff === "holiday"){
       paramTitle.textContent = "Parameters • Holiday";
-      pHoliday.classList.remove("hidden");
+      pHoliday.style.display = "block";
+      chipParam.textContent = `k-days: ${holidayK.value.replace("k","")}`;
     }
   }
 
   function buildPath(){
     const eff = activeEffect();
-
     if(eff === "tom"){
       return `assets/plots/outer/tom_${tomWindow.value}.json`;
     }
     if(eff === "holiday"){
-      return `assets/plots/outer/holiday_${holidayK.value}.json`; 
+      return `assets/plots/outer/holiday_${holidayK.value}.json`;
     }
     return `assets/plots/outer/${eff}.json`;
   }
 
-  async function loadPlot(){
-    const url = buildPath();
-    const res = await fetch(url, { cache: "no-store" });
-    if(!res.ok){
-      plotDiv.innerHTML = `<div style="padding:14px">Missing file: <code>${url}</code></div>`;
-      return;
-    }
-    const fig = await res.json();
-    Plotly.react(plotDiv, fig.data, fig.layout, {displaylogo:false, responsive:true});
+  function showLoading(on){
+    skeleton.style.display = on ? "block" : "none";
   }
 
+  function showEmpty(on, title, sub, codeStr){
+    emptyState.style.display = on ? "flex" : "none";
+    emptyTitle.textContent = title || "Grafik hazır";
+    emptySub.textContent = sub || "Bir effect seç ve parametreleri oyna.";
+    emptyCode.textContent = codeStr || "";
+    emptyCode.style.display = codeStr ? "inline-block" : "none";
+  }
+
+  function updateKPIFromFig(fig){
+
+    if(fig && fig.meta){
+      kpiTop.textContent = fig.meta.top ?? "—";
+      kpiScore.textContent = fig.meta.score ?? "—";
+    }else{
+      kpiTop.textContent = "—";
+      kpiScore.textContent = "—";
+    }
+  }
+
+  async function loadPlot(){
+    const url = buildPath();
+    chipFile.textContent = url;
+
+    showEmpty(false);
+    showLoading(true);
+
+    try{
+      const res = await fetch(url, { cache: "no-store" });
+      if(!res.ok){
+        showLoading(false);
+        // Şık error state
+        Plotly.purge(plotDiv);
+        plotDiv.innerHTML = "";
+        showEmpty(true, "JSON yok (şimdilik)", "Bu dosyayı üretince grafik otomatik gelecek.", url);
+        return;
+      }
+
+      const fig = await res.json();
+
+
+      await Plotly.react(plotDiv, fig.data, fig.layout, { displaylogo:false, responsive:true });
+
+      updateKPIFromFig(fig);
+      showLoading(false);
+    }catch(err){
+      showLoading(false);
+      Plotly.purge(plotDiv);
+      plotDiv.innerHTML = "";
+      showEmpty(true, "Bir şey ters gitti", "Fetch/JSON parse hatası olabilir.", String(err));
+    }
+  }
+
+  // Events
   buttons.forEach(b => b.addEventListener("click", () => setActive(b.dataset.eff)));
 
-  tomWindow.addEventListener("change", loadPlot);
-  holidayK.addEventListener("change", loadPlot);
+  tomWindow?.addEventListener("change", () => { syncUI(); loadPlot(); });
+  holidayK?.addEventListener("change", () => { syncUI(); loadPlot(); });
 
-  syncParams();
+  btnApply.addEventListener("click", loadPlot);
+
+  btnReset.addEventListener("click", () => {
+    // reset defaults
+    buttons.forEach(b => b.classList.remove("active"));
+    buttons[0].classList.add("active"); // monday default
+    if(tomWindow) tomWindow.value = "w6";
+    if(holidayK) holidayK.value = "k2";
+    tickerSearch.value = "";
+    sortMode.value = "impact_desc";
+    minYears.value = "6";
+    syncUI();
+    loadPlot();
+  });
+
+  // init
+  syncUI();
   loadPlot();
 })();
 </script>
