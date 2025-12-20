@@ -28,17 +28,22 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 
 ## Getting an initial sense of the calendar effects
 
-Before engaging in formal hypothesis testing, the detectives begin with an initial exploratory analysis aimed at visualizing potential calendar effects. This step allows for an intuitive visualization of returns for the different calendar windows. For each calendar effect, average returns are computed and compared across relevant time periods. By examining these averages, the team aims to determine whether any of the proposed calendar effects already appear detectable at the mean level.
+Before engaging in formal stistical testing, the detectives begin with an initial exploratory analysis aimed at visualizing potential calendar effects. 
 
-Of course, simply looking at mean returns is not sufficient to conclude whether a calendar effect is real or statistically valid. Average differences may offer intuition, but they do not prove significance. These preliminary comparisons serve only as an initial diagnostic. 
+// plots demonstrating each effect //
 
-The crucial question of whether these calendar effects are statistically significant will be addressed in the next section, where we conduct formal hypothesis tests to determine which effects truly hold up under scrutiny.
+The visual evidence reveals several intriguing regularities. Returns appear to differ depending on the timing within the trading week, with certain days consistently exhibiting weaker performance than others. Seasonal variations also emerge, as returns during the early part of the year seem marginally higher compared to the remainder of the sample. These patterns are consistent with what the literature commonly refers to as calendar effects. ( //Interpretation //) Indeed, plots demonstrate ____ .
 
-<p align="center">
+
+ For each calendar effect, average returns are computed and compared across relevant time periods. By examining these averages, the team aims to determine whether any of the proposed calendar effects already appear detectable at the mean level.
+
+Of course, simply looking at mean returns is not sufficient to conclude whether a calendar effect is real or statistically valid. Average differences may offer intuition, but they do not prove significance. These preliminary comparisons serve only as an initial diagnostic.  
+
   <img src="assets/img/mean_interro.png" width="500">
 </p>
 
 
+The crucial question of whether these calendar effects are statistically significant needs to be investigated. This requires moving beyond visual evidence to formal statistical testing.
 
 ## Are the Calendar effects real ? 
 
