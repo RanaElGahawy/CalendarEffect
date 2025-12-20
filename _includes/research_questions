@@ -1,0 +1,49 @@
+<style>
+.rq-case{
+  border:2px solid #111;
+  border-radius:14px;
+  padding:22px 24px;
+  margin:3rem 0;
+  position:relative;
+  background:#fff;
+}
+.rq-header{margin-bottom:18px}
+.rq-header h3{margin:6px 0 4px;font-size:1.4rem;letter-spacing:.02em}
+.rq-sub{font-size:.9rem;opacity:.6;margin:0}
+.rq-stamp{
+  display:inline-block;
+  font-size:.75rem;
+  letter-spacing:.18em;
+  padding:4px 10px;
+  border:1.5px solid #a00;
+  color:#a00;
+  transform:rotate(-6deg);
+  opacity:.85;
+}
+.rq-list{list-style:none;padding:0;margin:0}
+.rq-list li{
+  display:flex;gap:14px;padding:14px 0;
+  font-size:1.05rem;position:relative
+}
+.rq-list li:not(:last-child)::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(to right, transparent, #bbb, transparent);
+}
+.rq-list span{font-weight:800;opacity:.5;min-width:32px}
+</style>
+
+<div class="rq-case">
+  <div class="rq-header">
+    <span class="rq-stamp">CLASSIFIED</span>
+    <h3>Research Questions</h3>
+    <p class="rq-sub">Case file opened for investigation</p>
+  </div>
+
+  <ul class="rq-list">
+    <li><span>Q1</span> Are calendar effects actually real?</li>
+    <li><span>Q2</span> How do they evolve throughout the years?</li>
+    <li><span>Q3</span> How persistent is the calendar effect across different stock exchanges?</li>
+    <li><span>Q4</span> Do global crises (Dot-Com, Financial Crisis, COVID-19) make calendar effects less significant?</li>
+    <li><span>Q5</span> How can we benefit from calendar effects?</li>
+  </ul>
+</div>
