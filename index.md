@@ -43,8 +43,23 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 
 The investigation begins with the dataset itself. Diving into the NASDAQ data allows us to demystify the alleged calendar effects by first understanding the underlying market dynamics.
 
-//plot of the number of companies per year, average return, trading volüme per year //
+<iframe src="plot_number_of_companies_per_year.html"
+        width="100%"
+        height="550"
+        frameborder="0">
+</iframe>
 
+<iframe src="plot_volume_per_year.html"
+        width="100%"
+        height="550"
+        frameborder="0">
+</iframe>
+
+<iframe src="plot_return_avg_per_year.html"
+        width="100%"
+        height="550"
+        frameborder="0">
+</iframe>
 
 ## Investigating the dataset
 
@@ -148,11 +163,6 @@ In this section, we investigate the **temporal stability** of each calendar effe
 - Do some grow stronger or weaker across decades?    
 - And crucially: **which calendar effects survive consistently over time, and which ones vanish once they become widely known?**
 
-<iframe src="plot_number_of_companies_per_year.html"
-        width="100%"
-        height="550"
-        frameborder="0">
-</iframe>
 
 
 
