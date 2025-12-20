@@ -30,6 +30,8 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 
 The detectives begin with an initial exploratory analysis aimed at visualizing potential calendar effects. 
 
+Profile of each suspect pattern
+
 // plots demonstrating each effect //
 
 The visual evidence reveals several intriguing regularities. Returns appear to differ depending on the timing within the trading week, with certain days consistently exhibiting weaker performance than others. Seasonal variations also emerge, as returns during the early part of the year seem marginally higher compared to the remainder of the sample. These patterns are consistent with what the literature commonly refers to as calendar effects.
@@ -80,12 +82,16 @@ By estimating the statistical significance and magnitude of each effect, the det
 // Conclude on real effects, stated by FARMZ //
 
 
-## Do the calendar effect survive in time ?
-
-
 ## Calendar effect during crises ?
 
-## Calendar effects through excahnges 
+The detectives turn their attention to the darkest moments in market history: Black Monday in 1987, the dot-com crash of 2000–2002, and the global financial crisis of 2008–2009. As they examine the data, familiar calendar patterns begin to fade.
+Market crises are special periods. Volatility is high. Uncertainty dominates. 
+
+// PLots //
+
+Visual evidence suggests that many patterns become weaker. Large price swings dominate returns, leaving little space for predictable calendar behavior. T This is confirmed by low OLS coefficients, showing that volatility weakens average return patterns.
+
+## Calendar effects through exchanges 
 <!-- ---
 
 ## A quick reality check
