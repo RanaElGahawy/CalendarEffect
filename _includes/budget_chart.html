@@ -1,0 +1,134 @@
+<style>
+  .budgetWidget{
+    position:fixed;
+    right:22px;
+    top:160px;
+    width:220px;
+    z-index:40;
+    pointer-events:none;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  }
+  @media(max-width:900px){ .budgetWidget{display:none;} }
+
+  .budgetCard{
+    background:#fff;
+    border:1px solid rgba(0,0,0,.12);
+    border-radius:16px;
+    padding:12px 12px 10px;
+    box-shadow:0 14px 40px rgba(0,0,0,.10);
+  }
+
+  .budgetTop{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:8px;
+  }
+  .budgetTop b{font-size:.95rem}
+  .budgetTop span{
+    font-size:.75rem;
+    letter-spacing:.12em;
+    opacity:.65;
+  }
+
+  .budgetBar{
+    height:8px;
+    border-radius:999px;
+    background:linear-gradient(90deg, rgba(170,0,0,.9), rgba(0,140,0,.9));
+    opacity:.35;
+    margin-top:8px;
+  }
+
+  /* Scroll ile değişecek “mood” rengi */
+  .mood{
+    display:inline-block;
+    padding:3px 9px;
+    border-radius:999px;
+    font-size:.78rem;
+    font-weight:700;
+    border:1px solid rgba(0,0,0,.12);
+    background: rgba(255,255,255,.9);
+  }
+</style>
+
+<div class="budgetWidget" aria-hidden="true">
+  <div class="budgetCard">
+    <div class="budgetTop">
+      <b>Market Mood</b>
+      <span>SCROLL DIAL</span>
+    </div>
+
+    <svg id="budgetSvg" viewBox="0 0 220 110" width="100%" height="110" style="display:block">
+      <rect x="0" y="0" width="220" height="110" rx="12" fill="#fafafa" stroke="rgba(0,0,0,.06)"/>
+
+      <g opacity="0.22" stroke="rgba(0,0,0,.25)">
+        <line x1="12" y1="25" x2="208" y2="25"/>
+        <line x1="12" y1="55" x2="208" y2="55"/>
+        <line x1="12" y1="85" x2="208" y2="85"/>
+      </g>
+
+      <g id="candles">
+        <line x1="35" y1="22" x2="35" y2="90" stroke-width="3" stroke="currentColor"/>
+        <rect x="27" y="45" width="16" height="28" rx="3" fill="currentColor"/>
+        <line x1="70" y1="18" x2="70" y2="92" stroke-width="3" stroke="currentColor"/>
+        <rect x="62" y="36" width="16" height="40" rx="3" fill="currentColor"/>
+        <line x1="105" y1="24" x2="105" y2="90" stroke-width="3" stroke="currentColor"/>
+        <rect x="97" y="52" width="16" height="20" rx="3" fill="currentColor"/>
+        <line x1="140" y1="16" x2="140" y2="92" stroke-width="3" stroke="currentColor"/>
+        <rect x="132" y="40" width="16" height="34" rx="3" fill="currentColor"/>
+        <line x1="175" y1="20" x2="175" y2="92" stroke-width="3" stroke="currentColor"/>
+        <rect x="167" y="58" width="16" height="16" rx="3" fill="currentColor"/>
+      </g>
+
+      <text x="14" y="104" font-size="11" fill="rgba(0,0,0,.55)">up = risk / down = relief</text>
+    </svg>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
+      <span class="mood" id="moodTag">RISK</span>
+      <span style="font-size:.82rem;opacity:.7" id="moodPct">0%</span>
+    </div>
+
+    <div class="budgetBar"></div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const svg = document.getElementById("budgetSvg");
+  const candles = svg.querySelector("#candles");
+  const moodTag = document.getElementById("moodTag");
+  const moodPct = document.getElementById("moodPct");
+
+  // 0..1 arası t: 0 = kırmızı (yukarı), 1 = yeşil (aşağı)
+  const clamp01 = x => Math.max(0, Math.min(1, x));
+
+  function lerp(a,b,t){ return a + (b-a)*t; }
+  function rgb(r,g,b){ return `rgb(${r|0},${g|0},${b|0})`; }
+
+  // kırmızı -> yeşil
+  function moodColor(t){
+    const r = lerp(170, 20, t);
+    const g = lerp( 20,140, t);
+    const b = lerp( 20, 40, t);
+    return rgb(r,g,b);
+  }
+
+  function onScroll(){
+    const range = 700;
+    const t = clamp01(window.scrollY / range);
+
+    const col = moodColor(t);
+    candles.style.color = col;
+
+    const pct = Math.round(t*100);
+    moodPct.textContent = pct + "%";
+    moodTag.textContent = (t < 0.35) ? "RISK" : (t < 0.7) ? "NEUTRAL" : "RELIEF";
+    moodTag.style.borderColor = "rgba(0,0,0,.12)";
+    moodTag.style.color = col;
+  }
+
+  onScroll();
+  window.addEventListener("scroll", onScroll, {passive:true});
+})();
+</script>
