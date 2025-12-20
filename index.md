@@ -52,7 +52,7 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 The investigation begins with the dataset itself. Diving into the NASDAQ data allows us to demystify the alleged calendar effects by first understanding the underlying market dynamics.
 
 
-<iframe src="assets/img/plot_company_year.html"
+<iframe src="assets/img/plot_number_of_companies_per_year.html"
         width="100%"
         height="550"
         frameborder="0">
