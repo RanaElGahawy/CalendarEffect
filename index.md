@@ -28,9 +28,8 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 
 ## Getting an initial sense of the calendar effects
 
-Before engaging in formal hypothesis testing, the detectives begin with an initial exploratory analysis aimed at visualizing potential calendar effects. This preliminary step allows for an intuitive understanding of return patterns and helps identify periods where anomalies may appear more pronounced.
-
-For each calendar effect, average returns are computed and compared across relevant time windows. By examining these averages, the team seeks to detect systematic differences in returns that may be associated with specific calendar periods. While this approach does not provide statistical validation, it offers valuable insights and guides the subsequent empirical investigation.
+Before engaging in formal hypothesis testing, the detectives begin with an initial exploratory analysis aimed at visualizing potential calendar effects. This step allows for an intuitive vizualization of return for the different calendar effect. 
+For each calendar effect, average returns are computed and compared across relevant time windows. By examining these averages, the team aims to determine whether any of the proposed calendar effects already appear detectable at the mean level.
 
 
 ## Are the Calendar effects real ? 
