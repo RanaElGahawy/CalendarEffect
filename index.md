@@ -316,6 +316,9 @@ In this section, we investigate the **temporal stability** of each calendar effe
 - And crucially: **which calendar effects survive consistently over time, and which ones vanish once they become widely known?**
 
 
+{% include outer_effects_ui.html %}
+
+
 
 
 
