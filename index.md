@@ -54,6 +54,7 @@ The investigation begins with the dataset itself. Diving into the NASDAQ data al
         height="550"
         frameborder="0">
 </iframe>
+
 The plot shows the evolution of annual trading volume from 1962 to 2020. Overall, trading activity exhibits a strong upward long-term trend, indicating a substantial increase in market participation and liquidity over time. Since calendar effects are often linked to investor behavior and trading activity, failing to account for volume dynamics may confound calendar effect estimate. So incorporating volume as a control variable or analyzing calendar effects within homogeneous sub-periods becomes essential.
 
 
