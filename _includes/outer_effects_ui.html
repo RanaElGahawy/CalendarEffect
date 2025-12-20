@@ -1,0 +1,168 @@
+<script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+
+<style>
+  .outer-ui{max-width:1100px;margin:2rem auto;padding:0 1rem;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+  .fx-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
+  @media(max-width:900px){.fx-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.fx-grid{grid-template-columns:1fr}}
+
+  .fx-btn{
+    text-align:left; cursor:pointer; user-select:none;
+    background:#fff; border:1px solid rgba(0,0,0,.12);
+    border-radius:14px; padding:12px 14px;
+    box-shadow:0 10px 28px rgba(0,0,0,.06);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .fx-btn:hover{transform:translateY(-1px); box-shadow:0 14px 34px rgba(0,0,0,.08)}
+  .fx-btn.active{border-color:rgba(0,0,0,.35)}
+  .fx-title{font-weight:800;margin:0 0 4px}
+  .fx-sub{margin:0;opacity:.65;font-size:.9rem}
+
+  .param-card{
+    display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    background:#fff; border:1px solid rgba(0,0,0,.12);
+    border-radius:14px; padding:10px 12px; margin:10px 0 12px;
+  }
+  .param-card b{opacity:.85}
+  .param-card label{opacity:.75;font-weight:700}
+  .param-select{
+    padding:8px 10px;border-radius:12px;border:1px solid rgba(0,0,0,.15);background:#fff;
+  }
+  .hidden{display:none}
+
+  .plot-card{
+    background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:10px;
+    box-shadow:0 14px 40px rgba(0,0,0,.08)
+  }
+</style>
+
+<div class="outer-ui">
+
+  <div class="fx-grid" id="fxGrid">
+    <div class="fx-btn active" data-eff="monday">
+      <p class="fx-title">Monday effect</p><p class="fx-sub">Mon avg vs non-Mon avg</p>
+    </div>
+    <div class="fx-btn" data-eff="january">
+      <p class="fx-title">January effect</p><p class="fx-sub">Jan avg vs other months</p>
+    </div>
+    <div class="fx-btn" data-eff="tom">
+      <p class="fx-title">Turn-of-the-Month</p><p class="fx-sub">ToM avg vs non-ToM avg</p>
+    </div>
+    <div class="fx-btn" data-eff="holiday">
+      <p class="fx-title">Holiday effect</p><p class="fx-sub">Pre/Post vs normal days</p>
+    </div>
+    <div class="fx-btn" data-eff="sellinmay">
+      <p class="fx-title">Sell in May</p><p class="fx-sub">Winter vs summer</p>
+    </div>
+    <div class="fx-btn" data-eff="halfmonth">
+      <p class="fx-title">Half-month</p><p class="fx-sub">First half vs second half</p>
+    </div>
+  </div>
+
+  <div class="param-card hidden" id="paramPanel">
+    <b id="paramTitle">Parameters</b>
+
+    <span class="hidden" id="param-tom">
+      <label for="tomWindow">Window</label>
+      <select id="tomWindow" class="param-select">
+        <option value="w4">4</option>
+        <option value="w6" selected>6</option>
+        <option value="w8">8</option>
+        <option value="w10">10</option>
+      </select>
+    </span>
+
+    <span class="hidden" id="param-holiday">
+      <label for="holidayK">k-days</label>
+      <select id="holidayK" class="param-select">
+        <option value="k1">1</option>
+        <option value="k2" selected>2</option>
+        <option value="k3">3</option>
+      </select>
+    </span>
+  </div>
+
+  <div class="plot-card">
+    <div id="outerPlot" style="height:460px"></div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const grid = document.getElementById("fxGrid");
+  const buttons = [...grid.querySelectorAll(".fx-btn")];
+
+  const panel = document.getElementById("paramPanel");
+  const paramTitle = document.getElementById("paramTitle");
+
+  const pTom = document.getElementById("param-tom");
+  const pHoliday = document.getElementById("param-holiday");
+
+  const tomWindow = document.getElementById("tomWindow");
+  const holidayK = document.getElementById("holidayK");
+
+  const plotDiv = document.getElementById("outerPlot");
+  const hasParam = { tom:true, holiday:true }; 
+
+  function activeEffect(){
+    return (buttons.find(b => b.classList.contains("active")) || buttons[0]).dataset.eff;
+  }
+
+  function setActive(eff){
+    buttons.forEach(b => b.classList.toggle("active", b.dataset.eff === eff));
+    syncParams();
+    loadPlot();
+  }
+
+  function syncParams(){
+    const eff = activeEffect();
+    const show = !!hasParam[eff];
+    panel.classList.toggle("hidden", !show);
+
+    pTom.classList.add("hidden");
+    pHoliday.classList.add("hidden");
+
+    if(!show) return;
+
+    if(eff === "tom"){
+      paramTitle.textContent = "Parameters • ToM";
+      pTom.classList.remove("hidden");
+    }
+    if(eff === "holiday"){
+      paramTitle.textContent = "Parameters • Holiday";
+      pHoliday.classList.remove("hidden");
+    }
+  }
+
+  function buildPath(){
+    const eff = activeEffect();
+
+    if(eff === "tom"){
+      return `assets/plots/outer/tom_${tomWindow.value}.json`;
+    }
+    if(eff === "holiday"){
+      return `assets/plots/outer/holiday_${holidayK.value}.json`; 
+    }
+    return `assets/plots/outer/${eff}.json`;
+  }
+
+  async function loadPlot(){
+    const url = buildPath();
+    const res = await fetch(url, { cache: "no-store" });
+    if(!res.ok){
+      plotDiv.innerHTML = `<div style="padding:14px">Missing file: <code>${url}</code></div>`;
+      return;
+    }
+    const fig = await res.json();
+    Plotly.react(plotDiv, fig.data, fig.layout, {displaylogo:false, responsive:true});
+  }
+
+  buttons.forEach(b => b.addEventListener("click", () => setActive(b.dataset.eff)));
+
+  tomWindow.addEventListener("change", loadPlot);
+  holidayK.addEventListener("change", loadPlot);
+
+  syncParams();
+  loadPlot();
+})();
+</script>
