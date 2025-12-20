@@ -11,8 +11,13 @@ Despite the large body of literature, there is still no clear consensus on wheth
 <p align="center">
   <img src="assets/img/littlezouhair.png"
        style="width:200px; height:200px; object-fit:cover; margin-right:20px;">
+  <p>Zouhair</p>
   <img src="assets/img/littlemelvyn.png"
        style="width:200px; height:200px; object-fit:cover;">
+  <p>Melvyn</p>
+  <img src="assets/img/littlefurkan.png"
+       style="width:200px; height:200px; object-fit:cover;">
+  <p>Furkan</p>
 </p>
 
 
