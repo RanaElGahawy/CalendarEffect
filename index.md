@@ -94,16 +94,8 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 - Holiday effect
 
 
-<div style="border: 2px solid red; padding: 10px; display: inline-block; border-radius: 15px">
-  <h3> Research Questions </h3>
-  <ol>
-    <li> Are calendar effects actually real? </li>
-    <li> How do they evolve throughout the years? </li>
-    <li> How persistent is the calendar effect across different stock exchanges? </li>
-    <li> Do global crises such as the Dot-Com Bubble, the Financial Crisis, and COVID-19 make calendar effects less significant? </li>
-    <li> How can we benefit from calendar effects? </li>
-  </ol>
-</div>
+{% include research_questions.html %}
+
 
 ## Investigating the dataset
 
