@@ -1,11 +1,11 @@
 /* Make the site full-width */
 
 .container,
-.container-sm,
-.container-md,
+.container-fluid,
 .container-lg,
-.container-xl,
-.container-fluid {
+.container-md,
+.container-sm,
+.container-xl {
     max-width: 100% !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -27,7 +27,7 @@
     max-width: 100% !important;
 }
 
-/* Optional: make images responsive */
+/* Optional: image responsive */
 img {
     max-width: 100%;
     height: auto;
