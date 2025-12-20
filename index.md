@@ -86,7 +86,7 @@ The visual evidence reveals several intriguing regularities. Returns appear to d
 
 Of course, simply looking at mean returns is not sufficient to conclude whether a calendar effect is real or statistically valid. Average differences may offer intuition, but they do not prove significance. These preliminary comparisons serve only as an initial diagnostic.  
 
-  <img src="assets/img/mean_interro.png" width="500">
+  <img src="assets/img/perry_mean.png" width="500">
 </p>
 
 
@@ -97,7 +97,7 @@ The crucial question of whether these calendar effects are statistically signifi
 Reinforced by rigorous statistical tools, the detectives conduct an in-depth investigation into each calendar effect. 
 
 <p align="center">
-  <img src="assets/img/regression_intero.jpeg" width="500">
+  <img src="assets/img/perry_regression.png" width="500">
 </p>
 
 Every suspected calendar anomaly is subjected to rigorous evaluation through formal hypothesis testing. In particular, t-tests are employed to determine whether average returns during specific calendar periods differ significantly from those observed in the rest of the sample. t-tests are employed to determine whether average returns during specific calendar periods differ significantly from those observed in the rest of the sample.
