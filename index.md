@@ -40,11 +40,32 @@ Reinforced by rigorous statistical tools, the detectives conduct an in-depth inv
   <img src="assets/img/regression_intero.jpeg" width="500">
 </p>
 
-Every suspected anomaly is subjected to rigorous evaluation through formal hypothesis testing.
+Every suspected calendar anomaly is subjected to rigorous evaluation through formal hypothesis testing. In particular, t-tests are employed to determine whether average returns during specific calendar periods differ significantly from those observed in the rest of the sample. t-tests are employed to determine whether average returns during specific calendar periods differ significantly from those observed in the rest of the sample.
+For these tests to be valid, several underlying assumptions must be satisfied, most notably the normality and independence of the data. To ensure the validity of the statistical tests, the investigation begins with a careful assessment of these assumptions. In particular, the normality of returns is examined prior to conducting the hypothesis tests.
 
-To further strengthen the analysis, these tests are complemented by regression models that isolate the calendar component while controlling for broader market dynamics. By estimating the statistical significance and economic magnitude of each effect, the detectives are able to determine whether the observed patterns persist beyond random chance.
+// Plots of normality check//
 
-This dual approach—combining t-tests with regression analysis—allows the investigation to move from simple observation to empirical validation. Only those calendar effects that withstand this rigorous examination can be considered credible candidates for genuine market anomalies, while others are dismissed as statistical illusions. Through this methodical process, the FARZM team seeks to separate myth from measurable reality in financial markets.
+Interpretation of the normality check
+
+// Results of t-tests //             
+
+Interpretation of t-tests
+
+When the assumption of normality is violated, the Mann–Whitney U test, a non-parametric alternative, is employed to compare return distributions across calendar periods. This approach allows the investigation to remain robust to deviations from normality.
+
+  // Results of Mann-Whitney test //
+
+  Interpretation of Mann-Whitney test
+
+
+To further strengthen the analysis, these tests are complemented by regression models that isolate the calendar component while controlling for other market dynamics (volume, volatility, fed funds rate).
+
+// Results of regression //
+
+By estimating the statistical significance and magnitude of each effect, the detectives discovered that____ (interpretation of regressions)
+
+// Conclude on real effects, stated by FARMZ //
+
 
 ## Do the calendar effect survive in time ?
 
