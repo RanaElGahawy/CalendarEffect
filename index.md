@@ -34,6 +34,10 @@ Of course, simply looking at mean returns is not sufficient to conclude whether 
 
 The crucial question of whether these calendar effects are statistically significant will be addressed in the next section, where we conduct formal hypothesis tests to determine which effects truly hold up under scrutiny.
 
+<p align="center">
+  <img src="assets/img/mean_interro.png" width="500">
+</p>
+
 
 
 ## Are the Calendar effects real ? 
