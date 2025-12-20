@@ -26,6 +26,12 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 - Halloween effect (“Sell in May”)
 - Holiday effect
 
+## Investigating the dataset
+
+The investigation begins with the dataset itself. Diving into the NASDAQ data allows us to demystify the alleged calendar effects by first understanding the underlying market dynamics.
+
+//plot of the number of companies per year, average return, trading volüme per year //
+
 ## Getting an initial sense of the calendar effects
 
 The detectives begin with an initial exploratory analysis aimed at visualizing potential calendar effects. 
