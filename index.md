@@ -1937,5 +1937,260 @@ In this section, we investigate the **temporal stability** of each calendar effe
   .jan-slice{ margin-top:10px; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.04); }
 </style>
 
+<div class="hol-ui">
+  <div class="hol-top">
+    <div>
+      <div class="hol-h">Holiday Effect</div>
+      <div class="hol-sub">Choose a holiday + window size (k), then type a ticker.</div>
+    </div>
+
+    <div class="hol-controls">
+      <div class="hol-ctrl">
+        <div class="hol-lbl">Holiday</div>
+        <select id="holHoliday"></select>
+      </div>
+
+      <div class="hol-ctrl">
+        <div class="hol-lbl">k (days)</div>
+        <select id="holK">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+
+      <div class="hol-ctrl">
+        <div class="hol-lbl">Ticker</div>
+        <input id="holTicker" list="holTickers" placeholder="Type ticker (e.g., AAPL)" />
+        <datalist id="holTickers"></datalist>
+      </div>
+    </div>
+  </div>
+
+  <div class="hol-grid">
+    <div class="hol-card">
+      <div class="hol-card-title">Ticker view</div>
+      <div id="holPlot"></div>
+    </div>
+
+    <div class="hol-card">
+      <div class="hol-card-title">Company distribution</div>
+      <div id="holPie"></div>
+      <div id="holSliceInfo" class="hol-slice"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(async function(){
+  const compUrl = "{{ site.baseurl }}/assets/data/holiday_comp_all.json";
+  const pieUrl  = "{{ site.baseurl }}/assets/data/holiday_pie_all.json";
+
+  const [compRes, pieRes] = await Promise.all([fetch(compUrl), fetch(pieUrl)]);
+  const ALL = await compRes.json();  // ALL[holiday][k][ticker]
+  const PIE = await pieRes.json();   // PIE[holiday][k] = payload
+
+  const selHoliday = document.getElementById("holHoliday");
+  const selK = document.getElementById("holK");
+  const input = document.getElementById("holTicker");
+  const dl = document.getElementById("holTickers");
+
+  const plotDiv = document.getElementById("holPlot");
+  const pieDiv  = document.getElementById("holPie");
+  const sliceInfo = document.getElementById("holSliceInfo");
+
+  // fill holiday dropdown
+  const holidays = Object.keys(ALL).sort();
+  holidays.forEach(h => {
+    const opt = document.createElement("option");
+    opt.value = h;
+    opt.textContent = h;
+    selHoliday.appendChild(opt);
+  });
+
+  function currentHoliday(){ return selHoliday.value; }
+  function currentK(){ return selK.value; }
+
+  function setDatalistFor(h, k){
+    dl.innerHTML = "";
+    const tickers = Object.keys((ALL[h] && ALL[h][k]) ? ALL[h][k] : {}).sort();
+    tickers.forEach(t => {
+      const opt = document.createElement("option");
+      opt.value = t;
+      dl.appendChild(opt);
+    });
+    return tickers;
+  }
+
+  function buildWinYearShapes(winYears){
+    return (winYears || []).map(y => ({
+      type: "rect",
+      xref: "x",
+      yref: "paper",
+      x0: y - 0.5,
+      x1: y + 0.5,
+      y0: 0.42,
+      y1: 1.00,
+      fillcolor: "rgba(0,0,0,0.06)",
+      line: { width: 0 },
+      layer: "below"
+    }));
+  }
+
+  function drawTicker(){
+    const h = currentHoliday();
+    const k = currentK();
+    const tkr = (input.value || "").trim().toUpperCase();
+
+    const d = (ALL[h] && ALL[h][k]) ? ALL[h][k][tkr] : null;
+    if(!d){
+      Plotly.newPlot(plotDiv, [], {title: "Ticker not found for this holiday/k"}, {responsive:true});
+      return;
+    }
+
+    const years = d.years;
+
+    const trace1 = {
+      x: years, y: d.pre_cum,
+      type: "scatter", mode: "lines+markers",
+      name: `Pre (${k} days)`,
+      hovertemplate: "Year=%{x}<br>Pre=%{y:.5f}<extra></extra>",
+      xaxis:"x", yaxis:"y"
+    };
+
+    const trace2 = {
+      x: years, y: d.post_cum,
+      type: "scatter", mode: "lines+markers",
+      name: `Post (${k} days)`,
+      line: { dash: "dash" },
+      hovertemplate: "Year=%{x}<br>Post=%{y:.5f}<extra></extra>",
+      xaxis:"x", yaxis:"y"
+    };
+
+    const trace3 = {
+      x: years, y: d.diff,
+      type: "bar",
+      name: "Diff (Pre - Post)",
+      hovertemplate: "Year=%{x}<br>Diff=%{y:.5f}<extra></extra>",
+      xaxis:"x2", yaxis:"y2"
+    };
+
+    const layout = {
+      title: `Holiday Effect — ${h} (k=${k}) — ${tkr} (win rate ${d.win_rate.toFixed(1)}%)`,
+      height: 680,
+      margin: {l:55, r:20, t:70, b:50},
+      hovermode: "x unified",
+      legend: {orientation:"h", y:1.07, x:0},
+
+      xaxis:  {domain:[0,1], anchor:"y"},
+      yaxis:  {domain:[0.42,1], title:"Avg return"},
+      xaxis2: {domain:[0,1], anchor:"y2", title:"Year"},
+      yaxis2: {domain:[0,0.34], title:"Diff"},
+
+      shapes: buildWinYearShapes(d.win_years).concat([{
+        type:"line",
+        xref:"x2", yref:"y2",
+        x0: Math.min(...years), x1: Math.max(...years),
+        y0: 0, y1: 0,
+        line: {dash:"dot", width:1}
+      }])
+    };
+
+    Plotly.newPlot(plotDiv, [trace1, trace2, trace3], layout, {responsive:true});
+  }
+
+  function drawPie(){
+    const h = currentHoliday();
+    const k = currentK();
+    const payload = (PIE[h] && PIE[h][k]) ? PIE[h][k] : {labels:[], counts:[], tickersBySlice:[]};
+
+    const labels = payload.labels || [];
+    const values = payload.counts || [];
+
+    if(labels.length === 0){
+      Plotly.newPlot(pieDiv, [], {title:"No pie data"}, {responsive:true});
+      sliceInfo.innerHTML = "";
+      return;
+    }
+
+    const trace = {
+      type: "pie",
+      labels: labels,
+      values: values,
+      textinfo: "label+percent+value",
+      hovertemplate: "<b>%{label}</b><br>Companies: %{value}<extra></extra>",
+      pull: labels.map(() => 0.04)
+    };
+
+    const layout = {
+      title: `Distribution — ${h} (k=${k})`,
+      height: 520,
+      margin: {l:10, r:10, t:60, b:10},
+      showlegend: true
+    };
+
+    Plotly.newPlot(pieDiv, [trace], layout, {responsive:true});
+
+    pieDiv.on("plotly_click", (ev) => {
+      const idx = ev.points[0].pointNumber;
+      const sliceLabel = labels[idx];
+      const tickList = payload.tickersBySlice[idx] || [];
+      const preview = tickList.slice(0, 40).join(", ") + (tickList.length > 40 ? `, ... (+${tickList.length-40} more)` : "");
+      sliceInfo.innerHTML = `<b>${sliceLabel}</b>: ${tickList.length} tickers<br><span style="opacity:.8">${preview}</span>`;
+    });
+  }
+
+  function refreshUI(){
+    const h = currentHoliday();
+    const k = currentK();
+
+    const tickers = setDatalistFor(h, k);
+    // default ticker
+    const defaultT = (tickers.includes("TAPR")) ? "TAPR" : (tickers[0] || "");
+    input.value = defaultT;
+
+    drawPie();
+    drawTicker();
+  }
+
+  // events
+  selHoliday.addEventListener("change", refreshUI);
+  selK.addEventListener("change", refreshUI);
+  input.addEventListener("change", drawTicker);
+
+  // init
+  selHoliday.value = holidays[0];
+  refreshUI();
+})();
+</script>
+
+<style>
+  .hol-ui{ margin-top:16px; padding:14px; border-radius:18px; border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.04); box-shadow:0 18px 60px rgba(0,0,0,.25); }
+
+  .hol-top{ display:flex; justify-content:space-between; align-items:flex-end; gap:12px; flex-wrap:wrap; margin-bottom:10px; }
+  .hol-h{ font-weight:900; font-size:1.15rem; }
+  .hol-sub{ opacity:.75; max-width:85ch; }
+
+  .hol-controls{ display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end; }
+  .hol-ctrl{ display:flex; flex-direction:column; gap:6px; }
+  .hol-lbl{ font-size:.85rem; opacity:.8; font-weight:700; }
+
+  select, #holTicker{
+    width:min(260px, 80vw);
+    padding:10px 12px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);
+    color:inherit;
+    outline:none;
+  }
+  select:focus, #holTicker:focus{ border-color: rgba(120,170,255,.6); }
+
+  .hol-grid{ display:grid; grid-template-columns: 1fr; gap:16px; align-items:start; } /* alt alta */
+  .hol-card{ border-radius:16px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.10); padding:10px; }
+  .hol-card-title{ font-weight:850; margin:4px 6px 10px; opacity:.9; }
+  .hol-slice{ margin-top:10px; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.04); }
+</style>
 
 
