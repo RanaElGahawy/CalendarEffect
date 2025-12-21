@@ -168,7 +168,7 @@ The crucial question of whether these calendar effects are statistically signifi
   }
 
   .content-image{
-    width: 600px;
+    width: 500px;
     height: auto;
     flex-shrink: 0;
   }
@@ -296,7 +296,7 @@ allowing us to distinguish between calendar effects driven by **systematic shift
   }
 
   .content-image{
-    width: 500px;
+    width: 250px;
     height: auto;
     flex-shrink: 0;
   }
