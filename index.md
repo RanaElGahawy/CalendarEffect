@@ -294,7 +294,7 @@ $$
 </div> -->
 
 <details markdown="1">
-  <summary><strong></strong></summary>
+  <summary><strong>Central Limit Theorem</strong></summary>
         The Central Limit Theorem (CLT) is a cornerstone of statistics, stating that the distribution of sample means from any population will approach a normal distribution as the sample size gets large, regardless of the original population's shape. This convergence to normality, usually with samples of 30 or more ($$ n >= 30$$).
 </details>
 
@@ -303,6 +303,7 @@ After investigating all the calendar effect's windows using the Welch’s t-test
 ### Mann–Whitney U test
 
 To determine whether calendar effects reflect a systematic shift in the distribution of returns, rather than the effect of rare outliers, the detectives call in a second independent witness: the Mann–Whitney U test. Unlike Welch’s test, Mann–Whitney does not rely on normality distribution assumptions and does not compare averages. Instead, it evaluates whether returns from one calendar period tend to be consistently higher or lower than those from another period across the entire distribution. They hope that by interviewing a mean-based witness and a rank-based one, it would help them distinguish between calendar effects driven by behavioral patterns and those driven by a few rare market events.
+
 
 
 <details>
