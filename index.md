@@ -254,6 +254,10 @@ allowing us to distinguish between calendar effects driven by **systematic shift
 
 The detictives specifically chose the Welch's Test because unlike the standart *t*-test, the test can accomodate data with unequal variances and unequal sample sizes, making it a more appropriate and conservative choice for financial return data. Because when we investigate a calendar effect window, we usually compare it with the rest of the year. Although daily stock returns are not normally distributed, the large sample size of daily NASDAQ data (~$$24$$ Million record)) ensures that sample means are approximately normal by the Central Limit Theorem, making it valid to use the mean-based tests. As a result, Welch’s t-test provides a robust benchmark for evaluating whether calendar effects' average returns are significant or not, directly addressing the core economic claims behind calendar-effect while minimizing the risk of false positives driven by volatility differences or sample imbalance.
 
+<p align="center">
+  <img src="assets/img/perry_welchtest.png" width="500" alt="Inspecteur Ornithorynque">
+</p>
+
 <details markdown="1">
   <summary><strong>Hypotheses</strong></summary>
 
@@ -439,6 +443,11 @@ When the assumption of normality is violated, the Mann–Whitney U test, a non-p
 
 
 To further strengthen the analysis, these tests are complemented by regression models that isolate the calendar component while controlling for other market dynamics (volume, volatility, fed funds rate).
+
+<p align="center">
+  <img src="assets/img/perry_regression.png" width="500">
+</p>
+
 
 // Results of regression //
 
