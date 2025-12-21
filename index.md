@@ -1067,3 +1067,222 @@ In this section, we investigate the **temporal stability** of each calendar effe
 
 
 
+<!-- ============== MONDAY EFFECT (per ticker + pie) ============== -->
+
+<div class="mon-ui">
+  <div class="mon-top">
+    <div>
+      <div class="mon-h">Monday Effect (per ticker)</div>
+      <div class="mon-sub">Type a ticker to update the two-panel plot. Pie shows distribution across companies.</div>
+    </div>
+
+    <div>
+      <input id="monTicker" list="monTickers" placeholder="Type ticker (e.g., AAPL)" />
+      <datalist id="monTickers"></datalist>
+    </div>
+  </div>
+
+  <div class="mon-grid">
+    <div class="mon-card">
+      <div class="mon-card-title">Ticker view</div>
+      <div id="monPlot"></div>
+    </div>
+
+    <div class="mon-card">
+      <div class="mon-card-title">Company distribution</div>
+      <div id="monPie"></div>
+      <div id="monSliceInfo" class="mon-slice"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(async function(){
+  const compUrl = "{{ site.baseurl }}/assets/data/monday_comp_all.json";
+  const pieUrl  = "{{ site.baseurl }}/assets/data/monday_pie.json";
+
+  const [compRes, pieRes] = await Promise.all([fetch(compUrl), fetch(pieUrl)]);
+  const ALL = await compRes.json();
+  const PIE = await pieRes.json();
+
+  const input = document.getElementById("monTicker");
+  const dl = document.getElementById("monTickers");
+  const plotDiv = document.getElementById("monPlot");
+  const pieDiv = document.getElementById("monPie");
+  const sliceInfo = document.getElementById("monSliceInfo");
+
+  // datalist
+  const tickers = Object.keys(ALL).sort();
+  tickers.forEach(t => {
+    const opt = document.createElement("option");
+    opt.value = t;
+    dl.appendChild(opt);
+  });
+
+  function buildWinYearShapes(winYears){
+    // add_vrect karşılığı: x0=y-0.5, x1=y+0.5
+    return (winYears || []).map(y => ({
+      type: "rect",
+      xref: "x",
+      yref: "paper",
+      x0: y - 0.5,
+      x1: y + 0.5,
+      y0: 0.42,
+      y1: 1.00,
+      fillcolor: "rgba(0,0,0,0.06)",
+      line: { width: 0 },
+      layer: "below"
+    }));
+  }
+
+  function drawTicker(tkr){
+    tkr = (tkr || "").trim().toUpperCase();
+    const d = ALL[tkr];
+    if(!d){
+      Plotly.newPlot(plotDiv, [], {title: "Ticker not found"}, {responsive:true});
+      return;
+    }
+
+    const years = d.years;
+
+    const trace1 = {
+      x: years, y: d.monday_avg,
+      type: "scatter", mode: "lines+markers",
+      name: "Monday avg",
+      hovertemplate: "Year=%{x}<br>Monday avg=%{y:.5f}<extra></extra>",
+      xaxis: "x", yaxis: "y"
+    };
+
+    const trace2 = {
+      x: years, y: d.non_monday_avg,
+      type: "scatter", mode: "lines+markers",
+      name: "Non-Monday avg",
+      line: { dash: "dash" },
+      hovertemplate: "Year=%{x}<br>Non-Monday avg=%{y:.5f}<extra></extra>",
+      xaxis: "x", yaxis: "y"
+    };
+
+    const trace3 = {
+      x: years, y: d.diff,
+      type: "bar",
+      name: "Diff (Mon - NonMon)",
+      hovertemplate: "Year=%{x}<br>Diff=%{y:.5f}<extra></extra>",
+      xaxis: "x2", yaxis: "y2"
+    };
+
+    const layout = {
+      title: `Monday Effect — ${tkr} (win rate ${d.win_rate.toFixed(1)}%)`,
+      height: 680,
+      margin: {l: 55, r: 20, t: 70, b: 50},
+      hovermode: "x unified",
+      legend: {orientation:"h", y:1.07, x:0},
+
+      xaxis:  {domain:[0,1], anchor:"y"},
+      yaxis:  {domain:[0.42,1], title:"Avg return"},
+      xaxis2: {domain:[0,1], anchor:"y2", title:"Year"},
+      yaxis2: {domain:[0,0.34], title:"Diff"},
+
+      shapes: buildWinYearShapes(d.win_years).concat([{
+        type:"line",
+        xref:"x2", yref:"y2",
+        x0: Math.min(...years), x1: Math.max(...years),
+        y0: 0, y1: 0,
+        line: {dash:"dot", width:1}
+      }])
+    };
+
+    Plotly.newPlot(plotDiv, [trace1, trace2, trace3], layout, {responsive:true});
+  }
+
+  function drawPie(){
+    const labels = PIE.labels;
+    const values = PIE.counts;
+
+    const trace = {
+      type: "pie",
+      labels: labels,
+      values: values,
+      textinfo: "label+percent+value",
+      hovertemplate: "<b>%{label}</b><br>Companies: %{value}<extra></extra>",
+      pull: labels.map(() => 0.04)
+    };
+
+    const layout = {
+      title: "Monday Effect — Company Distribution",
+      height: 520,
+      margin: {l: 10, r: 10, t: 60, b: 10},
+      showlegend: true
+    };
+
+    Plotly.newPlot(pieDiv, [trace], layout, {responsive:true});
+
+    pieDiv.on("plotly_click", (ev) => {
+      const idx = ev.points[0].pointNumber;
+      const sliceLabel = labels[idx];
+      const tickList = PIE.tickersBySlice[idx] || [];
+      const preview = tickList.slice(0, 40).join(", ")
+        + (tickList.length > 40 ? `, ... (+${tickList.length-40} more)` : "");
+      sliceInfo.innerHTML =
+        `<b>${sliceLabel}</b>: ${tickList.length} tickers<br><span style="opacity:.8">${preview}</span>`;
+    });
+  }
+
+  // init
+  drawPie();
+  const defaultT = "TAPR";
+  input.value = ALL[defaultT] ? defaultT : tickers[0];
+  drawTicker(input.value);
+
+  input.addEventListener("change", () => drawTicker(input.value));
+})();
+</script>
+
+<style>
+  .mon-ui{
+    margin-top:16px;
+    padding:14px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.04);
+    box-shadow:0 18px 60px rgba(0,0,0,.25);
+  }
+  .mon-top{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:12px; flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+  .mon-h{ font-weight:900; font-size:1.15rem; }
+  .mon-sub{ opacity:.75; }
+
+  #monTicker{
+    width:min(320px, 80vw);
+    padding:10px 12px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);
+    color:inherit;
+    outline:none;
+  }
+  #monTicker:focus{ border-color: rgba(120,170,255,.6); }
+
+  .mon-grid{
+    display:grid;
+    grid-template-columns: 1fr; /* alt alta */
+    gap:16px;
+    align-items:start;
+  }
+  .mon-card{
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(0,0,0,.10);
+    padding:10px;
+  }
+  .mon-card-title{ font-weight:850; margin:4px 6px 10px; opacity:.9; }
+  .mon-slice{
+    margin-top:10px;
+    padding:10px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.10);
+    background:rgba(255,255,255,.04);
+  }
+</style>
