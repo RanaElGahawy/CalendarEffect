@@ -1845,22 +1845,52 @@ That’s a result too.
 
 ## The investigation is complete. The case is now open.
 
-Our work as market detectives ends here but the story does not.
+Our role as market detectives ends here — but the real exploration starts now.
 
-Across decades, crises, exchanges, and regimes, we uncovered patterns that sometimes persist,
-sometimes weaken, and sometimes completely disappear. Some calendar effects appear remarkably
-robust. Others look fragile, context-dependent, or highly sensitive to market conditions.
+We did not aim to deliver a single verdict or a fixed trading rule.
+Instead, we opened the data and built tools that allow you to **inspect calendar effects from multiple angles**.
 
-At this point, there is no single rule to follow and that is exactly the point.
+### How widespread is the effect?
 
-Now, it is **your turn**.
+For each calendar effect, you can first examine **how many companies actually follow the pattern**.
+The distributions show, year by year, the percentage of firms for which the effect holds.
+This allows you to answer a simple but crucial question:
 
-You can explore each effect in detail, zoom into specific periods, compare exchanges,
-or even investigate individual stocks. Some companies follow calendar patterns closely.
-Others ignore them entirely. The data is open, and the tools are in your hands.
+> Is this effect a market-wide phenomenon, or is it driven by only a subset of stocks?
 
-Markets do not offer universal truths only evidence.
-How you interpret that evidence is part of the experiment.
+In the Holiday Effect section, this becomes especially powerful.
+You can explore how the effect behaves under different parameters
+(before vs after holidays, crisis periods, or monetary regimes),
+and observe how the share of “conforming” companies changes over time.
+
+### Zoom into individual stocks
+
+Once the aggregate picture is clear, the investigation can move one level deeper.
+
+You can select **individual tickers** and track how a specific stock behaved over the years:
+when the calendar effect worked, when it failed, and when it reversed.
+Some stocks follow the pattern consistently.
+Others only exhibit it in certain periods — or not at all.
+
+This comparison reveals an important insight:
+calendar effects are not universal laws.
+They are patterns that interact with firm-specific behavior and market conditions.
+
+### Draw your own conclusions
+
+At this point, the evidence is complete — but the interpretation is yours.
+
+You can move between market-level summaries and stock-level timelines,
+compare effects across decades and crises,
+and decide which anomalies appear persistent, fragile, or entirely accidental.
+
+Markets rarely give clear answers.
+They give clues.
+
+Now the data is open.
+The tools are yours.
+The investigation continues — with you.
+
 
 <section id="calendar-effects" class="fx-wrap">
   <div class="fx-layout">
