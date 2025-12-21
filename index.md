@@ -817,6 +817,53 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
 </details>
 
 
+## Monday effect
+### Across decades
+### Across exchanges
+### Through the Dot Com Bubble
+### Through Global Financial Crisis
+
+---
+## January effect
+### Across decades
+### Across exchanges
+### Through the Dot Com Bubble
+### Through Global Financial Crisis
+
+---
+## Santa Claus Rally
+### Across decades
+### Across exchanges
+### Through the Dot Com Bubble
+### Through Global Financial Crisis
+
+---
+## Turn-of-the-Month
+### Across decades
+### Across exchanges
+### Through the Dot Com Bubble
+### Through Global Financial Crisis
+
+---
+## Half-Month
+### Across decades
+### Across exchanges
+### Through the Dot Com Bubble
+### Through Global Financial Crisis
+
+---
+## Halloween effect (“Sell in May”)
+### Across decades
+### Across exchanges
+### Through the Dot Com Bubble
+### Through Global Financial Crisis
+
+---
+## Holiday effect
+### Across decades
+### Across exchanges
+### Through the Dot Com Bubble
+### Through Global Financial Crisis
 
 
 <details>
