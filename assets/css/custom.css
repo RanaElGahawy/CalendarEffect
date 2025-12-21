@@ -1,37 +1,21 @@
-/* Allow nested details to expand properly */
+/* ===============================
+   DETAILS BEHAVIOR
+   =============================== */
 details {
+  display: block;
   overflow: visible;
 }
 
-/* Indentation styling */
-.effect-block {
-  border-left: 4px solid #5D6591;
-  padding-left: 16px;
-  margin: 12px 0;
-}
-
-/* Image container */
-.image-box {
-  margin-top: 12px;
-  text-align: center;
-}
-
-/* Image safety */
-.image-box img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Indent nested <details> panels */
-details details {
+/* Indent nested <details> */
+main details details {
   margin-left: 1.25rem;
   padding-left: 0.75rem;
-  border-left: 2px solid #5D6591;
+  border-left: 2px solid rgba(93,101,145,0.35);
 }
 
-/* ===== OUTER SECTION ===== */
+/* ===============================
+   LAYOUT SECTIONS
+   =============================== */
 .outer-details {
   background: #f8f9fc;
   border-radius: 12px;
@@ -40,7 +24,6 @@ details details {
   box-shadow: 0 6px 18px rgba(0,0,0,0.04);
 }
 
-/* ===== MID LEVEL (Time Series / Clustering) ===== */
 .mid-details {
   margin-top: 1rem;
   background: #ffffff;
@@ -49,8 +32,15 @@ details details {
   box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
 }
 
+/* ===============================
+   EFFECT BLOCKS
+   =============================== */
+.effect-block {
+  border-left: 4px solid #5D6591;
+  padding-left: 16px;
+  margin: 12px 0;
+}
 
-/* ===== EFFECT BLOCK ===== */
 .effect-block details {
   background: #f6f7fb;
   border-radius: 8px;
@@ -64,6 +54,9 @@ details details {
   transform: translateX(2px);
 }
 
+/* ===============================
+   SUMMARY STYLING
+   =============================== */
 summary {
   cursor: pointer;
   font-weight: 600;
@@ -71,12 +64,10 @@ summary {
   list-style: none;
 }
 
-/* Remove default triangle */
 summary::-webkit-details-marker {
   display: none;
 }
 
-/* Custom arrow */
 summary::before {
   content: "▸";
   display: inline-block;
@@ -88,22 +79,23 @@ details[open] > summary::before {
   transform: rotate(90deg);
 }
 
-main details details {
-  margin-left: 1.25rem !important;
-  padding-left: 0.75rem !important;
-  border-left: 2px solid rgba(93,101,145,0.35);
-}
-
+/* ===============================
+   IMAGE DISPLAY
+   =============================== */
 .image-box {
   margin-top: 0.75rem;
   padding: 0.75rem;
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  text-align: center;
 }
 
 .image-box img {
-  max-width: 100%;
+  max-width: 700px;     /* main size control */
+  width: 100%;
   height: auto;
+  display: block;
+  margin: 0 auto;
   border-radius: 6px;
 }
