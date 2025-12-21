@@ -479,87 +479,210 @@ title: Calendar Effects – Interactive Tests
 permalink: /effects/
 ---
 
-<div class="fx-wrap">
-  <div class="fx-hero">
-    <div class="fx-title">Calendar Effects – Interactive Significance Explorer</div>
-    <div class="fx-sub">
-      Effect ve test seç. Grafik JSON’dan okunup anında güncellenir.
+<div class="fx2">
+  <div class="fx2-hero">
+    <div class="fx2-hero-inner">
+      <div class="fx2-kicker">NASDAQ · Calendar Effects</div>
+      <h1 class="fx2-title">Interactive Significance Explorer</h1>
+      <div class="fx2-sub">
+        Effect ve test seç. İstersen sadece <b>anlamlı (p&lt;0.05)</b> olanları filtrele.
+        Hover ile tüm metrikleri gör.
+      </div>
+
+      <div class="fx2-badges">
+        <span class="fx2-badge">Plotly</span>
+        <span class="fx2-badge">JSON-driven</span>
+        <span class="fx2-badge">Jekyll</span>
+      </div>
     </div>
   </div>
 
-  <div class="fx-card">
-    <div class="fx-controls">
-      <div class="fx-field">
-        <label for="groupSelect">Group</label>
-        <select id="groupSelect"></select>
+  <div class="fx2-grid">
+    <div class="fx2-card fx2-controls">
+      <div class="fx2-row">
+        <div class="fx2-field">
+          <label>Group</label>
+          <select id="groupSelect"></select>
+        </div>
+        <div class="fx2-field">
+          <label>Effect</label>
+          <select id="effectSelect"></select>
+        </div>
       </div>
 
-      <div class="fx-field">
-        <label for="effectSelect">Effect</label>
-        <select id="effectSelect"></select>
+      <div class="fx2-row">
+        <div class="fx2-field">
+          <label>Test</label>
+          <div class="fx2-seg">
+            <button class="fx2-seg-btn is-active" data-test="ttest" id="btnT">t-test</button>
+            <button class="fx2-seg-btn" data-test="mwu" id="btnM">Mann–Whitney</button>
+          </div>
+        </div>
+
+        <div class="fx2-field">
+          <label>View</label>
+          <div class="fx2-seg">
+            <button class="fx2-seg-btn is-active" data-metric="mlogp" id="btnLP">-log10(p)</button>
+            <button class="fx2-seg-btn" data-metric="stat" id="btnST">Statistic</button>
+          </div>
+        </div>
       </div>
 
-      <div class="fx-field">
-        <label for="testSelect">Test</label>
-        <select id="testSelect">
-          <option value="ttest">t-test</option>
-          <option value="mwu">Mann–Whitney U</option>
-        </select>
+      <div class="fx2-row fx2-row-3">
+        <div class="fx2-field">
+          <label>Sort</label>
+          <select id="sortSelect">
+            <option value="p">p-value (asc)</option>
+            <option value="effectsize">effect size (desc)</option>
+            <option value="absstat">|stat| / U (desc)</option>
+          </select>
+        </div>
+
+        <div class="fx2-field">
+          <label>Search contrast</label>
+          <input id="searchInput" type="text" placeholder="e.g. Day 0 vs day 4">
+        </div>
+
+        <div class="fx2-field fx2-check">
+          <label class="fx2-checkline">
+            <input id="sigOnly" type="checkbox">
+            <span>Only significant (p &lt; 0.05)</span>
+          </label>
+          <div class="fx2-hint">p=0 için otomatik “&lt;1e-16” gibi gösterir.</div>
+        </div>
       </div>
 
-      <div class="fx-field">
-        <label for="sortSelect">Sort</label>
-        <select id="sortSelect">
-          <option value="p">p-value (asc)</option>
-          <option value="effectsize">effect size (desc)</option>
-          <option value="absstat">|stat| / U (desc)</option>
-        </select>
-      </div>
+      <div class="fx2-kpis" id="kpiRow"></div>
     </div>
 
-    <div class="fx-kpis" id="kpiRow"></div>
-    <div id="plot" class="fx-plot"></div>
-    <div class="fx-footnote" id="footnote"></div>
+    <div class="fx2-card fx2-plotcard">
+      <div class="fx2-plothead">
+        <div>
+          <div class="fx2-plot-title" id="plotTitle">Loading…</div>
+          <div class="fx2-plot-sub" id="plotSubtitle">JSON’dan veri okunuyor</div>
+        </div>
+        <div class="fx2-mini">
+          <div class="fx2-mini-label">Significance</div>
+          <div class="fx2-mini-value" id="miniSig">—</div>
+        </div>
+      </div>
+
+      <div id="plotMain" class="fx2-plot"></div>
+
+      <div id="mwuPanel" class="fx2-mwu-panel" style="display:none;">
+        <div class="fx2-mwu-title">Effect size panel (MWU)</div>
+        <div class="fx2-mwu-sub">Cliff’s delta ve probability superiority</div>
+        <div id="plotES" class="fx2-plot fx2-plot-small"></div>
+      </div>
+
+      <div class="fx2-footnote" id="footnote"></div>
+    </div>
   </div>
 </div>
 
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
 
 <style>
-  .fx-wrap{max-width:1100px;margin:1.5rem auto;padding:0 1rem;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
-  .fx-hero{margin-bottom:14px}
-  .fx-title{font-size:1.55rem;font-weight:850;letter-spacing:.2px}
-  .fx-sub{color:rgba(0,0,0,.65);margin-top:6px;line-height:1.4}
-
-  .fx-card{
-    background:#fff;border:1px solid rgba(0,0,0,.10);
-    border-radius:18px;padding:14px 14px 16px;
-    box-shadow:0 14px 40px rgba(0,0,0,.06);
-  }
-
-  .fx-controls{
-    display:grid;grid-template-columns:1.1fr 1.4fr 1fr 1fr;gap:10px;
-    margin-bottom:12px
-  }
-  @media(max-width:900px){.fx-controls{grid-template-columns:1fr}}
-  .fx-field label{display:block;font-size:.85rem;color:rgba(0,0,0,.65);margin:2px 0 6px}
-  .fx-field select{
-    width:100%;padding:10px 12px;border-radius:12px;
-    border:1px solid rgba(0,0,0,.14);background:#fff;outline:none;
-  }
-
-  .fx-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0 12px}
-  @media(max-width:900px){.fx-kpis{grid-template-columns:repeat(2,1fr)}}
-  .kpi{
+  .fx2{max-width:1180px;margin:1.2rem auto;padding:0 1rem;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+  .fx2-hero{
+    border-radius:22px;
+    padding:18px;
+    background:
+      radial-gradient(1200px 380px at 10% -20%, rgba(0,0,0,.10), transparent 60%),
+      radial-gradient(900px 340px at 90% 0%, rgba(0,0,0,.10), transparent 58%),
+      linear-gradient(135deg, rgba(0,0,0,.06), rgba(0,0,0,.02));
     border:1px solid rgba(0,0,0,.10);
-    border-radius:14px;padding:10px 12px;
+    box-shadow:0 18px 60px rgba(0,0,0,.06);
+    margin-bottom:14px;
+  }
+  .fx2-hero-inner{padding:6px 10px}
+  .fx2-kicker{font-size:.85rem;color:rgba(0,0,0,.6);letter-spacing:.3px}
+  .fx2-title{margin:.35rem 0 .35rem;font-size:1.85rem;font-weight:900;letter-spacing:.2px}
+  .fx2-sub{color:rgba(0,0,0,.68);line-height:1.45;max-width:880px}
+  .fx2-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .fx2-badge{
+    font-size:.82rem;padding:6px 10px;border-radius:999px;
+    border:1px solid rgba(0,0,0,.14);
+    background:rgba(255,255,255,.55);
+  }
+
+  .fx2-grid{display:grid;grid-template-columns:460px 1fr;gap:14px}
+  @media(max-width:1050px){.fx2-grid{grid-template-columns:1fr}}
+  .fx2-card{
+    background:#fff;border:1px solid rgba(0,0,0,.10);
+    border-radius:18px;padding:14px;
+    box-shadow:0 12px 40px rgba(0,0,0,.06);
+  }
+
+  .fx2-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+  .fx2-row-3{grid-template-columns:1fr 1fr 1fr}
+  @media(max-width:1050px){.fx2-row-3{grid-template-columns:1fr}}
+  @media(max-width:540px){.fx2-row{grid-template-columns:1fr}}
+
+  .fx2-field label{display:block;font-size:.86rem;color:rgba(0,0,0,.65);margin:2px 0 6px}
+  .fx2-field select,.fx2-field input{
+    width:100%;padding:10px 12px;border-radius:14px;
+    border:1px solid rgba(0,0,0,.14);background:#fff;outline:none;
+    transition:box-shadow .12s ease,border-color .12s ease,transform .12s ease;
+  }
+  .fx2-field select:focus,.fx2-field input:focus{
+    border-color:rgba(0,0,0,.28);
+    box-shadow:0 0 0 4px rgba(0,0,0,.06);
+  }
+
+  .fx2-seg{display:flex;gap:8px}
+  .fx2-seg-btn{
+    flex:1;
+    padding:10px 12px;border-radius:14px;
+    border:1px solid rgba(0,0,0,.14);
+    background:rgba(255,255,255,.7);
+    cursor:pointer;
+    transition:transform .10s ease, box-shadow .12s ease, background .12s ease;
+    font-weight:700;
+  }
+  .fx2-seg-btn:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(0,0,0,.06)}
+  .fx2-seg-btn.is-active{
+    background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.02));
+    border-color:rgba(0,0,0,.22);
+  }
+
+  .fx2-check .fx2-checkline{display:flex;gap:10px;align-items:center;margin-top:2px}
+  .fx2-check input{width:auto}
+  .fx2-hint{margin-top:6px;font-size:.82rem;color:rgba(0,0,0,.55)}
+
+  .fx2-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+  @media(max-width:540px){.fx2-kpis{grid-template-columns:repeat(2,1fr)}}
+  .fx2-kpi{
+    border:1px solid rgba(0,0,0,.10);
+    border-radius:16px;padding:10px 12px;
     background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,0));
   }
-  .kpi .k{font-size:.80rem;color:rgba(0,0,0,.6)}
-  .kpi .v{font-size:1.05rem;font-weight:780;margin-top:4px}
+  .fx2-kpi .k{font-size:.80rem;color:rgba(0,0,0,.6)}
+  .fx2-kpi .v{font-size:1.08rem;font-weight:900;margin-top:4px}
 
-  .fx-plot{height:520px}
-  .fx-footnote{margin-top:10px;color:rgba(0,0,0,.62);font-size:.92rem;line-height:1.4}
+  .fx2-plotcard{padding:14px 14px 12px}
+  .fx2-plothead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px}
+  .fx2-plot-title{font-weight:950;font-size:1.05rem}
+  .fx2-plot-sub{color:rgba(0,0,0,.62);font-size:.92rem;margin-top:2px}
+  .fx2-mini{
+    min-width:140px;
+    border:1px solid rgba(0,0,0,.10);
+    border-radius:16px;padding:10px 12px;
+    background:rgba(0,0,0,.02);
+  }
+  .fx2-mini-label{font-size:.78rem;color:rgba(0,0,0,.6)}
+  .fx2-mini-value{font-weight:950;font-size:1.05rem;margin-top:4px}
+
+  .fx2-plot{height:540px}
+  .fx2-plot-small{height:320px}
+  .fx2-footnote{margin-top:10px;color:rgba(0,0,0,.62);font-size:.92rem;line-height:1.45}
+
+  .fx2-mwu-panel{
+    margin-top:10px;padding-top:10px;
+    border-top:1px dashed rgba(0,0,0,.18);
+  }
+  .fx2-mwu-title{font-weight:900}
+  .fx2-mwu-sub{color:rgba(0,0,0,.62);font-size:.92rem;margin-top:2px}
 </style>
 
 <script>
@@ -567,31 +690,58 @@ permalink: /effects/
   const url = "{{ '/assets/data/effects_tests.json' | relative_url }}";
   const res = await fetch(url);
   const data = await res.json();
-  const rows = data.rows || [];
+  const rowsAll = data.rows || [];
 
-  const groupSelect = document.getElementById("groupSelect");
+  // Elements
+  const groupSelect  = document.getElementById("groupSelect");
   const effectSelect = document.getElementById("effectSelect");
-  const testSelect = document.getElementById("testSelect");
-  const sortSelect = document.getElementById("sortSelect");
-  const kpiRow = document.getElementById("kpiRow");
-  const footnote = document.getElementById("footnote");
+  const sortSelect   = document.getElementById("sortSelect");
+  const searchInput  = document.getElementById("searchInput");
+  const sigOnly      = document.getElementById("sigOnly");
+  const kpiRow       = document.getElementById("kpiRow");
+  const footnote     = document.getElementById("footnote");
 
+  const btnT  = document.getElementById("btnT");
+  const btnM  = document.getElementById("btnM");
+  const btnLP = document.getElementById("btnLP");
+  const btnST = document.getElementById("btnST");
+
+  const plotTitle    = document.getElementById("plotTitle");
+  const plotSubtitle = document.getElementById("plotSubtitle");
+  const miniSig      = document.getElementById("miniSig");
+  const mwuPanel     = document.getElementById("mwuPanel");
+
+  // State
+  let state = {
+    test: "ttest",      // ttest | mwu
+    metric: "mlogp",    // mlogp | stat
+  };
+
+  // Helpers
   const fmtP = (p) => {
     if (p === null || p === undefined || Number.isNaN(p)) return "NA";
     if (p === 0) return "< 1e-16";
     if (p < 1e-4) return p.toExponential(2);
     return p.toFixed(4);
   };
-
+  const logp = (p) => {
+    if (p === null || p === undefined || Number.isNaN(p)) return null;
+    if (p <= 0) return 16; // cap for p=0
+    return -Math.log10(p);
+  };
   const mkKPI = (k, v) => {
     const d = document.createElement("div");
-    d.className = "kpi";
+    d.className = "fx2-kpi";
     d.innerHTML = `<div class="k">${k}</div><div class="v">${v}</div>`;
     return d;
   };
+  const setActive = (btn, group) => {
+    group.forEach(b => b.classList.remove("is-active"));
+    btn.classList.add("is-active");
+  };
 
   // Build groups
-  const groups = Array.from(new Set(rows.map(r => r.group || "All"))).sort((a,b)=>a.localeCompare(b));
+  const groups = Array.from(new Set(rowsAll.map(r => r.group || "All"))).sort((a,b)=>a.localeCompare(b));
   groups.forEach(g => {
     const opt = document.createElement("option");
     opt.value = g; opt.textContent = g;
@@ -602,7 +752,7 @@ permalink: /effects/
   function refreshEffects(){
     effectSelect.innerHTML = "";
     const g = groupSelect.value;
-    const effects = Array.from(new Set(rows.filter(r => (r.group||"All")===g).map(r => r.effect)))
+    const effects = Array.from(new Set(rowsAll.filter(r => (r.group||"All")===g).map(r => r.effect)))
       .sort((a,b)=>a.localeCompare(b));
 
     effects.forEach(e => {
@@ -616,8 +766,21 @@ permalink: /effects/
   function getFiltered(){
     const g = groupSelect.value;
     const eff = effectSelect.value;
-    const test = testSelect.value;
-    return rows.filter(r => (r.group||"All")===g && r.effect===eff && r.test===test);
+
+    let rws = rowsAll.filter(r => (r.group||"All")===g && r.effect===eff && r.test===state.test);
+
+    // search
+    const q = (searchInput.value || "").trim().toLowerCase();
+    if (q){
+      rws = rws.filter(r => (r.contrast || "").toLowerCase().includes(q));
+    }
+
+    // sig only
+    if (sigOnly.checked){
+      rws = rws.filter(r => (r.p ?? 1) < 0.05);
+    }
+
+    return rws;
   }
 
   function sortRows(rws){
@@ -648,99 +811,187 @@ permalink: /effects/
     kpiRow.innerHTML = "";
     const g = groupSelect.value;
     const eff = effectSelect.value;
-    const test = testSelect.value;
-
+    const testName = (state.test === "ttest") ? "t-test" : "Mann–Whitney";
     const n = rws.length;
-    const minP = n ? Math.min(...rws.map(x => (x.p ?? 1))) : null;
+    const bestP = n ? Math.min(...rws.map(x => (x.p ?? 1))) : null;
 
     kpiRow.appendChild(mkKPI("Group", g));
     kpiRow.appendChild(mkKPI("Effect", eff));
-    kpiRow.appendChild(mkKPI("Test", test === "ttest" ? "t-test" : "Mann–Whitney U"));
-    kpiRow.appendChild(mkKPI("Best p", n ? fmtP(minP) : "NA"));
+    kpiRow.appendChild(mkKPI("Test", testName));
+    kpiRow.appendChild(mkKPI("Best p", n ? fmtP(bestP) : "NA"));
   }
 
-  function buildFigure(rws){
-    const x = rws.map(r => r.contrast || r.effect || "(contrast)");
-    const y = rws.map(r => r.test === "ttest" ? r.stat : r.u);
+  function mainTitle(){
+    const eff = effectSelect.value;
+    const testName = (state.test === "ttest") ? "t-test" : "Mann–Whitney";
+    const metricName = (state.metric === "mlogp") ? "-log10(p)" : "Statistic";
+    plotTitle.textContent = `${eff} · ${testName} · ${metricName}`;
+  }
+
+  function buildMainFigure(rws){
+    const eff = effectSelect.value;
+
+    const x = rws.map(r => r.contrast || "(contrast)");
+    const p = rws.map(r => r.p);
+    const y = (state.metric === "mlogp")
+      ? rws.map(r => logp(r.p))
+      : rws.map(r => (state.test === "ttest" ? r.stat : r.u));
 
     const size = rws.map(r => {
-      if (r.test === "mwu" && r.cliffs_delta != null) return 10 + 70*Math.min(1, Math.abs(r.cliffs_delta));
-      return 10 + 25*Math.min(1, Math.abs(r.stat ?? 0)/10);
+      if (state.test === "mwu" && r.cliffs_delta != null) return 10 + 60*Math.min(1, Math.abs(r.cliffs_delta));
+      if (state.test === "ttest" && r.stat != null) return 10 + 22*Math.min(1, Math.abs(r.stat)/10);
+      return 14;
     });
 
     const hover = rws.map(r => {
-      if (r.test === "ttest"){
-        return `Contrast: <b>${r.contrast || ""}</b><br>` +
+      if (state.test === "ttest"){
+        return `Contrast: <b>${r.contrast||""}</b><br>` +
                `t-stat: <b>${(r.stat ?? 0).toFixed(4)}</b><br>` +
-               `p: <b>${fmtP(r.p)}</b>`;
+               `p: <b>${fmtP(r.p)}</b><br>` +
+               `-log10(p): <b>${(logp(r.p) ?? 0).toFixed(3)}</b>`;
       }
-      return `Contrast: <b>${r.contrast || ""}</b><br>` +
+      return `Contrast: <b>${r.contrast||""}</b><br>` +
              `U: <b>${(r.u ?? 0).toFixed(2)}</b><br>` +
              `p: <b>${fmtP(r.p)}</b><br>` +
+             `-log10(p): <b>${(logp(r.p) ?? 0).toFixed(3)}</b><br>` +
              `prob superiority: <b>${(r.prob_superiority ?? 0).toFixed(4)}</b><br>` +
              `Cliff's delta: <b>${(r.cliffs_delta ?? 0).toFixed(4)}</b>`;
     });
 
+    // Add threshold line: p=0.05 => -log10(0.05)=1.301
+    const thr = 1.30103;
+
     const trace = {
       type: "scatter",
-      mode: "markers",
+      mode: "markers+lines",
       x, y,
       text: hover,
       hoverinfo: "text",
-      marker: { size, opacity: 0.86, line: {width: 1} }
+      line: {width: 2},
+      marker: { size, opacity: 0.88, line: {width: 1} }
     };
 
-    const title = (testSelect.value === "ttest")
-      ? "t-test statistic (by contrast)"
-      : "Mann–Whitney U statistic (by contrast)";
+    const shapes = [];
+    if (state.metric === "mlogp"){
+      shapes.push({
+        type: "line",
+        xref: "paper", x0: 0, x1: 1,
+        yref: "y", y0: thr, y1: thr,
+        line: {width: 1, dash: "dot"}
+      });
+    }
+
+    const yTitle = (state.metric === "mlogp")
+      ? "-log10(p)"
+      : (state.test === "ttest" ? "t-statistic" : "U statistic");
 
     const layout = {
-      title: {text: title, x: 0.02, xanchor: "left"},
-      margin: {l: 70, r: 20, t: 60, b: 130},
+      margin: {l: 70, r: 18, t: 28, b: 130},
       xaxis: {title: "Contrast", tickangle: -25, automargin: true},
-      yaxis: {title: (testSelect.value === "ttest") ? "t-statistic" : "U statistic", zeroline: true},
+      yaxis: {title: yTitle, zeroline: true},
+      shapes,
       paper_bgcolor: "rgba(0,0,0,0)",
       plot_bgcolor: "rgba(0,0,0,0)",
-      height: 520,
+      height: 540,
       showlegend: false
     };
+
+    // Mini info: significant count
+    const sigCount = rws.filter(r => (r.p ?? 1) < 0.05).length;
+    miniSig.textContent = `${sigCount}/${rws.length} significant`;
+
+    // Subtitle
+    plotSubtitle.textContent =
+      state.metric === "mlogp"
+        ? "Daha yukarı = daha anlamlı. Kesik çizgi: p=0.05 eşiği."
+        : "Statistic değerleri (t veya U). Hover ile p-value ve metrikler.";
+
+    // Footnote
+    footnote.innerHTML =
+      `Effect: <b>${eff}</b>. ` +
+      (state.test === "mwu"
+        ? `MWU’da bubble boyutu ≈ <b>|Cliff’s delta|</b>.`
+        : `t-test’te bubble boyutu ≈ <b>|t-stat|</b>.`);
 
     return {trace, layout};
   }
 
-  function updateFootnote(rws){
-    if (!rws.length){
-      footnote.textContent = "No rows for this selection.";
-      return;
-    }
-    if (testSelect.value === "mwu"){
-      footnote.innerHTML =
-        `Bubble size ≈ <b>|Cliff’s delta|</b> (effect size). Hover ile detayları gör.`;
-    } else {
-      footnote.innerHTML =
-        `Bubble size ≈ <b>|t-stat|</b>. Hover ile t-stat ve p-value gör.`;
-    }
+  function buildEffectSizeFigure(rws){
+    // Only for MWU
+    const x = rws.map(r => r.contrast || "(contrast)");
+    const cd = rws.map(r => r.cliffs_delta);
+    const ps = rws.map(r => r.prob_superiority);
+
+    const t1 = {
+      type: "bar",
+      x, y: cd,
+      name: "Cliff's delta",
+      opacity: 0.9
+    };
+
+    const t2 = {
+      type: "scatter",
+      mode: "markers+lines",
+      x, y: ps,
+      name: "Prob superiority",
+      yaxis: "y2",
+      marker: {size: 9, opacity: 0.85},
+      line: {width: 2}
+    };
+
+    const layout = {
+      margin: {l: 70, r: 60, t: 20, b: 120},
+      xaxis: {title: "Contrast", tickangle: -25, automargin: true},
+      yaxis: {title: "Cliff's delta", zeroline: true},
+      yaxis2: {title: "Prob superiority", overlaying: "y", side: "right", range: [0, 1]},
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "rgba(0,0,0,0)",
+      height: 320,
+      legend: {orientation: "h", x: 0.02, y: 1.15}
+    };
+
+    return {traces: [t1, t2], layout};
   }
 
   function render(){
+    mainTitle();
+
     let rws = getFiltered();
     rws = sortRows(rws);
-    updateKPIs(rws);
-    updateFootnote(rws);
 
-    const fig = buildFigure(rws);
-    Plotly.react("plot", [fig.trace], fig.layout, {displayModeBar: true, responsive: true});
+    updateKPIs(rws);
+
+    const fig = buildMainFigure(rws);
+    Plotly.react("plotMain", [fig.trace], fig.layout, {displayModeBar:true, responsive:true});
+
+    // MWU panel
+    if (state.test === "mwu"){
+      mwuPanel.style.display = "block";
+      const es = buildEffectSizeFigure(rws);
+      Plotly.react("plotES", es.traces, es.layout, {displayModeBar:false, responsive:true});
+    } else {
+      mwuPanel.style.display = "none";
+    }
   }
 
+  // events
   groupSelect.addEventListener("change", () => { refreshEffects(); render(); });
   effectSelect.addEventListener("change", render);
-  testSelect.addEventListener("change", render);
   sortSelect.addEventListener("change", render);
+  searchInput.addEventListener("input", render);
+  sigOnly.addEventListener("change", render);
 
+  btnT.addEventListener("click", () => { state.test="ttest"; setActive(btnT,[btnT,btnM]); render(); });
+  btnM.addEventListener("click", () => { state.test="mwu"; setActive(btnM,[btnT,btnM]); render(); });
+  btnLP.addEventListener("click", () => { state.metric="mlogp"; setActive(btnLP,[btnLP,btnST]); render(); });
+  btnST.addEventListener("click", () => { state.metric="stat"; setActive(btnST,[btnLP,btnST]); render(); });
+
+  // init
   refreshEffects();
   render();
 })();
 </script>
+
 
 ///////////////////////////////////////
 [January Effect] T-test: 29.7588, P-value: 0.0000
