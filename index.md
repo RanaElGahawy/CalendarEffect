@@ -528,12 +528,33 @@ $$
 
 <details>
   <summary><strong>📉 January Effect</strong></summary>
-<!-- ---
+---
   <p>
-    Mondays are often said to deliver negative returns.
-    Let’s see what the data actually says.
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 Return   R-squared:                       0.001
+Model:                            OLS   Adj. R-squared:                  0.001
+Method:                 Least Squares   F-statistic:                     6.562
+Date:                Sat, 20 Dec 2025   Prob (F-statistic):            0.00142
+Time:                        17:14:58   Log-Likelihood:                 48895.
+No. Observations:               14643   AIC:                        -9.778e+04
+Df Residuals:                   14640   BIC:                        -9.776e+04
+Df Model:                           2                                         
+Covariance Type:                  HAC                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          0.0006   8.64e-05      6.406      0.000       0.000       0.001
+is_january     0.0011      0.000      3.563      0.000       0.000       0.002
+fed_funds  -5.469e-05   9.16e-05     -0.597      0.550      -0.000       0.000
+==============================================================================
+Omnibus:                     5141.886   Durbin-Watson:                   1.750
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):           227707.381
+Skew:                          -0.960   Prob(JB):                         0.00
+Kurtosis:                      22.223   Cond. No.                         3.65
+==============================================================================
   </p>
---- -->
+---
   <div id="january-plot" style="height:450px;"></div>
 </details>
 
