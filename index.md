@@ -459,6 +459,21 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
+<details markdown="1">
+  <summary><strong>Equation</strong></summary>
+The probability that previous witnesses ranked a randomly chosen sample from the calendar window higher than another randomly chosen one from the rest of the data
+$$
+\text{PS} = \frac{U}{n_1 n_2}
+$$
+   <details markdown="1">
+  <summary><strong>Equation</strong></summary>
+The probability that previous witnesses ranked a randomly chosen sample from the calendar window higher than another randomly chosen one from the rest of the data
+$$
+\text{PS} = \frac{U}{n_1 n_2}
+$$
+        
+</details>      
+</details>
 
 <details>
   <summary><strong>📈 Monday Effect</strong></summary>
