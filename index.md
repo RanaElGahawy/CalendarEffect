@@ -165,28 +165,28 @@ For these tests to be valid, several underlying assumptions must be satisfied, m
 ### Normality Test
 
 <details>
-        <div markdown="1">
+        
   <summary><strong>Equations for the normality test</strong></summary>
-
+<div markdown="1">
 #### Step 1: Compute sample moments
 
-Given observations \( x_1, \dots, x_n \), define the central moments:
+Given observations $$ x_1, \dots, x_n $$, define the central moments:
 
-\[
+$$
 m_k = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^k
-\]
+$$
 
 From these, compute:
 
 - **Sample skewness**
-\[
+$$
 g_1 = \frac{m_3}{m_2^{3/2}}
-\]
+$$
 
 - **Sample excess kurtosis**
-\[
+$$
 g_2 = \frac{m_4}{m_2^2} - 3
-\]
+$$
 
 ---
 
@@ -195,16 +195,16 @@ g_2 = \frac{m_4}{m_2^2} - 3
 The skewness and kurtosis statistics are transformed into approximately
 standard normal variables:
 
-\[
+$$
 Z_1 = \text{skewtest}(g_1, n)
-\]
+$$
 
-\[
+$$
 Z_2 = \text{kurtosistest}(g_2, n)
-\]
+$$
 
 These transformations correct for finite-sample bias and ensure asymptotic
-normality under \( H_0 \).
+normality under $$ H_0 $$.
 
 ---
 
@@ -212,9 +212,9 @@ normality under \( H_0 \).
 
 The final test statistic is defined as:
 
-\[
+$$
 K^2 = Z_1^2 + Z_2^2
-\]
+$$
 
 ---
 
@@ -222,18 +222,18 @@ K^2 = Z_1^2 + Z_2^2
 
 Under the null hypothesis of normality:
 
-\[
+$$
 K^2 \sim \chi^2_2
-\]
+$$
 
 That is, the statistic follows a chi-squared distribution with **2 degrees of
 freedom**.
 
 The *p*-value is computed as:
 
-\[
+$$
 p = P(\chi^2_2 \ge K^2)
-\]
+$$
 
 </div>
 </details>
@@ -249,11 +249,17 @@ To verify these assumption, we formally test the normality of returns for each c
 
 This would help the detectives choose the appropriate test for their investigations, because if returns deviate strongly from normality, mean-based tests alone may be misleading, as a small number of extreme observations can dominate the results.
 
+<details markdown="1">
+  <summary><strong>Hypotheses</strong></summary>
+
 $$
 H_0:\ \text{the data are normally distributed}
 \qquad
 H_1:\ \text{the data are not normally distributed}
 $$
+
+</details>
+
 
 
 Across all calendar effects considered being investigated we got a $P-value = 0.000$. Thus, the normality hypothesis is consistently rejected which aligns with well-established evidence in financial economics: stock returns are not normally distributed.
