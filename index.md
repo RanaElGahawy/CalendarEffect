@@ -156,6 +156,30 @@ The crucial question of whether these calendar effects are statistically signifi
 
 ## Are the Calendar effects real ? 
 
+<style>
+  .content-block{
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .content-image{
+    width: 350px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .content-text{
+    flex: 1;
+  }
+
+  .content-text p{
+    margin-top: 0;
+    line-height: 1.6;
+  }
+</style>
+
+
 <div class="content-block">
   <img src="assets/img/perrymeme.png" alt="Image" class="content-image">
 
