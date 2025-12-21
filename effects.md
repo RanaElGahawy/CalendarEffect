@@ -6,12 +6,12 @@ permalink: /effects/
 
 <div class="effect-grid">
   <button class="effect-btn active" data-img="{{ site.baseurl }}/assets/effects/january.png">January Effect</button>
-  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/effects/sell_in_may.png">Sell in May</button>
-  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/effects/turn_of_month.png">Turn-of-Month</button>
-  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/effects/monday.png">Monday Effect</button>
-  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/effects/holiday.png">Holiday Effect</button>
-  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/effects/santa_rally.png">Santa Rally</button>
-  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/effects/other.png">Other Effect</button>
+  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/img/sell_in_may.png">Sell in May</button>
+  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/img/turn_of_month.png">Turn-of-Month</button>
+  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/img/monday.png">Monday Effect</button>
+  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/img/holiday.png">Holiday Effect</button>
+  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/img/santa_rally.png">Santa Rally</button>
+  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/img/other.png">Other Effect</button>
 </div>
 
 <div class="effect-view">
