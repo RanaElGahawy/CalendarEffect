@@ -1020,7 +1020,7 @@ permalink: /effects/
   font-size: 1.02rem;
 }
 </style>
-div class="section-banner-sm">
+<div class="section-banner-sm">
   <div class="section-banner-sm-title">
     Linear Regression
   </div>
