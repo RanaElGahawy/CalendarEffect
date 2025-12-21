@@ -113,7 +113,7 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
   }
 
   .content-image{
-  height: 500px;   /* ajuste selon ton besoin */
+  height: 350px;   /* ajuste selon ton besoin */
   width: auto;
   max-width: none;
   flex-shrink: 0;
