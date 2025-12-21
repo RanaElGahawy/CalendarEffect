@@ -1649,6 +1649,13 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
       src="{{ site.baseurl }}/assets/img/sell_in_may_decade.png"
       title="Sell in May - Across Decades">
     </iframe>
+    <p>
+This bar chart shows the Sell in May effect by decade. Each bar represents the total difference between winter and summer returns for a given decade.
+
+From the figure, we can see that the winter–summer return difference is positive in all decades. This means that winter returns are higher than summer returns across different time periods. The strength of the effect changes over time, with stronger differences in the 1970s, 1980s, and 2010s, and weaker differences in the 1990s and 2000s.
+
+Overall, the chart suggests that the Sell in May effect is persistent across decades, even though its magnitude varies over time.
+    </p>
   </div>
 
   <div id="halloween-exchange" class="lens-content hidden">
@@ -1659,6 +1666,13 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
       src="{{ site.baseurl }}/assets/img/sell_in_may_exchange.png"
       title="Sell in May - Across Exchanges">
     </iframe>
+    <p>
+This boxplot compares the Sell in May effect across different stock exchanges. For each exchange, the plot shows the distribution of the percentage of years in which winter returns are higher than summer returns.
+
+From the figure, we can see that the median value is above 50% for most exchanges. This means that, on average, winter outperforms summer in more than half of the years across different markets. However, the spread differs by exchange, and some markets show more variation than others.
+
+Overall, the results suggest that the Sell in May effect is present across exchanges, but its strength is not the same in every market.
+    </p>
   </div>
 
   <div id="halloween-company" class="lens-content hidden">
@@ -1669,6 +1683,8 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
       src="{{ site.baseurl }}/assets/img/sell_in_may_company.png"
       title="Sell in May - Company Coverage">
     </iframe>
+    <p>
+    </p>
   </div>
 
   <div id="halloween-heatmap" class="lens-content hidden">
