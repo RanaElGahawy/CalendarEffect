@@ -353,7 +353,7 @@ In this section, we investigate the **temporal stability** of each calendar effe
           data-key="sell"
           data-title="Sell in May"
           data-desc="Winter (Nov–Apr) vs Summer (May–Oct) return gap."
-          data-img="{{ site.baseurl }}/assets/img/sell_in_may.png">
+          data-img="{{ site.baseurl }}/assets/img/sell_in_may_company.png">
           <div class="fx-icon">MAY</div>
           <div class="fx-card-main">
             <div class="fx-card-title">Sell in May</div>
