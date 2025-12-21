@@ -664,7 +664,7 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
-<details markdown="1" class="outer-details">
+<details class="outer-details">
   <summary><strong>Linear Regression Summaries</strong></summary>
   <p>Choose Time Series for interest rate regression, or Clustering for volume and volatility.</p>
 
@@ -685,7 +685,7 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
       <details>
         <summary><b>🎅 Santa Claus Rally Effect</b></summary>
         <div class="image-box">
-          <img src="/assets/img/scr_fed.png" alt="Santa Claus Rally – Interest Rate">
+          <img src="{{ '/assets/img/scr_fed.png' | relative_url }}" alt="Santa Claus Rally – Interest Rate">
         </div>
       </details>
     </div>
@@ -694,7 +694,7 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
       <details>
         <summary><b>🎃 Halloween Effect</b></summary>
         <div class="image-box">
-          <img src="/assets/img/may_fed.png" alt="Halloween Effect – Interest Rate">
+          <img src="{{ '/assets/img/may_fed.png' | relative_url }}" alt="Halloween Effect – Interest Rate">
         </div>
       </details>
     </div>
@@ -703,7 +703,7 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
       <details>
         <summary><b>🎉 Holiday Effect</b></summary>
         <div class="image-box">
-          <img src="/assets/img/hol_fed.png" alt="Holiday Effect – Interest Rate">
+          <img src="{{ '/assets/img/hol_fed.png' | relative_url }}" alt="Holiday Effect – Interest Rate">
         </div>
       </details>
     </div>
@@ -718,7 +718,7 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
       <details>
         <summary><b>📉 January Effect</b></summary>
         <div class="image-box">
-          <img src="/assets/img/jan_vol.png" alt="January Effect – Volume">
+          <img src="{{ '/assets/img/jan_vol.png' | relative_url }}" alt="January Effect – Volume">
         </div>
       </details>
     </div>
@@ -727,7 +727,7 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
       <details>
         <summary><b>🎅 Santa Claus Rally Effect</b></summary>
         <div class="image-box">
-          <img src="/assets/img/scr_vol.png" alt="Santa Claus Rally – Volume">
+          <img src="{{ '/assets/img/scr_vol.png' | relative_url }}" alt="Santa Claus Rally – Volume">
         </div>
       </details>
     </div>
@@ -736,7 +736,7 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
       <details>
         <summary><b>🎃 Halloween Effect</b></summary>
         <div class="image-box">
-          <img src="/assets/img/may_vol.png" alt="Halloween Effect – Volume">
+          <img src="{{ '/assets/img/may_vol.png' | relative_url }}" alt="Halloween Effect – Volume">
         </div>
       </details>
     </div>
@@ -745,7 +745,7 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
       <details>
         <summary><b>🎉 Holiday Effect</b></summary>
         <div class="image-box">
-          <img src="/assets/img/hol_vol.png" alt="Holiday Effect – Volume">
+          <img src="{{ '/assets/img/hol_vol.png' | relative_url }}" alt="Holiday Effect – Volume">
         </div>
       </details>
     </div>
@@ -753,6 +753,7 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
   </details>
 
 </details>
+
 
 
 
