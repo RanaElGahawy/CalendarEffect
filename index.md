@@ -1219,13 +1219,14 @@ Looking at the chart, a clear pattern stands out. Across all decades, returns te
         height="550"
         frameborder="0">
 </iframe>
-
+Holiday-related return differences vary widely across exchanges. The effect appears strongest on NASDAQ and NYSE American, where returns tend to be higher before holidays, while the NYSE exhibits a more modest increase. In contrast, ETFs and BATS/Cboe show little to no noticeable holiday effect, suggesting that this pattern is mainly concentrated in traditional equity markets.
 
 ### Through the Dot Com Bubble and Global Financial Crisis
 <iframe src="assets/img/plot_crisis_holiday_heatmap.html"
         width="100%"
         height="550"
         frameborder="0">
+During the Dot-Com bubble, performance around holidays turns weak and often negative, especially in the days following the break: The effect weakens. In contrast, during the Global Financial Crisis, returns around holidays are mostly positive, with particularly strong gains just before the holiday, showing that holiday effect remains during this crisis.
 
 
 <details>
