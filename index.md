@@ -165,12 +165,13 @@ For these tests to be valid, several underlying assumptions must be satisfied, m
 ### Normality Test
 
 <details>
-        
   <summary><strong>Equations for the normality test</strong></summary>
-<div markdown="1">
+
+  <div markdown="1">
+
 #### Step 1: Compute sample moments
 
-Given observations $$ x_1, \dots, x_n $$, define the central moments:
+Given observations \( x_1, \dots, x_n \), define the central moments:
 
 $$
 m_k = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^k
@@ -179,11 +180,13 @@ $$
 From these, compute:
 
 - **Sample skewness**
+
 $$
 g_1 = \frac{m_3}{m_2^{3/2}}
 $$
 
 - **Sample excess kurtosis**
+
 $$
 g_2 = \frac{m_4}{m_2^2} - 3
 $$
@@ -204,7 +207,7 @@ Z_2 = \text{kurtosistest}(g_2, n)
 $$
 
 These transformations correct for finite-sample bias and ensure asymptotic
-normality under $$ H_0 $$.
+normality under \( H_0 \).
 
 ---
 
@@ -235,8 +238,9 @@ $$
 p = P(\chi^2_2 \ge K^2)
 $$
 
-</div>
+  </div>
 </details>
+
 
 
 Before drawing any statistical conclusions, the detectives pause to examine a crucial assumption underlying many classical hypothesis tests: **the normality of returns**.
