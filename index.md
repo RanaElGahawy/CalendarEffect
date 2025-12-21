@@ -1519,11 +1519,11 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
 </section>
 
 <!-- ===============================
-     TURN OF THE MONTH
+     TURN OF THE MONTH EFFECT
      =============================== -->
 <section class="effect" id="tom">
   <h2>Turn-of-the-Month Effect</h2>
-  <div class="effect-sub">Are returns concentrated around month boundaries?</div>
+  <div class="effect-sub">Do stock returns spike around the turn of the month?</div>
 
   <div class="qbox">
     <div class="qbox-top">
@@ -1531,80 +1531,39 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
       <div class="qbox-badge">What to look for</div>
     </div>
     <ul>
-      <li><b>Concentration:</b> Are returns higher near month-end / month-start days?</li>
-      <li><b>Window sensitivity:</b> Does the effect change with different ToM windows?</li>
-      <li><b>Persistence:</b> Does it hold across decades?</li>
-      <li><b>Crisis behavior:</b> Does it break or strengthen during Dot-Com / GFC?</li>
-      <li><b>Institutional hint:</b> Does it look consistent with cash-flow / rebalancing timing?</li>
-    </ul>
-  </div>
-
-  <!-- ========== Across Decades ========== -->
-  <div id="holiday-decades" class="lens-content">
-    <iframe src="assets/img/plot_tom_effect_by_decade.html"></iframe>
-    <p>
-      Looking at the chart, a clear pattern stands out. Across all decades, returns tend to be higher
-      on days before holidays than on normal trading days. However, what once looked like a strong and
-      regular market behavior gradually becomes less pronounced, hinting that the market may have adapted
-      to this seasonal tendency.
-    </p>
-  </div>
-
-  <div id="tom-decades" class="lens-content">
-    <!-- iframe here -->
-  </div>
-  <div id="tom-exchanges" class="lens-content hidden">
-    <!-- iframe here -->
-  </div>
-  <div id="tom-dotcom" class="lens-content hidden">
-    <!-- iframe here -->
-  </div>
-  <div id="tom-gfc" class="lens-content hidden">
-    <!-- iframe here -->
-  </div>
-</section>
-
-<!-- ===============================
-     HALF MONTH EFFECT
-     =============================== -->
-<section class="effect" id="half">
-  <h2>Half-Month Effect</h2>
-  <div class="effect-sub">First-half vs second-half of the month.</div>
-
-  <div class="qbox">
-    <div class="qbox-top">
-      <div class="qbox-title">Detective Questions</div>
-      <div class="qbox-badge">What to look for</div>
-    </div>
-    <ul>
-      <li><b>Split:</b> Is the first half consistently stronger than the second half?</li>
-      <li><b>Where it lives:</b> Does it appear in certain decades more?</li>
-      <li><b>Cross-exchange:</b> Is it uniform across markets or concentrated?</li>
-      <li><b>Stress test:</b> What happens during Dot-Com and GFC?</li>
-      <li><b>Overlap check:</b> Is it just a ToM effect in disguise, or truly separate?</li>
+      <li><b>Before vs after:</b> Are returns higher during the turn-of-the-month window?</li>
+      <li><b>Decay:</b> Does the effect weaken over decades (market learning)?</li>
+      <li><b>Instability:</b> Does it flip sign during crashes & crises?</li>
+      <li><b>Exchange focus:</b> Is it mainly an equity-exchange phenomenon?</li>
+      <li><b>Macro link:</b> Does a monetary regime change amplify or mute it?</li>
     </ul>
   </div>
 
   <div class="lens-tabs">
-    <button class="active" data-lens="decades">Across Decades</button>
-    <button data-lens="exchanges">Across Exchanges</button>
-    <button data-lens="dotcom">Dot-Com Bubble</button>
-    <button data-lens="gfc">Global Financial Crisis</button>
+    <button class="active" data-lens="tom-decades">Across Decades</button>
+    <button data-lens="tom-exchanges">Across Exchanges</button>
   </div>
 
-  <div id="half-decades" class="lens-content">
-    <!-- iframe here -->
+  <!-- ========== Across Decades ========== -->
+  <div id="tom-decades" class="lens-content">
+    <iframe src="assets/img/plot_tom_effect_by_decade.html"></iframe>
+    <p>
+      <!-- Add your comment here -->
+    </p>
   </div>
-  <div id="half-exchanges" class="lens-content hidden">
-    <!-- iframe here -->
+
+  <!-- ========== Across Exchanges ========== -->
+  <div id="tom-exchanges" class="lens-content hidden">
+    <iframe src="assets/img/plot_tom_by_exchange.html"></iframe>
+    <p>
+      <!-- Add your comment here -->
+    </p>
   </div>
-  <div id="half-dotcom" class="lens-content hidden">
-    <!-- iframe here -->
-  </div>
-  <div id="half-gfc" class="lens-content hidden">
-    <!-- iframe here -->
-  </div>
+
 </section>
+
+
+
 
 <!-- ===============================
      HALLOWEEN EFFECT (SELL IN MAY)
