@@ -1010,16 +1010,19 @@ permalink: /effects/
   color:white;
   font-size:1.6rem;
   font-weight:750;
-  text-align:center;
+  text-align:center; /* le titre reste centré */
   padding:0 14px;
 }
 
 .section-text{
-  margin: 0 auto 36px auto;
+  max-width: 820px;          /* largeur type article */
+  margin: 0 auto 36px auto;  /* centre le bloc, pas le texte */
   line-height: 1.6;
   font-size: 1.02rem;
+  text-align: left;          /* ✅ TEXTE ALIGNÉ À GAUCHE */
 }
 </style>
+
 <div class="section-banner-sm">
   <div class="section-banner-sm-title">
     Linear Regression
@@ -1041,12 +1044,11 @@ permalink: /effects/
     suspects to further examine whether calendar effects leave a systematic
     imprint on market returns or not. For that, they chose the linear regression
     framework. This approach helps them to quantify the average effect of each
-    calendar indicator on daily returns while controlling for the accomplices,
-    which in this case are market conditions (such as volatility and trading
-    volume) and interest rates obtained from the published Fed funds dataset.
-    By exploiting the full sample of available data, the regression provides both
-    an estimate of the magnitude of each effect and a measure of its statistical
-    significance.
+    calendar indicator on daily returns while controlling for market conditions
+    such as volatility and trading volume, and interest rates obtained from the
+    published Fed funds dataset. By exploiting the full sample of available data,
+    the regression provides both an estimate of the magnitude of each effect and
+    a measure of its statistical significance.
   </p>
 </div>
 
