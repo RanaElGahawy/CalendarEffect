@@ -103,7 +103,40 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 
 ## Investigating the dataset
 
-The investigation begins with the dataset itself. Diving into the NASDAQ data allows us to demystify the alleged calendar effects by first understanding the underlying market dynamics.
+<style>
+  .content-block{
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    margin: 30px 0;
+  }
+
+  .content-image{
+    width: 300px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .content-text{
+    flex: 1;
+    line-height: 1.6;
+  }
+
+  .content-text p{
+    margin: 0;   /* aucun espace vertical */
+  }
+</style>
+
+<div class="content-block">
+  <img src="assets/img/perrynasdaq.jpg" alt="perry nasdaq Meme" class="content-image">
+
+  <div class="content-text">
+    <p>
+    The investigation begins with the dataset itself: NASDAQ, a technology-heavy stock market index. Diving into the NASDAQ data allows us to demystify the alleged calendar effects by first understanding the underlying market dynamics.
+    </p>
+  </div>
+</div>
+
 
 
 <iframe src="assets/img/plot_number_of_companies_per_year.html"
