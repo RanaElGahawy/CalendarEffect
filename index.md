@@ -1119,7 +1119,7 @@ By tailoring their regression approach to the structure of each clue, they ensur
 Keep in mind that at this stage, the detectives are not trying to to forecast returns, but to measure whether calendar indicators leave a systematic average imprint on the data once market conditions and dependence structures are controlled. More complex models could capture nonlinear patterns or higher-order dynamics, but they would come at the cost of interpretability and would risk fitting noise rather than signal. That's why although they have a *R-Squared* value equal to zero in all the following models. they still believe it was the model that suited the the best.
 
 <details class="outer-details">
-  <summary><strong>Linear Regression Summaries</strong></summary>
+  <summary><strong>Linear Regression Summaries and comments</strong></summary>
   <p>Choose Time Series for interest rate regression, or Clustering for volume and volatility.</p>
 
   <!-- ================= TIME SERIES ================= -->
