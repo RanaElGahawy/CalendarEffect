@@ -691,6 +691,29 @@ permalink: /effects/
 </div>
 
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+<div class="efx">
+  <div class="efx-head">
+    <div class="efx-title">Calendar Effects</div>
+    <div class="efx-sub">Click an effect on the ring. The center shows the selected test results.</div>
+  </div>
+
+  <div class="efx-card">
+    <div class="efx-row">
+      <div class="efx-field">
+        <label>Test</label>
+        <select id="testSelect">
+          <option value="ttest">t-test</option>
+          <option value="mwu">Mann–Whitney U</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="ringPlot" class="efx-plot"></div>
+    <div class="efx-foot" id="foot"></div>
+  </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
 
 <style>
   .efx{max-width:980px;margin:1.2rem auto;padding:0 1rem;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
@@ -708,9 +731,9 @@ permalink: /effects/
   .efx-field label{display:block;font-size:.86rem;color:rgba(0,0,0,.65);margin:2px 0 6px}
   .efx-field select{
     width:100%;
+    max-width:360px;
     padding:10px 12px;border-radius:12px;
     border:1px solid rgba(0,0,0,.14);background:#fff;outline:none;
-    max-width: 360px;
   }
 
   .efx-plot{height:560px}
@@ -731,7 +754,6 @@ permalink: /effects/
   let selectedEffect = null;
 
   function normalizeTest(v){
-    // JSON tarafı bazen farklı yazılmış olabiliyor, hepsini iki sınıfa indiriyoruz
     const s = (v ?? "").toString().trim().toLowerCase();
     if (s === "ttest" || s === "t-test" || s === "t_test" || s === "t test") return "ttest";
     if (s === "mwu" || s === "mw" || s === "mannwhitneyu" || s === "mann–whitney u" || s === "mann-whitney u" || s.includes("mann")) return "mwu";
@@ -739,7 +761,7 @@ permalink: /effects/
   }
 
   function fmtNum(x, digits=4){
-    if (x === undefined || x === null || Number.isNaN(x)) return "—";
+    if (x ===imsNaN || x === undefined || x === null) return "—";
     const n = Number(x);
     if (!Number.isFinite(n)) return "—";
     return n.toFixed(digits);
@@ -753,7 +775,7 @@ permalink: /effects/
     return n.toFixed(6);
   }
 
-  function filterRowsByTest(){
+  function filterRows(){
     const test = testSelect.value; // ttest | mwu
     return rowsAll
       .filter(r => normalizeTest(r.test) === test)
@@ -764,25 +786,31 @@ permalink: /effects/
     const test = testSelect.value;
 
     if (!row){
-      return "<b>Bir effect seç</b><br><span style='opacity:.75'>Halkadan tıkla</span>";
+      return "<b>Select an effect</b><br><span style='opacity:.75'>Click a ring segment</span>";
     }
 
     const eff = row.effect;
 
     if (test === "ttest"){
+      const t = fmtNum(row.stat, 4);
+      const p = fmtP(row.p);
       return `<b>${eff}</b><br>` +
              `<span style="font-size:13px;opacity:.75">t-test</span><br>` +
-             `<span style="font-size:14px">t-stat: <b>${fmtNum(row.stat, 4)}</b></span><br>` +
-             `<span style="font-size:14px">p-value: <b>${fmtP(row.p)}</b></span>`;
+             `<span style="font-size:14px">t-stat: <b>${t}</b></span><br>` +
+             `<span style="font-size:14px">p-value: <b>${p}</b></span>`;
     }
 
-    // MWU
+    const u  = fmtNum(row.u, 2);
+    const p  = fmtP(row.p);
+    const ps = fmtNum(row.prob_superiority, 4);
+    const cd = fmtNum(row.cliffs_delta, 4);
+
     return `<b>${eff}</b><br>` +
            `<span style="font-size:13px;opacity:.75">Mann–Whitney U</span><br>` +
-           `<span style="font-size:14px">U: <b>${fmtNum(row.u, 2)}</b></span><br>` +
-           `<span style="font-size:14px">p-value: <b>${fmtP(row.p)}</b></span><br>` +
-           `<span style="font-size:14px">prob sup.: <b>${fmtNum(row.prob_superiority, 4)}</b></span><br>` +
-           `<span style="font-size:14px">Cliff’s δ: <b>${fmtNum(row.cliffs_delta, 4)}</b></span>`;
+           `<span style="font-size:14px">U: <b>${u}</b></span><br>` +
+           `<span style="font-size:14px">p-value: <b>${p}</b></span><br>` +
+           `<span style="font-size:14px">prob. superiority: <b>${ps}</b></span><br>` +
+           `<span style="font-size:14px">Cliff’s delta: <b>${cd}</b></span>`;
   }
 
   function buildPie(rows){
@@ -799,7 +827,7 @@ permalink: /effects/
       return `Effect: <b>${r.effect}</b><br>` +
              `U: <b>${fmtNum(r.u, 2)}</b><br>` +
              `p: <b>${fmtP(r.p)}</b><br>` +
-             `prob superiority: <b>${fmtNum(r.prob_superiority, 4)}</b><br>` +
+             `prob. superiority: <b>${fmtNum(r.prob_superiority, 4)}</b><br>` +
              `Cliff's delta: <b>${fmtNum(r.cliffs_delta, 4)}</b>`;
     });
 
@@ -818,57 +846,17 @@ permalink: /effects/
     };
   }
 
-  function safeClearClickHandler(gd){
-    // Plotly eventleri üst üste binmesin diye temizliyoruz
-    if (gd && typeof gd.removeAllListeners === "function") {
-      gd.removeAllListeners("plotly_click");
-    }
-  }
-
   function render(){
-    const rows = filterRowsByTest();
+    const rows = filterRows();
     const test = testSelect.value;
 
-    if (!rows.length){
-      // Data yoksa bile boş plot + center mesaj bas
-      const emptyPie = {
-        type: "pie",
-        labels: ["No data"],
-        values: [1],
-        hole: 0.62,
-        textinfo: "none",
-        hoverinfo: "none"
-      };
-
-      const layoutEmpty = {
-        margin: {l: 20, r: 20, t: 20, b: 20},
-        height: 560,
-        showlegend: false,
-        paper_bgcolor: "rgba(0,0,0,0)",
-        shapes: [{
-          type: "circle", xref: "paper", yref: "paper",
-          x0: 0.5 - 0.17, x1: 0.5 + 0.17,
-          y0: 0.5 - 0.12, y1: 0.5 + 0.12,
-          fillcolor: "white",
-          line: {color: "rgba(0,0,0,.12)", width: 1}
-        }],
-        annotations: [{
-          xref: "paper", yref: "paper", x: 0.5, y: 0.5,
-          text: "<b>Bu test için veri yok</b>",
-          showarrow: false, align: "center"
-        }]
-      };
-
-      Plotly.react(plotId, [emptyPie], layoutEmpty, {displayModeBar: true, responsive: true});
-      foot.innerHTML = `Seçilen test: <b>${test}</b>. (Bu filtrede satır bulunamadı.)`;
-      return;
+    // choose default effect
+    const effectsSet = new Set(rows.map(r => r.effect));
+    if (!selectedEffect || !effectsSet.has(selectedEffect)){
+      selectedEffect = rows.length ? rows[0].effect : null;
     }
 
-    // seçili effect yoksa ilkini seç
-    const effectsSet = new Set(rows.map(r => r.effect));
-    if (!selectedEffect || !effectsSet.has(selectedEffect)) selectedEffect = rows[0].effect;
-
-    const selectedRow = rows.find(r => r.effect === selectedEffect);
+    const selectedRow = selectedEffect ? rows.find(r => r.effect === selectedEffect) : null;
 
     const pie = buildPie(rows);
 
@@ -878,30 +866,35 @@ permalink: /effects/
       showlegend: false,
       paper_bgcolor: "rgba(0,0,0,0)",
       plot_bgcolor: "rgba(0,0,0,0)",
-      shapes: [{
-        type: "circle",
-        xref: "paper", yref: "paper",
-        x0: 0.5 - 0.17, x1: 0.5 + 0.17,
-        y0: 0.5 - 0.12, y1: 0.5 + 0.12,
-        fillcolor: "white",
-        line: {color: "rgba(0,0,0,.12)", width: 1}
-      }],
-      annotations: [{
-        xref: "paper", yref: "paper",
-        x: 0.5, y: 0.5,
-        text: centerText(selectedRow),
-        showarrow: false,
-        align: "center",
-        font: {size: 14, color: "rgba(0,0,0,.92)"}
-      }]
+      shapes: [
+        {
+          type: "circle",
+          xref: "paper", yref: "paper",
+          x0: 0.5 - 0.17, x1: 0.5 + 0.17,
+          y0: 0.5 - 0.12, y1: 0.5 + 0.12,
+          fillcolor: "white",
+          line: {color: "rgba(0,0,0,.12)", width: 1}
+        }
+      ],
+      annotations: [
+        {
+          xref: "paper", yref: "paper",
+          x: 0.5, y: 0.5,
+          text: centerText(selectedRow),
+          showarrow: false,
+          align: "center",
+          font: {size: 14, color: "rgba(0,0,0,.92)"}
+        }
+      ]
     };
 
     Plotly.react(plotId, [pie], layout, {displayModeBar: true, responsive: true});
 
-    foot.innerHTML = `Seçilen test: <b>${test}</b>. (Dilimler = effect, tıklayınca merkez güncellenir.)`;
+    foot.innerHTML = `Ring segments = <b>effects</b>. Selected test = <b>${test}</b>.`;
 
+    // IMPORTANT: avoid stacking click handlers
     const gd = document.getElementById(plotId);
-    safeClearClickHandler(gd);
+    if (gd && typeof gd.removeAllListeners === "function") gd.removeAllListeners("plotly_click");
 
     gd.on("plotly_click", (ev) => {
       const label = ev?.points?.[0]?.label;
@@ -909,8 +902,8 @@ permalink: /effects/
 
       selectedEffect = label;
 
-      // mevcut test'e göre doğru row'u bul
-      const nowRows = filterRowsByTest();
+      // find the row again under current test
+      const nowRows = filterRows();
       const row = nowRows.find(r => r.effect === selectedEffect);
 
       Plotly.relayout(gd, {
@@ -919,7 +912,12 @@ permalink: /effects/
     });
   }
 
-  testSelect.addEventListener("change", render);
+  testSelect.addEventListener("change", () => {
+    // when switching test, reset selection to first available effect for that test
+    const rows = filterRows();
+    selectedEffect = rows.length ? rows[0].effect : null;
+    render();
+  });
 
   render();
 })();
