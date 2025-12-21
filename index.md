@@ -166,39 +166,57 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 ## Investigating the dataset
 
 <style>
-  .content-block{
-    display: flex;
-    align-items: flex-start;
-    gap: 32px;
-    margin: 30px 0;
-  }
+.content-block{
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin: 32px 0;
+}
 
-  .content-image{
-  height: 350px;   /* ajuste selon ton besoin */
+@media (max-width: 900px){
+  .content-block{
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.content-image{
+  height: 350px;
   width: auto;
-  max-width: none;
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
   flex-shrink: 0;
 }
 
-  .content-text{
-    flex: 1;
-    line-height: 1.6;
-  }
+.content-text{
+  flex: 1;
+  line-height: 1.6;
+  font-size: 1.02rem;
+}
 
-  .content-text p{
-    margin: 0;   /* aucun espace vertical */
-  }
+.content-text p{
+  margin: 0;
+}
 </style>
 
 <div class="content-block">
-  <img src="assets/img/perrynasdaq.jpg" alt="perry nasdaq Meme" class="content-image">
+  <img 
+    src="{{ site.baseurl }}/assets/img/perrynasdaq.jpg"
+    alt="Investigating the NASDAQ dataset"
+    class="content-image"
+  >
 
   <div class="content-text">
     <p>
-    The investigation begins with the dataset itself: NASDAQ, a technology-heavy stock market index. Diving into the NASDAQ data allows us to demystify the alleged calendar effects by first understanding the underlying market dynamics.
+      The investigation begins with the dataset itself: NASDAQ, a technology-heavy
+      stock market index. Diving into the NASDAQ data allows us to demystify the
+      alleged calendar effects by first understanding the underlying market
+      dynamics.
     </p>
   </div>
 </div>
+
 
 
 
