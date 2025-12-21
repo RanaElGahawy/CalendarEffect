@@ -155,27 +155,28 @@ The crucial question of whether these calendar effects are statistically signifi
 
 ## Are the Calendar effects real ? 
 
+
 <style>
   .content-block{
     display: flex;
     align-items: flex-start;
-    gap: 24px;
+    gap: 32px;
+    margin: 30px 0;
   }
 
   .content-image{
-  width: 100%;
-  max-width: 800px;
-  height: auto;
-}
-  
+    width: 5000px;
+    height: auto;
+    flex-shrink: 0;
+  }
 
   .content-text{
     flex: 1;
+    line-height: 1.6;
   }
 
   .content-text p{
-    margin-top: 0;
-    line-height: 1.6;
+    margin: 0;   /* aucun espace vertical */
   }
 </style>
 
