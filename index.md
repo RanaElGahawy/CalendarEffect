@@ -1145,7 +1145,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
           <img src="{{ '/assets/img/scr_fed.png' | relative_url }}" alt="Santa Claus Rally – Interest Rate">
         </div>
         <p class="effect-description">
-           description
+           Santa Claus Rally has higher average returns by around 0.25%, it survives the correction for the serial correlation. That also means that it can't be explained by interest rates as they have a very small and negative coffiecient value with a p-value that is passes the significance threshhold. Now the detectived can assume that from a time series prespective, tha Santa claus Rally leave a significant footprint.
         </p>
       </details>
     </div>
@@ -1187,8 +1187,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
           <img src="{{ '/assets/img/jan_vol.png' | relative_url }}" alt="January Effect – Volume">
         </div>
         <p class="effect-description">
-           description
-        </p>
+            While the estimated coefficient suggests that returns in January are one average slightly higher, the p-value is below 0.5 which makes it significance fragile. The effect is just outside the thresholds, hinting that there might have been a possible pattern but it fails to make a decisive conclusion. Once volatility and trading volume are taken into account, neither variable shows a statistically meaningful relationship with returns. This suggest that while the January effect may leave a faint trace in the data, it is far from being reliable.        </p>
       </details>
     </div>
 
@@ -1199,7 +1198,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
           <img src="{{ '/assets/img/scr_vol.png' | relative_url }}" alt="Santa Claus Rally – Volume">
         </div>
         <p class="effect-description">
-           description
+            The coefficient is positive, and it has a significant p-value. Santa clause rally survives controlling the volume and volatility which both has a very high p-value so the detictives can assume that they doesn't justify the santa claus battern in the stocks. This makes this anomaly more genuine rather than being a noise.
         </p>
       </details>
     </div>
