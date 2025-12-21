@@ -1539,11 +1539,15 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
     </ul>
   </div>
 
-  <div class="lens-tabs">
-    <button class="active" data-lens="decades">Across Decades</button>
-    <button data-lens="exchanges">Across Exchanges</button>
-    <button data-lens="dotcom">Dot-Com Bubble</button>
-    <button data-lens="gfc">Global Financial Crisis</button>
+  <!-- ========== Across Decades ========== -->
+  <div id="holiday-decades" class="lens-content">
+    <iframe src="assets/img/plot_tom_effect_by_decade.html"></iframe>
+    <p>
+      Looking at the chart, a clear pattern stands out. Across all decades, returns tend to be higher
+      on days before holidays than on normal trading days. However, what once looked like a strong and
+      regular market behavior gradually becomes less pronounced, hinting that the market may have adapted
+      to this seasonal tendency.
+    </p>
   </div>
 
   <div id="tom-decades" class="lens-content">
