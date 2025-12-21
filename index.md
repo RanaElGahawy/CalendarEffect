@@ -335,9 +335,113 @@ In this section, we investigate the **temporal stability** of each calendar effe
 </div>
 
 
-## Calendar Effects
+<div id="calendar-effects">
 
-To see the plots: **[Calendar Effects](/effects/)**.
+  <p>
+    Select a calendar effect to see its corresponding plot.
+  </p>
+
+  <div class="effect-grid">
+    <button class="effect-btn active"
+            data-img="{{ site.baseurl }}/assets/effects/santa_claus_rally_company.png">
+      January Effect
+    </button>
+
+    <button class="effect-btn"
+            data-img="{{ site.baseurl }}/assets/effects/sell_in_may.png">
+      Sell in May
+    </button>
+
+    <button class="effect-btn"
+            data-img="{{ site.baseurl }}/assets/effects/turn_of_month.png">
+      Turn-of-Month
+    </button>
+
+    <button class="effect-btn"
+            data-img="{{ site.baseurl }}/assets/effects/monday.png">
+      Monday Effect
+    </button>
+
+    <button class="effect-btn"
+            data-img="{{ site.baseurl }}/assets/effects/holiday.png">
+      Holiday Effect
+    </button>
+
+    <button class="effect-btn"
+            data-img="{{ site.baseurl }}/assets/effects/santa_rally.png">
+      Santa Rally
+    </button>
+  </div>
+
+  <div class="effect-view">
+    <img id="effectImage"
+         src="{{ site.baseurl }}/assets/effects/january.png"
+         alt="Calendar effect plot">
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    const buttons = document.querySelectorAll("#calendar-effects .effect-btn");
+    const img = document.getElementById("effectImage");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        img.src = btn.dataset.img;
+
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        // sayfa içinde yumuşak kayma (sayfa içi sayfa hissi)
+        img.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+    });
+  })();
+</script>
+
+<style>
+  #calendar-effects{
+    margin-top:2rem;
+  }
+
+  .effect-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:12px;
+    margin:1rem 0;
+  }
+  @media(max-width:900px){ .effect-grid{grid-template-columns:repeat(2,1fr)} }
+  @media(max-width:520px){ .effect-grid{grid-template-columns:1fr} }
+
+  .effect-btn{
+    padding:12px 14px;
+    border-radius:14px;
+    cursor:pointer;
+    border:1px solid rgba(0,0,0,.15);
+    background:rgba(255,255,255,.05);
+    transition:.15s;
+  }
+  .effect-btn:hover{
+    transform:translateY(-2px);
+  }
+  .effect-btn.active{
+    outline:2px solid #6aa9ff;
+    background:rgba(106,169,255,.12);
+  }
+
+  .effect-view{
+    margin-top:1.5rem;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid rgba(0,0,0,.15);
+  }
+  .effect-view img{
+    width:100%;
+    display:block;
+  }
+</style>
+
 
 
 
