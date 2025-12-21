@@ -164,6 +164,79 @@ For these tests to be valid, several underlying assumptions must be satisfied, m
 
 ### Normality Test
 
+<details>
+  <summary><strong>Equations for the normality test</strong></summary>
+
+#### Step 1: Compute sample moments
+
+Given observations \( x_1, \dots, x_n \), define the central moments:
+
+\[
+m_k = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^k
+\]
+
+From these, compute:
+
+- **Sample skewness**
+\[
+g_1 = \frac{m_3}{m_2^{3/2}}
+\]
+
+- **Sample excess kurtosis**
+\[
+g_2 = \frac{m_4}{m_2^2} - 3
+\]
+
+---
+
+#### Step 2: Standardize skewness and kurtosis
+
+The skewness and kurtosis statistics are transformed into approximately
+standard normal variables:
+
+\[
+Z_1 = \text{skewtest}(g_1, n)
+\]
+
+\[
+Z_2 = \text{kurtosistest}(g_2, n)
+\]
+
+These transformations correct for finite-sample bias and ensure asymptotic
+normality under \( H_0 \).
+
+---
+
+#### Step 3: Omnibus test statistic
+
+The final test statistic is defined as:
+
+\[
+K^2 = Z_1^2 + Z_2^2
+\]
+
+---
+
+#### Step 4: Sampling distribution
+
+Under the null hypothesis of normality:
+
+\[
+K^2 \sim \chi^2_2
+\]
+
+That is, the statistic follows a chi-squared distribution with **2 degrees of
+freedom**.
+
+The *p*-value is computed as:
+
+\[
+p = P(\chi^2_2 \ge K^2)
+\]
+
+</details>
+
+
 Before drawing any statistical conclusions, the detectives pause to examine a crucial assumption underlying many classical hypothesis tests: **the normality of returns**.
 
 Many standard tests used in finance rely on the idea that returns follow a normal distribution. However, daily stock returns are often characterized by **heavy tails, skewness, and occasional extreme events**, especially during periods of market stress or crisis.
@@ -174,23 +247,24 @@ To verify these assumption, we formally test the normality of returns for each c
 
 This would help the detectives choose the appropriate test for their investigations, because if returns deviate strongly from normality, mean-based tests alone may be misleading, as a small number of extreme observations can dominate the results.
 
----
-#### Null hypothesis
+$$
+H_0:\ \text{the data are normally distributed}
+\qquad
+H_1:\ \text{the data are not normally distributed}
+$$
 
-\[
-H_0: \text{the data are normally distributed}
-\]
----
 
-Across all calendar effects considered being investigated, the normality hypothesis is consistently rejected which aligns with well-established evidence in financial economics: stock returns are not normally distributed.
+Across all calendar effects considered being investigated we got a $P-value = 0.000$. Thus, the normality hypothesis is consistently rejected which aligns with well-established evidence in financial economics: stock returns are not normally distributed.
 
-Rather than being a setback, this result plays a central role in the investigation. It motivates the detectives to **go beyond a single testing framework**. While mean-based tests can still provide useful insights in large samples, they must be complemented with **distribution-free methods** that remain valid even when normality fails.
+Rather than being a setback, this result plays an important role in the investigation. It urges the detectives to **go beyond a single testing framework**. While mean-based tests can still provide useful insights in large samples, they must be complemented with **distribution-free methods** that remain valid even when normality fails.
 
 With this in mind, the investigation proceeds using two different approaches:
 - a **mean-comparison approach** (Welch’s *t*-test), and  
 - a **rank-based, non-parametric approach** (Mann–Whitney U test),
 
-allowing us to distinguish between calendar effects driven by **systematic shifts in typical returns** and those driven by **rare but extreme market movements**.
+allowing us to distinguish between calendar effects driven by **systematic shifts in typical returns** and those driven by **rare but extreme market movements (in other words outliers in the dataset)**.
+
+### Welch's 
 
 
 <details>
