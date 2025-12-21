@@ -162,7 +162,36 @@ Reinforced by rigorous statistical tools, the detectives conduct an in-depth inv
 Every suspected calendar anomaly is subjected to rigorous evaluation through formal hypothesis testing. In particular, t-tests are employed to determine whether average returns during specific calendar periods differ significantly from those observed in the rest of the sample. t-tests are employed to determine whether average returns during specific calendar periods differ significantly from those observed in the rest of the sample.
 For these tests to be valid, several underlying assumptions must be satisfied, most notably the normality and independence of the data. To ensure the validity of the statistical tests, the investigation begins with a careful assessment of these assumptions. In particular, the normality of returns is examined prior to conducting the hypothesis tests.
 
-// Plots of normality check//
+### Normality Test
+
+Before drawing any statistical conclusions, the detectives pause to examine a crucial assumption underlying many classical hypothesis tests: **the normality of returns**.
+
+Many standard tests used in finance rely on the idea that returns follow a normal distribution. However, daily stock returns are often characterized by **heavy tails, skewness, and occasional extreme events**, especially during periods of market stress or crisis.
+
+To verify these assumption, we formally test the normality of returns for each calendar-effect window using the D’Agostino–Pearson omnibus test, which jointly evaluates skewness and kurtosis. The resulting statistic follows a chi-squared distribution with two degrees of freedom and its corresponding control period. In other words, we ask a simple but fundamental question:
+
+> **Do stock returns within these calendar periods have a bell shaped battern?**
+
+This would help the detectives choose the appropriate test for their investigations, because if returns deviate strongly from normality, mean-based tests alone may be misleading, as a small number of extreme observations can dominate the results.
+
+---
+#### Null hypothesis
+
+\[
+H_0: \text{the data are normally distributed}
+\]
+---
+
+Across all calendar effects considered being investigated, the normality hypothesis is consistently rejected which aligns with well-established evidence in financial economics: stock returns are not normally distributed.
+
+Rather than being a setback, this result plays a central role in the investigation. It motivates the detectives to **go beyond a single testing framework**. While mean-based tests can still provide useful insights in large samples, they must be complemented with **distribution-free methods** that remain valid even when normality fails.
+
+With this in mind, the investigation proceeds using two different approaches:
+- a **mean-comparison approach** (Welch’s *t*-test), and  
+- a **rank-based, non-parametric approach** (Mann–Whitney U test),
+
+allowing us to distinguish between calendar effects driven by **systematic shifts in typical returns** and those driven by **rare but extreme market movements**.
+
 
 <details>
   <summary><strong>📈 Monday Effect</strong></summary
