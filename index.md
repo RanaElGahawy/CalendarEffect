@@ -1034,7 +1034,9 @@ When studying trading volume and volatility, they found that the data have lots 
 
 On the other hand, interest rates have a completely different behaviour. Unlike volume or volatility, they do not vary across stocks and evolve only over time. Applying the same clustering strategy here would add noise rather than controlling it. For this, they decide to use heteroskedasticity and autocorrelation consistent (HAC) standard errors instead, which are specifically designed to handle serial dependence in time series.
 
-By tailoring our regression approach to the structure of each clue, we ensure that any remaining calendar effects we uncover are not artifacts of the data’s dependence, but genuine signals worthy of further tests and efforts.
+By tailoring their regression approach to the structure of each clue, they ensure that any remaining calendar effects they uncover are not caused by the data’s dependence, but genuine signals worthy of further tests and efforts.
+
+Keep in mind that at this stage, the detectives are not trying to to forecast returns, but to measure whether calendar indicators leave a systematic average imprint on the data once market conditions and dependence structures are controlled. More complex models could capture nonlinear patterns or higher-order dynamics, but they would come at the cost of interpretability and would risk fitting noise rather than signal. That's why although they have a *R-Squared* value equal to zero in all the following models. they still believe it was the model that suited the the best.
 
 <details class="outer-details">
   <summary><strong>Linear Regression Summaries</strong></summary>
