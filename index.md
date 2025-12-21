@@ -495,20 +495,100 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
 
 
 <details markdown="1">
-  <summary><strong>Equation</strong></summary>
-The probability that previous witnesses ranked a randomly chosen sample from the calendar window higher than another randomly chosen one from the rest of the data
-$$
-\text{PS} = \frac{U}{n_1 n_2}
-$$
+  <summary><strong>Linear Regression Summaries</strong></summary>
+Choose Time Series for interest rate regression, or Clustering for volume and volatility.
    <details markdown="1">
-  <summary><strong>Equation</strong></summary>
-The probability that previous witnesses ranked a randomly chosen sample from the calendar window higher than another randomly chosen one from the rest of the data
-$$
-\text{PS} = \frac{U}{n_1 n_2}
-$$
-        
-</details>      
+  <summary><strong>Time Series</strong></summary>
+           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>📈 Monday Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>
+           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>📉 January Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>
+           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>🎅 Santa Claus Rally Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>
+           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>📉 Turn-of-the-Month Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>
+           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>📆 Half-Month Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>
+           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>🎃 Halloween Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>
+           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>🎉 Holiday Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>
+</details>    
+   <details markdown="1">
+  <summary><strong>Time Clustering</strong></summary>
+  <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>📈 Monday Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>
+           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>📉 January Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>
+           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>🎅 Santa Claus Rally Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>
+           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>📉 Turn-of-the-Month Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>
+           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>📆 Half-Month Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>
+           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>🎃 Halloween Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>
+           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+  <details> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>🎉 Holiday Effect</b> </summary>   
+      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+   </details>
+</div>      
+</details>  
 </details>
+
 
 <details>
   <summary><strong>📈 Monday Effect</strong></summary>
@@ -530,29 +610,6 @@ $$
   <summary><strong>📉 January Effect</strong></summary>
 ---
   <p>
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                 Return   R-squared:                       0.001
-Model:                            OLS   Adj. R-squared:                  0.001
-Method:                 Least Squares   F-statistic:                     6.562
-Date:                Sat, 20 Dec 2025   Prob (F-statistic):            0.00142
-Time:                        17:14:58   Log-Likelihood:                 48895.
-No. Observations:               14643   AIC:                        -9.778e+04
-Df Residuals:                   14640   BIC:                        -9.776e+04
-Df Model:                           2                                         
-Covariance Type:                  HAC                                         
-==============================================================================
-                 coef    std err          z      P>|z|      [0.025      0.975]
-------------------------------------------------------------------------------
-const          0.0006   8.64e-05      6.406      0.000       0.000       0.001
-is_january     0.0011      0.000      3.563      0.000       0.000       0.002
-fed_funds  -5.469e-05   9.16e-05     -0.597      0.550      -0.000       0.000
-==============================================================================
-Omnibus:                     5141.886   Durbin-Watson:                   1.750
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):           227707.381
-Skew:                          -0.960   Prob(JB):                         0.00
-Kurtosis:                      22.223   Cond. No.                         3.65
-==============================================================================
   </p>
 ---
   <div id="january-plot" style="height:450px;"></div>
