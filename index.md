@@ -1038,8 +1038,8 @@ In this section, we investigate the **temporal stability** of each calendar effe
 
   .sim-grid{
     display:grid;
-    grid-template-columns: 1.25fr .75fr;
-    gap:14px;
+    grid-template-columns: 1fr;
+    gap:16px;
     align-items:start;
   }
   @media(max-width:980px){
