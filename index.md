@@ -1118,7 +1118,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
           <img src="{{ '/assets/img/may_fed.png' | relative_url }}" alt="Halloween Effect – Interest Rate">
         </div>
         <p class="effect-description">
-           description
+           Returns are regressed on a winter (Nov–Apr), controlling for the Fed Funds rate. A positive and statistically significant winter coefficient is found, indicating higher returns during winter months. The Fed Funds rate is not statistically significant, suggesting that this seasonal pattern is not driven by interest rate conditions.
         </p>
       </details>
     </div>
