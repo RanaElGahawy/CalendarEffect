@@ -711,6 +711,28 @@ permalink: /effects/
 
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
 
+<div class="efx">
+  <div class="efx-head">
+    <div class="efx-title">Calendar Effects — Significance Ring</div>
+    <div class="efx-sub">Sadece test seç. Halkadan effect’e tıkla.</div>
+  </div>
+
+  <div class="efx-card">
+    <div class="efx-row">
+      <div class="efx-field">
+        <label for="testSelect">Test</label>
+        <select id="testSelect">
+          <option value="ttest">t-test</option>
+          <option value="mwu">Mann–Whitney U</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="ringPlot" class="efx-plot"></div>
+    <div id="foot" class="efx-foot"></div>
+  </div>
+</div>
+
 <style>
   .efx{max-width:980px;margin:1.2rem auto;padding:0 1rem;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
   .efx-head{margin-bottom:10px}
@@ -723,9 +745,7 @@ permalink: /effects/
     box-shadow:0 12px 36px rgba(0,0,0,.06);
   }
 
-  .efx-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
-  @media(max-width:900px){.efx-row{grid-template-columns:1fr}}
-
+  .efx-row{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:10px}
   .efx-field label{display:block;font-size:.86rem;color:rgba(0,0,0,.65);margin:2px 0 6px}
   .efx-field select{
     width:100%;
@@ -742,14 +762,17 @@ permalink: /effects/
   const url = "{{ '/assets/data/effects_tests.json' | relative_url }}";
   const res = await fetch(url);
   const data = await res.json();
-  const rowsAll = data.rows || [];
+  const rowsAll = (data.rows || []).map(r => ({
+    ...r,
+    // güvenli string normalize
+    effect: (r.effect ?? "").toString().trim(),
+    group: (r.group ?? "").toString().trim(),
+    test:  (r.test  ?? "").toString().trim()
+  }));
 
   const testSelect  = document.getElementById("testSelect");
-  const groupSelect = document.getElementById("groupSelect");
-  const modeSelect  = document.getElementById("modeSelect");
   const foot        = document.getElementById("foot");
 
-  // state
   let selectedEffect = null;
 
   function fmtNum(x, digits=4){
@@ -763,65 +786,64 @@ permalink: /effects/
     if (x === undefined || x === null || Number.isNaN(x)) return "—";
     const n = Number(x);
     if (!Number.isFinite(n)) return "—";
-    // küçük p için bilimsel gösterim daha iyi
     if (Math.abs(n) > 0 && Math.abs(n) < 1e-4) return n.toExponential(2);
     return n.toFixed(6);
   }
 
+  // kritik fix: test adlarını normalize et (mwu gelmeme sorunu burada bitiyor)
+  function normalizeTest(s){
+    const t = (s ?? "").toString().trim().toLowerCase();
+    if (t === "ttest" || t === "t-test" || t === "t_test") return "ttest";
+    if (t === "mwu" || t === "mw" || t.includes("mann") || t.includes("whitney")) return "mwu";
+    return t;
+  }
+
   function filterRows(){
-    const test = testSelect.value; // ttest | mwu
-    const grp  = groupSelect.value;
+    const selectedTest = normalizeTest(testSelect.value);
 
-    let rows = rowsAll.filter(r => r.test === test);
-    if (grp !== "ALL") rows = rows.filter(r => r.group === grp);
+    // sadece main effects (senin istediğin)
+    let rows = rowsAll.filter(r => r.group === "Main effects");
 
-    // effect adı boşsa atla
-    rows = rows.filter(r => (r.effect ?? "").toString().trim().length > 0);
+    // test filtre (burada normalize ile garanti)
+    rows = rows.filter(r => normalizeTest(r.test) === selectedTest);
+
+    // effect adı boşsa at
+    rows = rows.filter(r => r.effect.length > 0);
 
     return rows;
   }
 
-  function centerTextFor(row, test){
-    // Ortadaki beyaz kutu metni
+  function centerTextFor(row){
     if (!row){
       return "<b>Bir effect seç</b><br><span style='opacity:.75'>Halkadan tıkla</span>";
     }
 
     const eff = row.effect;
+    const test = normalizeTest(testSelect.value);
 
     if (test === "ttest"){
-      const t = fmtNum(row.stat, 4);
-      const p = fmtP(row.p);
       return `<b>${eff}</b><br>` +
              `<span style="font-size:13px;opacity:.75">t-test</span><br>` +
-             `<span style="font-size:14px">t-stat: <b>${t}</b></span><br>` +
-             `<span style="font-size:14px">p-value: <b>${p}</b></span>`;
+             `<span style="font-size:14px">t-stat: <b>${fmtNum(row.stat, 4)}</b></span><br>` +
+             `<span style="font-size:14px">p-value: <b>${fmtP(row.p)}</b></span>`;
     }
 
-    // mwu
-    const u  = fmtNum(row.u, 2);
-    const p  = fmtP(row.p);
-    const ps = fmtNum(row.prob_superiority, 4);
-    const cd = fmtNum(row.cliffs_delta, 4);
-
+    // MWU
     return `<b>${eff}</b><br>` +
            `<span style="font-size:13px;opacity:.75">Mann–Whitney U</span><br>` +
-           `<span style="font-size:14px">U: <b>${u}</b></span><br>` +
-           `<span style="font-size:14px">p-value: <b>${p}</b></span><br>` +
-           `<span style="font-size:14px">prob sup.: <b>${ps}</b></span><br>` +
-           `<span style="font-size:14px">Cliff’s δ: <b>${cd}</b></span>`;
+           `<span style="font-size:14px">U: <b>${fmtNum(row.u, 2)}</b></span><br>` +
+           `<span style="font-size:14px">p-value: <b>${fmtP(row.p)}</b></span><br>` +
+           `<span style="font-size:14px">prob sup.: <b>${fmtNum(row.prob_superiority, 4)}</b></span><br>` +
+           `<span style="font-size:14px">Cliff’s δ: <b>${fmtNum(row.cliffs_delta, 4)}</b></span>`;
   }
 
   function buildPie(rows){
-    // Ring dilimleri: effect isimleri
     const labels = rows.map(r => r.effect);
-
-    // Pie’da value şart ama biz “eşit” dilim istiyoruz => hepsi 1
     const values = rows.map(_ => 1);
 
-    // İç hover (istersen kapatabiliriz)
+    const test = normalizeTest(testSelect.value);
     const hovertext = rows.map(r => {
-      if (testSelect.value === "ttest"){
+      if (test === "ttest"){
         return `Effect: <b>${r.effect}</b><br>` +
                `t-stat: <b>${fmtNum(r.stat, 4)}</b><br>` +
                `p: <b>${fmtP(r.p)}</b>`;
@@ -837,44 +859,41 @@ permalink: /effects/
       type: "pie",
       labels,
       values,
-      hole: 0.62,                 // donut kalınlığı (daha halka gibi)
+      hole: 0.62,
       sort: false,
       direction: "clockwise",
-      textinfo: "label",           // dilimin üstünde effect adı yazsın
+      textinfo: "label",
       textposition: "outside",
       automargin: true,
       hoverinfo: "text",
-      hovertext,
-      // “mavi halka” hissi için tüm dilimleri mavi yapabiliriz,
-      // ama o zaman hangisine tıklandığı anlaşılmaz. Şimdilik default bıraktım.
-      // İstersen: marker: { colors: labels.map(_ => "#2b6cb0") } yaparız.
+      hovertext
     };
   }
 
   function render(){
     const rows = filterRows();
-    const test = testSelect.value;
 
-    // Seçili effect filtre sonrası yok olduysa davranış:
-    const effectsSet = new Set(rows.map(r => r.effect));
-    const mode = modeSelect.value;
+    if (!rows.length){
+      Plotly.react("ringPlot", [], {
+        height: 560,
+        margin: {l:20,r:20,t:20,b:20},
+        annotations: [{
+          xref:"paper", yref:"paper", x:0.5, y:0.5,
+          text:"<b>Bu test için veri yok</b><br><span style='opacity:.75'>JSON test alanını kontrol et</span>",
+          showarrow:false, align:"center"
+        }]
+      }, {displayModeBar:false, responsive:true});
 
-    if (!selectedEffect || !effectsSet.has(selectedEffect)){
-      if (mode === "first" && rows.length){
-        selectedEffect = rows[0].effect;
-      } else {
-        selectedEffect = null;
-      }
+      foot.innerHTML = `Seçilen test = <b>${normalizeTest(testSelect.value)}</b>. (Main effects filtresi açık)`;
+      return;
     }
 
-    // Seçili row
-    const selectedRow = selectedEffect
-      ? rows.find(r => r.effect === selectedEffect)
-      : null;
+    // seçili effect yoksa ilkini seç
+    const set = new Set(rows.map(r => r.effect));
+    if (!selectedEffect || !set.has(selectedEffect)) selectedEffect = rows[0].effect;
 
-    const pie = buildPie(rows);
-
-    const centerHTML = centerTextFor(selectedRow, test);
+    const selectedRow = rows.find(r => r.effect === selectedEffect) || null;
+    const centerHTML = centerTextFor(selectedRow);
 
     const layout = {
       margin: {l: 20, r: 20, t: 20, b: 20},
@@ -882,57 +901,47 @@ permalink: /effects/
       showlegend: false,
       paper_bgcolor: "rgba(0,0,0,0)",
       plot_bgcolor: "rgba(0,0,0,0)",
-      // Ortadaki beyaz kutu: annotation + şekil
-      shapes: [
-        {
-          type: "circle",
-          xref: "paper", yref: "paper",
-          x0: 0.5 - 0.17, x1: 0.5 + 0.17,
-          y0: 0.5 - 0.12, y1: 0.5 + 0.12,
-          fillcolor: "white",
-          line: {color: "rgba(0,0,0,.12)", width: 1}
-        }
-      ],
-      annotations: [
-        {
-          xref: "paper", yref: "paper",
-          x: 0.5, y: 0.5,
-          text: centerHTML,
-          showarrow: false,
-          align: "center",
-          font: {size: 14, color: "rgba(0,0,0,.92)"}
-        }
-      ]
+      shapes: [{
+        type: "circle",
+        xref: "paper", yref: "paper",
+        x0: 0.5 - 0.17, x1: 0.5 + 0.17,
+        y0: 0.5 - 0.12, y1: 0.5 + 0.12,
+        fillcolor: "white",
+        line: {color: "rgba(0,0,0,.12)", width: 1}
+      }],
+      annotations: [{
+        xref: "paper", yref: "paper",
+        x: 0.5, y: 0.5,
+        text: centerHTML,
+        showarrow: false,
+        align: "center",
+        font: {size: 14, color: "rgba(0,0,0,.92)"}
+      }]
     };
 
-    Plotly.react("ringPlot", [pie], layout, {displayModeBar: true, responsive: true});
+    Plotly.react("ringPlot", [buildPie(rows)], layout, {displayModeBar: true, responsive: true});
 
-    foot.innerHTML = `Halka dilimleri = <b>effect</b>. Bir dilime tıkla. Seçilen test = <b>${test}</b>.`;
+    foot.innerHTML = `Halka dilimleri = <b>effect</b>. Tıkla. Seçilen test = <b>${normalizeTest(testSelect.value)}</b>. (Sadece Main effects)`;
 
-    // click handler (her render'da yeniden bağlamak için purge + on)
     const gd = document.getElementById("ringPlot");
+    // eski handler'ları temizle (üst üste binmesin)
+    gd.removeAllListeners?.("plotly_click");
+
     gd.on("plotly_click", (ev) => {
       const label = ev?.points?.[0]?.label;
       if (!label) return;
       selectedEffect = label;
 
-      // annotation’u güncelle (tam re-render yerine hızlı update)
       const row = filterRows().find(r => r.effect === selectedEffect);
-      const newCenter = centerTextFor(row, testSelect.value);
-
-      Plotly.relayout(gd, {
-        "annotations[0].text": newCenter
-      });
+      Plotly.relayout(gd, {"annotations[0].text": centerTextFor(row)});
     });
   }
 
   testSelect.addEventListener("change", render);
-  groupSelect.addEventListener("change", render);
-  modeSelect.addEventListener("change", render);
-
   render();
 })();
 </script>
+
 
 
 
