@@ -10,7 +10,7 @@ permalink: /effects/
   <button class="effect-btn" data-img="{{ site.baseurl }}/assets/img/turn_of_month.png">Turn-of-Month</button>
   <button class="effect-btn" data-img="{{ site.baseurl }}/assets/img/monday.png">Monday Effect</button>
   <button class="effect-btn" data-img="{{ site.baseurl }}/assets/img/holiday.png">Holiday Effect</button>
-  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/img/santa_rally.png">Santa Rally</button>
+  <button class="effect-btn" data-img="{{ site.baseurl }}/assets/img/santa_claus_rally_company.png">Santa Rally</button>
   <button class="effect-btn" data-img="{{ site.baseurl }}/assets/img/other.png">Other Effect</button>
 </div>
 
