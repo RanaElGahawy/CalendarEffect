@@ -285,28 +285,32 @@ $$
 </details>
 
 
-<div style="border-left: 4px solid #432750; padding-left: 20px; font-size: 18px; margin-top: 2;">
-  <details open> 
+<!-- <div style="border-left: 4px solid #432750; padding-left: 20px; font-size: 18px; margin-top: 2;">
+  <details> 
     <summary style = "font-size: 18px; cursor: pointer;"><b>Central Limit Theorem</b></summary>     
-      <p>The Central Limit Theorem (CLT) is a cornerstone of statistics, stating that the distribution of sample means from any population will approach a normal distribution as the sample size gets large, regardless of the original population's shape. This convergence to normality, usually with samples of 30 or more ($$ n >= 30$$).
+      <p>The Central Limit Theorem (CLT) is a cornerstone of statistics, stating that the distribution of sample means from any population will approach a normal distribution as the sample size gets large, regardless of the original population's shape. This convergence to normality, usually with samples of 30 or more ($$ n \geq 30$$).
       </p> 
   </details>
-</div>
+</div> -->
 
-<!-- <details markdown="1">
+<details markdown="1">
   <summary><strong></strong></summary>
         <b>
         The Central Limit Theorem (CLT) is a cornerstone of statistics, stating that the distribution of sample means from any population will approach a normal distribution as the sample size gets large, regardless of the original population's shape. This convergence to normality, usually with samples of 30 or more ($$ n >= 30$$).
         </b>
 
-</details> -->
+</details>
 
-After investigating all the calendar effect's windows using the Welch’s t-test, the detectives found an interesting lead in their story. The test rejects the null hypothesis of equal mean returns for all calendar effects, with reported p-values effectively equal to zero. This outcome reflects overwhelming statistical evidence that average returns differ between calendar and non-calendar periods; however it still doesn't prove casuality. The investigators also had to keep i mind that, given the extremely large sample size of daily NASDAQ data, even very small mean differences become statistically detectable causing this high signifigance result. As a result, they interperet these findings as evidence of statistical significance rather than economic magnitude. The detectives decides that the presence of the highly significant p-values does not imply that calendar effects are large, stable, or economically meaningful, which motivates them to use additional distribution-based tests and regression analyses to assess robustness beyond average returns.
+After investigating all the calendar effect's windows using the Welch’s t-test, the detectives found an interesting lead in their story. The test rejects the null hypothesis of equal mean returns for all calendar effects, with reported p-values effectively equal to zero. This outcome reflects overwhelming statistical evidence that average returns differ between calendar and non-calendar periods; however it still doesn't prove casuality. The investigators also had to keep i mind that, given the extremely large sample size of daily NASDAQ data, even very small mean differences become statistically detectable causing this high signifigance result. As a result, they interperet these findings as evidence of statistical significance rather than economic magnitude. The detectives decides that the presence of the highly significant p-values does not imply that calendar effects are large, stable, or economically meaningful, which motivates them to go for another independent witness as well. 
+
+### Mann–Whitney U test
+
+To determine whether calendar effects reflect a systematic shift in the distribution of returns, rather than the effect of rare outliers, the detectives call in a second independent witness: the Mann–Whitney U test. Unlike Welch’s test, Mann–Whitney does not rely on normality distribution assumptions and does not compare averages. Instead, it evaluates whether returns from one calendar period tend to be consistently higher or lower than those from another period across the entire distribution. They hope that by interviewing a mean-based witness and a rank-based one, it would help them distinguish between calendar effects driven by behavioral patterns and those driven by a few rare market events.
 
 
 <details>
   <summary><strong>📈 Monday Effect</strong></summary
----
+<!-- ---
   <p>
     Mondays are often said to deliver negative returns.
     Let’s see what the data actually says.
@@ -316,7 +320,7 @@ After investigating all the calendar effect's windows using the Welch’s t-test
         height="550"
         frameborder="0">
 </iframe>
----
+--- -->
   <div id="monday-plot" style="height:450px;"></div>
 </details>
 
