@@ -271,45 +271,75 @@ The visual evidence reveals several intriguing regularities. Returns appear to d
 Of course, simply looking at mean returns is not sufficient to conclude whether a calendar effect is real or statistically valid. Average differences may offer intuition, but they do not prove significance. These preliminary comparisons serve only as an initial diagnostic.  
 The crucial question of whether these calendar effects are statistically significant needs to be investigated. This requires moving beyond visual evidence to formal statistical testing.
 
-## Are the Calendar effects real ? 
-
+## Are the Calendar Effects Real?
 
 <style>
-  .content-block{
-    display: flex;
-    align-items: flex-start;
-    gap: 32px;
-    margin: 30px 0;
-  }
+.section-banner{
+  position: relative;
+  width: 100%;
+  height: 240px;
+  margin: 26px 0 28px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background-image: url("{{ site.baseurl }}/assets/img/perrymeme.png");
+  background-size: cover;
+  background-position: center;
+}
 
-  .content-image{
-    width: 5000px;
-    height: auto;
-    flex-shrink: 0;
-  }
+.section-banner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.35);
+}
 
-  .content-text{
-    flex: 1;
-    line-height: 1.6;
-  }
+.section-banner-title{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2;
+  color:white;
+  font-size:2rem;
+  font-weight:800;
+  text-align:center;
+  padding:0 16px;
+}
 
-  .content-text p{
-    margin: 0;   /* aucun espace vertical */
-  }
+.section-text{
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  line-height: 1.6;
+  font-size: 1.02rem;
+}
 </style>
 
-
-<div class="content-block">
-  <img src="assets/img/perrymeme.png" alt="Image" class="content-image">
-
-  <div class="content-text">
-    <p>
-      Reinforced by rigorous statistical tools, the detectives conduct an in-depth investigation into each calendar effect. Every suspected calendar anomaly is subjected to rigorous evaluation through formal          hypothesis testing. In particular, welch's test, mann-whitney u test and regression are employed to determine whether statistically significant differences in returns exist between calendar and non-calendar effect period.
-    </p>
+<div class="section-banner">
+  <div class="section-banner-title">
+    Are the Calendar Effects Real?
   </div>
 </div>
 
-For these tests to be valid, several underlying assumptions must be satisfied, most notably the normality and independence of the data. To ensure the validity of the statistical tests, the investigation begins with a careful assessment of these assumptions. In particular, the normality of returns is examined prior to conducting the hypothesis tests.
+<div class="section-text">
+  <p>
+    Reinforced by rigorous statistical tools, the detectives conduct an in-depth
+    investigation into each calendar effect. Every suspected anomaly is subjected
+    to formal hypothesis testing. In particular, Welch’s test, the Mann–Whitney U
+    test, and regression analysis are employed to determine whether statistically
+    significant differences in returns exist between calendar and non-calendar
+    periods.
+  </p>
+
+  <p style="margin-top:14px">
+    For these tests to be valid, several underlying assumptions must be satisfied,
+    most notably the normality and independence of the data. To ensure the validity
+    of the statistical tests, the investigation begins with a careful assessment
+    of these assumptions, with particular attention paid to the distributional
+    properties of returns.
+  </p>
+</div>
+
 
 ### Normality Test
 
