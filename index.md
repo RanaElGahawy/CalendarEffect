@@ -1171,7 +1171,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
           <img src="{{ '/assets/img/may_vol.png' | relative_url }}" alt="Halloween Effect – Volume">
         </div>
         <p class="effect-description">
-           description
+           Volatility and trading volume are added as controls in the regression. The winter coefficient remains positive but becomes weaker and less statistically significant. This suggests that higher winter returns are partly related to changes in market volatility and trading activity, rather than seasonality alone.
         </p>
       </details>
     </div>
