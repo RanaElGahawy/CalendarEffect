@@ -44,7 +44,7 @@ Despite the large body of literature, there is still no clear consensus on wheth
 data-img="assets/img/littlezouhair.png"
 data-story="Zouhair conducts interviews, interrogations, and on-site investigations. He also gathers first-hand testimonies and observations">
 <img src="assets/img/littlezouhair.png">
-<div class="team5-body"><p class="team5-name">Zouhair</p><p class="team5-role">Field investigator </div>
+<div class="team5-body"><p class="team5-name">Zouhair</p><p class="team5-role"></p>Field investigator </div>
 </div>
 
 <div class="team5-card" data-name="Melvyn" data-role="Paris"
