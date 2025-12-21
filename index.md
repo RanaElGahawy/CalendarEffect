@@ -1695,6 +1695,13 @@ Overall, the results suggest that the Sell in May effect is present across excha
       src="{{ site.baseurl }}/assets/img/sell_in_may_heeatmap.png"
       title="Sell in May - Heatmap">
     </iframe>
+    <p>
+This heatmap shows monthly market returns across different years. The colors represent average returns, where red indicates positive returns and blue indicates negative returns.
+
+From the figure, we can see clear differences across months and years. Some months show more frequent positive returns, while others are more mixed or negative. This visual pattern supports the idea that returns are not evenly distributed over the calendar year. In particular, months in the winter period tend to show stronger and more stable performance compared to many summer months.
+
+Overall, the heatmap shows that monthly returns change depending on the season.
+    </p>
   </div>
 
   <div id="halloween-volatility" class="lens-content hidden">
@@ -1715,6 +1722,13 @@ Overall, the results suggest that the Sell in May effect is present across excha
       src="{{ site.baseurl }}/assets/img/sell_in_may_year_by_year.png"
       title="Sell in May - Year by Year">
     </iframe>
+    <p>
+    This figure shows average monthly log returns for winter and summer under different volatility conditions. The points represent the mean returns, and the vertical lines show the 95% confidence intervals. The dashed line marks zero return.
+
+In both high-volatility and low-volatility periods, winter returns are higher than summer returns. The difference is larger during high-volatility periods, where winter returns are clearly positive while summer returns are close to zero. In low-volatility periods, the gap becomes smaller, but winter still performs better.
+
+Overall, the figure suggests that the Sell in May effect is stronger when market volatility is high and weaker when volatility is low.
+    </p>
   </div>
 
   <div id="halloween-crises" class="lens-content hidden">
@@ -1725,6 +1739,11 @@ Overall, the results suggest that the Sell in May effect is present across excha
       src="{{ site.baseurl }}/assets/img/sell_in_may_crises.png"
       title="Sell in May - Crisis Zoom">
     </iframe>
+    <p>
+    From the graph, we can see that winter returns are positive in all crisis periods, while summer returns are negative or close to zero. This pattern appears during the Dot-com Bubble, Black Monday, and the Global Financial Crisis.
+
+Overall, the figure suggests that during crisis periods, winter performs much better than summer. This means that the Sell in May (Halloween) effect becomes more visible in times of market stress.
+    </p>
   </div>
 </section>
 
