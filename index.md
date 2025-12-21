@@ -940,6 +940,12 @@ By tailoring our regression approach to the structure of each clue, we ensure th
 ---
 ## Holiday effect
 ### Across decades
+<iframe src="assets/img/plot_holiday_effect_by_decade.html"
+        width="100%"
+        height="550"
+        frameborder="0">
+</iframe>
+
 ### Across exchanges
 <iframe src="assets/img/plot_holiday_effect_exchange.html"
         width="100%"
