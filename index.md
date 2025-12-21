@@ -287,12 +287,47 @@ With this in mind, the investigation proceeds using two different approaches:
 allowing us to distinguish between calendar effects driven by **systematic shifts in typical returns** and those driven by **rare but extreme market movements (in other words outliers in the dataset)**.
 
 ### Welch's Test
-<p align="center">
-  <img src="assets/img/perry_welchtest.jpg" width="500">
-</p>
+<style>
+  .content-block{
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    margin: 30px 0;
+  }
 
-The detictives specifically chose the Welch's Test because unlike the standart *t*-test, the test can accomodate data with unequal variances and unequal sample sizes, making it a more appropriate and conservative choice for financial return data. Because when we investigate a calendar effect window, we usually compare it with the rest of the year. Although daily stock returns are not normally distributed, the large sample size of daily NASDAQ data (~$$24$$ Million record)) ensures that sample means are approximately normal by the Central Limit Theorem, making it valid to use the mean-based tests. As a result, Welch’s t-test provides a robust benchmark for evaluating whether calendar effects' average returns are significant or not, directly addressing the core economic claims behind calendar-effect while minimizing the risk of false positives driven by volatility differences or sample imbalance.
+  .content-image{
+    width: 500px;
+    height: auto;
+    flex-shrink: 0;
+  }
 
+  .content-text{
+    flex: 1;
+    line-height: 1.6;
+  }
+
+  .content-text p{
+    margin: 0;   /* aucun espace vertical */
+  }
+</style>
+
+<div class="content-block">
+  <img src="assets/img/perry_welchtest.jpg" alt="Welch Test Meme" class="content-image">
+
+  <div class="content-text">
+    <p>
+      The detectives specifically chose the Welch’s Test because, unlike the standard <em>t</em>-test, it can accommodate
+      data with unequal variances and unequal sample sizes, making it a more appropriate and conservative choice for
+      financial return data. When investigating a calendar-effect window, returns are typically compared with those
+      observed during the remainder of the year. Although daily stock returns are not normally distributed, the large
+      sample size of daily NASDAQ data (~24 million records) ensures that sample means are approximately normal by the
+      Central Limit Theorem, making mean-based tests valid. As a result, Welch’s <em>t</em>-test provides a robust benchmark
+      for evaluating whether calendar-effect average returns are statistically significant, directly addressing the core
+      economic claims behind calendar effects while minimizing false positives driven by volatility differences or
+      sample imbalance.
+    </p>
+  </div>
+</div>
 <details markdown="1">
   <summary><strong>Hypotheses</strong></summary>
 
