@@ -773,6 +773,13 @@ $$
 \varepsilon_t
 $$
 
+Now you might ask why they have two different equations, this mainly depends on the clues they have as they don't behave the same way.
+
+When studying trading volume and volatility, they found that the data have lots of dependencies. First, the stocks tend to move together on the same trading day, so they might affect each other. In addition to that, stock also exhibits persistence over time meaning the returns of the same stock from previous days can affect its daily return. Thus, treating these observations as independent would give us a false sense of certainty. To avoid more confusion, they decided to choose a regressions with standard errors clustered both by ticker and by date, this allows the model to account for big events that cann affect the whole market or stock specific events.
+
+On the other hand, interest rates have a completely different behaviour. Unlike volume or volatility, they do not vary across stocks and evolve only over time. Applying the same clustering strategy here would add noise rather than controlling it. For this, they decide to use heteroskedasticity and autocorrelation consistent (HAC) standard errors instead, which are specifically designed to handle serial dependence in time series.
+
+By tailoring our regression approach to the structure of each clue, we ensure that any remaining calendar effects we uncover are not artifacts of the data’s dependence, but genuine signals worthy of further tests and efforts.
 
 <details class="outer-details">
   <summary><strong>Linear Regression Summaries</strong></summary>
