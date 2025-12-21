@@ -168,7 +168,7 @@ The crucial question of whether these calendar effects are statistically signifi
   }
 
   .content-image{
-    width: 600px;
+    width: 750px;
     height: auto;
     flex-shrink: 0;
   }
