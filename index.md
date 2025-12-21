@@ -533,27 +533,56 @@ This contrast reveals an important distinction: while most calendar effects have
 In the graph below you can choose a calendar effect to see the results of each of the tests. :)
 
 /////////////////////////////////////////
-
-FURKAN, PLEASE TRY TO ADD THESE IN 
-AN INTERACTIVE GRAPH
-
 ---
 layout: page
-title: Calendar Effects – Metric Explorer
+title: Calendar Effects – Explorer
 permalink: /effects/
 ---
+<script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+
+<style>
+  .efx{max-width:980px;margin:1.2rem auto;padding:0 1rem;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+  .efx-head{margin-bottom:10px}
+  .efx-title{font-size:1.45rem;font-weight:900}
+  .efx-sub{color:rgba(0,0,0,.65);margin-top:4px}
+
+  .efx-card{
+    background:#fff;border:1px solid rgba(0,0,0,.10);
+    border-radius:16px;padding:14px;
+    box-shadow:0 12px 36px rgba(0,0,0,.06);
+    margin-bottom:16px;
+  }
+
+  .efx-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+  @media(max-width:900px){.efx-row{grid-template-columns:1fr}}
+  .efx-row.one{grid-template-columns:1fr}
+
+  .efx-field label{display:block;font-size:.86rem;color:rgba(0,0,0,.65);margin:2px 0 6px}
+  .efx-field select{
+    width:100%;
+    padding:10px 12px;border-radius:12px;
+    border:1px solid rgba(0,0,0,.14);background:#fff;outline:none;
+  }
+
+  .efx-plot{height:560px}
+  .efx-foot{margin-top:8px;color:rgba(0,0,0,.62);font-size:.92rem;line-height:1.4}
+</style>
 
 <div class="efx">
+
+  <!-- =========================
+       1) METRIC EXPLORER
+  ========================== -->
   <div class="efx-head">
-    <div class="efx-title">Calendar Effects</div>
-    <div class="efx-sub">X = effect, Y = seçtiğin değer. Önce test seç, sonra metric seç.</div>
+    <div class="efx-title">Calendar Effects — Metric Explorer</div>
+    <div class="efx-sub">X = effect, Y = the selected metric. Choose a test, then a metric.</div>
   </div>
 
   <div class="efx-card">
     <div class="efx-row">
       <div class="efx-field">
         <label>Test</label>
-        <select id="testSelect">
+        <select id="me_testSelect">
           <option value="ttest">t-test</option>
           <option value="mwu">Mann–Whitney U</option>
         </select>
@@ -561,12 +590,12 @@ permalink: /effects/
 
       <div class="efx-field">
         <label>Metric</label>
-        <select id="metricSelect"></select>
+        <select id="me_metricSelect"></select>
       </div>
 
       <div class="efx-field">
         <label>Group</label>
-        <select id="groupSelect">
+        <select id="me_groupSelect">
           <option value="Main effects">Main effects</option>
           <option value="Holiday window day comparisons">Holiday window day comparisons</option>
           <option value="ALL">All</option>
@@ -574,275 +603,55 @@ permalink: /effects/
       </div>
     </div>
 
-    <div id="plot" class="efx-plot"></div>
-    <div class="efx-foot" id="foot"></div>
-  </div>
-</div>
-
-<script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
-
-<style>
-  .efx{max-width:980px;margin:1.2rem auto;padding:0 1rem;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
-  .efx-head{margin-bottom:10px}
-  .efx-title{font-size:1.45rem;font-weight:900}
-  .efx-sub{color:rgba(0,0,0,.65);margin-top:4px}
-
-  .efx-card{
-    background:#fff;border:1px solid rgba(0,0,0,.10);
-    border-radius:16px;padding:14px;
-    box-shadow:0 12px 36px rgba(0,0,0,.06);
-  }
-
-  .efx-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
-  @media(max-width:900px){.efx-row{grid-template-columns:1fr}}
-  .efx-field label{display:block;font-size:.86rem;color:rgba(0,0,0,.65);margin:2px 0 6px}
-  .efx-field select{
-    width:100%;
-    padding:10px 12px;border-radius:12px;
-    border:1px solid rgba(0,0,0,.14);background:#fff;outline:none;
-  }
-
-  .efx-plot{height:560px}
-  .efx-foot{margin-top:8px;color:rgba(0,0,0,.62);font-size:.92rem;line-height:1.4}
-</style>
-
-<script>
-(async function(){
-  const url = "{{ '/assets/data/effects_tests.json' | relative_url }}";
-  const res = await fetch(url);
-  const data = await res.json();
-  const rowsAll = data.rows || [];
-
-  const testSelect   = document.getElementById("testSelect");
-  const metricSelect = document.getElementById("metricSelect");
-  const groupSelect  = document.getElementById("groupSelect");
-  const foot         = document.getElementById("foot");
-
-  // Senin istediğin metric listeleri:
-  const METRICS = {
-    ttest: [
-      { key: "p",    label: "p-value" },
-      { key: "stat", label: "t-test value (t-stat)" }
-    ],
-    mwu: [
-      { key: "u",               label: "mannwhitneyu-test (U)" },
-      { key: "p",               label: "p-value" },
-      { key: "prob_superiority",label: "probability superiority" },
-      { key: "cliffs_delta",    label: "Cliff’s delta" }
-    ]
-  };
-
-  function populateMetricOptions(){
-    const test = testSelect.value;
-    metricSelect.innerHTML = "";
-
-    METRICS[test].forEach(m => {
-      const opt = document.createElement("option");
-      opt.value = m.key;
-      opt.textContent = m.label;
-      metricSelect.appendChild(opt);
-    });
-
-    // default seçim:
-    metricSelect.value = (test === "ttest") ? "stat" : "cliffs_delta";
-  }
-
-  function getY(row, metricKey){
-    // JSON'da ttest için "stat", mwu için "u" var. p zaten var.
-    // Bazı satırlarda metric olmayabilir -> null dönelim
-    const v = row[metricKey];
-    if (v === undefined || v === null || Number.isNaN(v)) return null;
-    return v;
-  }
-
-  function buildHover(row, test){
-    if (test === "ttest"){
-      return `Effect: <b>${row.effect}</b><br>` +
-             `t-stat: <b>${(row.stat ?? 0).toFixed(4)}</b><br>` +
-             `p: <b>${row.p}</b>`;
-    }
-    return `Effect: <b>${row.effect}</b><br>` +
-           `U: <b>${(row.u ?? 0).toFixed(2)}</b><br>` +
-           `p: <b>${row.p}</b><br>` +
-           `prob superiority: <b>${(row.prob_superiority ?? 0).toFixed(4)}</b><br>` +
-           `Cliff's delta: <b>${(row.cliffs_delta ?? 0).toFixed(4)}</b>`;
-  }
-
-  function render(){
-    const test = testSelect.value;        // ttest | mwu
-    const metricKey = metricSelect.value; // dynamic
-    const grp = groupSelect.value;
-
-    let rows = rowsAll.filter(r => r.test === test);
-    if (grp !== "ALL") rows = rows.filter(r => r.group === grp);
-
-    // X = effect (senin istediğin ana tema)
-    const x = rows.map(r => r.effect);
-    const y = rows.map(r => getY(r, metricKey));
-    const hover = rows.map(r => buildHover(r, test));
-
-    // title
-    const metricLabel = (METRICS[test].find(m => m.key === metricKey) || {}).label || metricKey;
-
-    const trace = {
-      type: "scatter",
-      mode: "markers",
-      x, y,
-      text: hover,
-      hoverinfo: "text",
-      marker: {size: 14, opacity: 0.9, line: {width: 1}}
-    };
-
-    const layout = {
-      title: {text: `${test} · ${metricLabel}`, x: 0.02, xanchor: "left"},
-      margin: {l: 70, r: 20, t: 60, b: 140},
-      xaxis: {title: "Effect", tickangle: -25, automargin: true},
-      yaxis: {title: metricLabel, zeroline: true},
-      paper_bgcolor: "rgba(0,0,0,0)",
-      plot_bgcolor: "rgba(0,0,0,0)",
-      height: 560,
-      showlegend: false
-    };
-
-    Plotly.react("plot", [trace], layout, {displayModeBar: true, responsive: true});
-
-    // küçük açıklama
-    if (test === "mwu" && metricKey === "u"){
-      foot.innerHTML = `Not: U istatistiği ölçek olarak çok büyük olabilir; görsel olarak daha anlamlı metric genelde <b>Cliff’s delta</b>.`;
-    } else {
-      foot.innerHTML = `X = effect, Y = <b>${metricLabel}</b>. Test değiştirince metric seçenekleri otomatik değişiyor.`;
-    }
-  }
-
-  // events
-  testSelect.addEventListener("change", () => {
-    populateMetricOptions();
-    render();
-  });
-
-  metricSelect.addEventListener("change", render);
-  groupSelect.addEventListener("change", render);
-
-  // init
-  populateMetricOptions();
-  render();
-})();
-</script>
-
-<div class="efx">
-  <div class="efx-head">
-    <div class="efx-title">Calendar Effects</div>
-    <div class="efx-sub">
-      Halkadan bir effect seç. Ortadaki kutu seçtiğin testin sonuçlarını gösterecek.
-    </div>
+    <div id="me_plot" class="efx-plot"></div>
+    <div class="efx-foot" id="me_foot"></div>
   </div>
 
-  <div class="efx-card">
-    <div class="efx-row">
-      <div class="efx-field">
-        <label>Test</label>
-        <select id="testSelect">
-          <option value="ttest">t-test</option>
-          <option value="mwu">Mann–Whitney U</option>
-        </select>
-      </div>
-
-      <div class="efx-field">
-        <label>Group</label>
-        <select id="groupSelect">
-          <option value="Main effects">Main effects</option>
-          <option value="Holiday window day comparisons">Holiday window day comparisons</option>
-          <option value="ALL">All</option>
-        </select>
-      </div>
-
-      <div class="efx-field">
-        <label>Auto</label>
-        <select id="modeSelect">
-          <option value="keep">Seçimi koru</option>
-          <option value="first">Filtre değişince ilk effect</option>
-        </select>
-      </div>
-    </div>
-
-    <div id="ringPlot" class="efx-plot"></div>
-    <div class="efx-foot" id="foot"></div>
-  </div>
-</div>
-
-<script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
-
-<div class="efx">
+  <!-- =========================
+       2) SIGNIFICANCE RING
+  ========================== -->
   <div class="efx-head">
     <div class="efx-title">Calendar Effects — Significance Ring</div>
-    <div class="efx-sub">Sadece test seç. Halkadan effect’e tıkla.</div>
+    <div class="efx-sub">Choose a test, then click an effect on the ring.</div>
   </div>
 
   <div class="efx-card">
-    <div class="efx-row">
+    <div class="efx-row one">
       <div class="efx-field">
-        <label for="testSelect">Test</label>
-        <select id="testSelect">
+        <label>Test</label>
+        <select id="ring_testSelect">
           <option value="ttest">t-test</option>
           <option value="mwu">Mann–Whitney U</option>
         </select>
       </div>
     </div>
 
-    <div id="ringPlot" class="efx-plot"></div>
-    <div id="foot" class="efx-foot"></div>
+    <div id="ring_plot" class="efx-plot"></div>
+    <div id="ring_foot" class="efx-foot"></div>
   </div>
+
 </div>
-
-<style>
-  .efx{max-width:980px;margin:1.2rem auto;padding:0 1rem;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
-  .efx-head{margin-bottom:10px}
-  .efx-title{font-size:1.45rem;font-weight:900}
-  .efx-sub{color:rgba(0,0,0,.65);margin-top:4px}
-
-  .efx-card{
-    background:#fff;border:1px solid rgba(0,0,0,.10);
-    border-radius:16px;padding:14px;
-    box-shadow:0 12px 36px rgba(0,0,0,.06);
-  }
-
-  .efx-row{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:10px}
-  .efx-field label{display:block;font-size:.86rem;color:rgba(0,0,0,.65);margin:2px 0 6px}
-  .efx-field select{
-    width:100%;
-    padding:10px 12px;border-radius:12px;
-    border:1px solid rgba(0,0,0,.14);background:#fff;outline:none;
-  }
-
-  .efx-plot{height:560px}
-  .efx-foot{margin-top:8px;color:rgba(0,0,0,.62);font-size:.92rem;line-height:1.4}
-</style>
 
 <script>
 (async function(){
   const url = "{{ '/assets/data/effects_tests.json' | relative_url }}";
   const res = await fetch(url);
   const data = await res.json();
+
   const rowsAll = (data.rows || []).map(r => ({
     ...r,
-    // güvenli string normalize
     effect: (r.effect ?? "").toString().trim(),
-    group: (r.group ?? "").toString().trim(),
-    test:  (r.test  ?? "").toString().trim()
+    group:  (r.group  ?? "").toString().trim(),
+    test:   (r.test   ?? "").toString().trim()
   }));
 
-  const testSelect  = document.getElementById("testSelect");
-  const foot        = document.getElementById("foot");
-
-  let selectedEffect = null;
-
+  // ---------- helpers ----------
   function fmtNum(x, digits=4){
     if (x === undefined || x === null || Number.isNaN(x)) return "—";
     const n = Number(x);
     if (!Number.isFinite(n)) return "—";
     return n.toFixed(digits);
   }
-
   function fmtP(x){
     if (x === undefined || x === null || Number.isNaN(x)) return "—";
     const n = Number(x);
@@ -850,8 +659,6 @@ permalink: /effects/
     if (Math.abs(n) > 0 && Math.abs(n) < 1e-4) return n.toExponential(2);
     return n.toFixed(6);
   }
-
-  // kritik fix: test adlarını normalize et (mwu gelmeme sorunu burada bitiyor)
   function normalizeTest(s){
     const t = (s ?? "").toString().trim().toLowerCase();
     if (t === "ttest" || t === "t-test" || t === "t_test") return "ttest";
@@ -859,28 +666,138 @@ permalink: /effects/
     return t;
   }
 
-  function filterRows(){
-    const selectedTest = normalizeTest(testSelect.value);
+  // ==========================================================
+  // 1) METRIC EXPLORER (scatter)
+  // ==========================================================
+  const ME = {
+    testSelect:   document.getElementById("me_testSelect"),
+    metricSelect: document.getElementById("me_metricSelect"),
+    groupSelect:  document.getElementById("me_groupSelect"),
+    foot:         document.getElementById("me_foot"),
+    plotId:       "me_plot"
+  };
 
-    // sadece main effects (senin istediğin)
-    let rows = rowsAll.filter(r => r.group === "Main effects");
+  const METRICS = {
+    ttest: [
+      { key: "p",    label: "p-value" },
+      { key: "stat", label: "t-statistic" }
+    ],
+    mwu: [
+      { key: "u",                label: "Mann–Whitney U (U)" },
+      { key: "p",                label: "p-value" },
+      { key: "prob_superiority", label: "Probability of superiority" },
+      { key: "cliffs_delta",     label: "Cliff’s delta" }
+    ]
+  };
 
-    // test filtre (burada normalize ile garanti)
-    rows = rows.filter(r => normalizeTest(r.test) === selectedTest);
+  function mePopulateMetricOptions(){
+    const test = normalizeTest(ME.testSelect.value);
+    ME.metricSelect.innerHTML = "";
+    (METRICS[test] || []).forEach(m => {
+      const opt = document.createElement("option");
+      opt.value = m.key;
+      opt.textContent = m.label;
+      ME.metricSelect.appendChild(opt);
+    });
+    ME.metricSelect.value = (test === "ttest") ? "stat" : "cliffs_delta";
+  }
 
-    // effect adı boşsa at
+  function meGetY(row, metricKey){
+    const v = row[metricKey];
+    if (v === undefined || v === null || Number.isNaN(v)) return null;
+    return Number(v);
+  }
+
+  function meBuildHover(row, test){
+    if (test === "ttest"){
+      return `Effect: <b>${row.effect}</b><br>` +
+             `t-stat: <b>${fmtNum(row.stat, 4)}</b><br>` +
+             `p-value: <b>${fmtP(row.p)}</b>`;
+    }
+    return `Effect: <b>${row.effect}</b><br>` +
+           `U: <b>${fmtNum(row.u, 2)}</b><br>` +
+           `p-value: <b>${fmtP(row.p)}</b><br>` +
+           `Prob. superiority: <b>${fmtNum(row.prob_superiority, 4)}</b><br>` +
+           `Cliff’s delta: <b>${fmtNum(row.cliffs_delta, 4)}</b>`;
+  }
+
+  function meRender(){
+    const test = normalizeTest(ME.testSelect.value);
+    const metricKey = ME.metricSelect.value;
+    const grp = ME.groupSelect.value;
+
+    let rows = rowsAll.filter(r => normalizeTest(r.test) === test);
+    if (grp !== "ALL") rows = rows.filter(r => r.group === grp);
     rows = rows.filter(r => r.effect.length > 0);
 
+    const metricLabel = ((METRICS[test] || []).find(m => m.key === metricKey) || {}).label || metricKey;
+
+    const x = rows.map(r => r.effect);
+    const y = rows.map(r => meGetY(r, metricKey));
+    const hover = rows.map(r => meBuildHover(r, test));
+
+    const trace = {
+      type: "scatter",
+      mode: "markers",
+      x, y,
+      text: hover,
+      hoverinfo: "text",
+      marker: { size: 14, opacity: 0.9, line: { width: 1 } }
+    };
+
+    const layout = {
+      title: { text: `${test} · ${metricLabel}`, x: 0.02, xanchor: "left" },
+      margin: { l: 70, r: 20, t: 60, b: 140 },
+      xaxis: { title: "Effect", tickangle: -25, automargin: true },
+      yaxis: { title: metricLabel, zeroline: true },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "rgba(0,0,0,0)",
+      height: 560,
+      showlegend: false
+    };
+
+    Plotly.react(ME.plotId, [trace], layout, { displayModeBar: true, responsive: true });
+
+    if (test === "mwu" && metricKey === "u"){
+      ME.foot.innerHTML = `Note: the U statistic can be very large. For effect size, <b>Cliff’s delta</b> is often more interpretable.`;
+    } else {
+      ME.foot.innerHTML = `X = effect, Y = <b>${metricLabel}</b>.`;
+    }
+  }
+
+  ME.testSelect.addEventListener("change", () => {
+    mePopulateMetricOptions();
+    meRender();
+  });
+  ME.metricSelect.addEventListener("change", meRender);
+  ME.groupSelect.addEventListener("change", meRender);
+
+  // ==========================================================
+  // 2) SIGNIFICANCE RING (donut)
+  // ==========================================================
+  const RING = {
+    testSelect: document.getElementById("ring_testSelect"),
+    foot:       document.getElementById("ring_foot"),
+    plotId:     "ring_plot"
+  };
+
+  let ringSelectedEffect = null;
+
+  function ringFilterRows(){
+    const test = normalizeTest(RING.testSelect.value);
+    let rows = rowsAll.filter(r => r.group === "Main effects");
+    rows = rows.filter(r => normalizeTest(r.test) === test);
+    rows = rows.filter(r => r.effect.length > 0);
     return rows;
   }
 
-  function centerTextFor(row){
+  function ringCenterText(row){
     if (!row){
-      return "<b>Bir effect seç</b><br><span style='opacity:.75'>Halkadan tıkla</span>";
+      return "<b>Select an effect</b><br><span style='opacity:.75'>Click a ring slice</span>";
     }
 
+    const test = normalizeTest(RING.testSelect.value);
     const eff = row.effect;
-    const test = normalizeTest(testSelect.value);
 
     if (test === "ttest"){
       return `<b>${eff}</b><br>` +
@@ -889,30 +806,29 @@ permalink: /effects/
              `<span style="font-size:14px">p-value: <b>${fmtP(row.p)}</b></span>`;
     }
 
-    // MWU
     return `<b>${eff}</b><br>` +
            `<span style="font-size:13px;opacity:.75">Mann–Whitney U</span><br>` +
            `<span style="font-size:14px">U: <b>${fmtNum(row.u, 2)}</b></span><br>` +
            `<span style="font-size:14px">p-value: <b>${fmtP(row.p)}</b></span><br>` +
-           `<span style="font-size:14px">prob sup.: <b>${fmtNum(row.prob_superiority, 4)}</b></span><br>` +
+           `<span style="font-size:14px">Prob. superiority: <b>${fmtNum(row.prob_superiority, 4)}</b></span><br>` +
            `<span style="font-size:14px">Cliff’s δ: <b>${fmtNum(row.cliffs_delta, 4)}</b></span>`;
   }
 
-  function buildPie(rows){
+  function ringBuildPie(rows){
     const labels = rows.map(r => r.effect);
     const values = rows.map(_ => 1);
 
-    const test = normalizeTest(testSelect.value);
+    const test = normalizeTest(RING.testSelect.value);
     const hovertext = rows.map(r => {
       if (test === "ttest"){
         return `Effect: <b>${r.effect}</b><br>` +
                `t-stat: <b>${fmtNum(r.stat, 4)}</b><br>` +
-               `p: <b>${fmtP(r.p)}</b>`;
+               `p-value: <b>${fmtP(r.p)}</b>`;
       }
       return `Effect: <b>${r.effect}</b><br>` +
              `U: <b>${fmtNum(r.u, 2)}</b><br>` +
-             `p: <b>${fmtP(r.p)}</b><br>` +
-             `prob superiority: <b>${fmtNum(r.prob_superiority, 4)}</b><br>` +
+             `p-value: <b>${fmtP(r.p)}</b><br>` +
+             `Prob. superiority: <b>${fmtNum(r.prob_superiority, 4)}</b><br>` +
              `Cliff's delta: <b>${fmtNum(r.cliffs_delta, 4)}</b>`;
     });
 
@@ -931,30 +847,30 @@ permalink: /effects/
     };
   }
 
-  function render(){
-    const rows = filterRows();
+  function ringRender(){
+    const rows = ringFilterRows();
 
     if (!rows.length){
-      Plotly.react("ringPlot", [], {
+      Plotly.react(RING.plotId, [], {
         height: 560,
         margin: {l:20,r:20,t:20,b:20},
         annotations: [{
           xref:"paper", yref:"paper", x:0.5, y:0.5,
-          text:"<b>Bu test için veri yok</b><br><span style='opacity:.75'>JSON test alanını kontrol et</span>",
+          text:"<b>No data for this test</b>",
           showarrow:false, align:"center"
         }]
       }, {displayModeBar:false, responsive:true});
 
-      foot.innerHTML = `Seçilen test = <b>${normalizeTest(testSelect.value)}</b>. (Main effects filtresi açık)`;
+      RING.foot.innerHTML = `Selected test: <b>${normalizeTest(RING.testSelect.value)}</b>.`;
       return;
     }
 
-    // seçili effect yoksa ilkini seç
     const set = new Set(rows.map(r => r.effect));
-    if (!selectedEffect || !set.has(selectedEffect)) selectedEffect = rows[0].effect;
+    if (!ringSelectedEffect || !set.has(ringSelectedEffect)){
+      ringSelectedEffect = rows[0].effect;
+    }
 
-    const selectedRow = rows.find(r => r.effect === selectedEffect) || null;
-    const centerHTML = centerTextFor(selectedRow);
+    const selectedRow = rows.find(r => r.effect === ringSelectedEffect) || null;
 
     const layout = {
       margin: {l: 20, r: 20, t: 20, b: 20},
@@ -973,37 +889,39 @@ permalink: /effects/
       annotations: [{
         xref: "paper", yref: "paper",
         x: 0.5, y: 0.5,
-        text: centerHTML,
+        text: ringCenterText(selectedRow),
         showarrow: false,
         align: "center",
         font: {size: 14, color: "rgba(0,0,0,.92)"}
       }]
     };
 
-    Plotly.react("ringPlot", [buildPie(rows)], layout, {displayModeBar: true, responsive: true});
+    Plotly.react(RING.plotId, [ringBuildPie(rows)], layout, {displayModeBar: true, responsive: true});
 
-    foot.innerHTML = `Halka dilimleri = <b>effect</b>. Tıkla. Seçilen test = <b>${normalizeTest(testSelect.value)}</b>. (Sadece Main effects)`;
+    RING.foot.innerHTML =
+      `Ring slices = <b>effects</b>. Click a slice. Selected test = <b>${normalizeTest(RING.testSelect.value)}</b>.`;
 
-    const gd = document.getElementById("ringPlot");
-    // eski handler'ları temizle (üst üste binmesin)
+    const gd = document.getElementById(RING.plotId);
     gd.removeAllListeners?.("plotly_click");
-
     gd.on("plotly_click", (ev) => {
       const label = ev?.points?.[0]?.label;
       if (!label) return;
-      selectedEffect = label;
+      ringSelectedEffect = label;
 
-      const row = filterRows().find(r => r.effect === selectedEffect);
-      Plotly.relayout(gd, {"annotations[0].text": centerTextFor(row)});
+      const row = ringFilterRows().find(r => r.effect === ringSelectedEffect);
+      Plotly.relayout(gd, {"annotations[0].text": ringCenterText(row)});
     });
   }
 
-  testSelect.addEventListener("change", render);
-  render();
+  RING.testSelect.addEventListener("change", ringRender);
+
+  // ---------- init both ----------
+  mePopulateMetricOptions();
+  meRender();
+  ringRender();
+
 })();
 </script>
-
-
 
 
 ///////////////////////////////////////
