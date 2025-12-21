@@ -732,6 +732,48 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
   <img src="assets/img/perry_regression.png" width="500">
 </p>
 
+After all these very inconclusive investigations, the detictives couldn't stop here, they had to find other accomplices that might have helped the suspects to further examine whether calendar effects leave a systematic imprint on market returns or not. For that they choose the linear regression framework, this approach helps them to quantify the average effect of each calendar indicator on daily returns while controlling the accomplices which in this case are market conditions (such as volatility and trading volume) and interest rates which they managed to get as a clue from the published fed funds dataset. By exploiting the full sample of available data, the regression provides both an estimate of the magnitude of each effect and a measure of its statistical significance.
+
+<details markdown="1">
+  <summary><strong>Linear Regression</strong></summary>
+<p>
+A supervised statistical model in which the expected value of the response variable is modeled as a linear combination of explanatory variables.
+  
+In our setting, the model relates daily stock returns to calendar-effect indicators and control variables such as volatility, interest rates and trading volume. The coefficients capture the average change in returns associated with each calendar effect, holding other factors constant.
+</p>
+</details>
+
+These are the equations they are tryping to achieve using the linear regression:
+
+$$
+\text{Return}_t
+=
+\beta_0
++
+\beta_1 \,\mathbb{1}_{\text{Calendar Effect}_t}
++
+\beta_2 \,\text{Volatility}_t
++
+\beta_3 \,\text{Volume}_t
++
+\varepsilon_t
+$$
+
+and
+
+$$
+\text{Return}_t
+=
+\beta_0
++
+\beta_1 \,\mathbb{1}_{\text{Calendar Effect}_t}
++
+\beta_2 \,\text{Interest Rate}_t
++
+\varepsilon_t
+$$
+
+
 <details class="outer-details">
   <summary><strong>Linear Regression Summaries</strong></summary>
   <p>Choose Time Series for interest rate regression, or Clustering for volume and volatility.</p>
