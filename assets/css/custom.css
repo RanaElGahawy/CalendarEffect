@@ -99,3 +99,11 @@ details[open] > summary::before {
   margin: 0 auto;
   border-radius: 6px;
 }
+
+.effect-description {
+  font-size: 0.95rem;
+  color: #444;
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
