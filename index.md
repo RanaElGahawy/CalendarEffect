@@ -1221,7 +1221,7 @@ use-site-title: true
 
 .effect-sub{
   opacity:.7;
-  margin-bottom:1.5rem;
+  margin-bottom:1.2rem;
   font-size:1.05rem;
 }
 
@@ -1229,7 +1229,7 @@ use-site-title: true
   display:flex;
   gap:10px;
   flex-wrap:wrap;
-  margin-bottom:1.2rem;
+  margin: 1.1rem 0 1.2rem;
 }
 
 .lens-tabs button{
@@ -1237,9 +1237,13 @@ use-site-title: true
   background:#eceef3;
   padding:9px 15px;
   border-radius:999px;
-  font-weight:600;
+  font-weight:700;
   cursor:pointer;
   transition:.15s;
+}
+
+.lens-tabs button:hover{
+  transform: translateY(-1px);
 }
 
 .lens-tabs button.active{
@@ -1248,140 +1252,350 @@ use-site-title: true
 }
 
 .lens-content{
-  margin-top:1.2rem;
+  margin-top:1.1rem;
+  animation: lensFade .18s ease;
+}
+
+@keyframes lensFade{
+  from{opacity:.25; transform: translateY(2px)}
+  to{opacity:1; transform: translateY(0)}
 }
 
 .hidden{display:none}
+
+/* ===============================
+   DETECTIVE QUESTIONS (per effect)
+   =============================== */
+
+.qbox{
+  margin: 1.2rem 0 1.4rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(0,0,0,.10);
+  box-shadow: 0 12px 26px rgba(0,0,0,.06);
+}
+
+.qbox-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:.55rem;
+}
+
+.qbox-title{
+  font-weight: 900;
+  letter-spacing: .2px;
+}
+
+.qbox-badge{
+  font-size: .78rem;
+  font-weight: 900;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  opacity: .92;
+}
+
+.qbox ul{
+  margin: 0;
+  padding-left: 1.05rem;
+}
+
+.qbox li{
+  margin: .28rem 0;
+  opacity: .92;
+  line-height: 1.35;
+}
+
+.qbox li b{font-weight: 850}
+
+/* ===============================
+   IFRAME LOOK
+   =============================== */
+.lens-content iframe{
+  width:100%;
+  height: 560px;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.08);
+}
 </style>
 
 <!-- ===============================
      MONDAY EFFECT
      =============================== -->
 <section class="effect" id="monday">
-<h2>Monday Effect</h2>
-<div class="effect-sub">Is Monday really the weakest trading day?</div>
+  <h2>Monday Effect</h2>
+  <div class="effect-sub">Is Monday really the weakest trading day?</div>
 
-<div class="lens-tabs">
-  <button class="active" data-lens="decades">Across Decades</button>
-  <button data-lens="exchanges">Across Exchanges</button>
-  <button data-lens="dotcom">Dot-Com Bubble</button>
-  <button data-lens="gfc">Global Financial Crisis</button>
-</div>
+  <div class="qbox">
+    <div class="qbox-top">
+      <div class="qbox-title">Detective Questions</div>
+      <div class="qbox-badge">What to look for</div>
+    </div>
+    <ul>
+      <li><b>Consistency:</b> Is Monday weaker in most decades, or only in one era?</li>
+      <li><b>Size:</b> Is the gap big enough to matter, or very small?</li>
+      <li><b>Stress test:</b> Does the pattern change in Dot-Com and GFC periods?</li>
+      <li><b>Market structure:</b> Does it look different across exchanges?</li>
+      <li><b>Adaptation:</b> Does it fade in recent years?</li>
+    </ul>
+  </div>
 
-<div id="monday-decades" class="lens-content"></div>
-<div id="monday-exchanges" class="lens-content hidden"></div>
-<div id="monday-dotcom" class="lens-content hidden"></div>
-<div id="monday-gfc" class="lens-content hidden"></div>
+  <div class="lens-tabs">
+    <button class="active" data-lens="decades">Across Decades</button>
+    <button data-lens="exchanges">Across Exchanges</button>
+    <button data-lens="dotcom">Dot-Com Bubble</button>
+    <button data-lens="gfc">Global Financial Crisis</button>
+  </div>
+
+  <div id="monday-decades" class="lens-content">
+    <!-- iframe here -->
+    <!-- <iframe src="assets/img/plot_monday_decades.html"></iframe> -->
+  </div>
+  <div id="monday-exchanges" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
+  <div id="monday-dotcom" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
+  <div id="monday-gfc" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
 </section>
 
 <!-- ===============================
      JANUARY EFFECT
      =============================== -->
 <section class="effect" id="january">
-<h2>January Effect</h2>
-<div class="effect-sub">Does January outperform the rest of the year?</div>
+  <h2>January Effect</h2>
+  <div class="effect-sub">Does January outperform the rest of the year?</div>
 
-<div class="lens-tabs">
-  <button class="active" data-lens="decades">Across Decades</button>
-  <button data-lens="exchanges">Across Exchanges</button>
-  <button data-lens="dotcom">Dot-Com Bubble</button>
-  <button data-lens="gfc">Global Financial Crisis</button>
-</div>
+  <div class="qbox">
+    <div class="qbox-top">
+      <div class="qbox-title">Detective Questions</div>
+      <div class="qbox-badge">What to look for</div>
+    </div>
+    <ul>
+      <li><b>January premium:</b> Is January return higher than the average of Feb–Dec?</li>
+      <li><b>Stability:</b> Does it show up across multiple decades?</li>
+      <li><b>Small vs large:</b> Does it concentrate in certain exchanges / firm groups?</li>
+      <li><b>Crises:</b> Does January behave differently in Dot-Com / GFC?</li>
+      <li><b>Disappearing act:</b> Is the effect weaker after becoming “well-known”?</li>
+    </ul>
+  </div>
 
-<div id="january-decades" class="lens-content"></div>
-<div id="january-exchanges" class="lens-content hidden"></div>
-<div id="january-dotcom" class="lens-content hidden"></div>
-<div id="january-gfc" class="lens-content hidden"></div>
+  <div class="lens-tabs">
+    <button class="active" data-lens="decades">Across Decades</button>
+    <button data-lens="exchanges">Across Exchanges</button>
+    <button data-lens="dotcom">Dot-Com Bubble</button>
+    <button data-lens="gfc">Global Financial Crisis</button>
+  </div>
+
+  <div id="january-decades" class="lens-content">
+    <!-- iframe here -->
+  </div>
+  <div id="january-exchanges" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
+  <div id="january-dotcom" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
+  <div id="january-gfc" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
 </section>
 
 <!-- ===============================
      SANTA CLAUS RALLY
      =============================== -->
 <section class="effect" id="santa">
-<h2>Santa Claus Rally</h2>
-<div class="effect-sub">Is there really a year-end rally?</div>
+  <h2>Santa Claus Rally</h2>
+  <div class="effect-sub">Is there really a year-end rally?</div>
 
-<div class="lens-tabs">
-  <button class="active" data-lens="decades">Across Decades</button>
-  <button data-lens="exchanges">Across Exchanges</button>
-  <button data-lens="dotcom">Dot-Com Bubble</button>
-  <button data-lens="gfc">Global Financial Crisis</button>
-</div>
+  <div class="qbox">
+    <div class="qbox-top">
+      <div class="qbox-title">Detective Questions</div>
+      <div class="qbox-badge">What to look for</div>
+    </div>
+    <ul>
+      <li><b>Timing:</b> Is the rally concentrated at the end of December / early January?</li>
+      <li><b>Reliability:</b> Does it show up in most years or only in a few?</li>
+      <li><b>Cross-market:</b> Is it stronger in NASDAQ than in others?</li>
+      <li><b>Risk regime:</b> Does it survive during crisis windows?</li>
+      <li><b>Mechanism hint:</b> Does it look like investor optimism / low liquidity effect?</li>
+    </ul>
+  </div>
 
-<div id="santa-decades" class="lens-content"></div>
-<div id="santa-exchanges" class="lens-content hidden"></div>
-<div id="santa-dotcom" class="lens-content hidden"></div>
-<div id="santa-gfc" class="lens-content hidden"></div>
+  <div class="lens-tabs">
+    <button class="active" data-lens="decades">Across Decades</button>
+    <button data-lens="exchanges">Across Exchanges</button>
+    <button data-lens="dotcom">Dot-Com Bubble</button>
+    <button data-lens="gfc">Global Financial Crisis</button>
+  </div>
+
+  <div id="santa-decades" class="lens-content">
+    <!-- iframe here -->
+  </div>
+  <div id="santa-exchanges" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
+  <div id="santa-dotcom" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
+  <div id="santa-gfc" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
 </section>
 
 <!-- ===============================
      TURN OF THE MONTH
      =============================== -->
 <section class="effect" id="tom">
-<h2>Turn-of-the-Month Effect</h2>
-<div class="effect-sub">Are returns concentrated around month boundaries?</div>
+  <h2>Turn-of-the-Month Effect</h2>
+  <div class="effect-sub">Are returns concentrated around month boundaries?</div>
 
-<div class="lens-tabs">
-  <button class="active" data-lens="decades">Across Decades</button>
-  <button data-lens="exchanges">Across Exchanges</button>
-  <button data-lens="dotcom">Dot-Com Bubble</button>
-  <button data-lens="gfc">Global Financial Crisis</button>
-</div>
+  <div class="qbox">
+    <div class="qbox-top">
+      <div class="qbox-title">Detective Questions</div>
+      <div class="qbox-badge">What to look for</div>
+    </div>
+    <ul>
+      <li><b>Concentration:</b> Are returns higher near month-end / month-start days?</li>
+      <li><b>Window sensitivity:</b> Does the effect change with different ToM windows?</li>
+      <li><b>Persistence:</b> Does it hold across decades?</li>
+      <li><b>Crisis behavior:</b> Does it break or strengthen during Dot-Com / GFC?</li>
+      <li><b>Institutional hint:</b> Does it look consistent with cash-flow / rebalancing timing?</li>
+    </ul>
+  </div>
 
-<div id="tom-decades" class="lens-content"></div>
-<div id="tom-exchanges" class="lens-content hidden"></div>
-<div id="tom-dotcom" class="lens-content hidden"></div>
-<div id="tom-gfc" class="lens-content hidden"></div>
+  <div class="lens-tabs">
+    <button class="active" data-lens="decades">Across Decades</button>
+    <button data-lens="exchanges">Across Exchanges</button>
+    <button data-lens="dotcom">Dot-Com Bubble</button>
+    <button data-lens="gfc">Global Financial Crisis</button>
+  </div>
+
+  <div id="tom-decades" class="lens-content">
+    <!-- iframe here -->
+  </div>
+  <div id="tom-exchanges" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
+  <div id="tom-dotcom" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
+  <div id="tom-gfc" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
 </section>
 
 <!-- ===============================
      HALF MONTH EFFECT
      =============================== -->
 <section class="effect" id="half">
-<h2>Half-Month Effect</h2>
-<div class="effect-sub">First-half vs second-half of the month.</div>
+  <h2>Half-Month Effect</h2>
+  <div class="effect-sub">First-half vs second-half of the month.</div>
 
-<div class="lens-tabs">
-  <button class="active" data-lens="decades">Across Decades</button>
-  <button data-lens="exchanges">Across Exchanges</button>
-  <button data-lens="dotcom">Dot-Com Bubble</button>
-  <button data-lens="gfc">Global Financial Crisis</button>
-</div>
+  <div class="qbox">
+    <div class="qbox-top">
+      <div class="qbox-title">Detective Questions</div>
+      <div class="qbox-badge">What to look for</div>
+    </div>
+    <ul>
+      <li><b>Split:</b> Is the first half consistently stronger than the second half?</li>
+      <li><b>Where it lives:</b> Does it appear in certain decades more?</li>
+      <li><b>Cross-exchange:</b> Is it uniform across markets or concentrated?</li>
+      <li><b>Stress test:</b> What happens during Dot-Com and GFC?</li>
+      <li><b>Overlap check:</b> Is it just a ToM effect in disguise, or truly separate?</li>
+    </ul>
+  </div>
 
-<div id="half-decades" class="lens-content"></div>
-<div id="half-exchanges" class="lens-content hidden"></div>
-<div id="half-dotcom" class="lens-content hidden"></div>
-<div id="half-gfc" class="lens-content hidden"></div>
+  <div class="lens-tabs">
+    <button class="active" data-lens="decades">Across Decades</button>
+    <button data-lens="exchanges">Across Exchanges</button>
+    <button data-lens="dotcom">Dot-Com Bubble</button>
+    <button data-lens="gfc">Global Financial Crisis</button>
+  </div>
+
+  <div id="half-decades" class="lens-content">
+    <!-- iframe here -->
+  </div>
+  <div id="half-exchanges" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
+  <div id="half-dotcom" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
+  <div id="half-gfc" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
 </section>
 
 <!-- ===============================
-     HALLOWEEN EFFECT
+     HALLOWEEN EFFECT (SELL IN MAY)
      =============================== -->
 <section class="effect" id="halloween">
-<h2>Halloween Effect (Sell in May)</h2>
-<div class="effect-sub">Winter vs summer market performance.</div>
+  <h2>Halloween Effect (Sell in May)</h2>
+  <div class="effect-sub">Winter vs summer market performance.</div>
 
-<div class="lens-tabs">
-  <button class="active" data-lens="decades">Across Decades</button>
-  <button data-lens="exchanges">Across Exchanges</button>
-  <button data-lens="dotcom">Dot-Com Bubble</button>
-  <button data-lens="gfc">Global Financial Crisis</button>
-</div>
+  <div class="qbox">
+    <div class="qbox-top">
+      <div class="qbox-title">Detective Questions</div>
+      <div class="qbox-badge">What to look for</div>
+    </div>
+    <ul>
+      <li><b>Season gap:</b> Is Nov–Apr stronger than May–Oct in most decades?</li>
+      <li><b>Survival:</b> Does the spread stay positive even in recent years?</li>
+      <li><b>Volatility regime:</b> Is the gap different in high-vol vs low-vol periods?</li>
+      <li><b>Fed angle:</b> Does tightening change the spread (even slightly)?</li>
+      <li><b>Coverage:</b> Does the majority of tickers show the same direction?</li>
+    </ul>
+  </div>
 
-<div id="halloween-decades" class="lens-content"></div>
-<div id="halloween-exchanges" class="lens-content hidden"></div>
-<div id="halloween-dotcom" class="lens-content hidden"></div>
-<div id="halloween-gfc" class="lens-content hidden"></div>
+  <div class="lens-tabs">
+    <button class="active" data-lens="decades">Across Decades</button>
+    <button data-lens="exchanges">Across Exchanges</button>
+    <button data-lens="dotcom">Dot-Com Bubble</button>
+    <button data-lens="gfc">Global Financial Crisis</button>
+  </div>
+
+  <div id="halloween-decades" class="lens-content">
+    <!-- iframe here -->
+  </div>
+  <div id="halloween-exchanges" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
+  <div id="halloween-dotcom" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
+  <div id="halloween-gfc" class="lens-content hidden">
+    <!-- iframe here -->
+  </div>
 </section>
+
 <!-- ===============================
      HOLIDAY EFFECT
      =============================== -->
-
 <section class="effect" id="holiday">
-
   <h2>Holiday Effect</h2>
-  <div class="effect-sub">
-    Do stock returns behave abnormally around public holidays?
+  <div class="effect-sub">Do stock returns behave abnormally around public holidays?</div>
+
+  <div class="qbox">
+    <div class="qbox-top">
+      <div class="qbox-title">Detective Questions</div>
+      <div class="qbox-badge">What to look for</div>
+    </div>
+    <ul>
+      <li><b>Before vs after:</b> Are pre-holiday returns higher than normal days?</li>
+      <li><b>Decay:</b> Does the effect weaken over decades (market learning)?</li>
+      <li><b>Instability:</b> Does it flip sign during crashes & crises?</li>
+      <li><b>Exchange focus:</b> Is it mainly an equity-exchange phenomenon?</li>
+      <li><b>Macro link:</b> Does a Fed regime change amplify or mute it?</li>
+    </ul>
   </div>
 
   <div class="lens-tabs">
@@ -1393,13 +1607,7 @@ use-site-title: true
 
   <!-- ========== Across Decades ========== -->
   <div id="holiday-decades" class="lens-content">
-    <iframe
-      src="assets/img/plot_holiday_effect_by_decade.html"
-      width="100%"
-      height="550"
-      frameborder="0">
-    </iframe>
-
+    <iframe src="assets/img/plot_holiday_effect_by_decade.html"></iframe>
     <p>
       Looking at the chart, a clear pattern stands out. Across all decades, returns tend to be higher
       on days before holidays than on normal trading days. However, what once looked like a strong and
@@ -1410,79 +1618,78 @@ use-site-title: true
 
   <!-- ========== Across Years ========== -->
   <div id="holiday-years" class="lens-content hidden">
-    <!-- Eğer elinde gerçekten "year-by-year" plot varsa buraya koy.
-         Şimdilik sende exchange grafiği var; bunu burada gösteriyorum. -->
-    <iframe
-      src="assets/img/plot_holiday_effect_exchange.html"
-      width="100%"
-      height="550"
-      frameborder="0">
-    </iframe>
-
+    <iframe src="assets/img/plot_holiday_effect_exchange.html"></iframe>
     <p>
-      Holiday-related return differences vary widely across exchanges. The effect appears strongest on
-      NASDAQ and NYSE American, where returns tend to be higher before holidays, while the NYSE exhibits
-      a more modest increase. In contrast, ETFs and BATS/Cboe show little to no noticeable holiday effect,
-      suggesting that this pattern is mainly concentrated in traditional equity markets.
+      Holiday-related return differences vary across exchanges. The effect appears stronger on
+      NASDAQ and NYSE American, while the NYSE is more modest. In contrast, ETFs and BATS/Cboe show
+      little to no noticeable holiday effect, suggesting that this pattern is mainly concentrated in
+      traditional equity markets.
     </p>
-
-    <!-- NOT: Eğer sonra "Across Years" için ayrı bir html üretirsen,
-         yukarıdaki iframe src'yi onunla değiştirirsin. -->
+    <!-- Not: Sonra gerçekten year-by-year html üretirsen,
+         burada iframe src'yi onunla değiştir. -->
   </div>
 
   <!-- ========== Crashes & Crises ========== -->
   <div id="holiday-crises" class="lens-content hidden">
-    <iframe
-      src="assets/img/plot_crisis_holiday_heatmap.html"
-      width="100%"
-      height="550"
-      frameborder="0">
-    </iframe>
-
+    <iframe src="assets/img/plot_crisis_holiday_heatmap.html"></iframe>
     <p>
-      During the Dot-Com bubble, performance around holidays turns weak and often negative, especially in
-      the days following the break. In contrast, during the Global Financial Crisis, returns around holidays
-      are mostly positive, with particularly strong gains just before the holiday, showing that the holiday
-      effect can remain visible during stress periods.
+      During the Dot-Com bubble, performance around holidays turns weak and often negative, especially after
+      the break. In contrast, during the Global Financial Crisis, returns around holidays are mostly positive,
+      with stronger gains just before the holiday. This suggests the holiday effect can still be visible even
+      during stress periods.
     </p>
   </div>
 
   <!-- ========== Fed Effect ========== -->
   <div id="holiday-fed" class="lens-content hidden">
-    <!-- Eğer Fed ile ilgili ayrı plot ürettiysen buraya koy:
-    <iframe src="assets/img/plot_holiday_fed_effect.html" width="100%" height="550" frameborder="0"></iframe>
+    <!-- If you export a Fed-related plot later, uncomment and set the correct src:
+    <iframe src="assets/img/plot_holiday_fed_effect.html"></iframe>
     -->
-
-    <div style="padding:14px 14px; border:1px solid rgba(0,0,0,.12); border-radius:14px; background:#fff;">
-      <b>Fed Effect plot is not added yet.</b>
-      <div style="opacity:.75; margin-top:6px;">
-        When you export the Fed-related holiday chart as an HTML file,
-        paste it here as an iframe (same style as others).
+    <div class="qbox">
+      <div class="qbox-top">
+        <div class="qbox-title">Fed Effect plot is not added yet</div>
+        <div class="qbox-badge">TODO</div>
       </div>
+      <ul>
+        <li>When you export the Fed-related holiday chart as an HTML file, paste it here as an iframe.</li>
+        <li>Use the same style as other plots: <b>assets/img/your_plot.html</b></li>
+      </ul>
     </div>
   </div>
-
 </section>
 
-<style>
-  /* Eğer bu class'lar zaten CSS'inde varsa tekrar yazmana gerek yok */
-  .hidden { display: none; }
-  .lens-tabs { display:flex; gap:10px; flex-wrap:wrap; margin: 10px 0 14px; }
-  .lens-tabs button{
-    cursor:pointer; border:1px solid rgba(0,0,0,.15); background:#fff;
-    padding:10px 12px; border-radius:999px; font-weight:700;
-  }
-  .lens-tabs button.active{
-    transform: translateY(-1px);
-    box-shadow: 0 10px 22px rgba(0,0,0,.08);
-  }
-  .lens-content iframe{
-    border-radius: 12px;
-    box-shadow: 0 10px 22px rgba(0,0,0,.08);
-  }
-</style>
+<!-- ===============================
+   SURVIVAL SECTION
+   =============================== -->
+## Do calendar effects survive through the years?
+
+Now that we have detected and analyzed several calendar effects, a natural question arises: **do these patterns remain stable over time, or do they evolve as markets change?**
+
+Calendar anomalies are often presented as timeless rules — but real financial markets rarely stay constant. Trading technology evolves, regulations shift, investor composition changes, and macroeconomic regimes come and go. Any of these forces can influence whether an anomaly strengthens, weakens, or disappears entirely.
+
+In this section, we investigate the **temporal stability** of each calendar effect. More precisely, we ask:
+
+- Do the effects behave similarly in the 1970s, 1980s, 1990s, and 2000s?
+- Do some grow stronger or weaker across decades?
+- And crucially: **which calendar effects survive consistently over time, and which ones vanish once they become widely known?**
+
+<div class="qbox">
+  <div class="qbox-top">
+    <div class="qbox-title">Investigation checklist</div>
+    <div class="qbox-badge">How we judge survival</div>
+  </div>
+  <ul>
+    <li><b>Across decades:</b> visible in many decades, not only one “lucky” period.</li>
+    <li><b>Across crises:</b> does not fully collapse in Dot-Com / GFC windows.</li>
+    <li><b>Across exchanges:</b> not limited to one tiny market segment.</li>
+    <li><b>Recent years:</b> if it fades strongly, it may be market adaptation.</li>
+  </ul>
+</div>
 
 <script>
+/* ===============================
+   LENS TAB SWITCH (per section)
+   =============================== */
 document.querySelectorAll(".lens-tabs").forEach(group=>{
   const buttons = group.querySelectorAll("button");
 
@@ -1497,12 +1704,13 @@ document.querySelectorAll(".lens-tabs").forEach(group=>{
       section.querySelectorAll(".lens-content")
         .forEach(c=>c.classList.add("hidden"));
 
-      section.querySelector(`#${section.id}-${lens}`)
-        .classList.remove("hidden");
+      const target = section.querySelector(`#${section.id}-${lens}`);
+      if(target) target.classList.remove("hidden");
     };
   });
 });
 </script>
+
 
 
 
