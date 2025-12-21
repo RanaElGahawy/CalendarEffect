@@ -165,6 +165,7 @@ For these tests to be valid, several underlying assumptions must be satisfied, m
 ### Normality Test
 
 <details>
+        <div markdown="1">
   <summary><strong>Equations for the normality test</strong></summary>
 
 #### Step 1: Compute sample moments
@@ -234,6 +235,7 @@ The *p*-value is computed as:
 p = P(\chi^2_2 \ge K^2)
 \]
 
+</div>
 </details>
 
 
