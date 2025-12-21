@@ -2283,7 +2283,7 @@ In this section, we investigate the **temporal stability** of each calendar effe
     if (compCache[key]) return compCache[key];
 
     const prefix = HOLIDAYS[H()];
-    const url = "{{ site.baseurl }}/assets/data/holiday_comp/" + `${prefix}_k${K()}.json`;
+    const url = "{{ site.baseurl }}/assets/data/" + `${prefix}_k${K()}.json`;
 
     const res = await fetch(url);
     if(!res.ok){
