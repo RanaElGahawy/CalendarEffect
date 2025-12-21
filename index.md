@@ -1193,7 +1193,79 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
 </details>
 
 
-Investigating Calendar Effects
+<!-- ===============================
+     DEEP INVESTIGATION BANNER
+     =============================== -->
+<section style="
+  margin:4.5rem 0;
+  padding:2.4rem 2.6rem;
+  border-radius:24px;
+  background:
+    linear-gradient(120deg, rgba(0,0,0,.65), rgba(0,0,0,.35)),
+    url('assets/img/perry_CNN.png') center/cover no-repeat;
+  color:#fff;
+  box-shadow:0 22px 55px rgba(0,0,0,.25);
+">
+
+  <div style="max-width:820px;">
+    <div style="
+      font-size:.8rem;
+      font-weight:900;
+      letter-spacing:.12em;
+      opacity:.85;
+      margin-bottom:.6rem;
+    ">
+      NEXT STEP
+    </div>
+
+    <h2 style="
+      font-size:2.2rem;
+      font-weight:900;
+      margin:0 0 .6rem;
+      line-height:1.15;
+    ">
+      A deeper investigation — effect by effect
+    </h2>
+
+    <p style="
+      font-size:1.05rem;
+      opacity:.92;
+      line-height:1.55;
+      margin:0 0 1.4rem;
+    ">
+      The high-level patterns are revealed.
+      Now you can go further — inspect each calendar effect in detail,
+      explore company-level behavior, and trace when an effect holds
+      and when it breaks down.
+    </p>
+
+    <div style="
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      font-weight:800;
+    ">
+      <span style="
+        background:rgba(255,255,255,.15);
+        padding:8px 14px;
+        border-radius:999px;
+      ">Company-level distributions</span>
+
+      <span style="
+        background:rgba(255,255,255,.15);
+        padding:8px 14px;
+        border-radius:999px;
+      ">Parameter exploration</span>
+
+      <span style="
+        background:rgba(255,255,255,.15);
+        padding:8px 14px;
+        border-radius:999px;
+      ">Stock-by-stock timelines</span>
+    </div>
+  </div>
+</section>
+
 
 <style>
 /* ===============================
