@@ -867,8 +867,20 @@ By estimating the statistical significance and magnitude of each effect, the det
 
 ## Calendar effect during crises ?
 
-The detectives turn their attention to the darkest moments in market history: Black Monday in 1987, the dot-com crash of 2000–2002, and the global financial crisis of 2008–2009. As they examine the data, familiar calendar patterns begin to fade.
-Market crises are special periods. Volatility is high. Uncertainty dominates. 
+<div class="content-block">
+  <img src="assets/img/perry_CNN.png" alt="Market Crisis Image" class="content-image">
+
+  <div class="content-text">
+    <p>
+      The detectives turn their attention to the darkest moments in market history: Black Monday in 1987, the dot-com crash of 2000–2002, and the global financial crisis of 2008–2009. As they examine the data, familiar calendar patterns begin to fade.
+    </p>
+
+    <p>
+      Market crises are special periods. Volatility is high. Uncertainty dominates.
+    </p>
+  </div>
+</div>
+
 
 // PLots //
 
