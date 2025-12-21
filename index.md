@@ -168,10 +168,11 @@ The crucial question of whether these calendar effects are statistically signifi
   }
 
   .content-image{
-    width: 750px;
-    height: auto;
-    flex-shrink: 0;
-  }
+  width: 50%;
+  max-width: 800px;
+  height: auto;
+}
+  
 
   .content-text{
     flex: 1;
