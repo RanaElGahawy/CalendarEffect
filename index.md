@@ -1623,26 +1623,95 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
     </ul>
   </div>
 
+  <!-- If your iframe files live elsewhere, just change this base path -->
+  <!-- Example: const IFRAME_BASE = "{{ site.baseurl }}/assets/html/"; -->
+  <script>
+    // Keep only one place to edit paths
+    window.IFRAME_BASE = "{{ site.baseurl }}/assets/iframes/";
+  </script>
+
   <div class="lens-tabs">
-    <button class="active" data-lens="decades">Across Decades</button>
-    <button data-lens="exchanges">Across Exchanges</button>
-    <button data-lens="dotcom">Dot-Com Bubble</button>
-    <button data-lens="gfc">Global Financial Crisis</button>
+    <button class="active" data-lens="decade">Across Decades</button>
+    <button data-lens="exchange">Across Exchanges</button>
+    <button data-lens="company">Company Coverage</button>
+    <button data-lens="heatmap">Heatmap</button>
+    <button data-lens="volatility">Volatility Regime</button>
+    <button data-lens="yearbyyear">Year by Year</button>
+    <button data-lens="crises">Crisis Zoom</button>
   </div>
 
-  <div id="halloween-decades" class="lens-content">
-    <!-- iframe here -->
+  <!-- CONTENTS -->
+  <div id="halloween-decade" class="lens-content">
+    <iframe
+      class="lens-iframe"
+      loading="lazy"
+      style="width:100%; height:720px; border:0; border-radius:14px;"
+      src="{{ site.baseurl }}/assets/iframes/sell_in_may_decade.html"
+      title="Sell in May - Across Decades">
+    </iframe>
   </div>
-  <div id="halloween-exchanges" class="lens-content hidden">
-    <!-- iframe here -->
+
+  <div id="halloween-exchange" class="lens-content hidden">
+    <iframe
+      class="lens-iframe"
+      loading="lazy"
+      style="width:100%; height:720px; border:0; border-radius:14px;"
+      src="{{ site.baseurl }}/assets/iframes/sell_in_may_exchange.html"
+      title="Sell in May - Across Exchanges">
+    </iframe>
   </div>
-  <div id="halloween-dotcom" class="lens-content hidden">
-    <!-- iframe here -->
+
+  <div id="halloween-company" class="lens-content hidden">
+    <iframe
+      class="lens-iframe"
+      loading="lazy"
+      style="width:100%; height:720px; border:0; border-radius:14px;"
+      src="{{ site.baseurl }}/assets/iframes/sell_in_may_company.html"
+      title="Sell in May - Company Coverage">
+    </iframe>
   </div>
-  <div id="halloween-gfc" class="lens-content hidden">
-    <!-- iframe here -->
+
+  <div id="halloween-heatmap" class="lens-content hidden">
+    <iframe
+      class="lens-iframe"
+      loading="lazy"
+      style="width:100%; height:720px; border:0; border-radius:14px;"
+      src="{{ site.baseurl }}/assets/iframes/sell_in_may_heatmap.html"
+      title="Sell in May - Heatmap">
+    </iframe>
+  </div>
+
+  <div id="halloween-volatility" class="lens-content hidden">
+    <iframe
+      class="lens-iframe"
+      loading="lazy"
+      style="width:100%; height:720px; border:0; border-radius:14px;"
+      src="{{ site.baseurl }}/assets/iframes/sell_in_may_volatility.html"
+      title="Sell in May - Volatility Regime">
+    </iframe>
+  </div>
+
+  <div id="halloween-yearbyyear" class="lens-content hidden">
+    <iframe
+      class="lens-iframe"
+      loading="lazy"
+      style="width:100%; height:720px; border:0; border-radius:14px;"
+      src="{{ site.baseurl }}/assets/iframes/sell_in_may_year_by_year.html"
+      title="Sell in May - Year by Year">
+    </iframe>
+  </div>
+
+  <div id="halloween-crises" class="lens-content hidden">
+    <iframe
+      class="lens-iframe"
+      loading="lazy"
+      style="width:100%; height:720px; border:0; border-radius:14px;"
+      src="{{ site.baseurl }}/assets/iframes/sell_in_may_crises.html"
+      title="Sell in May - Crisis Zoom">
+    </iframe>
   </div>
 </section>
+
 
 <!-- ===============================
      HOLIDAY EFFECT
