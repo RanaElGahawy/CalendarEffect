@@ -917,8 +917,18 @@ By tailoring our regression approach to the structure of each clue, we ensure th
 ## Holiday effect
 ### Across decades
 ### Across exchanges
-### Through the Dot Com Bubble
-### Through Global Financial Crisis
+<iframe src="assets/img/plot_holiday_effect_exchange.html"
+        width="100%"
+        height="550"
+        frameborder="0">
+</iframe>
+
+
+### Through the Dot Com Bubble and Global Financial Crisis
+<iframe src="assets/img/plot_crisis_holiday_heatmap.html"
+        width="100%"
+        height="550"
+        frameborder="0">
 
 
 <details>
