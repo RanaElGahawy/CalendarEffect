@@ -147,7 +147,7 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
         frameborder="0">
 </iframe>
 
-The graph illustrates a strong long-term increase in the number of distinct companies appearing in the NASDAQ historical dataset. While the exchange hosted only a handful of small technology firms in the early 1970s, the number of listed companies expanded rapidly across the decades, especially during the early 1980s, the dot-com period, and the post-2010 tech boom reaching over 5,000 firms by 2020. This evolution reflects major structural changes in the U.S. equity market, including sector diversification, higher listing activity, and increases in trading volume and liquidity.
+NASDAQ has transformed dramatically over time, with the number of listed companies climbing from a handful to thousands. While the exchange hosted only a handful of small technology firms in the early 1970s, the number of listed companies expanded rapidly across the decades, especially during the early 1980s, the dot-com period, and the post-2010 tech boom reaching over 5,000 firms by 2020. This evolution reflects major structural changes in the U.S. equity market, including sector diversification, higher listing activity, and increases in trading volume and liquidity.
 
 This trend is especially relevant when looking at calendar effects as these anomalies are known to depend on market structure, liquidity conditions, and the composition of traded firms. A small, low-liquidity NASDAQ dominated by volatile growth stocks (1970s–1980s) may exhibit very different calendar anomalies than the modern, highly liquid and institutionally traded NASDAQ of the 2010s. As the number of listed firms grows, the distribution of returns, the prevalence of small caps, and the level of arbitrage activity all change, which can amplify, weaken, or eliminate calendar effects.
 
@@ -156,7 +156,8 @@ This trend is especially relevant when looking at calendar effects as these anom
         height="550"
         frameborder="0">
 </iframe>
-
+<p> What started as modest trading activity in the 1960s has grown into a torrent of market volume by 2020. Overall, trading activity exhibits a strong upward long-term trend, indicating a substantial increase in market participation and liquidity over time. Since calendar effects are often linked to investor behavior and trading activity, failing to account for volume dynamics may confound calendar effect estimate. So incorporating volume as a control variable or analyzing calendar effects within homogeneous sub-periods becomes essential. <br>
+  
 <iframe src="assets/img/plot_return_avg_per_year.html"
         width="100%"
         height="550"
@@ -164,8 +165,7 @@ This trend is especially relevant when looking at calendar effects as these anom
 </iframe>
 
 
-<p>The plot shows the evolution of annual trading volume from 1962 to 2020. Overall, trading activity exhibits a strong upward long-term trend, indicating a substantial increase in market participation and liquidity over time. Since calendar effects are often linked to investor behavior and trading activity, failing to account for volume dynamics may confound calendar effect estimate. So incorporating volume as a control variable or analyzing calendar effects within homogeneous sub-periods becomes essential. <br>
-The plot shows the average annual return from 1962 to 2020. Overall, returns are predominantly positive, fluctuating around a small positive mean. It means that returns are positive on average over the long run, despite year-to-year volatility. There are occasional negative returns (for example mid-1970s, late 2000s). Since the unconditional mean return is small, any calendar effects are expected to be weak relative to overall volatility. Moreover, the absence of a strong time trend in average returns supports a key assumption of calendar effect studies: return stationarity over time. This makes the dataset appropriate for isolating return differences attributable to calendar variables rather than structural change. It allows calendar-related differences to be analyzed without being confounded by structural market changes. </p>
+Over the 1962–2020 period, annual returns consistently lean positive. It means that returns are positive on average over the long run, despite year-to-year volatility. There are occasional negative returns (for example mid-1970s, late 2000s). Since the unconditional mean return is small, any calendar effects are expected to be weak relative to overall volatility. Moreover, the absence of a strong time trend in average returns supports a key assumption of calendar effect studies: return stationarity over time. This makes the dataset appropriate for isolating return differences attributable to calendar variables rather than structural change. It allows calendar-related differences to be analyzed without being confounded by structural market changes. </p>
 
 
 ## Getting an initial sense of the calendar effects
