@@ -319,129 +319,395 @@ In this section, we investigate the **temporal stability** of each calendar effe
 {% include outer_effects_ui.html %}
 
 
-<div style="margin:20px 0;">
-  <a href="{{ site.baseurl }}/test_santa.md/"
-     style="
-       display:inline-block;
-       padding:12px 18px;
-       border-radius:12px;
-       background:#2563eb;
-       color:white;
-       font-weight:600;
-       text-decoration:none;
-     ">
-    Explore Santa Claus Effect
-  </a>
-</div>
 
 
-<div id="calendar-effects">
 
-  <p>
-    Select a calendar effect to see its corresponding plot.
-  </p>
 
-  <div class="effect-grid">
-    <button class="effect-btn active"
-            data-img="{{ site.baseurl }}/assets/img/january_company.png">
-      January Effect
-    </button>
 
-    <button class="effect-btn"
-            data-img="{{ site.baseurl }}/assets/img/sell_in_may.png">
-      Sell in May
-    </button>
 
-    <button class="effect-btn"
-            data-img="{{ site.baseurl }}/assets/img/tom_company.png">
-      Turn-of-Month
-    </button>
+<section id="calendar-effects" class="fx-wrap">
 
-    <button class="effect-btn"
-            data-img="{{ site.baseurl }}/assets/img/monday_company.png">
-      Monday Effect
-    </button>
+  <!-- HERO -->
+  <div class="fx-hero">
+    <div class="fx-hero-left">
+      <div class="fx-eyebrow">NASDAQ • Calendar Anomalies</div>
+      <h2 class="fx-h1">Explore Seasonal Patterns, One Click at a Time</h2>
+      <p class="fx-lead">
+        Select a calendar effect and instantly see how many companies show the pattern.
+        This is designed as a single-page exploration (no page breaks, no distraction).
+      </p>
 
-    <button class="effect-btn"
-            data-img="{{ site.baseurl }}/assets/img/holiday.png">
-      Holiday Effect
-    </button>
+      <div class="fx-cta-row">
+        <a class="fx-cta"
+           href="{{ site.baseurl }}/test_santa/"
+           aria-label="Open Santa effect page">
+          Explore Santa Rally Deep Dive →
+        </a>
+        <span class="fx-note">Tip: Hover the effect cards.</span>
+      </div>
+    </div>
 
-    <button class="effect-btn"
-            data-img="{{ site.baseurl }}/assets/img/santa_claus_rally_company.png">
-      Santa Rally
-    </button>
+    <div class="fx-hero-right">
+      <div class="fx-stat">
+        <div class="fx-stat-num">7</div>
+        <div class="fx-stat-lbl">Effects</div>
+      </div>
+      <div class="fx-stat">
+        <div class="fx-stat-num">1</div>
+        <div class="fx-stat-lbl">Plot at a time</div>
+      </div>
+      <div class="fx-stat">
+        <div class="fx-stat-num">Fast</div>
+        <div class="fx-stat-lbl">Switching</div>
+      </div>
+    </div>
   </div>
 
-  <div class="effect-view">
-    <img id="effectImage"
-         src="{{ site.baseurl }}/assets/effects/january.png"
-         alt="Calendar effect plot">
-  </div>
+  <!-- LAYOUT -->
+  <div class="fx-layout">
 
-</div>
+    <!-- LEFT: Effect cards -->
+    <aside class="fx-panel">
+      <div class="fx-panel-top">
+        <div class="fx-panel-title">Effects</div>
+        <input id="fxSearch" class="fx-search" placeholder="Search (jan, may, tom...)" />
+      </div>
+
+      <div class="fx-grid" id="fxGrid">
+
+        <button class="fx-card active"
+          data-key="january"
+          data-title="January Effect"
+          data-desc="January average return is higher than the average of Feb–Dec."
+          data-img="{{ site.baseurl }}/assets/img/january_company.png">
+          <div class="fx-icon">JAN</div>
+          <div class="fx-card-main">
+            <div class="fx-card-title">January Effect</div>
+            <div class="fx-card-sub">Month seasonality</div>
+          </div>
+          <div class="fx-chip">classic</div>
+        </button>
+
+        <button class="fx-card"
+          data-key="sell"
+          data-title="Sell in May"
+          data-desc="Winter (Nov–Apr) vs Summer (May–Oct) return gap."
+          data-img="{{ site.baseurl }}/assets/img/sell_in_may.png">
+          <div class="fx-icon">MAY</div>
+          <div class="fx-card-main">
+            <div class="fx-card-title">Sell in May</div>
+            <div class="fx-card-sub">Season regime</div>
+          </div>
+          <div class="fx-chip">macro</div>
+        </button>
+
+        <button class="fx-card"
+          data-key="tom"
+          data-title="Turn-of-Month"
+          data-desc="Returns around the month switch (end/beginning) are stronger."
+          data-img="{{ site.baseurl }}/assets/img/tom_company.png">
+          <div class="fx-icon">ToM</div>
+          <div class="fx-card-main">
+            <div class="fx-card-title">Turn-of-Month</div>
+            <div class="fx-card-sub">Window effect</div>
+          </div>
+          <div class="fx-chip">timing</div>
+        </button>
+
+        <button class="fx-card"
+          data-key="monday"
+          data-title="Monday Effect"
+          data-desc="Monday average return is lower than the other weekdays."
+          data-img="{{ site.baseurl }}/assets/img/monday_company.png">
+          <div class="fx-icon">MON</div>
+          <div class="fx-card-main">
+            <div class="fx-card-title">Monday Effect</div>
+            <div class="fx-card-sub">Weekday bias</div>
+          </div>
+          <div class="fx-chip">week</div>
+        </button>
+
+        <button class="fx-card"
+          data-key="holiday"
+          data-title="Holiday Effect"
+          data-desc="Pre/post-holiday behavior: abnormal returns around holidays."
+          data-img="{{ site.baseurl }}/assets/img/holiday.png">
+          <div class="fx-icon">HOL</div>
+          <div class="fx-card-main">
+            <div class="fx-card-title">Holiday Effect</div>
+            <div class="fx-card-sub">Event timing</div>
+          </div>
+          <div class="fx-chip">event</div>
+        </button>
+
+        <button class="fx-card"
+          data-key="santa"
+          data-title="Santa Rally"
+          data-desc="End-of-year rally window: late Dec to early Jan pattern."
+          data-img="{{ site.baseurl }}/assets/img/santa_claus_rally_company.png">
+          <div class="fx-icon">🎅</div>
+          <div class="fx-card-main">
+            <div class="fx-card-title">Santa Rally</div>
+            <div class="fx-card-sub">Year-end</div>
+          </div>
+          <div class="fx-chip">fun</div>
+        </button>
+
+      </div>
+    </aside>
+
+    <!-- RIGHT: Plot viewer -->
+    <main class="fx-viewer">
+      <div class="fx-view-card">
+        <div class="fx-view-head">
+          <div>
+            <div class="fx-kicker">Selected effect</div>
+            <div id="fxTitle" class="fx-title">January Effect</div>
+            <div id="fxDesc" class="fx-desc">January average return is higher than the average of Feb–Dec.</div>
+          </div>
+
+          <div class="fx-actions">
+            <a id="fxOpenImg" class="fx-open" target="_blank" rel="noopener">Open image</a>
+          </div>
+        </div>
+
+        <div class="fx-img-wrap">
+          <div id="fxShimmer" class="fx-shimmer"></div>
+          <img id="effectImage"
+               src="{{ site.baseurl }}/assets/img/january_company.png"
+               alt="Calendar effect plot"
+               loading="lazy">
+        </div>
+      </div>
+    </main>
+
+  </div>
+</section>
 
 <script>
   (function () {
-    const buttons = document.querySelectorAll("#calendar-effects .effect-btn");
-    const img = document.getElementById("effectImage");
+    const root = document.getElementById("calendar-effects");
+    const cards = root.querySelectorAll(".fx-card");
+    const img   = root.querySelector("#effectImage");
+    const ttl   = root.querySelector("#fxTitle");
+    const dsc   = root.querySelector("#fxDesc");
+    const open  = root.querySelector("#fxOpenImg");
+    const shim  = root.querySelector("#fxShimmer");
+    const srch  = root.querySelector("#fxSearch");
 
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        img.src = btn.dataset.img;
+    function setLoading(on){
+      shim.style.display = on ? "block" : "none";
+      img.style.opacity = on ? "0.65" : "1";
+    }
 
-        buttons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
+    function activate(btn){
+      cards.forEach(c => c.classList.remove("active"));
+      btn.classList.add("active");
 
-        // sayfa içinde yumuşak kayma (sayfa içi sayfa hissi)
-        img.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      ttl.textContent = btn.dataset.title || "Effect";
+      dsc.textContent = btn.dataset.desc || "";
+      const src = btn.dataset.img;
+
+      setLoading(true);
+      img.onload = () => setLoading(false);
+      img.src = src;
+      open.href = src;
+
+      // smooth focus
+      img.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    cards.forEach(btn => btn.addEventListener("click", () => activate(btn)));
+
+    srch.addEventListener("input", () => {
+      const q = srch.value.trim().toLowerCase();
+      cards.forEach(btn => {
+        const hay = (btn.innerText + " " + (btn.dataset.key || "")).toLowerCase();
+        btn.style.display = hay.includes(q) ? "" : "none";
       });
     });
+
+    // init open link
+    open.href = img.src;
   })();
 </script>
 
 <style>
-  #calendar-effects{
-    margin-top:2rem;
+  /* ===== overall vibe ===== */
+  .fx-wrap{ margin-top:2rem; }
+  .fx-hero{
+    display:flex; justify-content:space-between; gap:18px;
+    padding:18px 18px;
+    border-radius:22px;
+    border:1px solid rgba(255,255,255,.12);
+    background: radial-gradient(1200px 500px at 20% 0%,
+      rgba(120,170,255,.20), rgba(255,255,255,.03));
+    box-shadow: 0 20px 70px rgba(0,0,0,.28);
   }
+  .fx-eyebrow{ opacity:.75; font-weight:650; letter-spacing:.3px; }
+  .fx-h1{ margin:.35rem 0 .3rem; font-size:1.7rem; line-height:1.15; }
+  .fx-lead{ margin:0; opacity:.78; max-width:62ch; }
 
-  .effect-grid{
+  .fx-cta-row{ margin-top:12px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .fx-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 14px;
+    border-radius:999px;
+    border:1px solid rgba(120,170,255,.55);
+    background:rgba(120,170,255,.16);
+    text-decoration:none;
+    font-weight:750;
+  }
+  .fx-cta:hover{ transform:translateY(-1px); }
+  .fx-note{ opacity:.7; font-size:.92rem; }
+
+  .fx-hero-right{ display:flex; gap:10px; align-items:stretch; }
+  .fx-stat{
+    min-width:110px;
+    padding:10px 12px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(0,0,0,.10);
+    text-align:center;
+  }
+  .fx-stat-num{ font-size:1.25rem; font-weight:900; }
+  .fx-stat-lbl{ opacity:.7; font-size:.9rem; margin-top:2px; }
+
+  .fx-layout{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:12px;
-    margin:1rem 0;
+    grid-template-columns: 360px 1fr;
+    gap:16px;
+    margin-top:14px;
+    align-items:start;
   }
-  @media(max-width:900px){ .effect-grid{grid-template-columns:repeat(2,1fr)} }
-  @media(max-width:520px){ .effect-grid{grid-template-columns:1fr} }
+  @media(max-width:1000px){
+    .fx-hero{ flex-direction:column; }
+    .fx-hero-right{ justify-content:flex-start; }
+    .fx-layout{ grid-template-columns: 1fr; }
+  }
 
-  .effect-btn{
-    padding:12px 14px;
-    border-radius:14px;
+  /* ===== left panel ===== */
+  .fx-panel{
+    position:sticky; top:14px;
+    padding:12px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.04);
+    box-shadow: 0 18px 60px rgba(0,0,0,.25);
+  }
+  .fx-panel-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+  .fx-panel-title{ font-weight:850; letter-spacing:.2px; }
+  .fx-search{
+    width:170px;
+    padding:9px 10px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);
+    color:inherit;
+    outline:none;
+  }
+  .fx-search:focus{ border-color: rgba(120,170,255,.60); }
+
+  .fx-grid{ display:flex; flex-direction:column; gap:10px; }
+
+  .fx-card{
+    display:grid;
+    grid-template-columns: 52px 1fr auto;
+    gap:10px;
+    align-items:center;
+    padding:12px 12px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.10);
+    background:rgba(0,0,0,.10);
     cursor:pointer;
-    border:1px solid rgba(0,0,0,.15);
-    background:rgba(255,255,255,.05);
-    transition:.15s;
+    text-align:left;
+    transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, background .12s ease;
   }
-  .effect-btn:hover{
+  .fx-card:hover{
     transform:translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0,0,0,.32);
+    border-color: rgba(255,255,255,.18);
+    background:rgba(255,255,255,.06);
   }
-  .effect-btn.active{
-    outline:2px solid #6aa9ff;
-    background:rgba(106,169,255,.12);
+  .fx-card.active{
+    border-color: rgba(120,170,255,.75);
+    background: linear-gradient(180deg, rgba(120,170,255,.18), rgba(0,0,0,.08));
+    box-shadow: 0 20px 55px rgba(0,0,0,.40);
   }
 
-  .effect-view{
-    margin-top:1.5rem;
+  .fx-icon{
+    width:52px; height:52px;
+    display:flex; align-items:center; justify-content:center;
     border-radius:16px;
-    overflow:hidden;
-    border:1px solid rgba(0,0,0,.15);
+    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,.08);
+    font-weight:900;
+    letter-spacing:.4px;
   }
-  .effect-view img{
+  .fx-card-title{ font-weight:900; }
+  .fx-card-sub{ opacity:.7; margin-top:2px; font-size:.92rem; }
+  .fx-chip{
+    padding:6px 10px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,.06);
+    font-size:.85rem;
+    opacity:.9;
+  }
+
+  /* ===== viewer ===== */
+  .fx-view-card{
+    border-radius:22px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.04);
+    box-shadow: 0 20px 70px rgba(0,0,0,.28);
+    overflow:hidden;
+  }
+  .fx-view-head{
+    display:flex; justify-content:space-between; gap:12px;
+    padding:14px 16px;
+    border-bottom:1px solid rgba(255,255,255,.10);
+    background:rgba(0,0,0,.10);
+  }
+  .fx-kicker{ opacity:.7; font-size:.9rem; }
+  .fx-title{ font-size:1.25rem; font-weight:950; margin-top:2px; }
+  .fx-desc{ opacity:.78; margin-top:3px; max-width:75ch; }
+  .fx-actions{ display:flex; align-items:flex-start; }
+  .fx-open{
+    padding:8px 12px;
+    border-radius:999px;
+    border:1px solid rgba(120,170,255,.55);
+    background:rgba(120,170,255,.14);
+    text-decoration:none;
+    font-weight:800;
+  }
+
+  .fx-img-wrap{ position:relative; padding:10px; }
+  .fx-img-wrap img{
     width:100%;
     display:block;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.10);
+    background:rgba(0,0,0,.12);
+  }
+
+  /* shimmer loading */
+  .fx-shimmer{
+    position:absolute;
+    inset:10px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.10);
+    background:
+      linear-gradient(90deg,
+        rgba(255,255,255,.04) 0%,
+        rgba(255,255,255,.12) 45%,
+        rgba(255,255,255,.04) 100%);
+    background-size: 220% 100%;
+    animation: fxsh 1.1s infinite linear;
+    display:none;
+  }
+  @keyframes fxsh{
+    0%{ background-position: 0% 0%; }
+    100%{ background-position: -220% 0%; }
   }
 </style>
-
-
-
-
