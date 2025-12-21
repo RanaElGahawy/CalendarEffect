@@ -158,6 +158,11 @@ The crucial question of whether these calendar effects are statistically signifi
 
 Reinforced by rigorous statistical tools, the detectives conduct an in-depth investigation into each calendar effect. 
 Every suspected calendar anomaly is subjected to rigorous evaluation through formal hypothesis testing. In particular, t-tests are employed to determine whether average returns during specific calendar periods differ significantly from those observed in the rest of the sample. t-tests are employed to determine whether average returns during specific calendar periods differ significantly from those observed in the rest of the sample.
+
+<p align="center">
+  <img src="assets/img/perrymeme.png" width="500">
+</p>
+
 For these tests to be valid, several underlying assumptions must be satisfied, most notably the normality and independence of the data. To ensure the validity of the statistical tests, the investigation begins with a careful assessment of these assumptions. In particular, the normality of returns is examined prior to conducting the hypothesis tests.
 
 ### Normality Test
