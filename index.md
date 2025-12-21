@@ -302,21 +302,23 @@ $$
 
 After investigating all the calendar effect's windows using the Welch’s t-test, the detectives found an interesting lead in their story. The test rejects the null hypothesis of equal mean returns for all calendar effects, with reported p-values effectively equal to zero. This outcome reflects overwhelming statistical evidence that average returns differ between calendar and non-calendar periods; however it still doesn't prove casuality. The investigators also had to keep i mind that, given the extremely large sample size of daily NASDAQ data, even very small mean differences become statistically detectable causing this high signifigance result. As a result, they interperet these findings as evidence of statistical significance rather than economic magnitude. The detectives decides that the presence of the highly significant p-values does not imply that calendar effects are large, stable, or economically meaningful, which motivates them to use additional distribution-based tests and regression analyses to assess robustness beyond average returns.
 
+
 <details>
   <summary><strong>📈 Monday Effect</strong></summary
-<!-- ---
+---
   <p>
     Mondays are often said to deliver negative returns.
     Let’s see what the data actually says.
   </p>
---- -->
-  <div id="monday-plot" style="height:450px;"></div>
-</details>
-<iframe src="assets/img/plot_monday_effect_dec.html"
+        <iframe src="assets/img/plot_monday_effect_dec.html"
         width="100%" 
         height="550"
         frameborder="0">
 </iframe>
+---
+  <div id="monday-plot" style="height:450px;"></div>
+</details>
+
 <details>
   <summary><strong>📉 January Effect</strong></summary>
 <!-- ---
