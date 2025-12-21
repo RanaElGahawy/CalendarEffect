@@ -139,9 +139,7 @@ The detectives begin with an initial exploratory analysis aimed at visualizing p
 
 Profile of each suspect pattern
 
-
 <div class="flourish-embed flourish-cards" data-src="visualisation/26917943"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/26917943/thumbnail" width="100%" alt="cards visualization" /></noscript></div>
-
 
 
 
