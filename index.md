@@ -663,7 +663,7 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-
+### Linear Regression
 <details class="outer-details">
   <summary><strong>Linear Regression Summaries</strong></summary>
   <p>Choose Time Series for interest rate regression, or Clustering for volume and volatility.</p>
