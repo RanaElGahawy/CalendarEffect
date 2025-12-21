@@ -323,23 +323,22 @@ The crucial question of whether these calendar effects are statistically signifi
 
 <div class="section-text">
   <p>
+  </p>
+
+  <p style="margin-top:14px">
+  </p>
+</div>
     Reinforced by rigorous statistical tools, the detectives conduct an in-depth
     investigation into each calendar effect. Every suspected anomaly is subjected
     to formal hypothesis testing. In particular, Welch’s test, the Mann–Whitney U
     test, and regression analysis are employed to determine whether statistically
     significant differences in returns exist between calendar and non-calendar
     periods.
-  </p>
-
-  <p style="margin-top:14px">
     For these tests to be valid, several underlying assumptions must be satisfied,
     most notably the normality and independence of the data. To ensure the validity
     of the statistical tests, the investigation begins with a careful assessment
     of these assumptions, with particular attention paid to the distributional
     properties of returns.
-  </p>
-</div>
-
 
 ### Normality Test
 
