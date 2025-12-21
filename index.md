@@ -727,6 +727,11 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
 //////////////////////////////////////////////////////////////////////////////////////////
 
 ### Linear Regression
+
+<p align="center">
+  <img src="assets/img/perry_regression.png" width="500">
+</p>
+
 <details class="outer-details">
   <summary><strong>Linear Regression Summaries</strong></summary>
   <p>Choose Time Series for interest rate regression, or Clustering for volume and volatility.</p>
@@ -947,32 +952,6 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
 --- -->
   <div id="holiday-plot" style="height:450px;"></div>
 </details>
-
-Interpretation of the normality check
-
-// Results of t-tests //             
-
-Interpretation of t-tests
-
-When the assumption of normality is violated, the Mann–Whitney U test, a non-parametric alternative, is employed to compare return distributions across calendar periods. This approach allows the investigation to remain robust to deviations from normality.
-
-  // Results of Mann-Whitney test //
-
-  Interpretation of Mann-Whitney test
-
-
-To further strengthen the analysis, these tests are complemented by regression models that isolate the calendar component while controlling for other market dynamics (volume, volatility, fed funds rate).
-
-<p align="center">
-  <img src="assets/img/perry_regression.png" width="500">
-</p>
-
-
-// Results of regression //
-
-By estimating the statistical significance and magnitude of each effect, the detectives discovered that____ (interpretation of regressions)
-
-// Conclude on real effects, stated by FARMZ //
 
 
 ## Calendar effect during crises ?
