@@ -23,3 +23,10 @@ details {
   display: block;
   margin: 0 auto;
 }
+
+/* Indent nested <details> panels */
+details details {
+  margin-left: 1.25rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid #5D6591;
+}
