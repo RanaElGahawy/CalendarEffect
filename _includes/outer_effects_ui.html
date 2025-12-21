@@ -13,7 +13,6 @@
     --shadow: 0 18px 55px rgba(0,0,0,.22);
   }
 
-  /* Light mode (Beautiful Jekyll çoğu tema light) */
   @media (prefers-color-scheme: light){
     :root{
       --bg:#f6f7fb;
@@ -42,7 +41,6 @@
     border: 1px solid var(--line);
   }
 
-  /* HERO */
   .fx-hero{
     display:flex;
     justify-content:space-between;
@@ -91,7 +89,6 @@
   .kpi .k1{ color: var(--muted); font-size: 12px; }
   .kpi .k2{ color: var(--text); font-weight: 900; margin-top: 6px; }
 
-  /* LAYOUT */
   .fx-main{
     display:grid;
     grid-template-columns: 350px 1fr;
@@ -105,7 +102,6 @@
     .fx-main{ grid-template-columns: 1fr; }
   }
 
-  /* TABS (pills) */
   .tabs{
     display:flex;
     flex-wrap:wrap;
@@ -137,7 +133,6 @@
   .tab .t1{ color: var(--text); font-weight: 900; margin:0 0 3px; }
   .tab .t2{ color: var(--muted); font-size: 12px; margin:0; }
 
-  /* LEFT PANEL */
   .panel{
     position: sticky;
     top: 14px;
@@ -227,14 +222,7 @@
     border-color: rgba(122,162,247,.65);
     background: linear-gradient(90deg, rgba(122,162,247,.22), rgba(167,139,250,.18));
   }
-  .hint{
-    margin-top: 10px;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.35;
-  }
 
-  /* RIGHT CHART */
   .chart{
     border:1px solid var(--line);
     background: linear-gradient(180deg, var(--panel2), var(--panel));
@@ -284,7 +272,6 @@
   }
   #outerPlot{ height: 480px; }
 
-  /* Skeleton */
   .skeleton{
     position:absolute;
     inset:0;
@@ -307,7 +294,6 @@
     100%{ background-position: -200% 0; }
   }
 
-  /* Empty / Error state (şık) */
   .empty{
     position:absolute;
     inset:0;
@@ -338,9 +324,7 @@
     <div>
       <div class="fx-badge">📈 NASDAQ • Calendar Effects</div>
       <div class="fx-title">Interactive Effect Explorer</div>
-      <p class="fx-sub">
-        Bir efekti seç → parametreleri ayarla → grafikte şirket bazlı etkiyi gör.
-      </p>
+      <p class="fx-sub">Bir efekti seç → parametreleri ayarla → grafikte şirket bazlı etkiyi gör.</p>
     </div>
 
     <div class="kpis">
@@ -360,7 +344,12 @@
   </div>
 
   <div class="tabs" id="fxTabs">
-    <div class="tab active" data-eff="monday">
+    <!-- Default: SANTA aktif (çünkü sende sadece santa.json var) -->
+    <div class="tab active" data-eff="santa">
+      <p class="t1">Santa Rally</p><p class="t2">SCR win-rate by ticker</p>
+    </div>
+
+    <div class="tab" data-eff="monday">
       <p class="t1">Monday effect</p><p class="t2">Mon avg vs non-Mon avg</p>
     </div>
     <div class="tab" data-eff="january">
@@ -381,7 +370,6 @@
   </div>
 
   <div class="fx-main">
-    <!-- LEFT -->
     <aside class="panel">
       <div class="card">
         <div class="card-title">Controls</div>
@@ -413,7 +401,6 @@
 
         <div class="divider"></div>
 
-        <!-- Dynamic params (sadece gereken efektlerde görünsün) -->
         <div id="paramPanel" style="display:none;">
           <div class="card-title" style="margin:0 0 6px; font-size:14px;" id="paramTitle">Parameters</div>
 
@@ -437,26 +424,20 @@
               <option value="k5">5</option>
             </select>
           </div>
-
-          <div class="hint">.</div>
         </div>
 
         <div class="actions">
           <button class="btn primary" id="btnApply">Apply</button>
           <button class="btn" id="btnReset">Reset</button>
         </div>
-
-        <div class="hint">
-        </div>
       </div>
     </aside>
 
-    <!-- RIGHT -->
     <section class="chart">
       <div class="chart-head">
         <div>
-          <p class="chart-title" id="chartTitle">Monday effect</p>
-          <div class="chart-sub" id="chartSubtitle">Mon avg vs non-Mon avg</div>
+          <p class="chart-title" id="chartTitle">Santa Rally</p>
+          <div class="chart-sub" id="chartSubtitle">SCR win-rate by ticker</div>
         </div>
         <div class="chips">
           <span class="chip" id="chipParam">—</span>
@@ -488,6 +469,8 @@
 
 <script>
 (() => {
+  const BASE = "{{ site.baseurl }}";
+
   const tabs = document.getElementById("fxTabs");
   const buttons = [...tabs.querySelectorAll(".tab")];
 
@@ -522,6 +505,7 @@
   const btnReset = document.getElementById("btnReset");
 
   const META = {
+    santa:    { t:"Santa Rally",         s:"SCR win-rate by ticker" },
     monday:   { t:"Monday effect",       s:"Mon avg vs non-Mon avg" },
     january:  { t:"January effect",      s:"Jan avg vs other months" },
     tom:      { t:"Turn-of-the-Month",   s:"ToM avg vs non-ToM avg" },
@@ -544,9 +528,9 @@
 
   function syncUI(){
     const eff = activeEffect();
-    chartTitle.textContent = META[eff].t;
-    chartSubtitle.textContent = META[eff].s;
-    kpiEffect.textContent = META[eff].t;
+    chartTitle.textContent = META[eff]?.t ?? eff;
+    chartSubtitle.textContent = META[eff]?.s ?? "";
+    kpiEffect.textContent = META[eff]?.t ?? eff;
 
     const show = !!hasParam[eff];
     paramPanel.style.display = show ? "block" : "none";
@@ -572,16 +556,15 @@
   }
 
   function buildPath(){
-  const eff = activeEffect();
-  if(eff === "tom"){
-    return `assets/data/tom_${tomWindow.value}.json`;
+    const eff = activeEffect();
+    if(eff === "tom"){
+      return `assets/data/tom_${tomWindow.value}.json`;
+    }
+    if(eff === "holiday"){
+      return `assets/data/holiday_${holidayK.value}.json`;
+    }
+    return `assets/data/${eff}.json`;
   }
-  if(eff === "holiday"){
-    return `assets/data/holiday_${holidayK.value}.json`;
-  }
-  return `assets/data/${eff}.json`;
-}
-
 
   function showLoading(on){
     skeleton.style.display = on ? "block" : "none";
@@ -596,7 +579,6 @@
   }
 
   function updateKPIFromFig(fig){
-
     if(fig && fig.meta){
       kpiTop.textContent = fig.meta.top ?? "—";
       kpiScore.textContent = fig.meta.score ?? "—";
@@ -606,6 +588,62 @@
     }
   }
 
+  // PAYLOAD (export_santa_payload gibi) -> outer bar fig
+  function payloadToOuterFig(payload){
+    const sbt = payload?.seriesByTicker || {};
+    const tickers = Object.keys(sbt);
+
+    if(!tickers.length){
+      return { data:[], layout:{title:"No data"}, meta:{top:"—", score:"—"} };
+    }
+
+    const rows = tickers.map(t => ({
+      t,
+      score: (sbt[t].win_rate ?? 0)
+    }));
+
+    const q = (tickerSearch.value || "").trim().toUpperCase();
+    let filtered = rows;
+    if(q){
+      filtered = rows.filter(r => r.t.toUpperCase().includes(q));
+    }
+
+    const sm = sortMode.value;
+    if(sm === "impact_desc") filtered.sort((a,b)=> b.score - a.score);
+    if(sm === "impact_asc")  filtered.sort((a,b)=> a.score - b.score);
+    if(sm === "name_asc")    filtered.sort((a,b)=> a.t.localeCompare(b.t));
+
+    const TOPN = 50;
+    const top = filtered.slice(0, TOPN);
+
+    const x = top.map(r => r.t);
+    const y = top.map(r => r.score);
+
+    const topTicker = x[0] ?? "—";
+    const topScore = y[0];
+    const topScoreStr = Number.isFinite(topScore) ? topScore.toFixed(1) + "%" : "—";
+
+    const title = payload?.meta?.effect_name
+      ? `${payload.meta.effect_name} — Top ${top.length}`
+      : `Effect — Top ${top.length}`;
+
+    return {
+      data: [{
+        type: "bar",
+        x, y,
+        name: "Win rate (%)",
+        hovertemplate: "Ticker=%{x}<br>Win rate=%{y:.1f}%<extra></extra>"
+      }],
+      layout: {
+        title,
+        margin: { l: 60, r: 20, t: 60, b: 70 },
+        xaxis: { title: "Ticker", tickangle: -45 },
+        yaxis: { title: "Impact (Win rate %)", range: [0, 100] }
+      },
+      meta: { top: topTicker, score: topScoreStr }
+    };
+  }
+
   async function loadPlot(){
     const url = buildPath();
     chipFile.textContent = url;
@@ -613,24 +651,43 @@
     showEmpty(false);
     showLoading(true);
 
+    const fullUrl = (BASE ? BASE + "/" : "") + url;
+
     try{
-      const res = await fetch(url, { cache: "no-store" });
+      const res = await fetch(fullUrl, { cache: "no-store" });
       if(!res.ok){
         showLoading(false);
-        // Şık error state
         Plotly.purge(plotDiv);
         plotDiv.innerHTML = "";
-        showEmpty(true, "JSON yok (şimdilik)", "Bu dosyayı üretince grafik otomatik gelecek.", url);
+        showEmpty(true, "JSON yok (şimdilik)", "Bu dosyayı üretince grafik otomatik gelecek.", fullUrl);
         return;
       }
 
-      const fig = await res.json();
+      // robust parse: önce text
+      const txt = await res.text();
 
+      if(txt.trim().startsWith("<")){
+        throw new Error("JSON yerine HTML geldi (path/baseurl yanlış olabilir). URL=" + fullUrl);
+      }
 
-      await Plotly.react(plotDiv, fig.data, fig.layout, { displaylogo:false, responsive:true });
+      let obj;
+      try{ obj = JSON.parse(txt); }
+      catch(e){ throw new Error("JSON bozuk/yarım: " + e.message + " | tail=" + txt.slice(-90)); }
 
-      updateKPIFromFig(fig);
+      // payload mı figür mü?
+      if(obj && obj.seriesByTicker && !obj.data){
+        const outFig = payloadToOuterFig(obj);
+        await Plotly.react(plotDiv, outFig.data, outFig.layout, { displaylogo:false, responsive:true });
+        updateKPIFromFig(outFig);
+        showLoading(false);
+        return;
+      }
+
+      // normal plotly fig
+      await Plotly.react(plotDiv, obj.data, obj.layout, { displaylogo:false, responsive:true });
+      updateKPIFromFig(obj);
       showLoading(false);
+
     }catch(err){
       showLoading(false);
       Plotly.purge(plotDiv);
@@ -639,18 +696,16 @@
     }
   }
 
-  // Events
   buttons.forEach(b => b.addEventListener("click", () => setActive(b.dataset.eff)));
-
   tomWindow?.addEventListener("change", () => { syncUI(); loadPlot(); });
   holidayK?.addEventListener("change", () => { syncUI(); loadPlot(); });
 
   btnApply.addEventListener("click", loadPlot);
 
   btnReset.addEventListener("click", () => {
-    // reset defaults
     buttons.forEach(b => b.classList.remove("active"));
-    buttons[0].classList.add("active"); // monday default
+    const santaBtn = buttons.find(b => b.dataset.eff === "santa");
+    if(santaBtn) santaBtn.classList.add("active");
     if(tomWindow) tomWindow.value = "w6";
     if(holidayK) holidayK.value = "k2";
     tickerSearch.value = "";
@@ -660,7 +715,6 @@
     loadPlot();
   });
 
-  // init
   syncUI();
   loadPlot();
 })();
