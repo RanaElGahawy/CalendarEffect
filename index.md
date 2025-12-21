@@ -979,7 +979,6 @@ permalink: /effects/
 
 
 ### Linear Regression
-
 <style>
 .section-banner-sm{
   position: relative;
@@ -1010,16 +1009,17 @@ permalink: /effects/
   color:white;
   font-size:1.6rem;
   font-weight:750;
-  text-align:center; /* le titre reste centré */
+  text-align:center;
   padding:0 14px;
 }
 
-.section-text{
-  max-width: 820px;          /* largeur type article */
-  margin: 0 auto 36px auto;  /* centre le bloc, pas le texte */
+/* ✅ Force le texte à gauche même si le thème centre tout */
+.reg-text p{
+  text-align: left !important;
+  max-width: 820px;
+  margin: 0 auto 18px auto;
   line-height: 1.6;
   font-size: 1.02rem;
-  text-align: left;          /* ✅ TEXTE ALIGNÉ À GAUCHE */
 }
 </style>
 
@@ -1029,7 +1029,7 @@ permalink: /effects/
   </div>
 </div>
 
-<div class="section-text">
+<div class="reg-text">
   <p>
     To further assess the presence of calendar effects, linear regression models
     are employed to quantify the relationship between calendar indicators and
