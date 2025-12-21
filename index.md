@@ -473,6 +473,274 @@ In the graph below you can choose a calendar effect to see the results of each o
 
 FURKAN, PLEASE TRY TO ADD THESE IN 
 AN INTERACTIVE GRAPH
+---
+layout: page
+title: Calendar Effects – Interactive Tests
+permalink: /effects/
+---
+
+<div class="fx-wrap">
+  <div class="fx-hero">
+    <div class="fx-title">Calendar Effects – Interactive Significance Explorer</div>
+    <div class="fx-sub">
+      Effect ve test seç. Grafik JSON’dan okunup anında güncellenir.
+    </div>
+  </div>
+
+  <div class="fx-card">
+    <div class="fx-controls">
+      <div class="fx-field">
+        <label for="groupSelect">Group</label>
+        <select id="groupSelect"></select>
+      </div>
+
+      <div class="fx-field">
+        <label for="effectSelect">Effect</label>
+        <select id="effectSelect"></select>
+      </div>
+
+      <div class="fx-field">
+        <label for="testSelect">Test</label>
+        <select id="testSelect">
+          <option value="ttest">t-test</option>
+          <option value="mwu">Mann–Whitney U</option>
+        </select>
+      </div>
+
+      <div class="fx-field">
+        <label for="sortSelect">Sort</label>
+        <select id="sortSelect">
+          <option value="p">p-value (asc)</option>
+          <option value="effectsize">effect size (desc)</option>
+          <option value="absstat">|stat| / U (desc)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="fx-kpis" id="kpiRow"></div>
+    <div id="plot" class="fx-plot"></div>
+    <div class="fx-footnote" id="footnote"></div>
+  </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+
+<style>
+  .fx-wrap{max-width:1100px;margin:1.5rem auto;padding:0 1rem;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+  .fx-hero{margin-bottom:14px}
+  .fx-title{font-size:1.55rem;font-weight:850;letter-spacing:.2px}
+  .fx-sub{color:rgba(0,0,0,.65);margin-top:6px;line-height:1.4}
+
+  .fx-card{
+    background:#fff;border:1px solid rgba(0,0,0,.10);
+    border-radius:18px;padding:14px 14px 16px;
+    box-shadow:0 14px 40px rgba(0,0,0,.06);
+  }
+
+  .fx-controls{
+    display:grid;grid-template-columns:1.1fr 1.4fr 1fr 1fr;gap:10px;
+    margin-bottom:12px
+  }
+  @media(max-width:900px){.fx-controls{grid-template-columns:1fr}}
+  .fx-field label{display:block;font-size:.85rem;color:rgba(0,0,0,.65);margin:2px 0 6px}
+  .fx-field select{
+    width:100%;padding:10px 12px;border-radius:12px;
+    border:1px solid rgba(0,0,0,.14);background:#fff;outline:none;
+  }
+
+  .fx-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0 12px}
+  @media(max-width:900px){.fx-kpis{grid-template-columns:repeat(2,1fr)}}
+  .kpi{
+    border:1px solid rgba(0,0,0,.10);
+    border-radius:14px;padding:10px 12px;
+    background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,0));
+  }
+  .kpi .k{font-size:.80rem;color:rgba(0,0,0,.6)}
+  .kpi .v{font-size:1.05rem;font-weight:780;margin-top:4px}
+
+  .fx-plot{height:520px}
+  .fx-footnote{margin-top:10px;color:rgba(0,0,0,.62);font-size:.92rem;line-height:1.4}
+</style>
+
+<script>
+(async function(){
+  const url = "{{ '/assets/data/effects_tests.json' | relative_url }}";
+  const res = await fetch(url);
+  const data = await res.json();
+  const rows = data.rows || [];
+
+  const groupSelect = document.getElementById("groupSelect");
+  const effectSelect = document.getElementById("effectSelect");
+  const testSelect = document.getElementById("testSelect");
+  const sortSelect = document.getElementById("sortSelect");
+  const kpiRow = document.getElementById("kpiRow");
+  const footnote = document.getElementById("footnote");
+
+  const fmtP = (p) => {
+    if (p === null || p === undefined || Number.isNaN(p)) return "NA";
+    if (p === 0) return "< 1e-16";
+    if (p < 1e-4) return p.toExponential(2);
+    return p.toFixed(4);
+  };
+
+  const mkKPI = (k, v) => {
+    const d = document.createElement("div");
+    d.className = "kpi";
+    d.innerHTML = `<div class="k">${k}</div><div class="v">${v}</div>`;
+    return d;
+  };
+
+  // Build groups
+  const groups = Array.from(new Set(rows.map(r => r.group || "All"))).sort((a,b)=>a.localeCompare(b));
+  groups.forEach(g => {
+    const opt = document.createElement("option");
+    opt.value = g; opt.textContent = g;
+    groupSelect.appendChild(opt);
+  });
+  groupSelect.value = groups[0] || "All";
+
+  function refreshEffects(){
+    effectSelect.innerHTML = "";
+    const g = groupSelect.value;
+    const effects = Array.from(new Set(rows.filter(r => (r.group||"All")===g).map(r => r.effect)))
+      .sort((a,b)=>a.localeCompare(b));
+
+    effects.forEach(e => {
+      const opt = document.createElement("option");
+      opt.value = e; opt.textContent = e;
+      effectSelect.appendChild(opt);
+    });
+    if (effects.length) effectSelect.value = effects[0];
+  }
+
+  function getFiltered(){
+    const g = groupSelect.value;
+    const eff = effectSelect.value;
+    const test = testSelect.value;
+    return rows.filter(r => (r.group||"All")===g && r.effect===eff && r.test===test);
+  }
+
+  function sortRows(rws){
+    const mode = sortSelect.value;
+    const copy = [...rws];
+
+    if (mode === "p"){
+      copy.sort((a,b) => (a.p ?? 1) - (b.p ?? 1));
+      return copy;
+    }
+
+    if (mode === "absstat"){
+      const getStat = (r) => (r.test === "ttest" ? (r.stat ?? 0) : (r.u ?? 0));
+      copy.sort((a,b) => Math.abs(getStat(b)) - Math.abs(getStat(a)));
+      return copy;
+    }
+
+    // effectsize
+    copy.sort((a,b) => {
+      const ea = (a.test === "mwu" && a.cliffs_delta != null) ? Math.abs(a.cliffs_delta) : Math.abs(a.stat ?? 0);
+      const eb = (b.test === "mwu" && b.cliffs_delta != null) ? Math.abs(b.cliffs_delta) : Math.abs(b.stat ?? 0);
+      return eb - ea;
+    });
+    return copy;
+  }
+
+  function updateKPIs(rws){
+    kpiRow.innerHTML = "";
+    const g = groupSelect.value;
+    const eff = effectSelect.value;
+    const test = testSelect.value;
+
+    const n = rws.length;
+    const minP = n ? Math.min(...rws.map(x => (x.p ?? 1))) : null;
+
+    kpiRow.appendChild(mkKPI("Group", g));
+    kpiRow.appendChild(mkKPI("Effect", eff));
+    kpiRow.appendChild(mkKPI("Test", test === "ttest" ? "t-test" : "Mann–Whitney U"));
+    kpiRow.appendChild(mkKPI("Best p", n ? fmtP(minP) : "NA"));
+  }
+
+  function buildFigure(rws){
+    const x = rws.map(r => r.contrast || r.effect || "(contrast)");
+    const y = rws.map(r => r.test === "ttest" ? r.stat : r.u);
+
+    const size = rws.map(r => {
+      if (r.test === "mwu" && r.cliffs_delta != null) return 10 + 70*Math.min(1, Math.abs(r.cliffs_delta));
+      return 10 + 25*Math.min(1, Math.abs(r.stat ?? 0)/10);
+    });
+
+    const hover = rws.map(r => {
+      if (r.test === "ttest"){
+        return `Contrast: <b>${r.contrast || ""}</b><br>` +
+               `t-stat: <b>${(r.stat ?? 0).toFixed(4)}</b><br>` +
+               `p: <b>${fmtP(r.p)}</b>`;
+      }
+      return `Contrast: <b>${r.contrast || ""}</b><br>` +
+             `U: <b>${(r.u ?? 0).toFixed(2)}</b><br>` +
+             `p: <b>${fmtP(r.p)}</b><br>` +
+             `prob superiority: <b>${(r.prob_superiority ?? 0).toFixed(4)}</b><br>` +
+             `Cliff's delta: <b>${(r.cliffs_delta ?? 0).toFixed(4)}</b>`;
+    });
+
+    const trace = {
+      type: "scatter",
+      mode: "markers",
+      x, y,
+      text: hover,
+      hoverinfo: "text",
+      marker: { size, opacity: 0.86, line: {width: 1} }
+    };
+
+    const title = (testSelect.value === "ttest")
+      ? "t-test statistic (by contrast)"
+      : "Mann–Whitney U statistic (by contrast)";
+
+    const layout = {
+      title: {text: title, x: 0.02, xanchor: "left"},
+      margin: {l: 70, r: 20, t: 60, b: 130},
+      xaxis: {title: "Contrast", tickangle: -25, automargin: true},
+      yaxis: {title: (testSelect.value === "ttest") ? "t-statistic" : "U statistic", zeroline: true},
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "rgba(0,0,0,0)",
+      height: 520,
+      showlegend: false
+    };
+
+    return {trace, layout};
+  }
+
+  function updateFootnote(rws){
+    if (!rws.length){
+      footnote.textContent = "No rows for this selection.";
+      return;
+    }
+    if (testSelect.value === "mwu"){
+      footnote.innerHTML =
+        `Bubble size ≈ <b>|Cliff’s delta|</b> (effect size). Hover ile detayları gör.`;
+    } else {
+      footnote.innerHTML =
+        `Bubble size ≈ <b>|t-stat|</b>. Hover ile t-stat ve p-value gör.`;
+    }
+  }
+
+  function render(){
+    let rws = getFiltered();
+    rws = sortRows(rws);
+    updateKPIs(rws);
+    updateFootnote(rws);
+
+    const fig = buildFigure(rws);
+    Plotly.react("plot", [fig.trace], fig.layout, {displayModeBar: true, responsive: true});
+  }
+
+  groupSelect.addEventListener("change", () => { refreshEffects(); render(); });
+  effectSelect.addEventListener("change", render);
+  testSelect.addEventListener("change", render);
+  sortSelect.addEventListener("change", render);
+
+  refreshEffects();
+  render();
+})();
+</script>
 
 ///////////////////////////////////////
 [January Effect] T-test: 29.7588, P-value: 0.0000
