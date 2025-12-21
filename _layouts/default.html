@@ -22,23 +22,4 @@ layout: base
       {% endfor %}
     </div>
   {% endif %}
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll("details").forEach((d) => {
-    d.addEventListener("toggle", () => {
-      if (!d.open) return;
-
-      // MathJax v3
-      if (window.MathJax && MathJax.typesetPromise) {
-        MathJax.typesetPromise([d]);
-      }
-      // MathJax v2 fallback
-      else if (window.MathJax && MathJax.Hub && MathJax.Hub.Queue) {
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub, d]);
-      }
-    });
-  });
-});
-</script>
-
 </main>
