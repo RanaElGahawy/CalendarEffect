@@ -513,46 +513,46 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
 Choose Time Series for interest rate regression, or Clustering for volume and volatility.
    <details markdown="1">
   <summary><strong>Time Series</strong></summary>
-           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+           <!-- <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
   <details> 
     <summary style = "font-size: 18px; cursor: pointer;"><b>📈 Monday Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+      <img src="/assets/img/jan_fed.png" alt="Description of image">
    </details>
-</div>
+</div> -->
            <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
   <details> 
     <summary style = "font-size: 18px; cursor: pointer;"><b>📉 January Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+      <img src="/assets/img/jan_fed.png" alt="Description of image">
    </details>
 </div>
            <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
   <details> 
     <summary style = "font-size: 18px; cursor: pointer;"><b>🎅 Santa Claus Rally Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+      <img src="/assets/img/scr_fed" alt="Description of image">
    </details>
 </div>
-           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+           <!-- <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
   <details> 
     <summary style = "font-size: 18px; cursor: pointer;"><b>📉 Turn-of-the-Month Effect</b> </summary>   
       <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
    </details>
-</div>
-           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
+</div> -->
+           <!-- <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
   <details> 
     <summary style = "font-size: 18px; cursor: pointer;"><b>📆 Half-Month Effect</b> </summary>   
       <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
    </details>
-</div>
+</div> -->
            <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
   <details> 
     <summary style = "font-size: 18px; cursor: pointer;"><b>🎃 Halloween Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+      <img src="/assets/img/may_fed" alt="Description of image">
    </details>
 </div>
            <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
   <details> 
     <summary style = "font-size: 18px; cursor: pointer;"><b>🎉 Holiday Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
+      <img src="/assets/img/hol_fed" alt="Description of image">
    </details>
 </div>
 </details>    
