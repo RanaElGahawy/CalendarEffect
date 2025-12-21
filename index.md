@@ -1532,36 +1532,31 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
     </div>
     <ul>
       <li><b>Before vs after:</b> Are returns higher during the turn-of-the-month window?</li>
-      <li><b>Decay:</b> Does the effect weaken over decades (market learning)?</li>
-      <li><b>Instability:</b> Does it flip sign during crashes & crises?</li>
-      <li><b>Exchange focus:</b> Is it mainly an equity-exchange phenomenon?</li>
-      <li><b>Macro link:</b> Does a monetary regime change amplify or mute it?</li>
+      <li><b>Decay:</b> Does the effect weaken over decades?</li>
+      <li><b>Instability:</b> Does it flip sign during crises?</li>
+      <li><b>Exchange focus:</b> Is it mainly an equity phenomenon?</li>
+      <li><b>Macro link:</b> Do monetary regimes amplify it?</li>
     </ul>
   </div>
 
   <div class="lens-tabs">
-    <button class="active" data-lens="tom-decades">Across Decades</button>
-    <button data-lens="tom-exchanges">Across Exchanges</button>
+    <button class="active" data-lens="decades">Across Decades</button>
+    <button data-lens="exchanges">Across Exchanges</button>
   </div>
 
   <!-- ========== Across Decades ========== -->
   <div id="tom-decades" class="lens-content">
     <iframe src="assets/img/plot_tom_effect_by_decade.html"></iframe>
-    <p>
-      <!-- Add your comment here -->
-    </p>
+    <p><!-- Add your comment here --></p>
   </div>
 
   <!-- ========== Across Exchanges ========== -->
   <div id="tom-exchanges" class="lens-content hidden">
     <iframe src="assets/img/plot_tom_by_exchange.html"></iframe>
-    <p>
-      <!-- Add your comment here -->
-    </p>
+    <p><!-- Add your comment here --></p>
   </div>
 
 </section>
-
 
 
 
