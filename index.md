@@ -39,25 +39,26 @@ Despite the large body of literature, there is still no clear consensus on wheth
 <div class="team5">
 <div class="team5-grid">
 
+
 <div class="team5-card" data-name="Zouhair" data-role="Investigation Lead"
 data-img="assets/img/littlezouhair.png"
-data-story="Zouhair works on.">
+data-story="Zouhair conducts interviews, interrogations, and on-site investigations. He also gathers first-hand testimonies and observations">
 <img src="assets/img/littlezouhair.png">
-<div class="team5-body"><p class="team5-name">Zouhair</p><p class="team5-role">Investigation Lead</p></div>
+<div class="team5-body"><p class="team5-name">Zouhair</p><p class="team5-role"></p>Field investigator </div>
 </div>
 
 <div class="team5-card" data-name="Melvyn" data-role="Paris"
 data-img="assets/img/littlemelvyn.png"
-data-story="Melvyn builds .">
+data-story="Melvyn connects clues, timelines, and behaviors. He identifies inconsistencies, motives, and hidden patterns">
 <img src="assets/img/littlemelvyn.png">
-<div class="team5-body"><p class="team5-name">Melvyn</p><p class="team5-role">Paris</p></div>
+<div class="team5-body"><p class="team5-name">Melvyn</p><p class="team5-role">Analyst & Pattern Specialist</p></div>
 </div>
 
 <div class="team5-card" data-name="Furkan" data-role="Paris"
 data-img="assets/img/littlefurkan.png"
-data-story="Furkan works on ">
+data-story="Furkan analyzes physical evidence, documents, photos, and forensic clues. He ensures accuracy, consistency, and traceability of findings ">
 <img src="assets/img/littlefurkan.png">
-<div class="team5-body"><p class="team5-name">Furkan</p><p class="team5-role">Paris</p></div>
+<div class="team5-body"><p class="team5-name">Furkan</p><p class="team5-role">Evidence & Forensics Specialist</p></div>
 </div>
 
 </div>
