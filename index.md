@@ -1193,12 +1193,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
 </details>
 
 
----
-layout: home
-title: Market Detectives
-subtitle: Investigating Calendar Effects
-use-site-title: true
----
+Investigating Calendar Effects
 
 <style>
 /* ===============================
