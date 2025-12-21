@@ -1,0 +1,25 @@
+/* Allow nested details to expand properly */
+details {
+  overflow: visible;
+}
+
+/* Indentation styling */
+.effect-block {
+  border-left: 4px solid #5D6591;
+  padding-left: 16px;
+  margin: 12px 0;
+}
+
+/* Image container */
+.image-box {
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* Image safety */
+.image-box img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
