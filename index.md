@@ -676,7 +676,7 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
       <details>
         <summary><b>📉 January Effect</b></summary>
         <div class="image-box">
-          <img src="/assets/img/jan_fed.png" alt="January Effect – Interest Rate">
+          <img src="{{ '/assets/img/jan_vol.png' | relative_url }}" alt="January Effect">
         </div>
       </details>
     </div>
