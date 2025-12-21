@@ -298,10 +298,48 @@ $$
 
 After investigating all the calendar effect's windows using the Welch’s t-test, the detectives found an interesting lead in their story. The test rejects the null hypothesis of equal mean returns for all calendar effects, with reported p-values effectively equal to zero. This outcome reflects overwhelming statistical evidence that average returns differ between calendar and non-calendar periods; however it still doesn't prove casuality. The investigators also had to keep i mind that, given the extremely large sample size of daily NASDAQ data, even very small mean differences become statistically detectable causing this high signifigance result. As a result, they interperet these findings as evidence of statistical significance rather than economic magnitude. The detectives decides that the presence of the highly significant p-values does not imply that calendar effects are large, stable, or economically meaningful, which motivates them to go for another independent witness as well. 
 
-### Mann–Whitney U test
+### Mann–Whitney U Test
 
 To determine whether calendar effects reflect a systematic shift in the distribution of returns, rather than the effect of rare outliers, the detectives call in a second independent witness: the Mann–Whitney U test. Unlike Welch’s test, Mann–Whitney does not rely on normality distribution assumptions and does not compare averages. Instead, it evaluates whether returns from one calendar period tend to be consistently higher or lower than those from another period across the entire distribution. They hope that by interviewing a mean-based witness and a rank-based one, it would help them distinguish between calendar effects driven by behavioral patterns and those driven by a few rare market events.
 
+
+<details markdown="1">
+  <summary><strong>Hypotheses</strong></summary>
+When investigating the calendar effects for most of the suspects, the investigators have the hypothesis that the returns during the calendar windows are higher than the rest of the data; however in the Middle of the month effect they assume the opposite acording to it's definition. Finally, when testing the Monday effect, the make a pair-wise test between the 5 trading daysof the week.
+$$
+H_0:\ \mu_1 = \mu_2
+\qquad
+H_1:\ \mu_1 \neq \mu_2
+$$
+
+</details>
+
+<details markdown="1">
+  <summary><strong>Equations of Mann–Whitney U Test</strong></summary>
+When both samples are large (typically $n_1, n_2 \gtrsim 20$), the Mann–Whitney $U$ statistic is approximately normally distributed.
+
+$$
+\mu_U = \frac{n_1 n_2}{2}
+$$
+
+$$
+\sigma_U = \sqrt{\frac{n_1 n_2 (n_1 + n_2 + 1)}{12}}
+$$
+
+$$
+Z = \frac{U - \mu_U}{\sigma_U}
+$$
+</details>
+
+Again like the Welch's test the investigators got p-values that were almost zero in most of the calendar effects, which as they already knew is because of the very large number of samples  which makes the tiny and economically negligible differences between return distributions become statistically detectable. In other words, the test provides overwhelming statistical evidence that returns inside those calendar windows are not drawn from the same distribution as returns outside the window, but it does not tell us whether the effect is meaningful in practice. 
+
+On the other hand, the Middle of The Month window got a p-value of 1, which indicated that there is no significant difference between the returns during the middle of th emonths compared with the rest of the days. This was their first interesting lead that *Middle of The Month* might not be a criminal after all.
+
+Finally, the test between Wednesday and Thursday got a p-value of 0.25, which also rejects the null hypothesis and indicates that there is not significant difference between the returns of both days. However, to recall the Monday effect; the investigaros assumes that the difference would only be beween Monday, Friday, and the rest of the days. Since, the original crime is that returns of Fridays are the highest, Mondays are the lowest, and the rest of the week are almost similar. This is still an interesting lead as it showed that a huge part of the assumption is correct which is the similarity between Wednesday and Thursday.
+
+Finally, after investigating these two witnesses and having almost a *p*-value equal to zero in most of the calendar effect windows, the investogators reached a conclusion: with massive datasets, statistical significance is cheap and not enough. So to have more clues that can help them tighten their analysis, they decided to interview another witness and ask him about the effect sizes.
+
+### Effect Sizes
 
 
 <details>
