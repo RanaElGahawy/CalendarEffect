@@ -1088,6 +1088,16 @@ In this section, we investigate the **temporal stability** of each calendar effe
           </div>
           <div class="fx-chip">classic</div>
         </button>
+        <button class="fx-card" 
+           data-key="sell" 
+           data-title="Sell in May" 
+           data-desc="Winter (Nov–Apr) vs Summer (May–Oct) return gap." 
+           data-img="{{ site.baseurl }}/assets/img/sell_in_may_company.png"> 
+           <div class="fx-icon">MAY</div> <div class="fx-card-main"> 
+           <div class="fx-card-title">Sell in May</div> 
+           <div class="fx-card-sub">Season regime</div> 
+           </div> <div class="fx-chip">macro</div> 
+        </button>
 
         <button class="fx-card"
           data-key="holiday"
