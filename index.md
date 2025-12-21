@@ -1676,7 +1676,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
       class="lens-iframe"
       loading="lazy"
       style="width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/img/sell_in_may_heatmap.png"
+      src="{{ site.baseurl }}/assets/img/sell_in_may_heeatmap.png"
       title="Sell in May - Heatmap">
     </iframe>
   </div>
