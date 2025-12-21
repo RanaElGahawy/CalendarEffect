@@ -193,13 +193,13 @@ $$
 
   <div markdown="1">
 
-#### Step 1: Compute sample moments
+#### Sample moments
 
-Given observations $$ x_1, \dots, x_n $$, define the central moments:
+Given observations $$ x_1, \dots, x_n $$, the central moments is defined as:
 $$
 m_k = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^k
 $$
-From these, compute:
+From these, we compute:
 
 - **Sample skewness**
 
@@ -215,7 +215,7 @@ $$
 
 ---
 
-#### Step 2: Standardize skewness and kurtosis
+#### Standardize skewness and kurtosis
 
 The skewness and kurtosis statistics are transformed into approximately
 standard normal variables:
@@ -230,7 +230,7 @@ $$
 
 ---
 
-#### Step 3: Omnibus test statistic
+#### Omnibus test statistic
 
 $$
 K^2 = Z_1^2 + Z_2^2
@@ -268,10 +268,7 @@ $$
 <details markdown="1">
   <summary><strong>Equations of Welch's Test</strong></summary>
 
-### Test statistic
-
-Let:
-
+Given:
 - $$ \bar{x}_1, \bar{x}_2 $$ = sample means  
 - $$ s_1^2, s_2^2 $$ = sample variances  
 - $$ n_1, n_2 $$ = sample sizes  
@@ -287,11 +284,19 @@ $$
 
 </details>
 
+
+<div style="border-left: 4px solid #432750; padding-left: 20px; font-size: 18px; margin-top: 2;">
+  <details open> 
+    <summary style = "font-size: 18px; cursor: pointer;"><b>Central Limit Theorem</b></summary>     
+      <b>The Central Limit Theorem (CLT) is a cornerstone of statistics, stating that the distribution of sample means from any population will approach a normal distribution as the sample size gets large, regardless of the original population's shape. This convergence to normality, usually with samples of 30 or more ($$ n >= 30$$).
+   </details>
+</div>
+
 <details markdown="1">
-  <summary><strong>Central Limit Theorem</strong></summary>
-        <P>
+  <summary><strong></strong></summary>
+        <b>
         The Central Limit Theorem (CLT) is a cornerstone of statistics, stating that the distribution of sample means from any population will approach a normal distribution as the sample size gets large, regardless of the original population's shape. This convergence to normality, usually with samples of 30 or more ($$ n >= 30$$).
-        </P>
+        </b>
 
 </details>
 
