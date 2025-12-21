@@ -151,11 +151,6 @@ The visual evidence reveals several intriguing regularities. Returns appear to d
  For each calendar effect, average returns are computed and compared across relevant time periods. By examining these averages, the team aims to determine whether any of the proposed calendar effects already appear detectable at the mean level.
 
 Of course, simply looking at mean returns is not sufficient to conclude whether a calendar effect is real or statistically valid. Average differences may offer intuition, but they do not prove significance. These preliminary comparisons serve only as an initial diagnostic.  
-
-  <img src="assets/img/perry_mean.png" width="500">
-</p>
-
-
 The crucial question of whether these calendar effects are statistically significant needs to be investigated. This requires moving beyond visual evidence to formal statistical testing.
 
 ## Are the Calendar effects real ? 
@@ -168,7 +163,7 @@ The crucial question of whether these calendar effects are statistically signifi
   }
 
   .content-image{
-  width: 50%;
+  width: 100%;
   max-width: 800px;
   height: auto;
 }
@@ -190,12 +185,7 @@ The crucial question of whether these calendar effects are statistically signifi
 
   <div class="content-text">
     <p>
-      Reinforced by rigorous statistical tools, the detectives conduct an in-depth investigation into each calendar effect.
-      Every suspected calendar anomaly is subjected to rigorous evaluation through formal hypothesis testing.
-    </p>
-
-    <p>
-      In particular, welch's test, mann-whitney u test and regression are employed to determine whether statistically significant differences in returns exist between calendar and non-calendar effect period
+      Reinforced by rigorous statistical tools, the detectives conduct an in-depth investigation into each calendar effect. Every suspected calendar anomaly is subjected to rigorous evaluation through formal          hypothesis testing. In particular, welch's test, mann-whitney u test and regression are employed to determine whether statistically significant differences in returns exist between calendar and non-calendar effect period.
     </p>
   </div>
 </div>
