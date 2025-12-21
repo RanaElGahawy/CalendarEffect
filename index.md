@@ -348,27 +348,27 @@ In this section, we investigate the **temporal stability** of each calendar effe
     </button>
 
     <button class="effect-btn"
-            data-img="{{ site.baseurl }}/assets/effects/sell_in_may.png">
+            data-img="{{ site.baseurl }}/assets/img/sell_in_may.png">
       Sell in May
     </button>
 
     <button class="effect-btn"
-            data-img="{{ site.baseurl }}/assets/effects/tom_company.png">
+            data-img="{{ site.baseurl }}/assets/img/tom_company.png">
       Turn-of-Month
     </button>
 
     <button class="effect-btn"
-            data-img="{{ site.baseurl }}/assets/effects/monday_company.png">
+            data-img="{{ site.baseurl }}/assets/img/monday_company.png">
       Monday Effect
     </button>
 
     <button class="effect-btn"
-            data-img="{{ site.baseurl }}/assets/effects/holiday.png">
+            data-img="{{ site.baseurl }}/assets/img/holiday.png">
       Holiday Effect
     </button>
 
     <button class="effect-btn"
-            data-img="{{ site.baseurl }}/assets/effects/santa_claus_rally_company.png">
+            data-img="{{ site.baseurl }}/assets/img/santa_claus_rally_company.png">
       Santa Rally
     </button>
   </div>
