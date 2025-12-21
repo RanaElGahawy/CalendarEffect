@@ -319,6 +319,20 @@ In this section, we investigate the **temporal stability** of each calendar effe
 {% include outer_effects_ui.html %}
 
 
+<div style="margin:20px 0;">
+  <a href="{{ site.baseurl }}/santa-test/"
+     style="
+       display:inline-block;
+       padding:12px 18px;
+       border-radius:12px;
+       background:#2563eb;
+       color:white;
+       font-weight:600;
+       text-decoration:none;
+     ">
+    Explore Santa Claus Effect
+  </a>
+</div>
 
 
 
