@@ -1088,19 +1088,6 @@ In this section, we investigate the **temporal stability** of each calendar effe
         </button>
 
         <button class="fx-card"
-          data-key="holiday"
-          data-title="Holiday Effect"
-          data-desc="Pre/post-holiday behavior: abnormal returns around holidays."
-          data-img="{{ site.baseurl }}/assets/img/holiday.png">
-          <div class="fx-icon">HOL</div>
-          <div class="fx-card-main">
-            <div class="fx-card-title">Holiday Effect</div>
-            <div class="fx-card-sub">Event timing</div>
-          </div>
-          <div class="fx-chip">event</div>
-        </button>
-
-        <button class="fx-card"
           data-key="santa"
           data-title="Santa Rally"
           data-desc="End-of-year rally window: late Dec to early Jan pattern."
