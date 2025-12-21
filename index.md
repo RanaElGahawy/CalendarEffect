@@ -498,100 +498,96 @@ probability_superiority: 0.4741, cliffs_delta: -0.051771
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
-<details markdown="1">
+<details markdown="1" class="outer-details">
   <summary><strong>Linear Regression Summaries</strong></summary>
-Choose Time Series for interest rate regression, or Clustering for volume and volatility.
-   <details markdown="1">
-  <summary><strong>Time Series</strong></summary>
-           <!-- <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>📈 Monday Effect</b> </summary>   
-      <img src="/assets/img/jan_fed.png" alt="Description of image">
-   </details>
-</div> -->
-           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>📉 January Effect</b> </summary>   
-      <img src="/assets/img/jan_fed.png" alt="Description of image">
-   </details>
-</div>
-           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>🎅 Santa Claus Rally Effect</b> </summary>   
-      <img src="/assets/img/scr_fed" alt="Description of image">
-   </details>
-</div>
-           <!-- <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>📉 Turn-of-the-Month Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
-   </details>
-</div> -->
-           <!-- <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>📆 Half-Month Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
-   </details>
-</div> -->
-           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>🎃 Halloween Effect</b> </summary>   
-      <img src="/assets/img/may_fed" alt="Description of image">
-   </details>
-</div>
-           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>🎉 Holiday Effect</b> </summary>   
-      <img src="/assets/img/hol_fed" alt="Description of image">
-   </details>
-</div>
-</details>    
-   <details markdown="1">
-  <summary><strong>Time Clustering</strong></summary>
-  <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>📈 Monday Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
-   </details>
-</div>
-           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>📉 January Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
-   </details>
-</div>
-           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>🎅 Santa Claus Rally Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
-   </details>
-</div>
-           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>📉 Turn-of-the-Month Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
-   </details>
-</div>
-           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>📆 Half-Month Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
-   </details>
-</div>
-           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>🎃 Halloween Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
-   </details>
-</div>
-           <div style="border-left: 4px solid #5D6591; padding-left: 20px; font-size: 18px; margin-top: 0;">
-  <details> 
-    <summary style = "font-size: 18px; cursor: pointer;"><b>🎉 Holiday Effect</b> </summary>   
-      <!-- <img src="/assets/img/regression_results.png" alt="Description of image"> -->
-   </details>
-</div>      
-</details>  
+  <p>Choose Time Series for interest rate regression, or Clustering for volume and volatility.</p>
+
+  <!-- ================= TIME SERIES ================= -->
+  <details class="mid-details">
+    <summary><strong>Time Series</strong></summary>
+
+    <div class="effect-block">
+      <details>
+        <summary><b>📉 January Effect</b></summary>
+        <div class="image-box">
+          <img src="/assets/img/jan_fed.png" alt="January Effect – Interest Rate">
+        </div>
+      </details>
+    </div>
+
+    <div class="effect-block">
+      <details>
+        <summary><b>🎅 Santa Claus Rally Effect</b></summary>
+        <div class="image-box">
+          <img src="/assets/img/scr_fed.png" alt="Santa Claus Rally – Interest Rate">
+        </div>
+      </details>
+    </div>
+
+    <div class="effect-block">
+      <details>
+        <summary><b>🎃 Halloween Effect</b></summary>
+        <div class="image-box">
+          <img src="/assets/img/may_fed.png" alt="Halloween Effect – Interest Rate">
+        </div>
+      </details>
+    </div>
+
+    <div class="effect-block">
+      <details>
+        <summary><b>🎉 Holiday Effect</b></summary>
+        <div class="image-box">
+          <img src="/assets/img/hol_fed.png" alt="Holiday Effect – Interest Rate">
+        </div>
+      </details>
+    </div>
+
+  </details>
+
+  <!-- ================= CLUSTERING ================= -->
+  <details class="mid-details">
+    <summary><strong>Time Clustering</strong></summary>
+
+    <div class="effect-block">
+      <details>
+        <summary><b>📉 January Effect</b></summary>
+        <div class="image-box">
+          <img src="/assets/img/jan_vol.png" alt="January Effect – Volume">
+        </div>
+      </details>
+    </div>
+
+    <div class="effect-block">
+      <details>
+        <summary><b>🎅 Santa Claus Rally Effect</b></summary>
+        <div class="image-box">
+          <img src="/assets/img/scr_vol.png" alt="Santa Claus Rally – Volume">
+        </div>
+      </details>
+    </div>
+
+    <div class="effect-block">
+      <details>
+        <summary><b>🎃 Halloween Effect</b></summary>
+        <div class="image-box">
+          <img src="/assets/img/may_vol.png" alt="Halloween Effect – Volume">
+        </div>
+      </details>
+    </div>
+
+    <div class="effect-block">
+      <details>
+        <summary><b>🎉 Holiday Effect</b></summary>
+        <div class="image-box">
+          <img src="/assets/img/hol_vol.png" alt="Holiday Effect – Volume">
+        </div>
+      </details>
+    </div>
+
+  </details>
+
 </details>
+
 
 
 <details>
