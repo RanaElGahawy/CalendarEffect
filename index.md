@@ -1031,15 +1031,14 @@ permalink: /effects/
 
 <div class="reg-text">
   <p>
-    To further assess the presence of calendar effects, linear regression models
+  </p>
+</div>
+  To further assess the presence of calendar effects, linear regression models
     are employed to quantify the relationship between calendar indicators and
     asset returns. This approach allows us to control for confounding factors and
     evaluate whether calendar-related variables retain explanatory power once
     standard market dynamics are taken into account.
-  </p>
-
-  <p>
-    After all these very inconclusive investigations, the detectives couldn't
+     After all these very inconclusive investigations, the detectives couldn't
     stop here. They had to find other accomplices that might have helped the
     suspects to further examine whether calendar effects leave a systematic
     imprint on market returns or not. For that, they chose the linear regression
@@ -1049,9 +1048,6 @@ permalink: /effects/
     published Fed funds dataset. By exploiting the full sample of available data,
     the regression provides both an estimate of the magnitude of each effect and
     a measure of its statistical significance.
-  </p>
-</div>
-
 <details markdown="1">
   <summary><strong>Linear Regression</strong></summary>
 <p>
