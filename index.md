@@ -167,6 +167,27 @@ For these tests to be valid, several underlying assumptions must be satisfied, m
 
 ### Normality Test
 
+Before drawing any statistical conclusions, the detectives examine a crucial assumption that underlays many of the classical hypothesis tests: **the normality of returns**.
+
+Many standard tests used in finance rely on the idea that returns follow a normal distribution. However, daily stock returns are often characterized by **heavy tails, skewness, and occasional extreme events**, especially during periods of market stress or crisis.
+
+To verify these assumption, we formally test the normality of returns for each calendar-effect window using the D’Agostino–Pearson omnibus test, which jointly evaluates skewness and kurtosis. The resulting statistic follows a chi-squared distribution with two degrees of freedom and its corresponding control period. In other words, we ask a simple but fundamental question:
+
+> **Do stock returns within these calendar periods have a bell shaped battern?**
+
+This would help the detectives choose the appropriate test for their investigations, because if returns deviate strongly from normality, mean-based tests alone may be misleading, as a small number of extreme observations can dominate the results.
+
+<details markdown="1">
+  <summary><strong>Hypotheses</strong></summary>
+
+$$
+H_0:\ \text{the data are normally distributed}
+\qquad
+H_1:\ \text{the data are not normally distributed}
+$$
+
+</details>
+
 <details>
   <summary><strong>Equations for the normality test</strong></summary>
 
@@ -174,12 +195,10 @@ For these tests to be valid, several underlying assumptions must be satisfied, m
 
 #### Step 1: Compute sample moments
 
-Given observations \( x_1, \dots, x_n \), define the central moments:
-
+Given observations $$ x_1, \dots, x_n $$, define the central moments:
 $$
 m_k = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^k
 $$
-
 From these, compute:
 
 - **Sample skewness**
@@ -209,64 +228,16 @@ $$
 Z_2 = \text{kurtosistest}(g_2, n)
 $$
 
-These transformations correct for finite-sample bias and ensure asymptotic
-normality under \( H_0 \).
-
 ---
 
 #### Step 3: Omnibus test statistic
-
-The final test statistic is defined as:
 
 $$
 K^2 = Z_1^2 + Z_2^2
 $$
 
----
-
-#### Step 4: Sampling distribution
-
-Under the null hypothesis of normality:
-
-$$
-K^2 \sim \chi^2_2
-$$
-
-That is, the statistic follows a chi-squared distribution with **2 degrees of
-freedom**.
-
-The *p*-value is computed as:
-
-$$
-p = P(\chi^2_2 \ge K^2)
-$$
-
   </div>
 </details>
-
-
-
-Before drawing any statistical conclusions, the detectives pause to examine a crucial assumption underlying many classical hypothesis tests: **the normality of returns**.
-
-Many standard tests used in finance rely on the idea that returns follow a normal distribution. However, daily stock returns are often characterized by **heavy tails, skewness, and occasional extreme events**, especially during periods of market stress or crisis.
-
-To verify these assumption, we formally test the normality of returns for each calendar-effect window using the D’Agostino–Pearson omnibus test, which jointly evaluates skewness and kurtosis. The resulting statistic follows a chi-squared distribution with two degrees of freedom and its corresponding control period. In other words, we ask a simple but fundamental question:
-
-> **Do stock returns within these calendar periods have a bell shaped battern?**
-
-This would help the detectives choose the appropriate test for their investigations, because if returns deviate strongly from normality, mean-based tests alone may be misleading, as a small number of extreme observations can dominate the results.
-
-<details markdown="1">
-  <summary><strong>Hypotheses</strong></summary>
-
-$$
-H_0:\ \text{the data are normally distributed}
-\qquad
-H_1:\ \text{the data are not normally distributed}
-$$
-
-</details>
-
 
 
 Across all calendar effects considered being investigated we got a $P-value = 0.000$. Thus, the normality hypothesis is consistently rejected which aligns with well-established evidence in financial economics: stock returns are not normally distributed.
@@ -279,8 +250,52 @@ With this in mind, the investigation proceeds using two different approaches:
 
 allowing us to distinguish between calendar effects driven by **systematic shifts in typical returns** and those driven by **rare but extreme market movements (in other words outliers in the dataset)**.
 
-### Welch's 
+### Welch's Test
 
+The detictives specifically chose the Welch's Test because unlike the standart *t*-test, the test can accomodate data with unequal variances and unequal sample sizes, making it a more appropriate and conservative choice for financial return data. Because when we investigate a calendar effect window, we usually compare it with the rest of the year. Although daily stock returns are not normally distributed, the large sample size of daily NASDAQ data (~$$24$$ Million record)) ensures that sample means are approximately normal by the Central Limit Theorem, making it valid to use the mean-based tests. As a result, Welch’s t-test provides a robust benchmark for evaluating whether calendar effects' average returns are significant or not, directly addressing the core economic claims behind calendar-effect while minimizing the risk of false positives driven by volatility differences or sample imbalance.
+
+<details markdown="1">
+  <summary><strong>Hypotheses</strong></summary>
+
+$$
+H_0:\ \mu_1 = \mu_2
+\qquad
+H_1:\ \mu_1 \neq \mu_2
+$$
+
+</details>
+
+<details markdown="1">
+  <summary><strong>Equations of Welch's Test</strong></summary>
+
+### Test statistic
+
+Let:
+
+- $$ \bar{x}_1, \bar{x}_2 $$ = sample means  
+- $$ s_1^2, s_2^2 $$ = sample variances  
+- $$ n_1, n_2 $$ = sample sizes  
+
+The Welch *t*-statistic is defined as:
+
+$$
+t
+=
+\frac{\bar{x}_1 - \bar{x}_2}
+{\sqrt{\dfrac{s_1^2}{n_1} + \dfrac{s_2^2}{n_2}}}
+$$
+
+</details>
+
+<details markdown="1">
+  <summary><strong>Central Limit Theorem</strong></summary>
+        <P>
+        The Central Limit Theorem (CLT) is a cornerstone of statistics, stating that the distribution of sample means from any population will approach a normal distribution as the sample size gets large, regardless of the original population's shape. This convergence to normality, usually with samples of 30 or more ($$ n >= 30$$).
+        </P>
+
+</details>
+
+After investigating all the calendar effect's windows using the Welch’s t-test, the detectives found an interesting lead in their story. The test rejects the null hypothesis of equal mean returns for all calendar effects, with reported p-values effectively equal to zero. This outcome reflects overwhelming statistical evidence that average returns differ between calendar and non-calendar periods; however it still doesn't prove casuality. The investigators also had to keep i mind that, given the extremely large sample size of daily NASDAQ data, even very small mean differences become statistically detectable causing this high signifigance result. As a result, they interperet these findings as evidence of statistical significance rather than economic magnitude. The detectives decides that the presence of the highly significant p-values does not imply that calendar effects are large, stable, or economically meaningful, which motivates them to use additional distribution-based tests and regression analyses to assess robustness beyond average returns.
 
 <details>
   <summary><strong>📈 Monday Effect</strong></summary
