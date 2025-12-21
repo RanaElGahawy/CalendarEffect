@@ -1633,7 +1633,6 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
   <div class="lens-tabs">
     <button class="active" data-lens="decade">Across Decades</button>
     <button data-lens="exchange">Across Exchanges</button>
-    <button data-lens="company">Company Coverage</button>
     <button data-lens="heatmap">Heatmap</button>
     <button data-lens="volatility">Volatility Regime</button>
     <button data-lens="yearbyyear">Year by Year</button>
@@ -1700,6 +1699,11 @@ Overall, the heatmap shows that monthly returns change depending on the season.
       src="{{ site.baseurl }}/assets/img/sell_in_may_volatility.png"
       title="Sell in May - Volatility Regime">
     </iframe>
+    <p>
+    This figure shows average monthly log returns for winter and summer under different volatility conditions. The points represent the mean returns, and the vertical lines show the 95% confidence intervals. The dashed line marks zero return.
+    In both high-volatility and low-volatility periods, winter returns are higher than summer returns. The difference is larger during high-volatility periods, where winter returns are clearly positive while summer returns are close to zero. In low-      volatility periods, the gap becomes smaller, but winter still performs better.
+    Overall, the figure suggests that the Sell in May effect is stronger when market volatility is high and weaker when volatility is low.
+    </p>
   </div>
 
   <div id="halloween-yearbyyear" class="lens-content hidden">
@@ -1711,11 +1715,9 @@ Overall, the heatmap shows that monthly returns change depending on the season.
       title="Sell in May - Year by Year">
     </iframe>
     <p>
-    This figure shows average monthly log returns for winter and summer under different volatility conditions. The points represent the mean returns, and the vertical lines show the 95% confidence intervals. The dashed line marks zero return.
+    The figure shows the yearly return difference between the winter period (November–May) and the summer period (May–November). This difference is the main idea behind the Sell in May effect. The data covers 58 years. In 45 years, winter returns are higher than summer returns, while in 13 years the opposite happens. From this visual result, we can already see that winter returns are usually higher than summer returns in the NASDAQ market.
 
-In both high-volatility and low-volatility periods, winter returns are higher than summer returns. The difference is larger during high-volatility periods, where winter returns are clearly positive while summer returns are close to zero. In low-volatility periods, the gap becomes smaller, but winter still performs better.
-
-Overall, the figure suggests that the Sell in May effect is stronger when market volatility is high and weaker when volatility is low.
+To support this observation, a one-sample t-test is applied. The test checks whether the average difference between winter and summer returns is equal to zero. The obtained p-value is about 0.0001, which is much smaller than 0.05. Therefore, we reject the null hypothesis. This result shows that the higher winter returns are not due to random chance. In conclusion, the Sell in May (also called the Halloween) effect is clearly observed in the NASDAQ data.
     </p>
   </div>
 
@@ -1729,8 +1731,7 @@ Overall, the figure suggests that the Sell in May effect is stronger when market
     </iframe>
     <p>
     From the graph, we can see that winter returns are positive in all crisis periods, while summer returns are negative or close to zero. This pattern appears during the Dot-com Bubble, Black Monday, and the Global Financial Crisis.
-
-Overall, the figure suggests that during crisis periods, winter performs much better than summer. This means that the Sell in May (Halloween) effect becomes more visible in times of market stress.
+    Overall, the figure suggests that during crisis periods, winter performs much better than summer. This means that the Sell in May (Halloween) effect becomes more visible in times of market stress.
     </p>
   </div>
 </section>
