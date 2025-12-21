@@ -1391,6 +1391,41 @@ use-site-title: true
 <div id="halloween-dotcom" class="lens-content hidden"></div>
 <div id="halloween-gfc" class="lens-content hidden"></div>
 </section>
+<!-- ===============================
+     HOLIDAY EFFECT
+     =============================== -->
+<section class="effect" id="holiday">
+
+<h2>Holiday Effect</h2>
+<div class="effect-sub">
+Do stock returns behave abnormally around public holidays?
+</div>
+
+<div class="lens-tabs">
+  <button class="active" data-lens="decades">Across Decades</button>
+  <button data-lens="years">Across Years</button>
+  <button data-lens="crises">Crashes &amp; Crises</button>
+  <button data-lens="fed">Fed Effect</button>
+</div>
+
+<div id="holiday-decades" class="lens-content">
+  <!-- plot: holiday effect aggregated by decade -->
+</div>
+
+<div id="holiday-years" class="lens-content hidden">
+  <!-- plot: holiday effect year-by-year -->
+</div>
+
+<div id="holiday-crises" class="lens-content hidden">
+  <!-- plot: holiday effect during crashes & crises -->
+</div>
+
+<div id="holiday-fed" class="lens-content hidden">
+  <!-- plot: holiday effect around FOMC / Fed periods -->
+</div>
+
+</section>
+
 
 <script>
 document.querySelectorAll(".lens-tabs").forEach(group=>{
