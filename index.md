@@ -1060,10 +1060,10 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
       <details>
         <summary><b>📉 January Effect</b></summary>
         <div class="image-box">
-          <img src="{{ '/assets/img/jan_vol.png' | relative_url }}" alt="January Effect">
+          <img src="{{ '/assets/img/jan_fed.png' | relative_url }}" alt="January Effect">
         </div>
         <p class="effect-description">
-           description
+          The January effect becomes statistically significant once interest rates are controlled for and serial correlation is addressed using HAC standard errors which means that it managed to survive the serial correlation correction. On the other had, fed funds have a negative coffiecient and a p-value > 0.5 which makes it insignificant.That being said, the model still explains only a very small fraction of daily return variation it only suggets that January have a very faint yet persistent footprint in the data.
         </p>
       </details>
     </div>
