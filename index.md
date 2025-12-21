@@ -795,6 +795,9 @@ By tailoring our regression approach to the structure of each clue, we ensure th
         <div class="image-box">
           <img src="{{ '/assets/img/jan_vol.png' | relative_url }}" alt="January Effect">
         </div>
+        <p class="effect-description">
+           description
+        </p>
       </details>
     </div>
 
@@ -804,6 +807,9 @@ By tailoring our regression approach to the structure of each clue, we ensure th
         <div class="image-box">
           <img src="{{ '/assets/img/scr_fed.png' | relative_url }}" alt="Santa Claus Rally – Interest Rate">
         </div>
+        <p class="effect-description">
+           description
+        </p>
       </details>
     </div>
 
@@ -813,6 +819,9 @@ By tailoring our regression approach to the structure of each clue, we ensure th
         <div class="image-box">
           <img src="{{ '/assets/img/may_fed.png' | relative_url }}" alt="Halloween Effect – Interest Rate">
         </div>
+        <p class="effect-description">
+           description
+        </p>
       </details>
     </div>
 
@@ -822,6 +831,9 @@ By tailoring our regression approach to the structure of each clue, we ensure th
         <div class="image-box">
           <img src="{{ '/assets/img/hol_fed.png' | relative_url }}" alt="Holiday Effect – Interest Rate">
         </div>
+        <p class="effect-description">
+           description
+        </p>
       </details>
     </div>
 
@@ -837,6 +849,9 @@ By tailoring our regression approach to the structure of each clue, we ensure th
         <div class="image-box">
           <img src="{{ '/assets/img/jan_vol.png' | relative_url }}" alt="January Effect – Volume">
         </div>
+        <p class="effect-description">
+           description
+        </p>
       </details>
     </div>
 
@@ -846,6 +861,9 @@ By tailoring our regression approach to the structure of each clue, we ensure th
         <div class="image-box">
           <img src="{{ '/assets/img/scr_vol.png' | relative_url }}" alt="Santa Claus Rally – Volume">
         </div>
+        <p class="effect-description">
+           description
+        </p>
       </details>
     </div>
 
@@ -855,6 +873,9 @@ By tailoring our regression approach to the structure of each clue, we ensure th
         <div class="image-box">
           <img src="{{ '/assets/img/may_vol.png' | relative_url }}" alt="Halloween Effect – Volume">
         </div>
+        <p class="effect-description">
+           description
+        </p>
       </details>
     </div>
 
@@ -864,6 +885,9 @@ By tailoring our regression approach to the structure of each clue, we ensure th
         <div class="image-box">
           <img src="{{ '/assets/img/hol_vol.png' | relative_url }}" alt="Holiday Effect – Volume">
         </div>
+        <p class="effect-description">
+           description
+        </p>
       </details>
     </div>
 
