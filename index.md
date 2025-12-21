@@ -157,11 +157,6 @@ The crucial question of whether these calendar effects are statistically signifi
 ## Are the Calendar effects real ? 
 
 Reinforced by rigorous statistical tools, the detectives conduct an in-depth investigation into each calendar effect. 
-
-<p align="center">
-  <img src="assets/img/perry_regression.png" width="500">
-</p>
-
 Every suspected calendar anomaly is subjected to rigorous evaluation through formal hypothesis testing. In particular, t-tests are employed to determine whether average returns during specific calendar periods differ significantly from those observed in the rest of the sample. t-tests are employed to determine whether average returns during specific calendar periods differ significantly from those observed in the rest of the sample.
 For these tests to be valid, several underlying assumptions must be satisfied, most notably the normality and independence of the data. To ensure the validity of the statistical tests, the investigation begins with a careful assessment of these assumptions. In particular, the normality of returns is examined prior to conducting the hypothesis tests.
 
@@ -251,12 +246,11 @@ With this in mind, the investigation proceeds using two different approaches:
 allowing us to distinguish between calendar effects driven by **systematic shifts in typical returns** and those driven by **rare but extreme market movements (in other words outliers in the dataset)**.
 
 ### Welch's Test
+<p align="center">
+  <img src="assets/img/perry_welchtest.png" width="500">
+</p>
 
 The detictives specifically chose the Welch's Test because unlike the standart *t*-test, the test can accomodate data with unequal variances and unequal sample sizes, making it a more appropriate and conservative choice for financial return data. Because when we investigate a calendar effect window, we usually compare it with the rest of the year. Although daily stock returns are not normally distributed, the large sample size of daily NASDAQ data (~$$24$$ Million record)) ensures that sample means are approximately normal by the Central Limit Theorem, making it valid to use the mean-based tests. As a result, Welch’s t-test provides a robust benchmark for evaluating whether calendar effects' average returns are significant or not, directly addressing the core economic claims behind calendar-effect while minimizing the risk of false positives driven by volatility differences or sample imbalance.
-
-<p align="center">
-  <img src="assets/img/perry_welchtest.png" width="500" alt="Inspecteur Ornithorynque">
-</p>
 
 <details markdown="1">
   <summary><strong>Hypotheses</strong></summary>
