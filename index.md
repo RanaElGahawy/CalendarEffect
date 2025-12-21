@@ -924,61 +924,6 @@ permalink: /effects/
 </script>
 
 
-///////////////////////////////////////
-[January Effect] T-test: 29.7588, P-value: 0.0000
-[Santa Claus Rally Effect] T-test: 62.5301, P-value: 0.0000
-[Holiday Effect] T-test: 45.4908, P-value: 0.0000
-[Sell in May effect] T-test: -4.0670, P-value: 0.0001
-[Turn of the month effect] T-test: 38.2926, P-value: 0.0000
-[Middle of the month effect] T-test: 2.8484, P-value: 0.0044
-[Day 0 vs day 1] T-test: -5.1272, P-value: 0.0000
-[Day 0 vs day 2] T-test: -7.1175, P-value: 0.0000
-[Day 0 vs day 3] T-test: -6.3706, P-value: 0.0000
-[Day 0 vs day 4] T-test: -9.0762, P-value: 0.0000
-[Day 1 vs day 2] T-test: -2.3667, P-value: 0.0180
-[Day 1 vs day 3] T-test: -1.5279, P-value: 0.1266
-[Day 1 vs day 4] T-test: -4.3898, P-value: 0.0000
-[Day 2 vs day 3] T-test: 0.8144, P-value: 0.4154
-[Day 2 vs day 4] T-test: -1.8308, P-value: 0.0672
-[Day 3 vs day 4] T-test: -2.6877, P-value: 0.0072
-
-
-mannwhitneyu
-[January Effect] mannwhitneyu-test: 22095602484142.5000, P-value: 0.0000
-probability_superiority: 0.5042, cliffs_delta: 0.008313
-[Santa Claus Rally Effect] mannwhitneyu-test: 8282136107953.0000, P-value: 0.0000
-probability_superiority: 0.5209, cliffs_delta: 0.041847
-[Holiday Effect] mannwhitneyu-test: 6211308568991.5000, P-value: 0.0000
-probability_superiority: 0.5187, cliffs_delta: 0.037399
-[Sell in May effect] mannwhitneyu-test: 2442.0000, P-value: 0.0000
-probability_superiority: 0.7259, cliffs_delta: 0.451843
-[Turn of the month effect] mannwhitneyu-test: 28118639813802.0000, P-value: 0.0000
-probability_superiority: 0.5098, cliffs_delta: 0.019593
-[Middle of the month effect] mannwhitneyu-test: 28301799364045.5000, P-value: 1.0000
-probability_superiority: 0.5039, cliffs_delta: 0.007811
-[Day 0 vs day 1] mannwhitneyu-test: 3890012.0000, P-value: 0.0000
-probability_superiority: 0.4647, cliffs_delta: -0.070623
-[Day 0 vs day 2] mannwhitneyu-test: 3631521.0000, P-value: 0.0000
-probability_superiority: 0.4357, cliffs_delta: -0.128596
-[Day 0 vs day 3] mannwhitneyu-test: 3652316.0000, P-value: 0.0000
-probability_superiority: 0.4437, cliffs_delta: -0.112592
-[Day 0 vs day 4] mannwhitneyu-test: 3422377.0000, P-value: 0.0000
-probability_superiority: 0.4180, cliffs_delta: -0.163917
-[Day 1 vs day 2] mannwhitneyu-test: 4200482.0000, P-value: 0.0001
-probability_superiority: 0.4706, cliffs_delta: -0.058728
-[Day 1 vs day 3] mannwhitneyu-test: 4220330.0000, P-value: 0.0047
-probability_superiority: 0.4788, cliffs_delta: -0.042394
-[Day 1 vs day 4] mannwhitneyu-test: 3972846.0000, P-value: 0.0000
-probability_superiority: 0.4532, cliffs_delta: -0.093623
-[Day 2 vs day 3] mannwhitneyu-test: 4462502.0000, P-value: 0.2580
-probability_superiority: 0.5085, cliffs_delta: 0.016971
-[Day 2 vs day 4] mannwhitneyu-test: 4216530.0000, P-value: 0.0243
-probability_superiority: 0.4831, cliffs_delta: -0.033833
-[Day 3 vs day 4] mannwhitneyu-test: 4086882.0000, P-value: 0.0006
-probability_superiority: 0.4741, cliffs_delta: -0.051771
-
-//////////////////////////////////////////////////////////////////////////////////////////
-
 ### Linear Regression
 
 <p align="center">
