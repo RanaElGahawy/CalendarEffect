@@ -164,7 +164,7 @@ The crucial question of whether these calendar effects are statistically signifi
   }
 
   .content-image{
-    width: 350px;
+    width: 600px;
     height: auto;
     flex-shrink: 0;
   }
@@ -190,8 +190,7 @@ The crucial question of whether these calendar effects are statistically signifi
     </p>
 
     <p>
-      In particular, t-tests are employed to determine whether average returns during specific calendar periods differ
-      significantly from those observed in the rest of the sample.
+      In particular, welch's test, mann-whitney u test and regression are employed to determine whether statistically significant differences in returns exist between calendar and non-calendar effect period
     </p>
   </div>
 </div>
