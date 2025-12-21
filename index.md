@@ -2240,12 +2240,13 @@ In this section, we investigate the **temporal stability** of each calendar effe
 
 <script>
 (async function(){
-  const compUrl = "{{ site.baseurl }}/assets/data/holiday_comp_all.json";
-  const pieUrl  = "{{ site.baseurl }}/assets/data/holiday_pie_all.json";
+  // IMPORTANT: comp_all yok. index + split comp files var.
+  const indexUrl = "{{ site.baseurl }}/assets/data/holiday_index.json";
+  const pieUrl   = "{{ site.baseurl }}/assets/data/holiday_pie_all.json";
 
-  const [compRes, pieRes] = await Promise.all([fetch(compUrl), fetch(pieUrl)]);
-  const ALL = await compRes.json();  // ALL[holiday][k][ticker]
-  const PIE = await pieRes.json();   // PIE[holiday][k] = payload
+  const [idxRes, pieRes] = await Promise.all([fetch(indexUrl), fetch(pieUrl)]);
+  const IDX = await idxRes.json();   // {holidays, ks, files, tickers}
+  const PIE = await pieRes.json();   // PIE[holiday][k]
 
   const selHoliday = document.getElementById("holHoliday");
   const selK = document.getElementById("holK");
@@ -2256,8 +2257,8 @@ In this section, we investigate the **temporal stability** of each calendar effe
   const pieDiv  = document.getElementById("holPie");
   const sliceInfo = document.getElementById("holSliceInfo");
 
-  // fill holiday dropdown
-  const holidays = Object.keys(ALL).sort();
+  // fill holidays
+  const holidays = (IDX.holidays || []).slice();
   holidays.forEach(h => {
     const opt = document.createElement("option");
     opt.value = h;
@@ -2265,18 +2266,33 @@ In this section, we investigate the **temporal stability** of each calendar effe
     selHoliday.appendChild(opt);
   });
 
-  function currentHoliday(){ return selHoliday.value; }
-  function currentK(){ return selK.value; }
+  function H(){ return selHoliday.value; }
+  function K(){ return selK.value; }
 
-  function setDatalistFor(h, k){
+  // cache loaded comps
+  const compCache = {}; // key: `${h}__${k}` -> {ticker: data}
+
+  function setDatalist(tickers){
     dl.innerHTML = "";
-    const tickers = Object.keys((ALL[h] && ALL[h][k]) ? ALL[h][k] : {}).sort();
-    tickers.forEach(t => {
+    (tickers || []).forEach(t => {
       const opt = document.createElement("option");
       opt.value = t;
       dl.appendChild(opt);
     });
-    return tickers;
+  }
+
+  async function loadCompFor(h, k){
+    const key = `${h}__${k}`;
+    if(compCache[key]) return compCache[key];
+
+    const rel = IDX.files?.[h]?.[k]; // e.g. "holiday_comp/christmas_k2.json"
+    if(!rel) return null;
+
+    const url = "{{ site.baseurl }}/assets/data/" + rel;
+    const res = await fetch(url);
+    const obj = await res.json();
+    compCache[key] = obj;
+    return obj;
   }
 
   function buildWinYearShapes(winYears){
@@ -2294,12 +2310,51 @@ In this section, we investigate the **temporal stability** of each calendar effe
     }));
   }
 
-  function drawTicker(){
-    const h = currentHoliday();
-    const k = currentK();
+  function drawPie(){
+    const h = H();
+    const k = K();
+    const payload = (PIE[h] && PIE[h][k]) ? PIE[h][k] : {labels:[], counts:[], tickersBySlice:[]};
+
+    const labels = payload.labels || [];
+    const values = payload.counts || [];
+
+    if(labels.length === 0){
+      Plotly.newPlot(pieDiv, [], {title:"No pie data"}, {responsive:true});
+      sliceInfo.innerHTML = "";
+      return;
+    }
+
+    Plotly.newPlot(pieDiv, [{
+      type: "pie",
+      labels: labels,
+      values: values,
+      textinfo: "label+percent+value",
+      hovertemplate: "<b>%{label}</b><br>Companies: %{value}<extra></extra>",
+      pull: labels.map(() => 0.04)
+    }], {
+      title: `Distribution — ${h} (k=${k})`,
+      height: 520,
+      margin: {l:10, r:10, t:60, b:10},
+      showlegend: true
+    }, {responsive:true});
+
+    pieDiv.on("plotly_click", (ev) => {
+      const idx = ev.points[0].pointNumber;
+      const sliceLabel = labels[idx];
+      const tickList = payload.tickersBySlice?.[idx] || [];
+      const preview = tickList.slice(0, 40).join(", ") + (tickList.length > 40 ? `, ... (+${tickList.length-40} more)` : "");
+      sliceInfo.innerHTML = `<b>${sliceLabel}</b>: ${tickList.length} tickers<br><span style="opacity:.8">${preview}</span>`;
+    });
+  }
+
+  async function drawTicker(){
+    const h = H();
+    const k = K();
     const tkr = (input.value || "").trim().toUpperCase();
 
-    const d = (ALL[h] && ALL[h][k]) ? ALL[h][k][tkr] : null;
+    const compObj = await loadCompFor(h, k);
+    const d = compObj ? compObj[tkr] : null;
+
     if(!d){
       Plotly.newPlot(plotDiv, [], {title: "Ticker not found for this holiday/k"}, {responsive:true});
       return;
@@ -2332,7 +2387,7 @@ In this section, we investigate the **temporal stability** of each calendar effe
       xaxis:"x2", yaxis:"y2"
     };
 
-    const layout = {
+    Plotly.newPlot(plotDiv, [trace1, trace2, trace3], {
       title: `Holiday Effect — ${h} (k=${k}) — ${tkr} (win rate ${d.win_rate.toFixed(1)}%)`,
       height: 680,
       margin: {l:55, r:20, t:70, b:50},
@@ -2351,78 +2406,35 @@ In this section, we investigate the **temporal stability** of each calendar effe
         y0: 0, y1: 0,
         line: {dash:"dot", width:1}
       }])
-    };
-
-    Plotly.newPlot(plotDiv, [trace1, trace2, trace3], layout, {responsive:true});
+    }, {responsive:true});
   }
 
-  function drawPie(){
-    const h = currentHoliday();
-    const k = currentK();
-    const payload = (PIE[h] && PIE[h][k]) ? PIE[h][k] : {labels:[], counts:[], tickersBySlice:[]};
+  async function refreshUI(){
+    const h = H();
+    const k = K();
 
-    const labels = payload.labels || [];
-    const values = payload.counts || [];
+    const tickers = IDX.tickers?.[h]?.[k] || [];
+    setDatalist(tickers);
 
-    if(labels.length === 0){
-      Plotly.newPlot(pieDiv, [], {title:"No pie data"}, {responsive:true});
-      sliceInfo.innerHTML = "";
-      return;
-    }
-
-    const trace = {
-      type: "pie",
-      labels: labels,
-      values: values,
-      textinfo: "label+percent+value",
-      hovertemplate: "<b>%{label}</b><br>Companies: %{value}<extra></extra>",
-      pull: labels.map(() => 0.04)
-    };
-
-    const layout = {
-      title: `Distribution — ${h} (k=${k})`,
-      height: 520,
-      margin: {l:10, r:10, t:60, b:10},
-      showlegend: true
-    };
-
-    Plotly.newPlot(pieDiv, [trace], layout, {responsive:true});
-
-    pieDiv.on("plotly_click", (ev) => {
-      const idx = ev.points[0].pointNumber;
-      const sliceLabel = labels[idx];
-      const tickList = payload.tickersBySlice[idx] || [];
-      const preview = tickList.slice(0, 40).join(", ") + (tickList.length > 40 ? `, ... (+${tickList.length-40} more)` : "");
-      sliceInfo.innerHTML = `<b>${sliceLabel}</b>: ${tickList.length} tickers<br><span style="opacity:.8">${preview}</span>`;
-    });
-  }
-
-  function refreshUI(){
-    const h = currentHoliday();
-    const k = currentK();
-
-    const tickers = setDatalistFor(h, k);
-    // default ticker
-    const defaultT = (tickers.includes("TAPR")) ? "TAPR" : (tickers[0] || "");
+    const defaultT = tickers.includes("TAPR") ? "TAPR" : (tickers[0] || "");
     input.value = defaultT;
 
     drawPie();
-    drawTicker();
+    await drawTicker();
   }
 
-  // events
   selHoliday.addEventListener("change", refreshUI);
   selK.addEventListener("change", refreshUI);
   input.addEventListener("change", drawTicker);
 
   // init
-  selHoliday.value = holidays[0];
-  refreshUI();
+  selHoliday.value = holidays[0] || "";
+  await refreshUI();
 })();
 </script>
 
 <style>
-  .hol-ui{ margin-top:16px; padding:14px; border-radius:18px; border:1px solid rgba(255,255,255,.12);
+  .hol-ui{ margin-top:18px; padding:14px; border-radius:18px; border:1px solid rgba(255,255,255,.12);
     background:rgba(255,255,255,.04); box-shadow:0 18px 60px rgba(0,0,0,.25); }
 
   .hol-top{ display:flex; justify-content:space-between; align-items:flex-end; gap:12px; flex-wrap:wrap; margin-bottom:10px; }
@@ -2444,10 +2456,8 @@ In this section, we investigate the **temporal stability** of each calendar effe
   }
   select:focus, #holTicker:focus{ border-color: rgba(120,170,255,.6); }
 
-  .hol-grid{ display:grid; grid-template-columns: 1fr; gap:16px; align-items:start; } /* alt alta */
+  .hol-grid{ display:grid; grid-template-columns: 1fr; gap:16px; align-items:start; }
   .hol-card{ border-radius:16px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.10); padding:10px; }
   .hol-card-title{ font-weight:850; margin:4px 6px 10px; opacity:.9; }
   .hol-slice{ margin-top:10px; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.04); }
 </style>
-
-
