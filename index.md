@@ -343,7 +343,7 @@ In this section, we investigate the **temporal stability** of each calendar effe
 
   <div class="effect-grid">
     <button class="effect-btn active"
-            data-img="{{ site.baseurl }}/assets/effects/santa_claus_rally_company.png">
+            data-img="{{ site.baseurl }}/assets/img/santa_claus_rally_company.png">
       January Effect
     </button>
 
