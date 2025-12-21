@@ -1675,18 +1675,6 @@ Overall, the results suggest that the Sell in May effect is present across excha
     </p>
   </div>
 
-  <div id="halloween-company" class="lens-content hidden">
-    <iframe
-      class="lens-iframe"
-      loading="lazy"
-      style="width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/img/sell_in_may_company.png"
-      title="Sell in May - Company Coverage">
-    </iframe>
-    <p>
-    </p>
-  </div>
-
   <div id="halloween-heatmap" class="lens-content hidden">
     <iframe
       class="lens-iframe"
