@@ -36,7 +36,7 @@ The objective of this project is to investigate the calendar effects in the US s
 We are considering to use these two additional datasets which represent FED interest rate and inflation rate in USA. We will consider also analyze whether there is any effect of inflation and interest rates over the calendar effect.
 
 ## Methods
-We store the NASDAQ dataset in **Parquet** format rather than CSV because Parquet is designed for efficient handling of large-scale data. Unlike CSV files, which are plain text and must be fully read each time, Parquet is a **column-oriented, compressed, and binary** format. This makes it much faster to load, query, and filter specific variables—especially in a dataset with millions of rows and many columns like ours. 
+We store the NASDAQ dataset in **Parquet** format rather than CSV because Parquet is designed for efficient handling of large-scale data. Unlike CSV files, which are plain text and must be fully read each time, Parquet is a **column-oriented, compressed, and binary** format. This makes it much faster to load, query, and filter specific variables especially in a dataset with millions of rows and many columns like ours. 
 ### The Proposed Calendar Effects
 
 We want to analyze these special cases of the calendar effect:
