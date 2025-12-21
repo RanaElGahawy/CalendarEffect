@@ -1655,6 +1655,130 @@ In this section, we investigate the **temporal stability** of each calendar effe
 
 
 
+<section id="calendar-effects" class="fx-wrap">
+  <div class="fx-layout">
+
+    <!-- LEFT: Effect cards -->
+    <aside class="fx-panel">
+      <div class="fx-panel-top">
+        <div class="fx-panel-title">Effects</div>
+        <input id="fxSearch" class="fx-search" placeholder="Search (jan, may, tom...)" />
+      </div>
+
+      <div class="fx-grid" id="fxGrid">
+
+        <button class="fx-card active"
+          data-key="january"
+          data-title="January Effect"
+          data-desc="January average return is higher than the average of Feb–Dec."
+          data-img="{{ site.baseurl }}/assets/img/january_company.png">
+          <div class="fx-icon">JAN</div>
+          <div class="fx-card-main">
+            <div class="fx-card-title">January Effect</div>
+            <div class="fx-card-sub">Month seasonality</div>
+          </div>
+          <div class="fx-chip">classic</div>
+        </button>
+        <button class="fx-card" 
+           data-key="sell" 
+           data-title="Sell in May" 
+           data-desc="Winter (Nov–Apr) vs Summer (May–Oct) return gap." 
+           data-img="{{ site.baseurl }}/assets/img/sell_in_may_company.png"> 
+           <div class="fx-icon">MAY</div> <div class="fx-card-main"> 
+           <div class="fx-card-title">Sell in May</div> 
+           <div class="fx-card-sub">Season regime</div> 
+           </div> <div class="fx-chip">macro</div> 
+        </button>
+
+        <button class="fx-card"
+          data-key="holiday"
+          data-title="Holiday Effect"
+          data-desc="Pre/post-holiday behavior: abnormal returns around holidays."
+          data-img="{{ site.baseurl }}/assets/img/New_Year_1.png">
+          <div class="fx-icon">HOL</div>
+          <div class="fx-card-main">
+            <div class="fx-card-title">Holiday Effect</div>
+            <div class="fx-card-sub">Event timing</div>
+          </div>
+          <div class="fx-chip">event</div>
+        </button>
+
+
+        <button class="fx-card"
+          data-key="tom"
+          data-title="Turn-of-Month"
+          data-desc="Returns around the month switch (end/beginning) are stronger."
+          data-img="{{ site.baseurl }}/assets/img/tom_company.png">
+          <div class="fx-icon">ToM</div>
+          <div class="fx-card-main">
+            <div class="fx-card-title">Turn-of-Month</div>
+            <div class="fx-card-sub">Window effect</div>
+          </div>
+          <div class="fx-chip">timing</div>
+        </button>
+
+        <button class="fx-card"
+          data-key="monday"
+          data-title="Monday Effect"
+          data-desc="Monday average return is lower than the other weekdays."
+          data-img="{{ site.baseurl }}/assets/img/monday_company.png">
+          <div class="fx-icon">MON</div>
+          <div class="fx-card-main">
+            <div class="fx-card-title">Monday Effect</div>
+            <div class="fx-card-sub">Weekday bias</div>
+          </div>
+          <div class="fx-chip">week</div>
+        </button>
+
+        <button class="fx-card"
+          data-key="santa"
+          data-title="Santa Rally"
+          data-desc="End-of-year rally window: late Dec to early Jan pattern."
+          data-img="{{ site.baseurl }}/assets/img/santa_claus_rally_company.png">
+          <div class="fx-icon">🎅</div>
+          <div class="fx-card-main">
+            <div class="fx-card-title">Santa Rally</div>
+            <div class="fx-card-sub">Year-end</div>
+          </div>
+          <div class="fx-chip">fun</div>
+        </button>
+
+      </div>
+    </aside>
+
+    <!-- RIGHT: Plot viewer -->
+    <main class="fx-viewer">
+      <div class="fx-view-card">
+        <div class="fx-view-head">
+          <div>
+            <div class="fx-kicker">Selected effect</div>
+            <div id="fxTitle" class="fx-title">January Effect</div>
+            <div id="fxDesc" class="fx-desc">January average return is higher than the average of Feb–Dec.</div>
+          </div>
+
+          <div class="fx-actions">
+            <a id="fxOpenImg" class="fx-open" target="_blank" rel="noopener">Open image</a>
+          </div>
+        </div>
+        
+        <div class="fx-holiday-row" id="fxHolidayRow" style="display:none;">
+          <div class="fx-holiday-label">Choose holiday</div>
+          <select id="fxHolidaySelect" class="fx-holiday-select"></select>
+        </div>
+
+        <div class="fx-img-wrap">
+          <div id="fxShimmer" class="fx-shimmer"></div>
+          <img id="effectImage"
+               src="{{ site.baseurl }}/assets/img/january_company.png"
+               alt="Calendar effect plot"
+               loading="lazy">
+        </div>
+      </div>
+    </main>
+
+  </div>
+</section>
+
 
 <script>
   (function () {
