@@ -1646,7 +1646,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
       class="lens-iframe"
       loading="lazy"
       style="width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/iframes/sell_in_may_decade.html"
+      src="{{ site.baseurl }}/assets/img/sell_in_may_decade.png"
       title="Sell in May - Across Decades">
     </iframe>
   </div>
@@ -1656,7 +1656,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
       class="lens-iframe"
       loading="lazy"
       style="width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/iframes/sell_in_may_exchange.html"
+      src="{{ site.baseurl }}/assets/img/sell_in_may_exchange.png"
       title="Sell in May - Across Exchanges">
     </iframe>
   </div>
@@ -1666,7 +1666,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
       class="lens-iframe"
       loading="lazy"
       style="width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/iframes/sell_in_may_company.html"
+      src="{{ site.baseurl }}/assets/img/sell_in_may_company.png"
       title="Sell in May - Company Coverage">
     </iframe>
   </div>
@@ -1676,7 +1676,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
       class="lens-iframe"
       loading="lazy"
       style="width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/iframes/sell_in_may_heatmap.html"
+      src="{{ site.baseurl }}/assets/img/sell_in_may_heatmap.png"
       title="Sell in May - Heatmap">
     </iframe>
   </div>
@@ -1686,7 +1686,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
       class="lens-iframe"
       loading="lazy"
       style="width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/iframes/sell_in_may_volatility.html"
+      src="{{ site.baseurl }}/assets/img/sell_in_may_volatility.png"
       title="Sell in May - Volatility Regime">
     </iframe>
   </div>
@@ -1696,7 +1696,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
       class="lens-iframe"
       loading="lazy"
       style="width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/iframes/sell_in_may_year_by_year.html"
+      src="{{ site.baseurl }}/assets/img/sell_in_may_year_by_year.png"
       title="Sell in May - Year by Year">
     </iframe>
   </div>
@@ -1706,7 +1706,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
       class="lens-iframe"
       loading="lazy"
       style="width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/iframes/sell_in_may_crises.html"
+      src="{{ site.baseurl }}/assets/img/sell_in_may_crises.png"
       title="Sell in May - Crisis Zoom">
     </iframe>
   </div>
