@@ -473,11 +473,7 @@ In the graph below you can choose a calendar effect to see the results of each o
 
 FURKAN, PLEASE TRY TO ADD THESE IN 
 AN INTERACTIVE GRAPH
----
-layout: page
-title: Calendar Effects – Interactive Tests
-permalink: /effects/
----
+
 ---
 layout: page
 title: Calendar Effects – Simple Plot
