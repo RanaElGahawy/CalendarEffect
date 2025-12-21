@@ -343,7 +343,7 @@ In this section, we investigate the **temporal stability** of each calendar effe
 
   <div class="effect-grid">
     <button class="effect-btn active"
-            data-img="{{ site.baseurl }}/assets/img/santa_claus_rally_company.png">
+            data-img="{{ site.baseurl }}/assets/img/january_company.png">
       January Effect
     </button>
 
@@ -353,12 +353,12 @@ In this section, we investigate the **temporal stability** of each calendar effe
     </button>
 
     <button class="effect-btn"
-            data-img="{{ site.baseurl }}/assets/effects/turn_of_month.png">
+            data-img="{{ site.baseurl }}/assets/effects/tom_company.png">
       Turn-of-Month
     </button>
 
     <button class="effect-btn"
-            data-img="{{ site.baseurl }}/assets/effects/monday.png">
+            data-img="{{ site.baseurl }}/assets/effects/monday_company.png">
       Monday Effect
     </button>
 
@@ -368,7 +368,7 @@ In this section, we investigate the **temporal stability** of each calendar effe
     </button>
 
     <button class="effect-btn"
-            data-img="{{ site.baseurl }}/assets/effects/santa_rally.png">
+            data-img="{{ site.baseurl }}/assets/effects/santa_claus_rally_company.png">
       Santa Rally
     </button>
   </div>
