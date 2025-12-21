@@ -672,3 +672,6 @@ In this section, we investigate the **temporal stability** of each calendar effe
     100%{ background-position: -220% 0%; }
   }
 </style>
+
+
+<script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
