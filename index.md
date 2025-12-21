@@ -1048,17 +1048,18 @@ In this section, we investigate the **temporal stability** of each calendar effe
         </button>
 
         <button class="fx-card"
-          data-key="sell"
-          data-title="Sell in May"
-          data-desc="Winter (Nov–Apr) vs Summer (May–Oct) return gap."
-          data-img="{{ site.baseurl }}/assets/img/sell_in_may_company.png">
-          <div class="fx-icon">MAY</div>
+          data-key="holiday"
+          data-title="Holiday Effect"
+          data-desc="Pre/post-holiday behavior: abnormal returns around holidays."
+          data-img="{{ site.baseurl }}/assets/img/New_Year_1.png">
+          <div class="fx-icon">HOL</div>
           <div class="fx-card-main">
-            <div class="fx-card-title">Sell in May</div>
-            <div class="fx-card-sub">Season regime</div>
+            <div class="fx-card-title">Holiday Effect</div>
+            <div class="fx-card-sub">Event timing</div>
           </div>
-          <div class="fx-chip">macro</div>
+          <div class="fx-chip">event</div>
         </button>
+
 
         <button class="fx-card"
           data-key="tom"
@@ -1129,6 +1130,11 @@ In this section, we investigate the **temporal stability** of each calendar effe
             <a id="fxOpenImg" class="fx-open" target="_blank" rel="noopener">Open image</a>
           </div>
         </div>
+        
+        <div class="fx-holiday-row" id="fxHolidayRow" style="display:none;">
+          <div class="fx-holiday-label">Choose holiday</div>
+          <select id="fxHolidaySelect" class="fx-holiday-select"></select>
+        </div>
 
         <div class="fx-img-wrap">
           <div id="fxShimmer" class="fx-shimmer"></div>
@@ -1154,9 +1160,78 @@ In this section, we investigate the **temporal stability** of each calendar effe
     const shim  = root.querySelector("#fxShimmer");
     const srch  = root.querySelector("#fxSearch");
 
+    // Holiday UI
+    const holidayRow = root.querySelector("#fxHolidayRow");
+    const holidaySel = root.querySelector("#fxHolidaySelect");
+
+    // ===== MANUAL MAPPING (18 seçenek) =====
+    // Dosya yolu: {{site.baseurl}}/assets/img/holidays/<file>.png
+    const HOLIDAY_BASE = "{{ site.baseurl }}/assets/img/";
+
+    const holidayOptions = [
+      // New Year
+      { label: "New Year 1", file: "New_Year_1.png" },
+      { label: "New Year 2", file: "New_Year_2.png" },
+      { label: "New Year 3", file: "New_Year_3.png" },
+
+      // Christmas
+      { label: "Christmas 1", file: "Christmas_1.png" },
+      { label: "Christmas 2", file: "Christmas_2.png" },
+      { label: "Christmas 3", file: "Christmas_3.png" },
+
+      // Thanksgiving
+      { label: "Thanksgiving 1", file: "Thanksgiving_1.png" },
+      { label: "Thanksgiving 2", file: "Thanksgiving_2.png" },
+      { label: "Thanksgiving 3", file: "Thanksgiving_3.png" },
+
+      // Independence Day
+      { label: "Independence Day 1", file: "Independence_Day_1.png" },
+      { label: "Independence Day 2", file: "Independence_Day_2.png" },
+      { label: "Independence Day 3", file: "Independence_Day_3.png" },
+
+      // Memorial Day
+      { label: "Memorial Day 1", file: "Memorial_Day_1.png" },
+      { label: "Memorial Day 2", file: "Memorial_Day_2.png" },
+      { label: "Memorial Day 3", file: "Memorial_Day_3.png" },
+
+      // Labor Day
+      { label: "Labor Day 1", file: "Labor_Day_1.png" },
+      { label: "Labor Day 2", file: "Labor_Day_2.png" },
+      { label: "Labor Day 3", file: "Labor_Day_3.png" }
+    ];
+
     function setLoading(on){
       shim.style.display = on ? "block" : "none";
       img.style.opacity = on ? "0.65" : "1";
+    }
+
+    function setImage(src){
+      setLoading(true);
+      img.onload = () => setLoading(false);
+      img.onerror = () => {
+        setLoading(false);
+        // Eğer image path yanlışsa hiç değilse user anlasın
+        img.alt = "Image not found: " + src;
+      };
+      img.src = src;
+      open.href = src;
+    }
+
+    function buildHolidaySelect(){
+      if (!holidaySel) return;
+      holidaySel.innerHTML = "";
+      holidayOptions.forEach((opt, idx) => {
+        const o = document.createElement("option");
+        o.value = opt.file;
+        o.textContent = opt.label;
+        holidaySel.appendChild(o);
+        if (idx === 0) holidaySel.value = opt.file;
+      });
+    }
+
+    function showHolidayUI(show){
+      if (!holidayRow) return;
+      holidayRow.style.display = show ? "flex" : "none";
     }
 
     function activate(btn){
@@ -1165,15 +1240,44 @@ In this section, we investigate the **temporal stability** of each calendar effe
 
       ttl.textContent = btn.dataset.title || "Effect";
       dsc.textContent = btn.dataset.desc || "";
+
+      const key = btn.dataset.key || "";
       const src = btn.dataset.img;
 
-      setLoading(true);
-      img.onload = () => setLoading(false);
-      img.src = src;
-      open.href = src;
+      // Holiday ise: dropdown göster, seçilen holiday'e göre resmi bas
+      if (key === "holiday") {
+        showHolidayUI(true);
 
-      // smooth focus
+        // İlk kez geldiyse select'i kur
+        if (!holidaySel.dataset.built) {
+          buildHolidaySelect();
+          holidaySel.dataset.built = "1";
+        }
+
+        // Seçili option'a göre src üret
+        const chosen = holidaySel.value || "New_Year_1.png";
+        const holidaySrc = HOLIDAY_BASE + chosen;
+        setImage(holidaySrc);
+
+      } else {
+        showHolidayUI(false);
+        setImage(src);
+      }
+
       img.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    // Holiday dropdown change
+    if (holidaySel) {
+      holidaySel.addEventListener("change", () => {
+        // Sadece holiday aktifken çalışsın
+        const active = root.querySelector(".fx-card.active");
+        if (!active || active.dataset.key !== "holiday") return;
+
+        const chosen = holidaySel.value;
+        const holidaySrc = HOLIDAY_BASE + chosen;
+        setImage(holidaySrc);
+      });
     }
 
     cards.forEach(btn => btn.addEventListener("click", () => activate(btn)));
@@ -1188,8 +1292,13 @@ In this section, we investigate the **temporal stability** of each calendar effe
 
     // init open link
     open.href = img.src;
+
+    // optional: sayfa açılınca holiday select'i kur (zararı yok)
+    buildHolidaySelect();
+
   })();
 </script>
+
 
 <style>
   /* ===== overall vibe ===== */
