@@ -1,11 +1,72 @@
 ---
 layout: home
-title:  Market Detectives - Investigating Calendar Effects 
-subtitle: Analyzing Seven Calendar-Effect Anomalies in NASDAQ Since 1962
-
-use-site-title: true
+title: ""
+subtitle: ""
+use-site-title: false
 mathjax: true
 ---
+
+<style>
+.hero-header{
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/assets/img/market_detectives.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 8px;
+  box-shadow: 0 14px 35px rgba(0,0,0,.12);
+}
+
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.hero-content{
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 980px;
+  padding: 28px 18px;
+}
+
+.hero-content h1{
+  font-size: 2.8rem;
+  font-weight: 850;
+  margin: 0 0 10px 0;
+  line-height: 1.1;
+}
+
+.hero-content p{
+  font-size: 1.25rem;
+  margin: 0;
+  opacity: 0.92;
+}
+
+@media (max-width: 768px){
+  .hero-header{ min-height: 300px; }
+  .hero-content h1{ font-size: 2.0rem; }
+  .hero-content p{ font-size: 1.05rem; }
+}
+</style>
+
+<section class="hero-header">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Market Detectives – Investigating Calendar Effects</h1>
+    <p>Analyzing Seven Calendar-Effect Anomalies in NASDAQ Since 1962</p>
+  </div>
+</section>
+
 {% include budget_chart.html %}
 
 # Market detectives
