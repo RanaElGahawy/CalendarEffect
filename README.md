@@ -25,7 +25,7 @@ The objective of this project is to investigate the calendar effects in the US s
 1. Are calendar effects actually real?
 2. How do they evolve throughout the years?
 3. How persistent is the calendar effect across different stock exchanges?
-4. Does global crises like (Dot Com Bubble Burst,The Financial Crisis, and COVID-19) make the calendar effects less significant?
+4. Does global crises like (Dot Com Bubble Burst,The Financial Crisis) make the calendar effects less significant?
 
 
 ## Additional Datasets
@@ -36,7 +36,7 @@ The objective of this project is to investigate the calendar effects in the US s
 We are considering to use these two additional datasets which represent FED interest rate and inflation rate in USA. We will consider also analyze whether there is any effect of inflation and interest rates over the calendar effect.
 
 ## Methods
-
+We store the NASDAQ dataset in **Parquet** format rather than CSV because Parquet is designed for efficient handling of large-scale data. Unlike CSV files, which are plain text and must be fully read each time, Parquet is a **column-oriented, compressed, and binary** format. This makes it much faster to load, query, and filter specific variables—especially in a dataset with millions of rows and many columns like ours. 
 ### The Proposed Calendar Effects
 
 We want to analyze these special cases of the calendar effect:
