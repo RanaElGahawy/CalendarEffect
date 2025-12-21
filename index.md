@@ -674,4 +674,171 @@ In this section, we investigate the **temporal stability** of each calendar effe
 </style>
 
 
+
+
+
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+<div class="santa-ui">
+  <div class="santa-top">
+    <div>
+      <div style="font-weight:800; font-size:1.15rem;">Santa Claus Effect (per ticker)</div>
+      <div style="opacity:.75;">Type a ticker and the plot updates instantly.</div>
+    </div>
+
+    <div>
+      <input id="santaTicker" list="santaTickers" placeholder="Type ticker (e.g., TAPR)" />
+      <datalist id="santaTickers"></datalist>
+    </div>
+  </div>
+
+  <div id="santaPlot" style="margin-top:12px;"></div>
+</div>
+
+<script>
+(async function(){
+  const url = "{{ site.baseurl }}/assets/data/santa_comp_all.json";
+  const res = await fetch(url);
+  const ALL = await res.json();
+
+  const input = document.getElementById("santaTicker");
+  const dl = document.getElementById("santaTickers");
+  const plotDiv = document.getElementById("santaPlot");
+
+  // datalist doldur
+  const tickers = Object.keys(ALL).sort();
+  tickers.forEach(t => {
+    const opt = document.createElement("option");
+    opt.value = t;
+    dl.appendChild(opt);
+  });
+
+  function buildWinYearShapes(winYears){
+    // Python’daki add_vrect (x0=y-0.5, x1=y+0.5) karşılığı:
+    return (winYears || []).map(y => ({
+      type: "rect",
+      xref: "x",
+      yref: "y",
+      x0: y - 0.5,
+      x1: y + 0.5,
+      y0: 0,
+      y1: 1,
+      yref: "paper",     // tüm üst subplot yüksekliği
+      fillcolor: "rgba(0,0,0,0.06)",
+      line: { width: 0 },
+      layer: "below"
+    }));
+  }
+
+  function draw(tkr){
+    tkr = (tkr || "").trim().toUpperCase();
+    const d = ALL[tkr];
+
+    if(!d){
+      Plotly.newPlot(plotDiv, [], {title: "Ticker not found"}, {responsive:true});
+      return;
+    }
+
+    const years = d.years;
+
+    const trace1 = {
+      x: years, y: d.scr_avg,
+      type: "scatter",
+      mode: "lines+markers",
+      name: "SCR avg",
+      hovertemplate: "Year=%{x}<br>SCR avg=%{y:.5f}<extra></extra>",
+      xaxis: "x",
+      yaxis: "y"
+    };
+
+    const trace2 = {
+      x: years, y: d.non_scr_avg,
+      type: "scatter",
+      mode: "lines+markers",
+      name: "non-SCR avg",
+      line: { dash: "dash" },
+      hovertemplate: "Year=%{x}<br>non-SCR avg=%{y:.5f}<extra></extra>",
+      xaxis: "x",
+      yaxis: "y"
+    };
+
+    const trace3 = {
+      x: years, y: d.diff,
+      type: "bar",
+      name: "Diff (SCR - non-SCR)",
+      hovertemplate: "Year=%{x}<br>Diff=%{y:.5f}<extra></extra>",
+      xaxis: "x2",
+      yaxis: "y2"
+    };
+
+    // 2-row subplot layout (shared x gibi)
+    const layout = {
+      title: `Santa Claus Effect — ${tkr} (win rate ${d.win_rate.toFixed(1)}%)`,
+      height: 720,
+      margin: {l: 50, r: 20, t: 70, b: 50},
+      hovermode: "x unified",
+      legend: {orientation: "h", y: 1.06, x: 0},
+
+      // üst subplot eksenleri
+      xaxis: {domain: [0, 1], anchor: "y", title: ""}, 
+      yaxis: {domain: [0.42, 1], title: "Avg return"},
+
+      // alt subplot eksenleri
+      xaxis2: {domain: [0, 1], anchor: "y2", title: "Year"},
+      yaxis2: {domain: [0, 0.34], title: "Diff"},
+
+      // win-year shading (üst panelin altına)
+      shapes: buildWinYearShapes(d.win_years).concat([
+        // y=0 line (alt subplot için)
+        {
+          type: "line",
+          xref: "x2",
+          yref: "y2",
+          x0: Math.min(...years),
+          x1: Math.max(...years),
+          y0: 0,
+          y1: 0,
+          line: { dash: "dot", width: 1 }
+        }
+      ])
+    };
+
+    Plotly.newPlot(plotDiv, [trace1, trace2, trace3], layout, {responsive:true});
+  }
+
+  // default ticker
+  const defaultT = "TAPR";
+  input.value = ALL[defaultT] ? defaultT : tickers[0];
+  draw(input.value);
+
+  input.addEventListener("change", () => draw(input.value));
+})();
+</script>
+
+<style>
+  .santa-ui{
+    margin-top:16px;
+    padding:14px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.04);
+    box-shadow:0 18px 60px rgba(0,0,0,.25);
+  }
+  .santa-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  #santaTicker{
+    width:min(320px, 80vw);
+    padding:10px 12px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);
+    color:inherit;
+    outline:none;
+  }
+  #santaTicker:focus{ border-color: rgba(120,170,255,.6); }
+</style>
+
