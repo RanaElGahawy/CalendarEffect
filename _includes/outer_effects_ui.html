@@ -572,15 +572,16 @@
   }
 
   function buildPath(){
-    const eff = activeEffect();
-    if(eff === "tom"){
-      return `assets/plots/outer/tom_${tomWindow.value}.json`;
-    }
-    if(eff === "holiday"){
-      return `assets/plots/outer/holiday_${holidayK.value}.json`;
-    }
-    return `assets/plots/outer/${eff}.json`;
+  const eff = activeEffect();
+  if(eff === "tom"){
+    return `assets/data/tom_${tomWindow.value}.json`;
   }
+  if(eff === "holiday"){
+    return `assets/data/holiday_${holidayK.value}.json`;
+  }
+  return `assets/data/${eff}.json`;
+}
+
 
   function showLoading(on){
     skeleton.style.display = on ? "block" : "none";
