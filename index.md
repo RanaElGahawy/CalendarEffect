@@ -1215,46 +1215,208 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
 </details>
 
 
-## Monday effect
-### Across decades
-### Across exchanges
-### Through the Dot Com Bubble
-### Through Global Financial Crisis
-
 ---
-## January effect
-### Across decades
-### Across exchanges
-### Through the Dot Com Bubble
-### Through Global Financial Crisis
-
+layout: home
+title: Market Detectives
+subtitle: Investigating Calendar Effects
+use-site-title: true
 ---
-## Santa Claus Rally
-### Across decades
-### Across exchanges
-### Through the Dot Com Bubble
-### Through Global Financial Crisis
 
----
-## Turn-of-the-Month
-### Across decades
-### Across exchanges
-### Through the Dot Com Bubble
-### Through Global Financial Crisis
+<style>
+/* ===============================
+   EFFECT UI — ONLY THIS PAGE
+   =============================== */
 
----
-## Half-Month
-### Across decades
-### Across exchanges
-### Through the Dot Com Bubble
-### Through Global Financial Crisis
+.effect{
+  margin:5rem 0;
+  padding:2.6rem;
+  border-radius:22px;
+  background:linear-gradient(180deg,#ffffff,#f6f7fb);
+  box-shadow:0 18px 45px rgba(0,0,0,.08);
+}
 
----
-## Halloween effect (“Sell in May”)
-### Across decades
-### Across exchanges
-### Through the Dot Com Bubble
-### Through Global Financial Crisis
+.effect h2{
+  font-size:2.5rem;
+  font-weight:900;
+  margin-bottom:.4rem;
+}
+
+.effect-sub{
+  opacity:.7;
+  margin-bottom:1.5rem;
+  font-size:1.05rem;
+}
+
+.lens-tabs{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:1.2rem;
+}
+
+.lens-tabs button{
+  border:none;
+  background:#eceef3;
+  padding:9px 15px;
+  border-radius:999px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.15s;
+}
+
+.lens-tabs button.active{
+  background:#111;
+  color:#fff;
+}
+
+.lens-content{
+  margin-top:1.2rem;
+}
+
+.hidden{display:none}
+</style>
+
+<!-- ===============================
+     MONDAY EFFECT
+     =============================== -->
+<section class="effect" id="monday">
+<h2>Monday Effect</h2>
+<div class="effect-sub">Is Monday really the weakest trading day?</div>
+
+<div class="lens-tabs">
+  <button class="active" data-lens="decades">Across Decades</button>
+  <button data-lens="exchanges">Across Exchanges</button>
+  <button data-lens="dotcom">Dot-Com Bubble</button>
+  <button data-lens="gfc">Global Financial Crisis</button>
+</div>
+
+<div id="monday-decades" class="lens-content"></div>
+<div id="monday-exchanges" class="lens-content hidden"></div>
+<div id="monday-dotcom" class="lens-content hidden"></div>
+<div id="monday-gfc" class="lens-content hidden"></div>
+</section>
+
+<!-- ===============================
+     JANUARY EFFECT
+     =============================== -->
+<section class="effect" id="january">
+<h2>January Effect</h2>
+<div class="effect-sub">Does January outperform the rest of the year?</div>
+
+<div class="lens-tabs">
+  <button class="active" data-lens="decades">Across Decades</button>
+  <button data-lens="exchanges">Across Exchanges</button>
+  <button data-lens="dotcom">Dot-Com Bubble</button>
+  <button data-lens="gfc">Global Financial Crisis</button>
+</div>
+
+<div id="january-decades" class="lens-content"></div>
+<div id="january-exchanges" class="lens-content hidden"></div>
+<div id="january-dotcom" class="lens-content hidden"></div>
+<div id="january-gfc" class="lens-content hidden"></div>
+</section>
+
+<!-- ===============================
+     SANTA CLAUS RALLY
+     =============================== -->
+<section class="effect" id="santa">
+<h2>Santa Claus Rally</h2>
+<div class="effect-sub">Is there really a year-end rally?</div>
+
+<div class="lens-tabs">
+  <button class="active" data-lens="decades">Across Decades</button>
+  <button data-lens="exchanges">Across Exchanges</button>
+  <button data-lens="dotcom">Dot-Com Bubble</button>
+  <button data-lens="gfc">Global Financial Crisis</button>
+</div>
+
+<div id="santa-decades" class="lens-content"></div>
+<div id="santa-exchanges" class="lens-content hidden"></div>
+<div id="santa-dotcom" class="lens-content hidden"></div>
+<div id="santa-gfc" class="lens-content hidden"></div>
+</section>
+
+<!-- ===============================
+     TURN OF THE MONTH
+     =============================== -->
+<section class="effect" id="tom">
+<h2>Turn-of-the-Month Effect</h2>
+<div class="effect-sub">Are returns concentrated around month boundaries?</div>
+
+<div class="lens-tabs">
+  <button class="active" data-lens="decades">Across Decades</button>
+  <button data-lens="exchanges">Across Exchanges</button>
+  <button data-lens="dotcom">Dot-Com Bubble</button>
+  <button data-lens="gfc">Global Financial Crisis</button>
+</div>
+
+<div id="tom-decades" class="lens-content"></div>
+<div id="tom-exchanges" class="lens-content hidden"></div>
+<div id="tom-dotcom" class="lens-content hidden"></div>
+<div id="tom-gfc" class="lens-content hidden"></div>
+</section>
+
+<!-- ===============================
+     HALF MONTH EFFECT
+     =============================== -->
+<section class="effect" id="half">
+<h2>Half-Month Effect</h2>
+<div class="effect-sub">First-half vs second-half of the month.</div>
+
+<div class="lens-tabs">
+  <button class="active" data-lens="decades">Across Decades</button>
+  <button data-lens="exchanges">Across Exchanges</button>
+  <button data-lens="dotcom">Dot-Com Bubble</button>
+  <button data-lens="gfc">Global Financial Crisis</button>
+</div>
+
+<div id="half-decades" class="lens-content"></div>
+<div id="half-exchanges" class="lens-content hidden"></div>
+<div id="half-dotcom" class="lens-content hidden"></div>
+<div id="half-gfc" class="lens-content hidden"></div>
+</section>
+
+<!-- ===============================
+     HALLOWEEN EFFECT
+     =============================== -->
+<section class="effect" id="halloween">
+<h2>Halloween Effect (Sell in May)</h2>
+<div class="effect-sub">Winter vs summer market performance.</div>
+
+<div class="lens-tabs">
+  <button class="active" data-lens="decades">Across Decades</button>
+  <button data-lens="exchanges">Across Exchanges</button>
+  <button data-lens="dotcom">Dot-Com Bubble</button>
+  <button data-lens="gfc">Global Financial Crisis</button>
+</div>
+
+<div id="halloween-decades" class="lens-content"></div>
+<div id="halloween-exchanges" class="lens-content hidden"></div>
+<div id="halloween-dotcom" class="lens-content hidden"></div>
+<div id="halloween-gfc" class="lens-content hidden"></div>
+</section>
+
+<script>
+document.querySelectorAll(".lens-tabs").forEach(group=>{
+  const buttons = group.querySelectorAll("button");
+
+  buttons.forEach(btn=>{
+    btn.onclick = ()=>{
+      const section = btn.closest(".effect");
+      const lens = btn.dataset.lens;
+
+      buttons.forEach(b=>b.classList.remove("active"));
+      btn.classList.add("active");
+
+      section.querySelectorAll(".lens-content")
+        .forEach(c=>c.classList.add("hidden"));
+
+      section.querySelector(`#${section.id}-${lens}`)
+        .classList.remove("hidden");
+    };
+  });
+});
+</script>
 
 ---
 ## Holiday effect
