@@ -558,12 +558,7 @@ This contrast reveals an important distinction: while most calendar effects have
 
 In the graph below you can choose a calendar effect to see the results of each of the tests. :)
 
-/////////////////////////////////////////
----
-layout: page
-title: Calendar Effects – Explorer
-permalink: /effects/
----
+
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
 
 <style>
