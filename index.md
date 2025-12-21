@@ -166,56 +166,62 @@ The FARZM set out to investigate these calendar effects. Armed with data and a p
 ## Investigating the dataset
 
 <style>
-.content-block{
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  margin: 32px 0;
-}
-
-@media (max-width: 900px){
-  .content-block{
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-.content-image{
-  height: 350px;
-  width: auto;
-  max-width: 100%;
+.section-banner{
+  position: relative;
+  width: 100%;
+  height: 260px;
+  margin: 24px 0 28px 0;
   border-radius: 16px;
-  box-shadow: 0 18px 40px rgba(0,0,0,.18);
-  flex-shrink: 0;
+  overflow: hidden;
+  background-image: url("{{ site.baseurl }}/assets/img/perrynasdaq.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
-.content-text{
-  flex: 1;
+.section-banner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.35);
+}
+
+.section-banner-title{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2;
+  color:white;
+  font-size:2rem;
+  font-weight:800;
+  text-align:center;
+  padding:0 16px;
+}
+
+.section-text{
+  max-width: 900px;
+  margin: 0 auto 40px auto;
   line-height: 1.6;
   font-size: 1.02rem;
 }
-
-.content-text p{
-  margin: 0;
-}
 </style>
 
-<div class="content-block">
-  <img 
-    src="{{ site.baseurl }}/assets/img/perrynasdaq.jpg"
-    alt="Investigating the NASDAQ dataset"
-    class="content-image"
-  >
-
-  <div class="content-text">
-    <p>
-      The investigation begins with the dataset itself: NASDAQ, a technology-heavy
-      stock market index. Diving into the NASDAQ data allows us to demystify the
-      alleged calendar effects by first understanding the underlying market
-      dynamics.
-    </p>
+<div class="section-banner">
+  <div class="section-banner-title">
+    Investigating the dataset
   </div>
 </div>
+
+<div class="section-text">
+  <p>
+    The investigation begins with the dataset itself: NASDAQ, a technology-heavy
+    stock market index. Diving into the NASDAQ data allows us to demystify the
+    alleged calendar effects by first understanding the underlying market
+    dynamics.
+  </p>
+</div>
+
 
 
 
