@@ -476,56 +476,71 @@ AN INTERACTIVE GRAPH
 
 ---
 layout: page
-title: Calendar Effects – Simple Plot
-permalink: /effects-simple/
+title: Calendar Effects – Metric Explorer
+permalink: /effects/
 ---
 
-<div class="sfx">
-  <div class="sfx-head">
-    <div class="sfx-title">Calendar Effects – Simple View</div>
-    <div class="sfx-sub">Test seç → X ekseni effect, Y ekseni value.</div>
+<div class="efx">
+  <div class="efx-head">
+    <div class="efx-title">Calendar Effects</div>
+    <div class="efx-sub">X = effect, Y = seçtiğin değer. Önce test seç, sonra metric seç.</div>
   </div>
 
-  <div class="sfx-card">
-    <div class="sfx-row">
-      <div class="sfx-field">
+  <div class="efx-card">
+    <div class="efx-row">
+      <div class="efx-field">
         <label>Test</label>
         <select id="testSelect">
-          <option value="ttest">t-test (y = t-stat)</option>
-          <option value="mwu">Mann–Whitney (y = Cliff’s delta)</option>
+          <option value="ttest">t-test</option>
+          <option value="mwu">Mann–Whitney U</option>
+        </select>
+      </div>
+
+      <div class="efx-field">
+        <label>Metric</label>
+        <select id="metricSelect"></select>
+      </div>
+
+      <div class="efx-field">
+        <label>Group</label>
+        <select id="groupSelect">
+          <option value="Main effects">Main effects</option>
+          <option value="Holiday window day comparisons">Holiday window day comparisons</option>
+          <option value="ALL">All</option>
         </select>
       </div>
     </div>
 
-    <div id="plot" class="sfx-plot"></div>
-    <div class="sfx-foot" id="foot"></div>
+    <div id="plot" class="efx-plot"></div>
+    <div class="efx-foot" id="foot"></div>
   </div>
 </div>
 
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
 
 <style>
-  .sfx{max-width:980px;margin:1.2rem auto;padding:0 1rem;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
-  .sfx-head{margin-bottom:10px}
-  .sfx-title{font-size:1.45rem;font-weight:900}
-  .sfx-sub{color:rgba(0,0,0,.65);margin-top:4px}
+  .efx{max-width:980px;margin:1.2rem auto;padding:0 1rem;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+  .efx-head{margin-bottom:10px}
+  .efx-title{font-size:1.45rem;font-weight:900}
+  .efx-sub{color:rgba(0,0,0,.65);margin-top:4px}
 
-  .sfx-card{
+  .efx-card{
     background:#fff;border:1px solid rgba(0,0,0,.10);
     border-radius:16px;padding:14px;
     box-shadow:0 12px 36px rgba(0,0,0,.06);
   }
 
-  .sfx-row{display:flex;gap:10px;align-items:flex-end;margin-bottom:10px;flex-wrap:wrap}
-  .sfx-field label{display:block;font-size:.86rem;color:rgba(0,0,0,.65);margin:2px 0 6px}
-  .sfx-field select{
+  .efx-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+  @media(max-width:900px){.efx-row{grid-template-columns:1fr}}
+  .efx-field label{display:block;font-size:.86rem;color:rgba(0,0,0,.65);margin:2px 0 6px}
+  .efx-field select{
+    width:100%;
     padding:10px 12px;border-radius:12px;
     border:1px solid rgba(0,0,0,.14);background:#fff;outline:none;
-    min-width:320px;
   }
 
-  .sfx-plot{height:560px}
-  .sfx-foot{margin-top:8px;color:rgba(0,0,0,.62);font-size:.92rem;line-height:1.4}
+  .efx-plot{height:560px}
+  .efx-foot{margin-top:8px;color:rgba(0,0,0,.62);font-size:.92rem;line-height:1.4}
 </style>
 
 <script>
@@ -535,36 +550,76 @@ permalink: /effects-simple/
   const data = await res.json();
   const rowsAll = data.rows || [];
 
-  const testSelect = document.getElementById("testSelect");
-  const foot = document.getElementById("foot");
+  const testSelect   = document.getElementById("testSelect");
+  const metricSelect = document.getElementById("metricSelect");
+  const groupSelect  = document.getElementById("groupSelect");
+  const foot         = document.getElementById("foot");
 
-  // Biz sadece "Main effects" grubunu kullanacağız
-  // (Day comparisons kalabalık yapıyor. İstersen kaldırırım.)
-  const mainRows = rowsAll.filter(r => (r.group || "") === "Main effects");
+  // Senin istediğin metric listeleri:
+  const METRICS = {
+    ttest: [
+      { key: "p",    label: "p-value" },
+      { key: "stat", label: "t-test value (t-stat)" }
+    ],
+    mwu: [
+      { key: "u",               label: "mannwhitneyu-test (U)" },
+      { key: "p",               label: "p-value" },
+      { key: "prob_superiority",label: "probability superiority" },
+      { key: "cliffs_delta",    label: "Cliff’s delta" }
+    ]
+  };
+
+  function populateMetricOptions(){
+    const test = testSelect.value;
+    metricSelect.innerHTML = "";
+
+    METRICS[test].forEach(m => {
+      const opt = document.createElement("option");
+      opt.value = m.key;
+      opt.textContent = m.label;
+      metricSelect.appendChild(opt);
+    });
+
+    // default seçim:
+    metricSelect.value = (test === "ttest") ? "stat" : "cliffs_delta";
+  }
+
+  function getY(row, metricKey){
+    // JSON'da ttest için "stat", mwu için "u" var. p zaten var.
+    // Bazı satırlarda metric olmayabilir -> null dönelim
+    const v = row[metricKey];
+    if (v === undefined || v === null || Number.isNaN(v)) return null;
+    return v;
+  }
+
+  function buildHover(row, test){
+    if (test === "ttest"){
+      return `Effect: <b>${row.effect}</b><br>` +
+             `t-stat: <b>${(row.stat ?? 0).toFixed(4)}</b><br>` +
+             `p: <b>${row.p}</b>`;
+    }
+    return `Effect: <b>${row.effect}</b><br>` +
+           `U: <b>${(row.u ?? 0).toFixed(2)}</b><br>` +
+           `p: <b>${row.p}</b><br>` +
+           `prob superiority: <b>${(row.prob_superiority ?? 0).toFixed(4)}</b><br>` +
+           `Cliff's delta: <b>${(row.cliffs_delta ?? 0).toFixed(4)}</b>`;
+  }
 
   function render(){
-    const test = testSelect.value; // ttest | mwu
-    const rows = mainRows.filter(r => r.test === test);
+    const test = testSelect.value;        // ttest | mwu
+    const metricKey = metricSelect.value; // dynamic
+    const grp = groupSelect.value;
 
-    // X: effect
+    let rows = rowsAll.filter(r => r.test === test);
+    if (grp !== "ALL") rows = rows.filter(r => r.group === grp);
+
+    // X = effect (senin istediğin ana tema)
     const x = rows.map(r => r.effect);
+    const y = rows.map(r => getY(r, metricKey));
+    const hover = rows.map(r => buildHover(r, test));
 
-    // Y:
-    // ttest -> stat
-    // mwu   -> cliffs_delta (daha anlamlı & ölçek düzgün)
-    const y = rows.map(r => test === "ttest" ? r.stat : r.cliffs_delta);
-
-    const hover = rows.map(r => {
-      if (test === "ttest"){
-        return `Effect: <b>${r.effect}</b><br>` +
-               `t-stat: <b>${(r.stat ?? 0).toFixed(4)}</b><br>` +
-               `p: <b>${r.p}</b>`;
-      }
-      return `Effect: <b>${r.effect}</b><br>` +
-             `Cliff's delta: <b>${(r.cliffs_delta ?? 0).toFixed(4)}</b><br>` +
-             `prob superiority: <b>${(r.prob_superiority ?? 0).toFixed(4)}</b><br>` +
-             `p: <b>${r.p}</b>`;
-    });
+    // title
+    const metricLabel = (METRICS[test].find(m => m.key === metricKey) || {}).label || metricKey;
 
     const trace = {
       type: "scatter",
@@ -575,14 +630,11 @@ permalink: /effects-simple/
       marker: {size: 14, opacity: 0.9, line: {width: 1}}
     };
 
-    const yTitle = (test === "ttest") ? "t-statistic" : "Cliff’s delta";
-    const title  = (test === "ttest") ? "t-test (main effects)" : "Mann–Whitney (main effects)";
-
     const layout = {
-      title: {text: title, x: 0.02, xanchor: "left"},
+      title: {text: `${test} · ${metricLabel}`, x: 0.02, xanchor: "left"},
       margin: {l: 70, r: 20, t: 60, b: 140},
       xaxis: {title: "Effect", tickangle: -25, automargin: true},
-      yaxis: {title: yTitle, zeroline: true},
+      yaxis: {title: metricLabel, zeroline: true},
       paper_bgcolor: "rgba(0,0,0,0)",
       plot_bgcolor: "rgba(0,0,0,0)",
       height: 560,
@@ -591,16 +643,29 @@ permalink: /effects-simple/
 
     Plotly.react("plot", [trace], layout, {displayModeBar: true, responsive: true});
 
-    foot.innerHTML =
-      (test === "ttest")
-      ? `Y ekseni <b>t-stat</b>. Büyük |t| → daha güçlü fark.`
-      : `Y ekseni <b>Cliff’s delta</b> (effect size). İşaret yönü farkın yönünü gösterir.`;
+    // küçük açıklama
+    if (test === "mwu" && metricKey === "u"){
+      foot.innerHTML = `Not: U istatistiği ölçek olarak çok büyük olabilir; görsel olarak daha anlamlı metric genelde <b>Cliff’s delta</b>.`;
+    } else {
+      foot.innerHTML = `X = effect, Y = <b>${metricLabel}</b>. Test değiştirince metric seçenekleri otomatik değişiyor.`;
+    }
   }
 
-  testSelect.addEventListener("change", render);
+  // events
+  testSelect.addEventListener("change", () => {
+    populateMetricOptions();
+    render();
+  });
+
+  metricSelect.addEventListener("change", render);
+  groupSelect.addEventListener("change", render);
+
+  // init
+  populateMetricOptions();
   render();
 })();
 </script>
+
 
 
 
