@@ -337,6 +337,7 @@ In this section, we investigate the **temporal stability** of each calendar effe
 
 ## Calendar Effects
 
-To see the plots: **[Calendar Effects]({{ site.baseurl }}/effects/)**.
+To see the plots: **[Calendar Effects](/effects/)**.
+
 
 
