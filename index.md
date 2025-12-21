@@ -1561,8 +1561,90 @@ In this section, we investigate the **temporal stability** of each calendar effe
 </style>
 
 
+<!-- ============================================================
+  ✅ ONE-PAGE EFFECTS HUB (PIE NAV + COLLAPSIBLE SECTIONS)
+  - No analysis/plot logic changed
+  - Only wrapped each effect in <section> and added hub + show/hide
+============================================================ -->
+
+<!-- Plotly (load once is enough; kept as you had it in places too) -->
+<script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+
+<!-- ========== EFFECTS OVERVIEW (Pie Navigation) ========== -->
+<div class="effects-hub">
+  <div class="hub-head">
+    <div>
+      <div class="hub-title">Calendar Effects Explorer</div>
+      <div class="hub-sub">Click a slice to open that effect below. (Others collapse.)</div>
+    </div>
+    <div class="hub-mini">
+      <button class="hub-btn" data-open="all">Show all</button>
+      <button class="hub-btn" data-open="none">Collapse</button>
+    </div>
+  </div>
+
+  <div class="hub-grid">
+    <div class="hub-card">
+      <div class="hub-card-title">Effects</div>
+      <div id="effectsPie"></div>
+      <div class="hub-note" id="effectsHint"></div>
+    </div>
+
+    <div class="hub-card">
+      <div class="hub-card-title">Opened effect</div>
+      <div class="hub-opened" id="openedEffectName">None</div>
+      <div class="hub-note">Tip: share links like <code>#santa</code>, <code>#sim</code>, <code>#monday</code>, <code>#january</code>, <code>#holiday</code></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .effects-hub{
+    margin: 18px 0 22px;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.04);
+    box-shadow: 0 18px 60px rgba(0,0,0,.25);
+  }
+  .hub-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:10px}
+  .hub-title{font-weight:950;font-size:1.25rem}
+  .hub-sub{opacity:.75;max-width:85ch}
+  .hub-mini{display:flex;gap:10px;flex-wrap:wrap}
+  .hub-btn{
+    cursor:pointer;
+    padding:10px 12px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);
+    color:inherit;
+  }
+  .hub-btn:hover{border-color:rgba(120,170,255,.45)}
+  .hub-grid{display:grid;grid-template-columns: 1.25fr .75fr;gap:14px}
+  @media(max-width:980px){.hub-grid{grid-template-columns:1fr}}
+  .hub-card{
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(0,0,0,.10);
+    padding:10px;
+  }
+  .hub-card-title{font-weight:850;margin:4px 6px 10px;opacity:.9}
+  .hub-note{margin-top:10px;padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);opacity:.9}
+  .hub-opened{font-weight:900;font-size:1.05rem;opacity:.95;margin:8px 6px 2px}
+
+  /* Sections show/hide */
+  .effect-section{ display:none; margin-top:16px; }
+  .effect-section.active{ display:block; }
+
+  /* Show-all mode */
+  .effects-all .effect-section{ display:block; }
+</style>
 
 
+<!-- ============================================================
+  ✅ SECTION 1: SANTA (your code unchanged; only wrapped)
+============================================================ -->
+<section class="effect-section" id="effect-santa" data-effect="santa" data-title="Santa Claus Effect">
 
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
 <div class="santa-ui">
@@ -1728,6 +1810,14 @@ In this section, we investigate the **temporal stability** of each calendar effe
   }
   #santaTicker:focus{ border-color: rgba(120,170,255,.6); }
 </style>
+
+</section>
+
+
+<!-- ============================================================
+  ✅ SECTION 2: SELL IN MAY (your code unchanged; only wrapped)
+============================================================ -->
+<section class="effect-section" id="effect-sim" data-effect="sim" data-title="Sell in May">
 
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
 <div class="sim-ui">
@@ -1948,14 +2038,15 @@ In this section, we investigate the **temporal stability** of each calendar effe
   }
 </style>
 
+</section>
 
 
-
-
-
+<!-- ============================================================
+  ✅ SECTION 3: MONDAY (your code unchanged; only wrapped)
+============================================================ -->
+<section class="effect-section" id="effect-monday" data-effect="monday" data-title="Monday Effect">
 
 <!-- ============== MONDAY EFFECT (per ticker + pie) ============== -->
-
 <div class="mon-ui">
   <div class="mon-top">
     <div>
@@ -2174,11 +2265,13 @@ In this section, we investigate the **temporal stability** of each calendar effe
   }
 </style>
 
+</section>
 
 
-
-
-
+<!-- ============================================================
+  ✅ SECTION 4: JANUARY (your code unchanged; only wrapped)
+============================================================ -->
+<section class="effect-section" id="effect-january" data-effect="january" data-title="January Effect">
 
 <div class="jan-ui">
   <div class="jan-top">
@@ -2362,10 +2455,13 @@ In this section, we investigate the **temporal stability** of each calendar effe
   .jan-slice{ margin-top:10px; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.04); }
 </style>
 
+</section>
 
 
-
-
+<!-- ============================================================
+  ✅ SECTION 5: HOLIDAY (your code unchanged; only wrapped)
+============================================================ -->
+<section class="effect-section" id="effect-holiday" data-effect="holiday" data-title="Holiday Effect">
 
 <!-- Plotly -->
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
@@ -2710,3 +2806,109 @@ In this section, we investigate the **temporal stability** of each calendar effe
     background:rgba(255,255,255,.04);
   }
 </style>
+
+</section>
+
+
+<!-- ============================================================
+  ✅ HUB CONTROLLER JS: pie nav + show/hide + resize plots when opened
+============================================================ -->
+<script>
+(function(){
+  const root = document.documentElement;
+  const sections = Array.from(document.querySelectorAll(".effect-section"));
+
+  const EFFECTS = sections.map(s => ({
+    key: s.dataset.effect,
+    title: s.dataset.title || s.dataset.effect,
+    el: s
+  }));
+
+  const openedName = document.getElementById("openedEffectName");
+  const hint = document.getElementById("effectsHint");
+  const pieDiv = document.getElementById("effectsPie");
+
+  function resizeVisiblePlots(container){
+    if(!container) return;
+    const plotDivs = container.querySelectorAll(".js-plotly-plot");
+    plotDivs.forEach(d => {
+      try{ Plotly.Plots.resize(d); }catch(e){}
+    });
+  }
+
+  function setActive(key){
+    if(key === "all"){
+      root.classList.add("effects-all");
+      sections.forEach(s => s.classList.remove("active"));
+      openedName.textContent = "All effects";
+      hint.innerHTML = "All effects are visible. Click a slice to focus on one.";
+      // resize all
+      setTimeout(() => {
+        sections.forEach(s => resizeVisiblePlots(s));
+      }, 50);
+      return;
+    }
+
+    if(key === "none"){
+      root.classList.remove("effects-all");
+      sections.forEach(s => s.classList.remove("active"));
+      openedName.textContent = "None";
+      hint.innerHTML = "Collapsed. Click a slice to open an effect.";
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+      return;
+    }
+
+    root.classList.remove("effects-all");
+    sections.forEach(s => s.classList.toggle("active", s.dataset.effect === key));
+    const eff = EFFECTS.find(e => e.key === key);
+    openedName.textContent = eff ? eff.title : key;
+
+    history.replaceState(null, "", "#" + key);
+
+    if(eff && eff.el){
+      eff.el.scrollIntoView({behavior:"smooth", block:"start"});
+      // Plotly hidden->shown width fix
+      setTimeout(() => resizeVisiblePlots(eff.el), 50);
+    }
+  }
+
+  // Buttons
+  document.querySelectorAll(".hub-btn").forEach(btn => {
+    btn.addEventListener("click", () => setActive(btn.dataset.open));
+  });
+
+  // Pie: navigation only (equal weights)
+  const labels = EFFECTS.map(e => e.title);
+  const keys = EFFECTS.map(e => e.key);
+  const values = EFFECTS.map(() => 1);
+
+  Plotly.newPlot(pieDiv, [{
+    type:"pie",
+    labels,
+    values,
+    textinfo:"label",
+    hovertemplate:"<b>%{label}</b><extra></extra>",
+    pull: labels.map(()=>0.04)
+  }], {
+    title: "Click to open",
+    height: 520,
+    margin: {l: 10, r: 10, t: 60, b: 10},
+    showlegend: false
+  }, {responsive:true});
+
+  pieDiv.on("plotly_click", (ev) => {
+    const idx = ev.points[0].pointNumber;
+    const key = keys[idx];
+    setActive(key);
+  });
+
+  // Init: hash varsa onu aç
+  const hash = (window.location.hash || "").replace("#","").trim();
+  if(hash && keys.includes(hash)){
+    setActive(hash);
+    hint.innerHTML = `Opened from link: <code>#${hash}</code>`;
+  }else{
+    setActive("none");
+  }
+})();
+</script>
