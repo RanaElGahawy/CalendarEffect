@@ -1843,20 +1843,24 @@ That’s a result too.
 </details>
 
 
-## Do calendar effects survive through the years?
+## The investigation is complete. The case is now open.
 
-Now that we have detected and analyzed several calendar effects, a natural question arises: **do these patterns remain stable over time, or do they evolve as markets change?**
+Our work as market detectives ends here but the story does not.
 
-Calendar anomalies are often presented as timeless rules — but real financial markets rarely stay constant. Trading technology evolves, regulations shift, investor composition changes, and macroeconomic regimes come and go. Any of these forces can influence whether an anomaly strengthens, weakens, or disappears entirely.
+Across decades, crises, exchanges, and regimes, we uncovered patterns that sometimes persist,
+sometimes weaken, and sometimes completely disappear. Some calendar effects appear remarkably
+robust. Others look fragile, context-dependent, or highly sensitive to market conditions.
 
-In this section, we investigate the **temporal stability** of each calendar effect. More precisely, we ask:
+At this point, there is no single rule to follow and that is exactly the point.
 
-- Do the effects behave similarly in the 1970s, 1980s, 1990s, and 2000s?  
-- Do some grow stronger or weaker across decades?    
-- And crucially: **which calendar effects survive consistently over time, and which ones vanish once they become widely known?**
+Now, it is **your turn**.
 
+You can explore each effect in detail, zoom into specific periods, compare exchanges,
+or even investigate individual stocks. Some companies follow calendar patterns closely.
+Others ignore them entirely. The data is open, and the tools are in your hands.
 
-
+Markets do not offer universal truths only evidence.
+How you interpret that evidence is part of the experiment.
 
 <section id="calendar-effects" class="fx-wrap">
   <div class="fx-layout">
