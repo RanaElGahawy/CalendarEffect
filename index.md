@@ -325,45 +325,6 @@ In this section, we investigate the **temporal stability** of each calendar effe
 
 
 
-<section id="calendar-effects" class="fx-wrap">
-
-  <!-- HERO -->
-  <div class="fx-hero">
-    <div class="fx-hero-left">
-      <div class="fx-eyebrow">NASDAQ • Calendar Anomalies</div>
-      <h2 class="fx-h1">Explore Seasonal Patterns, One Click at a Time</h2>
-      <p class="fx-lead">
-        Select a calendar effect and instantly see how many companies show the pattern.
-        This is designed as a single-page exploration (no page breaks, no distraction).
-      </p>
-
-      <div class="fx-cta-row">
-        <a class="fx-cta"
-           href="{{ site.baseurl }}/test_santa/"
-           aria-label="Open Santa effect page">
-          Explore Santa Rally Deep Dive →
-        </a>
-        <span class="fx-note">Tip: Hover the effect cards.</span>
-      </div>
-    </div>
-
-    <div class="fx-hero-right">
-      <div class="fx-stat">
-        <div class="fx-stat-num">7</div>
-        <div class="fx-stat-lbl">Effects</div>
-      </div>
-      <div class="fx-stat">
-        <div class="fx-stat-num">1</div>
-        <div class="fx-stat-lbl">Plot at a time</div>
-      </div>
-      <div class="fx-stat">
-        <div class="fx-stat-num">Fast</div>
-        <div class="fx-stat-lbl">Switching</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- LAYOUT -->
   <div class="fx-layout">
 
     <!-- LEFT: Effect cards -->
