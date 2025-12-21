@@ -1722,6 +1722,187 @@ In this section, we investigate the **temporal stability** of each calendar effe
 
 
 
+<div class="jan-ui">
+  <div class="jan-top">
+    <div>
+      <div class="jan-h">January Effect (per ticker)</div>
+      <div class="jan-sub">Type a ticker to update the two-panel plot. Pie shows distribution across companies.</div>
+    </div>
+
+    <div>
+      <input id="janTicker" list="janTickers" placeholder="Type ticker (e.g., AAPL)" />
+      <datalist id="janTickers"></datalist>
+    </div>
+  </div>
+
+  <div class="jan-grid">
+    <div class="jan-card">
+      <div class="jan-card-title">Ticker view</div>
+      <div id="janPlot"></div>
+    </div>
+
+    <div class="jan-card">
+      <div class="jan-card-title">Company distribution</div>
+      <div id="janPie"></div>
+      <div id="janSliceInfo" class="jan-slice"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(async function(){
+  const compUrl = "{{ site.baseurl }}/assets/data/january_comp_all.json";
+  const pieUrl  = "{{ site.baseurl }}/assets/data/january_pie.json";
+
+  const [compRes, pieRes] = await Promise.all([fetch(compUrl), fetch(pieUrl)]);
+  const ALL = await compRes.json();
+  const PIE = await pieRes.json();
+
+  const input = document.getElementById("janTicker");
+  const dl = document.getElementById("janTickers");
+  const plotDiv = document.getElementById("janPlot");
+  const pieDiv = document.getElementById("janPie");
+  const sliceInfo = document.getElementById("janSliceInfo");
+
+  const tickers = Object.keys(ALL).sort();
+  tickers.forEach(t => {
+    const opt = document.createElement("option");
+    opt.value = t;
+    dl.appendChild(opt);
+  });
+
+  function buildWinYearShapes(winYears){
+    return (winYears || []).map(y => ({
+      type: "rect",
+      xref: "x",
+      yref: "paper",
+      x0: y - 0.5,
+      x1: y + 0.5,
+      y0: 0.42,
+      y1: 1.00,
+      fillcolor: "rgba(0,0,0,0.06)",
+      line: { width: 0 },
+      layer: "below"
+    }));
+  }
+
+  function drawTicker(tkr){
+    tkr = (tkr || "").trim().toUpperCase();
+    const d = ALL[tkr];
+    if(!d){
+      Plotly.newPlot(plotDiv, [], {title: "Ticker not found"}, {responsive:true});
+      return;
+    }
+
+    const years = d.years;
+
+    const trace1 = {
+      x: years, y: d.jan_avg,
+      type: "scatter", mode: "lines+markers",
+      name: "Jan avg",
+      hovertemplate: "Year=%{x}<br>Jan avg=%{y:.5f}<extra></extra>",
+      xaxis: "x", yaxis: "y"
+    };
+
+    const trace2 = {
+      x: years, y: d.other_months_avg,
+      type: "scatter", mode: "lines+markers",
+      name: "Feb–Dec avg",
+      line: { dash: "dash" },
+      hovertemplate: "Year=%{x}<br>Feb–Dec avg=%{y:.5f}<extra></extra>",
+      xaxis: "x", yaxis: "y"
+    };
+
+    const trace3 = {
+      x: years, y: d.diff,
+      type: "bar",
+      name: "Diff (Jan - Feb–Dec)",
+      hovertemplate: "Year=%{x}<br>Diff=%{y:.5f}<extra></extra>",
+      xaxis: "x2", yaxis: "y2"
+    };
+
+    const layout = {
+      title: `January Effect — ${tkr} (win rate ${d.win_rate.toFixed(1)}%)`,
+      height: 680,
+      margin: {l: 55, r: 20, t: 70, b: 50},
+      hovermode: "x unified",
+      legend: {orientation:"h", y:1.07, x:0},
+
+      xaxis:  {domain:[0,1], anchor:"y"},
+      yaxis:  {domain:[0.42,1], title:"Avg return"},
+      xaxis2: {domain:[0,1], anchor:"y2", title:"Year"},
+      yaxis2: {domain:[0,0.34], title:"Diff"},
+
+      shapes: buildWinYearShapes(d.win_years).concat([{
+        type:"line",
+        xref:"x2", yref:"y2",
+        x0: Math.min(...years), x1: Math.max(...years),
+        y0: 0, y1: 0,
+        line: {dash:"dot", width:1}
+      }])
+    };
+
+    Plotly.newPlot(plotDiv, [trace1, trace2, trace3], layout, {responsive:true});
+  }
+
+  function drawPie(){
+    const labels = PIE.labels;
+    const values = PIE.counts;
+
+    const trace = {
+      type: "pie",
+      labels: labels,
+      values: values,
+      textinfo: "label+percent+value",
+      hovertemplate: "<b>%{label}</b><br>Companies: %{value}<extra></extra>",
+      pull: labels.map(() => 0.04)
+    };
+
+    const layout = {
+      title: "January Effect — Company Distribution",
+      height: 520,
+      margin: {l: 10, r: 10, t: 60, b: 10},
+      showlegend: true
+    };
+
+    Plotly.newPlot(pieDiv, [trace], layout, {responsive:true});
+
+    pieDiv.on("plotly_click", (ev) => {
+      const idx = ev.points[0].pointNumber;
+      const sliceLabel = labels[idx];
+      const tickList = PIE.tickersBySlice[idx] || [];
+      const preview = tickList.slice(0, 40).join(", ")
+        + (tickList.length > 40 ? `, ... (+${tickList.length-40} more)` : "");
+      sliceInfo.innerHTML =
+        `<b>${sliceLabel}</b>: ${tickList.length} tickers<br><span style="opacity:.8">${preview}</span>`;
+    });
+  }
+
+  drawPie();
+  const defaultT = "TAPR";
+  input.value = ALL[defaultT] ? defaultT : tickers[0];
+  drawTicker(input.value);
+
+  input.addEventListener("change", () => drawTicker(input.value));
+})();
+</script>
+
+<style>
+  .jan-ui{ margin-top:16px; padding:14px; border-radius:18px; border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.04); box-shadow:0 18px 60px rgba(0,0,0,.25); }
+  .jan-top{ display:flex; justify-content:space-between; align-items:flex-end; gap:12px; flex-wrap:wrap; margin-bottom:10px; }
+  .jan-h{ font-weight:900; font-size:1.15rem; }
+  .jan-sub{ opacity:.75; }
+
+  #janTicker{ width:min(320px, 80vw); padding:10px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06); color:inherit; outline:none; }
+  #janTicker:focus{ border-color: rgba(120,170,255,.6); }
+
+  .jan-grid{ display:grid; grid-template-columns: 1fr; gap:16px; align-items:start; } /* alt alta */
+  .jan-card{ border-radius:16px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.10); padding:10px; }
+  .jan-card-title{ font-weight:850; margin:4px 6px 10px; opacity:.9; }
+  .jan-slice{ margin-top:10px; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.04); }
+</style>
 
 
 
