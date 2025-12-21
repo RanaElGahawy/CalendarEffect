@@ -1015,7 +1015,6 @@ permalink: /effects/
 }
 
 .section-text{
-  max-width: 900px;
   margin: 0 auto 36px auto;
   line-height: 1.6;
   font-size: 1.02rem;
