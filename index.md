@@ -156,12 +156,21 @@ The crucial question of whether these calendar effects are statistically signifi
 
 ## Are the Calendar effects real ? 
 
-Reinforced by rigorous statistical tools, the detectives conduct an in-depth investigation into each calendar effect. 
-Every suspected calendar anomaly is subjected to rigorous evaluation through formal hypothesis testing. In particular, t-tests are employed to determine whether average returns during specific calendar periods differ significantly from those observed in the rest of the sample. t-tests are employed to determine whether average returns during specific calendar periods differ significantly from those observed in the rest of the sample.
+<div class="content-block">
+  <img src="assets/img/perrymeme.png" alt="Image" class="content-image">
 
-<p align="center">
-  <img src="assets/img/perrymeme.png" width="500">
-</p>
+  <div class="content-text">
+    <p>
+      Reinforced by rigorous statistical tools, the detectives conduct an in-depth investigation into each calendar effect.
+      Every suspected calendar anomaly is subjected to rigorous evaluation through formal hypothesis testing.
+    </p>
+
+    <p>
+      In particular, t-tests are employed to determine whether average returns during specific calendar periods differ
+      significantly from those observed in the rest of the sample.
+    </p>
+  </div>
+</div>
 
 For these tests to be valid, several underlying assumptions must be satisfied, most notably the normality and independence of the data. To ensure the validity of the statistical tests, the investigation begins with a careful assessment of these assumptions. In particular, the normality of returns is examined prior to conducting the hypothesis tests.
 
