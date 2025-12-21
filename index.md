@@ -324,7 +324,7 @@ In this section, we investigate the **temporal stability** of each calendar effe
 
 
 
-
+<section id="calendar-effects" class="fx-wrap">
   <div class="fx-layout">
 
     <!-- LEFT: Effect cards -->
