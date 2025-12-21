@@ -1210,7 +1210,7 @@ By tailoring our regression approach to the structure of each clue, we ensure th
         height="550"
         frameborder="0">
 </iframe>
-
+Looking at the chart, a clear pattern stands out. Across all decades, returns tend to be higher on days before holidays than on normal trading days. However, what once looked like a strong and regular market behavior gradually becomes less pronounced, hinting that market may have adapted to this seasonal tendency.
 ### Across exchanges
 <iframe src="assets/img/plot_holiday_effect_exchange.html"
         width="100%"
