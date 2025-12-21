@@ -375,7 +375,20 @@ After investigating all the calendar effect's windows using the Welch’s t-test
 
 ### Mann–Whitney U Test
 
-To determine whether calendar effects reflect a systematic shift in the distribution of returns, rather than the effect of rare outliers, the detectives call in a second independent witness: the Mann–Whitney U test. Unlike Welch’s test, Mann–Whitney does not rely on normality distribution assumptions and does not compare averages. Instead, it evaluates whether returns from one calendar period tend to be consistently higher or lower than those from another period across the entire distribution. They hope that by interviewing a mean-based witness and a rank-based one, it would help them distinguish between calendar effects driven by behavioral patterns and those driven by a few rare market events.
+<div class="content-block">
+  <img src="assets/img/mwutest.jpg" alt="Mann-Whitney Test Image" class="content-image">
+
+  <div class="content-text">
+    <p>
+      To determine whether calendar effects reflect a systematic shift in the distribution of returns, rather than the effect of rare outliers, the detectives call in a second independent witness: the Mann–Whitney U test. Unlike Welch’s test, Mann–Whitney does not rely on normality distribution assumptions and does not compare averages. Instead, it evaluates whether returns from one calendar period tend to be consistently higher or lower than those from another period across the entire distribution.
+    </p>
+
+    <p>
+      They hope that by interviewing a mean-based witness and a rank-based one, it would help them distinguish between calendar effects driven by behavioral patterns and those driven by a few rare market events.
+    </p>
+  </div>
+</div>
+
 
 
 <details markdown="1">
