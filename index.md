@@ -1376,38 +1376,111 @@ use-site-title: true
 <!-- ===============================
      HOLIDAY EFFECT
      =============================== -->
+
 <section class="effect" id="holiday">
 
-<h2>Holiday Effect</h2>
-<div class="effect-sub">
-Do stock returns behave abnormally around public holidays?
-</div>
+  <h2>Holiday Effect</h2>
+  <div class="effect-sub">
+    Do stock returns behave abnormally around public holidays?
+  </div>
 
-<div class="lens-tabs">
-  <button class="active" data-lens="decades">Across Decades</button>
-  <button data-lens="years">Across Years</button>
-  <button data-lens="crises">Crashes &amp; Crises</button>
-  <button data-lens="fed">Fed Effect</button>
-</div>
+  <div class="lens-tabs">
+    <button class="active" data-lens="decades">Across Decades</button>
+    <button data-lens="years">Across Years</button>
+    <button data-lens="crises">Crashes &amp; Crises</button>
+    <button data-lens="fed">Fed Effect</button>
+  </div>
 
-<div id="holiday-decades" class="lens-content">
-  <!-- plot: holiday effect aggregated by decade -->
-</div>
+  <!-- ========== Across Decades ========== -->
+  <div id="holiday-decades" class="lens-content">
+    <iframe
+      src="assets/img/plot_holiday_effect_by_decade.html"
+      width="100%"
+      height="550"
+      frameborder="0">
+    </iframe>
 
-<div id="holiday-years" class="lens-content hidden">
-  <!-- plot: holiday effect year-by-year -->
-</div>
+    <p>
+      Looking at the chart, a clear pattern stands out. Across all decades, returns tend to be higher
+      on days before holidays than on normal trading days. However, what once looked like a strong and
+      regular market behavior gradually becomes less pronounced, hinting that the market may have adapted
+      to this seasonal tendency.
+    </p>
+  </div>
 
-<div id="holiday-crises" class="lens-content hidden">
-  <!-- plot: holiday effect during crashes & crises -->
-</div>
+  <!-- ========== Across Years ========== -->
+  <div id="holiday-years" class="lens-content hidden">
+    <!-- Eğer elinde gerçekten "year-by-year" plot varsa buraya koy.
+         Şimdilik sende exchange grafiği var; bunu burada gösteriyorum. -->
+    <iframe
+      src="assets/img/plot_holiday_effect_exchange.html"
+      width="100%"
+      height="550"
+      frameborder="0">
+    </iframe>
 
-<div id="holiday-fed" class="lens-content hidden">
-  <!-- plot: holiday effect around FOMC / Fed periods -->
-</div>
+    <p>
+      Holiday-related return differences vary widely across exchanges. The effect appears strongest on
+      NASDAQ and NYSE American, where returns tend to be higher before holidays, while the NYSE exhibits
+      a more modest increase. In contrast, ETFs and BATS/Cboe show little to no noticeable holiday effect,
+      suggesting that this pattern is mainly concentrated in traditional equity markets.
+    </p>
+
+    <!-- NOT: Eğer sonra "Across Years" için ayrı bir html üretirsen,
+         yukarıdaki iframe src'yi onunla değiştirirsin. -->
+  </div>
+
+  <!-- ========== Crashes & Crises ========== -->
+  <div id="holiday-crises" class="lens-content hidden">
+    <iframe
+      src="assets/img/plot_crisis_holiday_heatmap.html"
+      width="100%"
+      height="550"
+      frameborder="0">
+    </iframe>
+
+    <p>
+      During the Dot-Com bubble, performance around holidays turns weak and often negative, especially in
+      the days following the break. In contrast, during the Global Financial Crisis, returns around holidays
+      are mostly positive, with particularly strong gains just before the holiday, showing that the holiday
+      effect can remain visible during stress periods.
+    </p>
+  </div>
+
+  <!-- ========== Fed Effect ========== -->
+  <div id="holiday-fed" class="lens-content hidden">
+    <!-- Eğer Fed ile ilgili ayrı plot ürettiysen buraya koy:
+    <iframe src="assets/img/plot_holiday_fed_effect.html" width="100%" height="550" frameborder="0"></iframe>
+    -->
+
+    <div style="padding:14px 14px; border:1px solid rgba(0,0,0,.12); border-radius:14px; background:#fff;">
+      <b>Fed Effect plot is not added yet.</b>
+      <div style="opacity:.75; margin-top:6px;">
+        When you export the Fed-related holiday chart as an HTML file,
+        paste it here as an iframe (same style as others).
+      </div>
+    </div>
+  </div>
 
 </section>
 
+<style>
+  /* Eğer bu class'lar zaten CSS'inde varsa tekrar yazmana gerek yok */
+  .hidden { display: none; }
+  .lens-tabs { display:flex; gap:10px; flex-wrap:wrap; margin: 10px 0 14px; }
+  .lens-tabs button{
+    cursor:pointer; border:1px solid rgba(0,0,0,.15); background:#fff;
+    padding:10px 12px; border-radius:999px; font-weight:700;
+  }
+  .lens-tabs button.active{
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(0,0,0,.08);
+  }
+  .lens-content iframe{
+    border-radius: 12px;
+    box-shadow: 0 10px 22px rgba(0,0,0,.08);
+  }
+</style>
 
 <script>
 document.querySelectorAll(".lens-tabs").forEach(group=>{
@@ -1431,29 +1504,6 @@ document.querySelectorAll(".lens-tabs").forEach(group=>{
 });
 </script>
 
----
-## Holiday effect
-### Across decades
-<iframe src="assets/img/plot_holiday_effect_by_decade.html"
-        width="100%"
-        height="550"
-        frameborder="0">
-</iframe>
-Looking at the chart, a clear pattern stands out. Across all decades, returns tend to be higher on days before holidays than on normal trading days. However, what once looked like a strong and regular market behavior gradually becomes less pronounced, hinting that market may have adapted to this seasonal tendency.
-### Across exchanges
-<iframe src="assets/img/plot_holiday_effect_exchange.html"
-        width="100%"
-        height="550"
-        frameborder="0">
-</iframe>
-Holiday-related return differences vary widely across exchanges. The effect appears strongest on NASDAQ and NYSE American, where returns tend to be higher before holidays, while the NYSE exhibits a more modest increase. In contrast, ETFs and BATS/Cboe show little to no noticeable holiday effect, suggesting that this pattern is mainly concentrated in traditional equity markets.
-
-### Through the Dot Com Bubble and Global Financial Crisis
-<iframe src="assets/img/plot_crisis_holiday_heatmap.html"
-        width="100%"
-        height="550"
-        frameborder="0">
-During the Dot-Com bubble, performance around holidays turns weak and often negative, especially in the days following the break: The effect weakens. In contrast, during the Global Financial Crisis, returns around holidays are mostly positive, with particularly strong gains just before the holiday, showing that holiday effect remains during this crisis.
 
 
 <details>
