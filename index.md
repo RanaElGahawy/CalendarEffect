@@ -1434,7 +1434,7 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
   <!-- ========== Across Exchanges ========== -->
   <div id="tom-exchanges" class="lens-content hidden">
     <iframe src="assets/img/plot_tom_by_exchange.html"></iframe>
-    <p><!-- Add your comment here --></p>
+    <p> For each exchange type, we observe a clear difference in returns between the turn-of-the-month window and the rest of the days. The effect appears strongest on NYSE American, where the return gap reaches approximately 0.12%. On the other end of the spectrum, BATS shows the weakest TOM effect, with a difference of roughly 0.02%.</p>
   </div>
 
 </section>
