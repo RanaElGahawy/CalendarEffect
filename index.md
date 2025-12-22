@@ -1281,7 +1281,7 @@ The big picture has given us the first clues. One clue, however, quickly falls a
 
   <!-- ========== Across Decades ========== -->
   <div id="tom-decades" class="lens-content">
-    <iframe src="assets/img/moday_effect_decades.png"></iframe>
+    <iframe src="assets/img/moday_effect_decades.png" width=100%></iframe>
     <p> We observe that the average return for both the turn-of-the-month window and the rest of the days decreases across decades, although both remain positive. 
     The TOM effect is particularly strong between 1991 and 2000, with an average return of about 0.2% compared with roughly 0.05% for the rest of the days. 
     In the most recent decade, the difference persists but at much lower magnitudes: around 0.04% for TOM versus 0.007% for the rest.</p>
