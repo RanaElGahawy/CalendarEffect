@@ -1265,16 +1265,11 @@ The big picture has given us the first clues. One clue, however, quickly falls a
   </div>
 
   <div id="real" class="lens-content">
-    <iframe src="assets/img/logtest.png"></iframe>
+    <p>This content is shown when clicking on "Reality".</p>
   </div>
-  <div id="monday-exchanges" class="lens-content hidden">
-    <!-- iframe here -->
-  </div>
-  <div id="monday-dotcom" class="lens-content hidden">
-    <!-- iframe here -->
-  </div>
-  <div id="monday-gfc" class="lens-content hidden">
-    <!-- iframe here -->
+  
+  <div id="time" class="lens-content hidden">
+    <p>This content is shown when clicking on "Across Time".</p>
   </div>
 </section>
 
