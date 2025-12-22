@@ -132,7 +132,7 @@ data-story="Rana revisits old cases and historical data, re-examining past clues
 <div class="team5-card" data-name="Aitor" data-role="Paris"
 data-img="assets/img/lilleaitor.png"
 data-story="Aitor challenges the evidence by questioning assumptions and testing alternative explanations. He cross-examines the results to determine whether the suspected effects collapse when pushed further.">
-<img src="assets/img/litt.png">
+<img src="assets/img/lilleaitor.png">
 <div class="team5-body"><p class="team5-name">Aitor</p><p class="team5-role">Interrogation Expert</p></div>
 </div>
 
