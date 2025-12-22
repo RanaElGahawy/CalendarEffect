@@ -1260,8 +1260,8 @@ The big picture has given us the first clues. One clue, however, quickly falls a
   </div>
 
   <div class="lens-tabs">
-    <button class="real" data-lens="decades">Reality</button>
-    <button data-lens="time">Across Time</button>
+    <button class="real" data-lens="real">Reality</button>
+    <button class="time" data-lens="time">Across Time</button>
   </div>
 
   <div id="real" class="lens-content">
