@@ -1438,7 +1438,6 @@ The big picture has given us the first clues. One clue, however, quickly falls a
       <li><b>Survival:</b> Does the spread stay positive even in recent years?</li>
       <li><b>Volatility regime:</b> Is the gap different in high-vol vs low-vol periods?</li>
       <li><b>Fed angle:</b> Does tightening change the spread (even slightly)?</li>
-      <li><b>Coverage:</b> Does the majority of tickers show the same direction?</li>
     </ul>
   </div>
 
