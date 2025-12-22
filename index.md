@@ -1610,7 +1610,7 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
   <div id="halloween-volatility" class="lens-content hidden">
     <img class="lens-media" src="{{ site.baseurl }}/assets/img/sell_in_may_volatility.png" alt="Sell in May - Volatility Regime">
     <p>
-      This figure shows average monthly log returns for winter and summer under different volatility conditions. The points represent the mean returns, and the vertical lines show the 95% confidence intervals.
+      This figure shows average monthly returns for winter and summer under different volatility conditions. The points represent the mean returns, and the vertical lines show the 95% confidence intervals.
       In both high-volatility and low-volatility periods, winter returns are higher than summer returns. The difference is larger during high-volatility periods.
       In low-volatility periods, the gap becomes smaller, but winter still performs better.
       Overall, the figure suggests that the Sell in May effect is stronger when market volatility is high and weaker when volatility is low.
