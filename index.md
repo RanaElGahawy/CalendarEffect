@@ -1314,9 +1314,9 @@ The big picture has given us the first clues. One clue, however, quickly falls a
   <!-- ========== Across Exchanges ========== -->
   <div id="tom-exchanges" class="lens-content hidden">
     <p>
-      We will therefore first display the evolution of the average return by decade and by day.
+      To see the evolution of the monday effect across the time we will therefore first display the evolution of the average return by decade and by day.
     </p>
-    <iframe src="assets/img/moday_effect_decades.html"></iframe>
+    <iframe src="assets/img/moday_effect_decades.png"></iframe>
 
   </div>
 
