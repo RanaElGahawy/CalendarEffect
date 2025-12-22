@@ -1433,11 +1433,10 @@ The Holiday effect stays positive and noticeable even after accounting for volat
       <div class="qbox-badge">What to look for</div>
     </div>
     <ul>
-      <li><b>January premium:</b> Is January return higher than the average of Feb–Dec?</li>
+      <li><b>January premium:</b> Is January return higher than the rest of the year?</li>
       <li><b>Stability:</b> Does it show up across multiple decades?</li>
-      <li><b>Small vs large:</b> Does it concentrate in certain exchanges / firm groups?</li>
+      <li><b>Small vs large:</b> Does it concentrate in certain exchanges?</li>
       <li><b>Crises:</b> Does January behave differently in Dot-Com / GFC?</li>
-      <li><b>Disappearing act:</b> Is the effect weaker after becoming “well-known”?</li>
     </ul>
   </div>
 
@@ -1451,6 +1450,9 @@ The Holiday effect stays positive and noticeable even after accounting for volat
   <div id="january-decades" class="lens-content">
     <!-- <iframe src="assets/img/plot_monday_decades.html"></iframe> -->
     <img src="assets/img/jan_decades.png">
+     <p>
+       
+    </p>
   </div>
   <div id="january-exchanges" class="lens-content hidden">
         <img src="assets/img/jan_ex.png">
@@ -1479,11 +1481,10 @@ The Holiday effect stays positive and noticeable even after accounting for volat
       <div class="qbox-badge">What to look for</div>
     </div>
     <ul>
-      <li><b>Timing:</b> Is the rally concentrated at the end of December / early January?</li>
-      <li><b>Reliability:</b> Does it show up in most years or only in a few?</li>
-      <li><b>Cross-market:</b> Is it stronger in NASDAQ than in others?</li>
-      <li><b>Risk regime:</b> Does it survive during crisis windows?</li>
-      <li><b>Mechanism hint:</b> Does it look like investor optimism / low liquidity effect?</li>
+      <li><b>January premium:</b> Is Santa Claus Rally return higher than the rest of the year?</li>
+      <li><b>Stability:</b> Does it show up across multiple decades?</li>
+      <li><b>Small vs large:</b> Does it concentrate in certain exchanges?</li>
+      <li><b>Crises:</b> Does January behave differently in Dot-Com / GFC?</li>
     </ul>
   </div>
 
@@ -1495,15 +1496,19 @@ The Holiday effect stays positive and noticeable even after accounting for volat
   </div>
 
   <div id="santa-decades" class="lens-content">
+    <img src="assets/img/scr_decaded.png">
     <!-- iframe here -->
   </div>
   <div id="santa-exchanges" class="lens-content hidden">
+    <img src="assets/img/scr_exchange.png">
     <!-- iframe here -->
   </div>
   <div id="santa-dotcom" class="lens-content hidden">
+    <img src="assets/img/santa_dot.png">
     <!-- iframe here -->
   </div>
   <div id="santa-gfc" class="lens-content hidden">
+      <img src="assets/img/santa_crisis.png">
     <!-- iframe here -->
   </div>
 </section>
