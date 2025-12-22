@@ -1402,8 +1402,7 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
   <div id="santa-gfc" class="lens-content hidden">
       <img src="assets/img/santa_crisis.png">
     <p>
-      The Santa Claus Rally is strongest during crisis periods, weaker before crises, and weakest after crises. The error bars (confidence intervals) do not meaningfully overlap, hinting that these differences are not due to random noise.
-      Rather than disappearing in turbulent times, the Santa Claus Rally intensifies during crises. This suggests the effect may be driven by behavioral or institutional mechanisms such as end year end rebalancing or short covering.
+Average daily Santa Claus Rally returns across Global Financial Crisis regimes reveal a pronounced increase during the crisis period, followed by a post crisis decline. The limited overlap of 95% confidence intervals suggests statistically meaningful period differences, consistent with Welch and Mann–Whitney test results. These findings indicate that the Santa Claus Rally is not only persistent but moving in the opposite direction of the overall market cycle, strengthening during periods of elevated market stress.
     </p>
     <!-- iframe here -->
   </div>
