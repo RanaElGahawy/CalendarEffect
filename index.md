@@ -1833,6 +1833,19 @@ Our role as market detectives ends here but the real exploration starts now.
 We did not aim to deliver a single verdict or a fixed trading rule. Our investigation has provided clear answers to the research questions, while also revealing the limits and conditions under which calendar effects hold.
 Instead, we opened the data and built tools that allow you to **inspect calendar effects from multiple angles**.
 
+<div class="qbox">
+  <div class="qbox-top">
+    <div class="qbox-title">Investigation checklist</div>
+    <div class="qbox-badge">How we judge survival</div>
+  </div>
+  <ul>
+    <li><b>Across decades:</b> visible in many decades, not only one “lucky” period.</li>
+    <li><b>Across crises:</b> does not fully collapse in Dot-Com / GFC windows.</li>
+    <li><b>Across exchanges:</b> not limited to one tiny market segment.</li>
+    <li><b>Recent years:</b> if it fades strongly, it may be market adaptation.</li>
+  </ul>
+</div>
+
 ### Is the effect visible across multiple decades or limited to specific periods?
 
 Across decades, the investigation shows that most calendar effects are not the result of a single lucky period but leave consistent traces over time. The Holiday and Halloween effects persist across many decades, with returns remaining higher in pre-holiday periods and during winter months, even though their strength fluctuates and sometimes weakens as markets evolve. The January effect displays a clearer decay, likely due to market learning and structural changes such as algorithmic trading, yet it does not fully disappear and still shows a higher-than-random chance of outperformance. The Monday effect also remains visible over long horizons, with Mondays consistently underperforming relative to other weekdays. Overall, while the magnitude of these effects changes and often diminishes over time, their repeated presence across decades suggests that they reflect enduring market behaviors rather than pure statistical accidents.
