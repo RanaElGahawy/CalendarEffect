@@ -1857,7 +1857,7 @@ and observe how the share of “conforming” companies changes over time.
 
 Once the aggregate picture is clear, the investigation can move one level deeper.
 
-You can select **individual tickers**  on the distribution interactive plot calendar effect explorer by clicking on the effect wanted. So you can track how a specific stock behaved over the years:
+You can select **individual tickers** on the distribution interactive plot and calendar effect explorer by clicking on the effect wanted. So you can track how a specific stock behaved over the years:
 when the calendar effect worked, when it failed, and when it reversed.
 Some stocks follow the pattern consistently.
 Others only exhibit it in certain periods or not at all.
