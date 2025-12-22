@@ -1259,8 +1259,8 @@ The big picture has given us the first clues. One clue, however, quickly falls a
      MONDAY EFFECT
      =============================== -->
 <section class="effect" id="tom">
-  <h2>Turn-of-the-Month Effect</h2>
-  <div class="effect-sub">Do stock returns spike around the turn of the month?</div>
+  <h2>Monday Effect</h2>
+  <div class="effect-sub">Is the return the lowest on monday?</div>
 
   
 <div class="qbox">
@@ -1269,8 +1269,8 @@ The big picture has given us the first clues. One clue, however, quickly falls a
     <div class="qbox-badge">What to look for</div>
   </div>
   <ul>
-    <li><b>Across decades:</b> How stable is the effect over time? Does its strength increase, weaken, or disappear across different decades?</li>
-    <li><b>Across exchanges:</b> Is the effect consistent across major stock exchanges, or does it vary depending on market structure or region?</li>
+    <li><b>Across decades:</b> Is the effect real?Does each day of the week have an impact on the return?</li>
+    <li><b>Across exchanges:</b> Does each day of the week have an impact on the return?</li>
   </ul>
 </div>
 
