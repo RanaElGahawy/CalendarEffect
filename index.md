@@ -1258,42 +1258,42 @@ The big picture has given us the first clues. One clue, however, quickly falls a
 <!-- ===============================
      MONDAY EFFECT
      =============================== -->
-<section class="effect" id="monday">
-  <h2>Monday Effect</h2>
-  <div class="effect-sub">Is Monday really the weakest trading day?</div>
+<section class="effect" id="tom">
+  <h2>Turn-of-the-Month Effect</h2>
+  <div class="effect-sub">Do stock returns spike around the turn of the month?</div>
 
-  <div class="qbox">
-    <div class="qbox-top">
-      <div class="qbox-title">Detective Questions</div>
-      <div class="qbox-badge">What to look for</div>
-    </div>
-    <ul>
-      <li><b>Reality:</b> Does the weekday have an impact on the average return?</li>
-      <li><b>Consistency:</b> Did this effect evolve over time?</li>
-    </ul>
+  
+<div class="qbox">
+  <div class="qbox-top">
+    <div class="qbox-title">Detective Questions</div>
+    <div class="qbox-badge">What to look for</div>
   </div>
+  <ul>
+    <li><b>Across decades:</b> How stable is the effect over time? Does its strength increase, weaken, or disappear across different decades?</li>
+    <li><b>Across exchanges:</b> Is the effect consistent across major stock exchanges, or does it vary depending on market structure or region?</li>
+  </ul>
+</div>
 
   <div class="lens-tabs">
-    <button class="active" data-lens="real">Reality</button>
-    <button data-lens="time">Across Time</button>
+    <button class="active" data-lens="decades">Across Decades</button>
+    <button data-lens="exchanges">Across Exchanges</button>
   </div>
 
-  <div id="monday-real" class="lens-content">
-    <p>
-      While it is difficult to identify a clear pattern for Tuesday, Wednesday,
-      and Thursday, the data shows that across decades, Monday consistently
-      exhibits lower average returns.
-    </p>
+  <!-- ========== Across Decades ========== -->
+  <div id="tom-decades" class="lens-content">
+    <iframe src="assets/img/plot_tom_effect_by_decade.html"></iframe>
+    <p> We observe that the average return for both the turn-of-the-month window and the rest of the days decreases across decades, although both remain positive. 
+    The TOM effect is particularly strong between 1991 and 2000, with an average return of about 0.2% compared with roughly 0.05% for the rest of the days. 
+    In the most recent decade, the difference persists but at much lower magnitudes: around 0.04% for TOM versus 0.007% for the rest.</p>
   </div>
 
-  <div id="monday-time" class="lens-content hidden">
-    <p>
-      Over time, the Monday effect appears to weaken in more recent decades,
-      suggesting that markets may have partially adapted to this anomaly.
-    </p>
+  <!-- ========== Across Exchanges ========== -->
+  <div id="tom-exchanges" class="lens-content hidden">
+    <iframe src="assets/img/plot_tom_by_exchange.html"></iframe>
+    <p><!-- Add your comment here --></p>
   </div>
+
 </section>
-
 
 <!-- ===============================
      JANUARY EFFECT
