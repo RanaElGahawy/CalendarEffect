@@ -1321,7 +1321,6 @@ The big picture has given us the first clues. One clue, however, quickly falls a
       We can see that the return on monday has been lower each decade, and Friday has always been the highest. The other days, however, do not seem to follow any particular pattern.
   We will now group all weekdays whose averages cannot be statistically distinguished using Welch's t-test for each decade.
     </p>
-  </div>
   <iframe src="assets/img/plot_ttest_monday.html"
       width="100%"
       height="550"
@@ -1330,6 +1329,7 @@ The big picture has given us the first clues. One clue, however, quickly falls a
 <p>
   We can see that the days of the week have consistently exhibited distinct averages, except for a brief period between 2000 and 2010 when the difference between Monday and Tuesday was not statistically significant.
 </p>
+</div>
 </section>
 
 <!-- ===============================
