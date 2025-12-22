@@ -1322,7 +1322,11 @@ The big picture has given us the first clues. One clue, however, quickly falls a
   We will now group all weekdays whose averages cannot be statistically distinguished using Welch's t-test for each decade.
     </p>
   </div>
-
+  <iframe src="assets/img/plot_ttest_monday.html"
+      width="80%"
+      height="550"
+      frameborder="0">
+</iframe>
 </section>
 
 <!-- ===============================
