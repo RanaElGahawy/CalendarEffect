@@ -122,6 +122,20 @@ data-story="Furkan analyzes physical evidence, documents, photos, and forensic c
 <div class="team5-body"><p class="team5-name">Furkan</p><p class="team5-role">Evidence & Forensics Specialist</p></div>
 </div>
 
+<div class="team5-card" data-name="Rana" data-role="Paris"
+data-img="assets/img/littlerana.png"
+data-story="Rana revisits old cases and historical data, re-examining past clues and unresolved patterns. She identifies whether suspected effects persist, fade, or re-emerge over time. ">
+<img src="assets/img/littlefurkan.png">
+<div class="team5-body"><p class="team5-name">Rana</p><p class="team5-role">Cold Case Detective</p></div>
+</div>
+
+<div class="team5-card" data-name="Aitor" data-role="Paris"
+data-img="assets/img/littlerana.png"
+data-story="Aitor challenges the evidence by questioning assumptions and testing alternative explanations. He cross-examines the results to determine whether the suspected effects collapse when pushed further.">
+<img src="assets/img/littlefurkan.png">
+<div class="team5-body"><p class="team5-name">Aitor</p><p class="team5-role">Interrogation Expert</p></div>
+</div>
+
 </div>
 </div>
 
