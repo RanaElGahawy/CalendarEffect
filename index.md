@@ -594,39 +594,7 @@ In the graph below you can choose a calendar effect to see the results of each o
   <!-- =========================
        1) METRIC EXPLORER
   ========================== -->
-  <div class="efx-head">
-    <div class="efx-title">Calendar Effects — Metric Explorer</div>
-    <div class="efx-sub">X = effect, Y = the selected metric. Choose a test, then a metric.</div>
-  </div>
-
-  <div class="efx-card">
-    <div class="efx-row">
-      <div class="efx-field">
-        <label>Test</label>
-        <select id="me_testSelect">
-          <option value="ttest">t-test</option>
-          <option value="mwu">Mann–Whitney U</option>
-        </select>
-      </div>
-
-      <div class="efx-field">
-        <label>Metric</label>
-        <select id="me_metricSelect"></select>
-      </div>
-
-      <div class="efx-field">
-        <label>Group</label>
-        <select id="me_groupSelect">
-          <option value="Main effects">Main effects</option>
-          <option value="Holiday window day comparisons">Holiday window day comparisons</option>
-          <option value="ALL">All</option>
-        </select>
-      </div>
-    </div>
-
-    <div id="me_plot" class="efx-plot"></div>
-    <div class="efx-foot" id="me_foot"></div>
-  </div>
+ 
 
   <!-- =========================
        2) SIGNIFICANCE RING
@@ -690,108 +658,6 @@ In the graph below you can choose a calendar effect to see the results of each o
   // ==========================================================
   // 1) METRIC EXPLORER (scatter)
   // ==========================================================
-  const ME = {
-    testSelect:   document.getElementById("me_testSelect"),
-    metricSelect: document.getElementById("me_metricSelect"),
-    groupSelect:  document.getElementById("me_groupSelect"),
-    foot:         document.getElementById("me_foot"),
-    plotId:       "me_plot"
-  };
-
-  const METRICS = {
-    ttest: [
-      { key: "p",    label: "p-value" },
-      { key: "stat", label: "t-statistic" }
-    ],
-    mwu: [
-      { key: "u",                label: "Mann–Whitney U (U)" },
-      { key: "p",                label: "p-value" },
-      { key: "prob_superiority", label: "Probability of superiority" },
-      { key: "cliffs_delta",     label: "Cliff’s delta" }
-    ]
-  };
-
-  function mePopulateMetricOptions(){
-    const test = normalizeTest(ME.testSelect.value);
-    ME.metricSelect.innerHTML = "";
-    (METRICS[test] || []).forEach(m => {
-      const opt = document.createElement("option");
-      opt.value = m.key;
-      opt.textContent = m.label;
-      ME.metricSelect.appendChild(opt);
-    });
-    ME.metricSelect.value = (test === "ttest") ? "stat" : "cliffs_delta";
-  }
-
-  function meGetY(row, metricKey){
-    const v = row[metricKey];
-    if (v === undefined || v === null || Number.isNaN(v)) return null;
-    return Number(v);
-  }
-
-  function meBuildHover(row, test){
-    if (test === "ttest"){
-      return `Effect: <b>${row.effect}</b><br>` +
-             `t-stat: <b>${fmtNum(row.stat, 4)}</b><br>` +
-             `p-value: <b>${fmtP(row.p)}</b>`;
-    }
-    return `Effect: <b>${row.effect}</b><br>` +
-           `U: <b>${fmtNum(row.u, 2)}</b><br>` +
-           `p-value: <b>${fmtP(row.p)}</b><br>` +
-           `Prob. superiority: <b>${fmtNum(row.prob_superiority, 4)}</b><br>` +
-           `Cliff’s delta: <b>${fmtNum(row.cliffs_delta, 4)}</b>`;
-  }
-
-  function meRender(){
-    const test = normalizeTest(ME.testSelect.value);
-    const metricKey = ME.metricSelect.value;
-    const grp = ME.groupSelect.value;
-
-    let rows = rowsAll.filter(r => normalizeTest(r.test) === test);
-    if (grp !== "ALL") rows = rows.filter(r => r.group === grp);
-    rows = rows.filter(r => r.effect.length > 0);
-
-    const metricLabel = ((METRICS[test] || []).find(m => m.key === metricKey) || {}).label || metricKey;
-
-    const x = rows.map(r => r.effect);
-    const y = rows.map(r => meGetY(r, metricKey));
-    const hover = rows.map(r => meBuildHover(r, test));
-
-    const trace = {
-      type: "scatter",
-      mode: "markers",
-      x, y,
-      text: hover,
-      hoverinfo: "text",
-      marker: { size: 14, opacity: 0.9, line: { width: 1 } }
-    };
-
-    const layout = {
-      title: { text: `${test} · ${metricLabel}`, x: 0.02, xanchor: "left" },
-      margin: { l: 70, r: 20, t: 60, b: 140 },
-      xaxis: { title: "Effect", tickangle: -25, automargin: true },
-      yaxis: { title: metricLabel, zeroline: true },
-      paper_bgcolor: "rgba(0,0,0,0)",
-      plot_bgcolor: "rgba(0,0,0,0)",
-      height: 560,
-      showlegend: false
-    };
-
-    Plotly.react(ME.plotId, [trace], layout, { displayModeBar: true, responsive: true });
-
-    if (test === "mwu" && metricKey === "u"){
-      ME.foot.innerHTML = `Note: the U statistic can be very large. For effect size, <b>Cliff’s delta</b> is often more interpretable.`;
-    } else {
-      ME.foot.innerHTML = `X = effect, Y = <b>${metricLabel}</b>.`;
-    }
-  }
-
-  ME.testSelect.addEventListener("change", () => {
-    mePopulateMetricOptions();
-    meRender();
-  });
-  ME.metricSelect.addEventListener("change", meRender);
-  ME.groupSelect.addEventListener("change", meRender);
 
   // ==========================================================
   // 2) SIGNIFICANCE RING (donut)
