@@ -1451,6 +1451,7 @@ The big picture has given us the first clues. One clue, however, quickly falls a
       class="lens-iframe"
       loading="lazy"
       src="{{ site.baseurl }}/assets/img/sell_in_may_decade.png"
+      style="display:block; margin:0 auto; width:100%; height:720px; border:0; border-radius:14px;"
       title="Sell in May - Across Decades">
     </iframe>
     <p>
@@ -1530,7 +1531,7 @@ To support this observation, a one-sample t-test is applied. The test checks whe
     <iframe
       class="lens-iframe"
       loading="lazy"
-      style="width:100%; height:720px; border:0; border-radius:14px;"
+      style="display:block; margin:0 auto; width:100%; height:720px; border:0; border-radius:14px;"
       src="{{ site.baseurl }}/assets/img/sell_in_may_crises.png"
       title="Sell in May - Crisis Zoom">
     </iframe>
