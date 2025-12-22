@@ -1806,7 +1806,7 @@ That’s a result too.
 
 <div class="case-banner">
   <div class="case-content">
-    <h3></h3>
+    <h3>Case Closed</h3>
     <p>
       The investigation is complete. The evidence is on the table.
       Now it’s your turn to explore the data, test individual stocks,
