@@ -1373,19 +1373,17 @@ The big picture has given us the first clues. One clue, however, quickly falls a
   <h2>Turn-of-the-Month Effect</h2>
   <div class="effect-sub">Do stock returns spike around the turn of the month?</div>
 
-  <div class="qbox">
-    <div class="qbox-top">
-      <div class="qbox-title">Detective Questions</div>
-      <div class="qbox-badge">What to look for</div>
-    </div>
-    <ul>
-      <li><b>Before vs after:</b> Are returns higher during the turn-of-the-month window?</li>
-      <li><b>Decay:</b> Does the effect weaken over decades?</li>
-      <li><b>Instability:</b> Does it flip sign during crises?</li>
-      <li><b>Exchange focus:</b> Is it mainly an equity phenomenon?</li>
-      <li><b>Macro link:</b> Do monetary regimes amplify it?</li>
-    </ul>
+  
+<div class="qbox">
+  <div class="qbox-top">
+    <div class="qbox-title">Detective Questions</div>
+    <div class="qbox-badge">What to look for</div>
   </div>
+  <ul>
+    <li><b>Across decades:</b> How stable is the effect over time? Does its strength increase, weaken, or disappear across different decades?</li>
+    <li><b>Across exchanges:</b> Is the effect consistent across major stock exchanges, or does it vary depending on market structure or region?</li>
+  </ul>
+</div>
 
   <div class="lens-tabs">
     <button class="active" data-lens="decades">Across Decades</button>
