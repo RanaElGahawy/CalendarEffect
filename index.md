@@ -1726,17 +1726,7 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
 <!-- ===============================
    SURVIVAL SECTION
    =============================== -->
-## Do calendar effects survive through the years?
 
-Now that we have detected and analyzed several calendar effects, a natural question arises: **do these patterns remain stable over time, or do they evolve as markets change?**
-
-Calendar anomalies are often presented as timeless rules — but real financial markets rarely stay constant. Trading technology evolves, regulations shift, investor composition changes, and macroeconomic regimes come and go. Any of these forces can influence whether an anomaly strengthens, weakens, or disappears entirely.
-
-In this section, we investigate the **temporal stability** of each calendar effect. More precisely, we ask:
-
-- Do the effects behave similarly in the 1970s, 1980s, 1990s, and 2000s?
-- Do some grow stronger or weaker across decades?
-- And crucially: **which calendar effects survive consistently over time, and which ones vanish once they become widely known?**
 
 <div class="qbox">
   <div class="qbox-top">
