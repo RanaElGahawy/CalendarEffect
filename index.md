@@ -1400,9 +1400,8 @@ The big picture has given us the first clues. One clue, however, quickly falls a
     <button data-lens="time">Across Time</button>
   </div>
 
-  <div id="monday-decades" class="lens-content">
-    <!-- iframe here -->
-    <!-- <iframe src="assets/img/plot_monday_decades.html"></iframe> -->
+  <div id="real" class="lens-content">
+    <iframe src="assets/img/logtest.png"></iframe>
   </div>
   <div id="monday-exchanges" class="lens-content hidden">
     <!-- iframe here -->
