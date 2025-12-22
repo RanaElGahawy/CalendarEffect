@@ -1512,51 +1512,6 @@ Average daily Santa Claus Rally returns across Global Financial Crisis regimes r
 </style>
 
 <!-- ===============================
-     JANUARY EFFECT
-     =============================== -->
-<section class="effect" id="january">
-  <h2>January Effect</h2>
-  <div class="effect-sub">Does January outperform the rest of the year?</div>
-
-  <div class="qbox">
-    <div class="qbox-top">
-      <div class="qbox-title">Detective Questions</div>
-      <div class="qbox-badge">What to look for</div>
-    </div>
-    <ul>
-      <li><b>January premium:</b> Is January return higher than the rest of the year?</li>
-      <li><b>Stability:</b> Does it show up across multiple decades?</li>
-      <li><b>Small vs large:</b> Does it concentrate in certain exchanges?</li>
-      <li><b>Crises:</b> Does January behave differently in Dot-Com / GFC?</li>
-    </ul>
-  </div>
-
-  <div class="lens-tabs">
-    <button class="active" data-lens="decades">Across Decades</button>
-    <button data-lens="exchanges">Across Exchanges</button>
-    <button data-lens="dotcom">Dot-Com Bubble</button>
-    <button data-lens="gfc">Global Financial Crisis</button>
-  </div>
-
-  <div id="january-decades" class="lens-content">
-    <img class="lens-media" src="{{ site.baseurl }}/assets/img/jan_decades.png" alt="January Effect - Across Decades">
-    <p></p>
-  </div>
-
-  <div id="january-exchanges" class="lens-content hidden">
-    <img class="lens-media" src="{{ site.baseurl }}/assets/img/jan_ex.png" alt="January Effect - Across Exchanges">
-  </div>
-
-  <div id="january-dotcom" class="lens-content hidden">
-    <img class="lens-media" src="{{ site.baseurl }}/assets/img/jan_dot.png" alt="January Effect - Dot-Com Bubble">
-  </div>
-
-  <div id="january-gfc" class="lens-content hidden">
-    <img class="lens-media" src="{{ site.baseurl }}/assets/img/jan_crisis.png" alt="January Effect - Global Financial Crisis">
-  </div>
-</section>
-
-<!-- ===============================
      HALLOWEEN EFFECT (SELL IN MAY)
      =============================== -->
 <section class="effect" id="halloween">
