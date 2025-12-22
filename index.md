@@ -1316,8 +1316,11 @@ The big picture has given us the first clues. One clue, however, quickly falls a
     <p>
       To see the evolution of the monday effect across the time we will therefore first display the evolution of the average return by decade and by day.
     </p>
-    <iframe src="assets/img/moday_effect_decades.png"></iframe>
-
+<iframe src="assets/img/moday_effect_decades.png"></iframe>
+    <p>
+      We can see that the return on monday has been lower each decade, and Friday has always been the highest. The other days, however, do not seem to follow any particular pattern.
+  We will now group all weekdays whose averages cannot be statistically distinguished using Welch's t-test for each decade.
+    </p>
   </div>
 
 </section>
