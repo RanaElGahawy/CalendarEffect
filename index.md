@@ -1557,9 +1557,12 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
       <div class="qbox-badge">What to look for</div>
     </div>
     <ul>
-    <li><b>Across decades:</b>Does the Holiday effect persist over time, or does it weaken as markets become more efficient?</li>
-    <li><b>Across exchanges:</b> Is the Holiday effect consistent across different equity exchanges, or does it mainly appear in specific markets?</li>
-    <li><b>Crashes and crises:</b> Does the Holiday effect survive during market crashes and major financial crises, or does it break down under extreme conditions?</li>
+    <li><b>Across decades:</b> Is the winter–summer return gap positive in most decades?</li>
+    <li><b>Across exchanges:</b> Does the effect appear across different stock exchanges?</li>
+    <li><b>Heatmap view:</b> Do winter months show stronger returns across years?</li>
+    <li><b>Volatility regime:</b> Is the gap different in high- and low-volatility periods?</li>
+    <li><b>Year by year:</b> In how many years does winter outperform summer?</li>
+    <li><b>Crisis zoom:</b> Does the effect become stronger during market crises?</li>
     </ul>
   </div>
 
@@ -1574,6 +1577,7 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
     <button data-lens="heatmap">Heatmap</button>
     <button data-lens="volatility">Volatility Regime</button>
     <button data-lens="yearbyyear">Year by Year</button>
+     <button data-lens="crises">Crisis Zoom</button>
   </div>
 
   <!-- CONTENTS -->
@@ -1654,11 +1658,9 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
       <div class="qbox-badge">What to look for</div>
     </div>
     <ul>
-      <li><b>Before vs after:</b> Are pre-holiday returns higher than normal days?</li>
-      <li><b>Decay:</b> Does the effect weaken over decades (market learning)?</li>
-      <li><b>Instability:</b> Does it flip sign during crashes & crises?</li>
-      <li><b>Exchange focus:</b> Is it mainly an equity-exchange phenomenon?</li>
-      <li><b>Macro link:</b> Does a Fed regime change amplify or mute it?</li>
+    <li><b>Across decades:</b> Does the Holiday effect persist over time, or does it weaken as markets become more efficient?</li>
+    <li><b>Across exchanges:</b> Is the Holiday effect consistent across different equity exchanges, or does it mainly appear in specific markets?</li>
+    <li><b>Crashes and crises:</b>Does the Holiday effect survive during market crashes and major financial crises, or does it break down under extreme conditions?</li>
     </ul>
   </div>
 
@@ -1666,7 +1668,6 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
     <button class="active" data-lens="decades">Across Decades</button>
     <button data-lens="years">Across Years</button>
     <button data-lens="crises">Crashes &amp; Crises</button>
-    <button data-lens="fed">Fed Effect</button>
   </div>
 
   <!-- ========== Across Decades ========== -->
