@@ -2352,7 +2352,7 @@ The investigation continues — with you.
     color:inherit;
   }
   .hub-btn:hover{border-color:rgba(120,170,255,.45)}
-  .hub-grid{display:grid;grid-template-columns: 1.25fr .75fr;gap:14px}
+  .hub-grid{display:grid;grid-template-columns: 1fr;gap:14px}
   @media(max-width:980px){.hub-grid{grid-template-columns:1fr}}
   .hub-card{
     border-radius:16px;
