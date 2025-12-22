@@ -1323,10 +1323,13 @@ The big picture has given us the first clues. One clue, however, quickly falls a
     </p>
   </div>
   <iframe src="assets/img/plot_ttest_monday.html"
-      width="80%"
+      width="100%"
       height="550"
       frameborder="0">
 </iframe>
+<p>
+  We can see that the days of the week have consistently exhibited distinct averages, except for a brief period between 2000 and 2010 when the difference between Monday and Tuesday was not statistically significant.
+</p>
 </section>
 
 <!-- ===============================
