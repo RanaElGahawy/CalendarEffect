@@ -1794,7 +1794,7 @@ That’s a result too.
 
 
 <style>
-/* ===== CASE CLOSED MINI BANNER ===== */
+/* =====  MINI BANNER ===== */
 .case-banner{
   position: relative;
   width: 100%;
@@ -1840,7 +1840,7 @@ That’s a result too.
 
 <div class="case-banner">
   <div class="case-content">
-    <h3>Case Closed</h3>
+    <h3></h3>
     <p>
       The investigation is complete. The evidence is on the table.
       Now it’s your turn to explore the data, test individual stocks,
@@ -1850,7 +1850,7 @@ That’s a result too.
 </div>
 
 
-## The investigation is complete. The case is now open.
+## The investigation is complete. The case is now closed.
 
 Our role as market detectives ends here — but the real exploration starts now.
 
@@ -1863,7 +1863,7 @@ Across decades, the investigation shows that most calendar effects are not the r
 
 ### How widespread is the effect across different stock exchanges ?
 
-Across exchanges, the evidence suggests that calendar effects are not confined to a single market, but their strength clearly depends on market structure and capitalization. The January effect and the Santa Claus rally appear strongest in small and mid-cap exchanges, which is consistent with the idea that seasonal anomalies thrive in less efficient markets, while still remaining visible though weaker—among large-cap and global stocks. The Turn-of-the-Month effect is present across all exchange types, with particularly strong return gaps on NYSE American and much weaker effects on BATS, highlighting meaningful cross-market differences. The Halloween effect (Sell in May) also persists across exchanges, with winter returns outperforming summer in more than half of the years for most markets, even though the variability of the effect differs by exchange. Finally, the Holiday effect shows a similar pattern: it is more pronounced on NASDAQ and NYSE American, moderate on the NYSE, and largely absent in ETF focused or alternative trading platforms such as NYSE Arca and BATS. Overall, these results indicate that calendar effects are widespread across exchanges, but they tend to be strongest in traditional equity markets and smaller-cap segments, and weaker or absent in more efficient or specialized trading venues. You can see this with your own eyes by zooming into individu
+Across exchanges, the evidence suggests that calendar effects are not confined to a single market, but their strength clearly depends on market structure and capitalization. The January effect and the Santa Claus rally appear strongest in small and mid-cap exchanges, which is consistent with the idea that seasonal anomalies thrive in less efficient markets, while still remaining visible though weaker among large-cap and global stocks. The Turn-of-the-Month effect is present across all exchange types, with particularly strong return gaps on NYSE American and much weaker effects on BATS, highlighting meaningful cross-market differences. The Halloween effect (Sell in May) also persists across exchanges, with winter returns outperforming summer in more than half of the years for most markets, even though the variability of the effect differs by exchange. Finally, the Holiday effect shows a similar pattern: it is more pronounced on NASDAQ and NYSE American, moderate on the NYSE, and largely absent in ETF focused or alternative trading platforms such as NYSE Arca and BATS. Overall, these results indicate that calendar effects are widespread across exchanges, but they tend to be strongest in traditional equity markets and smaller-cap segments, and weaker or absent in more efficient or specialized trading venues. You can see this with your own eyes by zooming into individu
 > Is this effect a market-wide phenomenon, or is it driven by only a subset of stocks?
 
 In the Holiday Effect section, this becomes especially powerful.
