@@ -1263,10 +1263,11 @@ The big picture has given us the first clues. One clue, however, quickly falls a
   <div class="effect-sub">Is Monday really the weakest trading day?</div>
 
   <div class="qbox">
-    <div class="qbox-top">
-      <div class="qbox-title">Detective Questions</div>
-      <div class="qbox-badge">What to look for</div>
+    <div class="lens-tabs">
+      <button class="active" data-lens="real">Reality</button>
+      <button data-lens="time">Across Time</button>
     </div>
+
     <ul>
       <li><b>Reality:</b> Does the weekday have an impact on the average return?</li>
       <li><b>Consistency:</b> Did this effect evolve over time??</li>
