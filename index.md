@@ -438,7 +438,11 @@ allowing us to distinguish between calendar effects driven by **systematic shift
 </style>
 
 <div class="content-block">
-  <img src="assets/img/perry_welchtest.jpg" alt="Welch Test Meme" class="content-image">
+
+  <img src="assets/img/perry_welchtest.jpg"
+       alt="Welch Test Meme"
+       class="content-image"
+       style="width: 80%; max-width: 750px; display: block; margin: 20px auto;">
 
   <div class="content-text">
     <p>
@@ -453,8 +457,11 @@ allowing us to distinguish between calendar effects driven by **systematic shift
       sample imbalance.
     </p>
   </div>
+
 </div>
+
 <details markdown="1">
+
   <summary><strong>Hypotheses</strong></summary>
 
 $$
