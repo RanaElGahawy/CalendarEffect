@@ -1396,10 +1396,8 @@ The big picture has given us the first clues. One clue, however, quickly falls a
   </div>
 
   <div class="lens-tabs">
-    <button class="active" data-lens="decades">Across Decades</button>
-    <button data-lens="exchanges">Across Exchanges</button>
-    <button data-lens="dotcom">Dot-Com Bubble</button>
-    <button data-lens="gfc">Global Financial Crisis</button>
+    <button class="real" data-lens="decades">Reality</button>
+    <button data-lens="time">Across Time</button>
   </div>
 
   <div id="monday-decades" class="lens-content">
