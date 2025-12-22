@@ -1078,7 +1078,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
         <div class="image-box">
           <img src="{{ '/assets/img/jan_fed.png' | relative_url }}" alt="January Effect">
         </div>
-        <p class="effect-description">
+        <p class="effect-">
           The January effect becomes statistically significant once interest rates are controlled for and serial correlation is addressed using HAC standard errors which means that it managed to survive the serial correlation correction. On the other had, fed funds have a negative coffiecient and a p-value > 0.5 which makes it insignificant.That being said, the model still explains only a very small fraction of daily return variation it only suggets that January have a very faint yet persistent footprint in the data.
         </p>
       </details>
@@ -1090,7 +1090,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
         <div class="image-box">
           <img src="{{ '/assets/img/scr_fed.png' | relative_url }}" alt="Santa Claus Rally – Interest Rate">
         </div>
-        <p class="effect-description">
+        <p class="effect-">
            Santa Claus Rally has higher average returns by around 0.25%, it survives the correction for the serial correlation. That also means that it can't be explained by interest rates as they have a very small and negative coffiecient value with a p-value that is passes the significance threshhold. Now the detectived can assume that from a time series prespective, tha Santa claus Rally leave a significant footprint.
         </p>
       </details>
@@ -1102,7 +1102,7 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
         <div class="image-box">
           <img src="{{ '/assets/img/may_fed.png' | relative_url }}" alt="Halloween Effect – Interest Rate">
         </div>
-        <p class="effect-description">
+        <p class="effect-">
            Returns are regressed on a winter (Nov–Apr), controlling for the Fed Funds rate. A positive and statistically significant winter coefficient is found, indicating higher returns during winter months. The Fed Funds rate is not statistically significant, suggesting that this seasonal pattern is not driven by interest rate conditions.
         </p>
       </details>
@@ -1114,8 +1114,8 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
         <div class="image-box">
           <img src="{{ '/assets/img/hol_fed.png' | relative_url }}" alt="Holiday Effect – Interest Rate">
         </div>
-        <p class="effect-description">
-           description
+        <p class="effect-">
+           The pre-holiday coefficient is positive and highly significant (about +0.25%), meaning returns are clearly higher on days just before holidays. The interest rate variable is not significant, so interest rates do not seem to explain the holiday effect. Overall, the Holiday effect stays positive and strong even after accounting for the federal funds rate.
         </p>
       </details>
     </div>
@@ -1168,7 +1168,8 @@ Keep in mind that at this stage, the detectives are not trying to to forecast re
           <img src="{{ '/assets/img/hol_vol.png' | relative_url }}" alt="Holiday Effect – Volume">
         </div>
         <p class="effect-description">
-           description
+           The pre-holiday effect is positive and significant (around +0.20%), meaning returns are higher right before holidays. Volatility and trading volume are not significant, so they don’t explain this pattern.
+The Holiday effect stays positive and noticeable even after accounting for volatility and volume.
         </p>
       </details>
     </div>
