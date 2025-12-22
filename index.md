@@ -1589,7 +1589,7 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
   </div>
 
   <div id="halloween-heatmap" class="lens-content hidden">
-    <img class="lens-media" src="{{ site.baseurl }}/assets/img/sell_in_may_heatmap.png" alt="Sell in May - Heatmap">
+    <img class="lens-media" src="{{ site.baseurl }}/assets/img/sell_in_may_heeatmap.png" alt="Sell in May - Heatmap">
     <p>
       This heatmap shows monthly market returns across different years. The colors represent average returns, where red indicates positive returns and blue indicates negative returns.
       From the figure, we can see clear differences across months and years. Some months show more frequent positive returns, while others are more mixed or negative.
