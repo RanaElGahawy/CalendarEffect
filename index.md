@@ -1384,17 +1384,30 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
   <div id="santa-decades" class="lens-content">
     <img src="assets/img/scr_decaded.png">
     <!-- iframe here -->
+    <p>
+      Here we can see that the santa claus rally has had a strong presence in the market since the 1970s. There is a potential decline happening starting from the 1990s; however it is still significant compared to other trading days of the week. Here as well 2020s in a specal case since it is only 4 months, an most likely it had the highest difference because of COVID related volatility and market unstability.
+    </p>
   </div>
   <div id="santa-exchanges" class="lens-content hidden">
     <img src="assets/img/scr_exchange.png">
+    <p>
+      Here again like the January effect we can see that the santa claus rally is mostly significant in smal and mid cap companies compared to the others. This strongly aligns with the historical expectation that market anomalies tend to be strongest in less efficient, smaller-capitalization stocks. The effect that appears in the NYSE Arca here is likely drived by negative returns throughout the year but this part still needs more analysis as well.
+    </p>
     <!-- iframe here -->
   </div>
   <div id="santa-dotcom" class="lens-content hidden">
     <img src="assets/img/santa_dot.png">
+    <p>
+      The bubble itself did not materially change the strength of the Santa Claus Rally. If the rally existed before, it seems to have continued in a similar way during the bubble. However it behaves very differently in the post-bubble period compared to during the bubble. This suggests a structural break rather than random fluctuation.
+    </p>
     <!-- iframe here -->
   </div>
   <div id="santa-gfc" class="lens-content hidden">
       <img src="assets/img/santa_crisis.png">
+    <p>
+      The Santa Claus Rally is strongest during crisis periods, weaker before crises, and weakest after crises. The error bars (confidence intervals) do not meaningfully overlap, hinting that these differences are not due to random noise.
+      Rather than disappearing in turbulent times, the Santa Claus Rally intensifies during crises. This suggests the effect may be driven by behavioral or institutional mechanisms such as end year end rebalancing or short covering.
+    </p>
     <!-- iframe here -->
   </div>
 </section>
