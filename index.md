@@ -1823,7 +1823,7 @@ That’s a result too.
 
 Our role as market detectives ends here but the real exploration starts now.
 
-We did not aim to deliver a single verdict or a fixed trading rule.
+We did not aim to deliver a single verdict or a fixed trading rule. Our investigation has provided clear answers to the research questions, while also revealing the limits and conditions under which calendar effects hold.
 Instead, we opened the data and built tools that allow you to **inspect calendar effects from multiple angles**.
 
 ### Is the effect visible across multiple decades or limited to specific periods?
