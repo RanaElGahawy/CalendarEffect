@@ -1297,6 +1297,15 @@ The big picture has given us the first clues. One clue, however, quickly falls a
     We can immediately see that we can say that all the weedays have a distinct distribution except wednesday end thursday. We will plot the logscale to have more insights.
   </p>
         <iframe src="assets/img/logmannwhitneyu.png"></iframe>
+  <p>
+    It is now more clear that the most different distributions are the monday and the friday ones, which corresponds to the theory of the Monday effect.
+    Now that we know that most of the days have an unique distribution, we are interested by the average of those distribtuion. To compare the average distributions we will apply the Welch's t-test o the averages of the different days. Since we are measuring the average, according to the central limit theorem it should follow a normal distribution and we can therefore use the Welch's t-tes.
+  </p>
+  <iframe src="assets/img/ttest.png"></iframe>
+  <p>
+  And the logscaled.
+  <iframe src="assets/img/logttest.png"></iframe>
+  </p>
 
   </div>
 
