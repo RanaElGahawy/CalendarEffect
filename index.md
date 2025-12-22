@@ -1288,7 +1288,7 @@ The big picture has given us the first clues. One clue, however, quickly falls a
   <div id="tom-decades" class="lens-content">
     <iframe src="assets/img/avg_return.png"></iframe>
     <p>
-        We can see that indeed when we calculate the average return of each day since the history of the Nasdaq, the lowest average return is on Monday, it is the only negative one, and the highest is on Friday. However, it's important to perform statistical analysis to determine if this is a coincidence or not. First, we would like to check that each weekdays follow a different distribution, this would be  asolid indice to the fact that the weekday has an impac. To verify this, we will first plot the kde of the distributions and then we will perform the Mann-Whitney test to each pair of weekday.
+        We can see that indeed when we calculate the average return of each day since the history of the Nasdaq, the lowest average return is on Monday, it is the only negative one, and the highest is on Friday. However, it's important to perform statistical analysis to determine if this is a coincidence or not. First, we would like to check that each weekdays follow a different distribution, this would be  a solid indice to the fact that the weekday has an impac. To verify this, we will first plot the kde of the distributions and then we will perform the Mann-Whitney test to each pair of weekday.
     </p>
 <iframe src="assets/img/kde_weekday.png"></iframe>
 <iframe src="assets/img/mannwhitneyu.png"></iframe>
@@ -1298,7 +1298,7 @@ The big picture has given us the first clues. One clue, however, quickly falls a
         <iframe src="assets/img/logmannwhitneyu.png"></iframe>
   <p>
     It is now more clear that the most different distributions are the monday and the friday ones, which corresponds to the theory of the Monday effect.
-    Now that we know that most of the days have an unique distribution, we are interested by the average of those distribtuion. To compare the average distributions we will apply the Welch's t-test o the averages of the different days. Since we are measuring the average, according to the central limit theorem it should follow a normal distribution and we can therefore use the Welch's t-tes.
+    Now that we know that most of the days have an unique distribution, we are interested by the average of those distributions. To compare the average distributions we will apply the Welch's t-test o the averages of the different days. Since we are measuring the average, according to the central limit theorem it should follow a normal distribution and we can therefore use the Welch's t-tes.
   </p>
   <iframe src="assets/img/ttest.png"></iframe>
   <p>
