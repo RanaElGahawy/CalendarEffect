@@ -1263,28 +1263,39 @@ The big picture has given us the first clues. One clue, however, quickly falls a
   <div class="effect-sub">Is Monday really the weakest trading day?</div>
 
   <div class="qbox">
-    <div class="lens-tabs">
-      <button class="active" data-lens="real">Reality</button>
-      <button data-lens="time">Across Time</button>
+    <div class="qbox-top">
+      <div class="qbox-title">Detective Questions</div>
+      <div class="qbox-badge">What to look for</div>
     </div>
-
     <ul>
       <li><b>Reality:</b> Does the weekday have an impact on the average return?</li>
-      <li><b>Consistency:</b> Did this effect evolve over time??</li>
+      <li><b>Consistency:</b> Did this effect evolve over time?</li>
+      <li><b>Exchanges:</b> Is the effect similar across markets?</li>
+      <li><b>Crises:</b> Does Monday behave differently during crises?</li>
     </ul>
   </div>
 
   <div class="lens-tabs">
-    <button class="real" data-lens="real">Reality</button>
-    <button class="time" data-lens="time">Across Time</button>
+    <button class="active" data-lens="decades">Across Decades</button>
+    <button data-lens="exchanges">Across Exchanges</button>
+    <button data-lens="dotcom">Dot-Com Bubble</button>
+    <button data-lens="gfc">Global Financial Crisis</button>
   </div>
 
-  <div id="real" class="lens-content">
-    <p>This content is shown when clicking on "Reality".</p>
+  <div id="monday-decades" class="lens-content">
+    <img src="assets/img/monday_decades.png">
   </div>
-  
-  <div id="time" class="lens-content hidden">
-    <p>This content is shown when clicking on "Across Time".</p>
+
+  <div id="monday-exchanges" class="lens-content hidden">
+    <img src="assets/img/monday_ex.png">
+  </div>
+
+  <div id="monday-dotcom" class="lens-content hidden">
+    <img src="assets/img/monday_dot.png">
+  </div>
+
+  <div id="monday-gfc" class="lens-content hidden">
+    <img src="assets/img/monday_crisis.png">
   </div>
 </section>
 
