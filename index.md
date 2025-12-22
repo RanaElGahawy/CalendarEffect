@@ -3563,7 +3563,6 @@ The investigation continues — with you.
     if(key === "all"){
       root.classList.add("effects-all");
       sections.forEach(s => s.classList.remove("active"));
-      openedName.textContent = "All effects";
       hint.innerHTML = "All effects are visible. Click a slice to focus on one.";
       // resize all
       setTimeout(() => {
@@ -3575,7 +3574,6 @@ The investigation continues — with you.
     if(key === "none"){
       root.classList.remove("effects-all");
       sections.forEach(s => s.classList.remove("active"));
-      openedName.textContent = "None";
       hint.innerHTML = "Collapsed. Click a slice to open an effect.";
       history.replaceState(null, "", window.location.pathname + window.location.search);
       return;
@@ -3584,7 +3582,6 @@ The investigation continues — with you.
     root.classList.remove("effects-all");
     sections.forEach(s => s.classList.toggle("active", s.dataset.effect === key));
     const eff = EFFECTS.find(e => e.key === key);
-    openedName.textContent = eff ? eff.title : key;
 
     history.replaceState(null, "", "#" + key);
 
