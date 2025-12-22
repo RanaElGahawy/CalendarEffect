@@ -1448,16 +1448,27 @@ The Holiday effect stays positive and noticeable even after accounting for volat
     <button data-lens="gfc">Global Financial Crisis</button>
   </div>
 
+  <div class="lens-tabs">
+    <button class="active" data-lens="decades">Across Decades</button>
+    <button data-lens="exchanges">Across Exchanges</button>
+    <button data-lens="dotcom">Dot-Com Bubble</button>
+    <button data-lens="gfc">Global Financial Crisis</button>
+  </div>
+
   <div id="january-decades" class="lens-content">
-    <!-- iframe here -->
+    <!-- <iframe src="assets/img/plot_monday_decades.html"></iframe> -->
+    <img src="assets/img/jan_decades.png">
   </div>
   <div id="january-exchanges" class="lens-content hidden">
+        <img src="assets/img/jan_ex.png">
     <!-- iframe here -->
   </div>
   <div id="january-dotcom" class="lens-content hidden">
+        <img src="assets/img/jan_dot.png">
     <!-- iframe here -->
   </div>
   <div id="january-gfc" class="lens-content hidden">
+        <img src="assets/img/jan_crisis.png">
     <!-- iframe here -->
   </div>
 </section>
