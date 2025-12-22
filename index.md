@@ -1862,10 +1862,6 @@ when the calendar effect worked, when it failed, and when it reversed.
 Some stocks follow the pattern consistently.
 Others only exhibit it in certain periods or not at all.
 
-This comparison reveals an important insight:
-calendar effects are not universal laws.
-They are patterns that interact with firm-specific behavior and market conditions.
-
 ### Draw your own conclusions
 
 After exploring calendar effects across decades, exchanges, individual stocks, and periods of crisis, the investigation reaches its final stage. The evidence has been gathered, cross-checked, and stress-tested under multiple market conditions. What remains is interpretation.
