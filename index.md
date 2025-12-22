@@ -937,8 +937,6 @@ In the graph below you can choose a calendar effect to see the results of each o
   RING.testSelect.addEventListener("change", ringRender);
 
   // ---------- init both ----------
-  mePopulateMetricOptions();
-  meRender();
   ringRender();
 
 })();
