@@ -1445,10 +1445,12 @@ The big picture has given us the first clues. One clue, however, quickly falls a
       <div class="qbox-badge">What to look for</div>
     </div>
     <ul>
-      <li><b>Season gap:</b> Is Nov–Apr stronger than May–Oct in most decades?</li>
-      <li><b>Survival:</b> Does the spread stay positive even in recent years?</li>
-      <li><b>Volatility regime:</b> Is the gap different in high-vol vs low-vol periods?</li>
-      <li><b>Fed angle:</b> Does tightening change the spread (even slightly)?</li>
+      <li><b>Across decades:</b> Is the winter–summer return gap positive in most decades?</li>
+      <li><b>Across exchanges:</b> Does the effect appear across different stock exchanges?</li>
+      <li><b>Heatmap view:</b> Do winter months show stronger returns across years?</li>
+      <li><b>Volatility regime:</b> Is the gap different in high- and low-volatility periods?</li>
+      <li><b>Year by year:</b> In how many years does winter outperform summer?</li>
+      <li><b>Crisis zoom:</b> Does the effect become stronger during market crises?</li>
     </ul>
   </div>
 
