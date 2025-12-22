@@ -1444,6 +1444,27 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
 <!-- ===============================
      HALLOWEEN EFFECT (SELL IN MAY)
      =============================== -->
+
+<style>
+  .lens-media{
+    display:block;
+    margin:0.6rem auto 0.2rem auto;
+    width:100%;
+    height:auto;
+    border:0;
+    border-radius:14px;
+    box-shadow:0 12px 30px rgba(0,0,0,.06);
+    border:1px solid rgba(0,0,0,.10);
+  }
+  /* keep iframe height consistent */
+  iframe.lens-media{ height:720px; }
+  .lens-content p{
+    margin-top:10px;
+    line-height:1.55;
+    color:rgba(0,0,0,.82);
+  }
+</style>
+     
 <section class="effect" id="halloween">
   <h2>Halloween Effect (Sell in May)</h2>
   <div class="effect-sub">Winter vs summer market performance.</div>
