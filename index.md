@@ -1390,11 +1390,8 @@ The big picture has given us the first clues. One clue, however, quickly falls a
       <div class="qbox-badge">What to look for</div>
     </div>
     <ul>
-      <li><b>Consistency:</b> Is Monday weaker in most decades, or only in one era?</li>
-      <li><b>Size:</b> Is the gap big enough to matter, or very small?</li>
-      <li><b>Stress test:</b> Does the pattern change in Dot-Com and GFC periods?</li>
-      <li><b>Market structure:</b> Does it look different across exchanges?</li>
-      <li><b>Adaptation:</b> Does it fade in recent years?</li>
+      <li><b>Consistency:</b> Do the weedkay has an impact on the return?</li>
+      <li><b>Size:</b> Did this effect evolve across the time?</li>
     </ul>
   </div>
 
