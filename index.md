@@ -1860,19 +1860,14 @@ Across major market crashes and crisis periods, calendar effects do not disappea
 
 ### Draw your own conclusions
 
-At this point, the evidence is complete — but the interpretation is yours.
+After exploring calendar effects across decades, exchanges, individual stocks, and periods of crisis, the investigation reaches its final stage. The evidence has been gathered, cross-checked, and stress-tested under multiple market conditions. What remains is interpretation.
 
-You can move between market-level summaries and stock-level timelines,
-compare effects across decades and crises,
-and decide which anomalies appear persistent, fragile, or entirely accidental.
+You can now move freely between market-level summaries and stock-level timelines, compare how effects evolve through time, across exchanges, and under extreme stress, and judge for yourself which patterns appear persistent, which ones weaken, and which are likely the result of chance.
 
-Markets rarely give clear answers.
-They give clues.
+Markets rarely offer clear verdicts. They leave traces, hints, and contradictions.
 
-Now the data is open.
-The tools are yours.
-The investigation continues — with you.
-
+The data is now open. The tools are in your hands.
+The investigation continues with you.
 
 <section id="calendar-effects" class="fx-wrap">
   <div class="fx-layout">
