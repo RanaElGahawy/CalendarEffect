@@ -1716,19 +1716,6 @@ Average daily Santa Claus Rally returns across Global Financial Crisis regimes r
    =============================== -->
 
 
-<div class="qbox">
-  <div class="qbox-top">
-    <div class="qbox-title">Investigation checklist</div>
-    <div class="qbox-badge">How we judge survival</div>
-  </div>
-  <ul>
-    <li><b>Across decades:</b> visible in many decades, not only one “lucky” period.</li>
-    <li><b>Across crises:</b> does not fully collapse in Dot-Com / GFC windows.</li>
-    <li><b>Across exchanges:</b> not limited to one tiny market segment.</li>
-    <li><b>Recent years:</b> if it fades strongly, it may be market adaptation.</li>
-  </ul>
-</div>
-
 <script>
 /* ===============================
    LENS TAB SWITCH (per section)
@@ -1842,7 +1829,6 @@ Instead, we opened the data and built tools that allow you to **inspect calendar
     <li><b>Across decades:</b> visible in many decades, not only one “lucky” period.</li>
     <li><b>Across crises:</b> does not fully collapse in Dot-Com / GFC windows.</li>
     <li><b>Across exchanges:</b> not limited to one tiny market segment.</li>
-    <li><b>Recent years:</b> if it fades strongly, it may be market adaptation.</li>
   </ul>
 </div>
 
