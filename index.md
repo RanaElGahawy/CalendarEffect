@@ -440,7 +440,7 @@ allowing us to distinguish between calendar effects driven by **systematic shift
   <img src="assets/img/perry_welchtest.jpg"
        alt="Welch Test Meme"
        class="content-image"
-       style="width:80%; max-width:500px; display:block; margin:auto;">
+       style="width:80%; max-width:400px; display:block; margin:auto;">
 
   <div class="content-text">
     <p>
