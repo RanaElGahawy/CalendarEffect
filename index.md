@@ -1326,20 +1326,31 @@ The big picture has given us the first clues. One clue, however, quickly falls a
     <!-- <iframe src="assets/img/plot_monday_decades.html"></iframe> -->
     <img src="assets/img/jan_decades.png">
      <p>
-       
+      In the 2020s, we can see that we have a 100% win rate, that is because in this case we are only analysing the first 4 months in 2020. We also have to keep in mind that early January is considered pre-COVID; however rest of January, March, and April are during the peak of the pandamic so the market was unstable at that period it also justify why the returns of that year are all negative.
+  In the first graph we basically can see the curve declining as the Januarry effect deacreses as the time passes which is mostly due to the dot com bubble and the emergence of algorithm based trading which caused the seasonaly anomoulies like January effect to decrease.
+The reason why graph started to go up again in 2010s is mostly due to the financial crisis at that time; however, as we discussed before the 2020s bar is a special case since it is just a 4-months analysis and not a decade like te rest.
+       We can also see see that the win rate where January returns exceed the other month returns are higher than 50%. This shows that eventhough January is in not always exceeding the other months, there are still very high chances that it will happen.
     </p>
   </div>
   <div id="january-exchanges" class="lens-content hidden">
         <img src="assets/img/jan_ex.png">
-    <!-- iframe here -->
+    <p>
+      We find in the graph that the results are not significant in the Arca and BATS stock exchange which makes sense because Arca mainly focuses on the etfs which are not analyzed here. On the other hand, BATS (Better Alternative Trading Systems) is a semi-profitable utility that was introduced to make the NASDAQ index more nuetral. It also have 17 companies only, which makes it very small compared to the other exchanges.
+      However, this graph confirms the caim of the january effect that for small and mid-capital companies we have the most January effect compared to others; however we can still see that it is significant in global and large companies as well.
+    </p>
   </div>
   <div id="january-dotcom" class="lens-content hidden">
         <img src="assets/img/jan_dot.png">
-    <!-- iframe here -->
+    <p>
+      January returns before the dot com bubble are statistically very different from those during the bubble. January returns did not change immediately after the bubble post bubble as it is still differ significantly from bubble years. However from last test we can conclude that: The January effect observed before the 1990s no longer characterizes modern markets.
+    </p>
   </div>
   <div id="january-gfc" class="lens-content hidden">
         <img src="assets/img/jan_crisis.png">
-    <!-- iframe here -->
+        <p>
+          The Global Financial Crisis represents a clear break in January’s historical behavior. January performance improves after the crisis, but this improvement is statistically distinct from crisis behavior. However even after recovery, January returns remain significantly different from the period before the crisis.
+      Average January returns turn sharply negative during the Global Financial Crisis and only partially recover afterward, suggesting a lasting disruption to the January effect
+        </p>
   </div>
 </section>
 
