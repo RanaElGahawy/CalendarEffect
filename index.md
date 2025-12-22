@@ -1251,7 +1251,7 @@ The Holiday effect stays positive and noticeable even after accounting for volat
     </div>
   </div>
 </section>
-
+The big picture has given us the first clues. One clue, however, quickly falls apart under closer inspection. For the Half-Month effect, the Welch test returns a p-value equal to 1, well above any reasonable significance threshold. This means that, despite some apparent and suspicious visual patterns in the data, the effect does not hold up statistically. This leads us to rule out the Half-Month effect: what initially looks like a pattern is more likely random noise rather than a reliable market behavior. Each calendar effect that passed the statistical tests is examined individually to uncover where it truly holds, where it fades, and where it breaks down. We zoom in from market-wide averages to the company level, looking at how different stocks react to the same calendar patterns. By analyzing distributions stock by stock, and studying the behavior of each effect across major financial crises, we trace how these calendar effects survive, weaken, or disappear under stressed market conditions.
 
 <style>
 /* ===============================
