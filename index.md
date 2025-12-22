@@ -1391,7 +1391,7 @@ The big picture has given us the first clues. One clue, however, quickly falls a
     </div>
     <ul>
       <li><b>Reality:</b> Does the weekday have an impact on the average return?</li>
-      <li><b>Consistency:</b> Did this effect evolve across the time?</li>
+      <li><b>Consistency:</b> Did this effect evolve over time??</li>
     </ul>
   </div>
 
