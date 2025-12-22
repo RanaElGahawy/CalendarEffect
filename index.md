@@ -1849,6 +1849,11 @@ This comparison reveals an important insight:
 calendar effects are not universal laws.
 They are patterns that interact with firm-specific behavior and market conditions.
 
+### Do calendar effects survive during major market crashes and financial crises, or do they break down under extreme market stress?
+
+Across major market crashes and crisis periods, calendar effects do not disappear but behave differently under stress. The Holiday effect weakens during the Dot-Com bubble, where post-holiday returns often turn negative, yet it re-emerges during the Global Financial Crisis with stronger gains just before holidays, showing resilience even in turbulent times. The Halloween effect becomes especially pronounced during crises. Across the Dot-Com bubble, Black Monday, and the Global Financial Crisis, winter returns remain positive while summer returns are weak or negative, making the Sell in May pattern clearer during periods of market stress. The Santa Claus Rally shows a counter-cyclical behavior, strengthening sharply during the Global Financial Crisis before declining afterward, suggesting that it intensifies when market stress is highest. In contrast, the January effect experiences a clear structural break during the Global Financial Crisis. Returns turn sharply negative and only partially recover afterward, indicating a lasting disruption rather than a temporary shock.
+
+
 ### Draw your own conclusions
 
 At this point, the evidence is complete — but the interpretation is yours.
