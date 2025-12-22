@@ -1390,7 +1390,7 @@ The big picture has given us the first clues. One clue, however, quickly falls a
       <div class="qbox-badge">What to look for</div>
     </div>
     <ul>
-      <li><b>Reality:</b> Do the weedkay has an impact on the return?</li>
+      <li><b>Reality:</b> Does the weekday have an impact on the average return?</li>
       <li><b>Consistency:</b> Did this effect evolve across the time?</li>
     </ul>
   </div>
