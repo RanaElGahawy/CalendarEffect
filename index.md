@@ -1275,8 +1275,8 @@ The big picture has given us the first clues. One clue, however, quickly falls a
 </div>
 
   <div class="lens-tabs">
-    <button class="active" data-lens="decades">Across Decades</button>
-    <button data-lens="exchanges">Across Exchanges</button>
+    <button class="active" data-lens="decades">Reality check</button>
+    <button data-lens="exchanges">Across Time</button>
   </div>
 
   <!-- ========== Across Decades ========== -->
