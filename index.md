@@ -1281,7 +1281,7 @@ The big picture has given us the first clues. One clue, however, quickly falls a
 
   <!-- ========== Across Decades ========== -->
   <div id="tom-decades" class="lens-content">
-    <iframe src="assets/img/avg_return.png" width=100%></iframe>
+    <iframe src="assets/img/avg_return.png"></iframe>
   </div>
 
   <!-- ========== Across Exchanges ========== -->
