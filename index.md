@@ -1777,6 +1777,64 @@ That’s a result too.
 
 --- -->
 
+
+<style>
+/* ===== CASE CLOSED MINI BANNER ===== */
+.case-banner{
+  position: relative;
+  width: 100%;
+  min-height: 240px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 26px 0 18px;
+  box-shadow: 0 14px 35px rgba(0,0,0,.12);
+  background-image: url("{{ site.baseurl }}/assets/img/case_closed.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.case-banner::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.42);
+}
+
+.case-banner .case-content{
+  position: relative;
+  z-index: 2;
+  padding: 22px 18px;
+  color: #fff;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.case-banner h3{
+  margin: 0 0 6px;
+  font-size: 1.35rem;
+  font-weight: 850;
+}
+
+.case-banner p{
+  margin: 0;
+  opacity: .92;
+  line-height: 1.35;
+}
+</style>
+
+<div class="case-banner">
+  <div class="case-content">
+    <h3>Case Closed</h3>
+    <p>
+      The investigation is complete. The evidence is on the table.
+      Now it’s your turn to explore the data, test individual stocks,
+      and challenge the calendar effects.
+    </p>
+  </div>
+</div>
+
+
 ## The investigation is complete. The case is now open.
 
 Our role as market detectives ends here — but the real exploration starts now.
