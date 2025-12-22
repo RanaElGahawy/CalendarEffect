@@ -1592,7 +1592,6 @@ The Holiday effect stays positive and noticeable even after accounting for volat
     <iframe
       class="lens-iframe"
       loading="lazy"
-      style="display:block; margin:0 auto; width:100%; height:720px; border:0; border-radius:14px;"
       src="{{ site.baseurl }}/assets/img/sell_in_may_decade.png"
       title="Sell in May - Across Decades">
     </iframe>
