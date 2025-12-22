@@ -1313,8 +1313,11 @@ The big picture has given us the first clues. One clue, however, quickly falls a
 
   <!-- ========== Across Exchanges ========== -->
   <div id="tom-exchanges" class="lens-content hidden">
-    <iframe src="assets/img/plot_tom_by_exchange.html"></iframe>
-    <p><!-- Add your comment here --></p>
+    <p>
+      We will therefore first display the evolution of the average return by decade and by day.
+    </p>
+    <iframe src="assets/img/moday_effect_decades.html"></iframe>
+
   </div>
 
 </section>
