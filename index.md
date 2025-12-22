@@ -2327,12 +2327,6 @@ The investigation continues — with you.
       <div id="effectsPie"></div>
       <div class="hub-note" id="effectsHint"></div>
     </div>
-
-    <div class="hub-card">
-      <div class="hub-card-title">Opened effect</div>
-      <div class="hub-opened" id="openedEffectName">None</div>
-      <div class="hub-note">Tip: share links like <code>#santa</code>, <code>#sim</code>, <code>#monday</code>, <code>#january</code>, <code>#holiday</code></div>
-    </div>
   </div>
 </div>
 
