@@ -1283,7 +1283,12 @@ The big picture has given us the first clues. One clue, however, quickly falls a
   <iframe src="assets/img/ttest.png"></iframe>
   <p>
   And the logscaled.
+  </p>
   <iframe src="assets/img/logttest.png"></iframe>
+    <p>
+    As expected, Wednesday and Thursday do not have a statistically significant difference in their averages. Other pairs of days, such as Thursday and Tuesday or Wednesday and Friday, also show no significant difference. However, Monday stands out with a statistically significant difference in its average with all the other days. Therefore, we can conclude that, except for Wednesday and Thursday, each day of the week on the Nasdaq tends to follow a distinct distribution, with Monday's average return being significantly lower than that of the other days.
+  </p>
+
   </p>
 
   </div>
