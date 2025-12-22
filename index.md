@@ -1874,7 +1874,7 @@ You can now move freely between market-level summaries and stock-level timelines
 
 Markets rarely offer clear verdicts. They leave traces, hints, and contradictions.
 
-The data is now open. The tools are in your hands.
+The data is open. The tools are in your hands.
 The investigation continues with you.
 
 <section id="calendar-effects" class="fx-wrap">
