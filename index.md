@@ -3552,7 +3552,6 @@ The investigation continues — with you.
     el: s
   }));
 
-  const openedName = document.getElementById("openedEffectName");
   const hint = document.getElementById("effectsHint");
   const pieDiv = document.getElementById("effectsPie");
 
