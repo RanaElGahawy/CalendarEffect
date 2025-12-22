@@ -1281,7 +1281,6 @@ The big picture has given us the first clues. One clue, however, quickly falls a
 
   <!-- ========== Across Decades ========== -->
   <div id="tom-decades" class="lens-content">
-    <iframe src="assets/img/moday_effect_decades.png" width=100%></iframe>
     <p> We observe that the average return of monday has clearly always been lower than the one of the other days. Moreover, although less obvious, the average return on Friday has always been higher. We will now look at the precise values ​​of the Nasdaq stock since its inception.</p>
     <iframe src="assets/img/avg_return.png" width=100%></iframe>
   </div>
