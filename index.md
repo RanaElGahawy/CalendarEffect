@@ -1465,6 +1465,75 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
   }
 </style>
      
+<!-- ====== Media styling: make January look like Halloween ====== -->
+<style>
+  .lens-media{
+    display:block;
+    margin:0.6rem auto 0.2rem auto;
+    width:100%;
+    height:auto;
+    border:0;
+    border-radius:14px;
+    box-shadow:0 12px 30px rgba(0,0,0,.06);
+    border:1px solid rgba(0,0,0,.10);
+  }
+  /* keep iframe height consistent */
+  iframe.lens-media{ height:720px; }
+  .lens-content p{
+    margin-top:10px;
+    line-height:1.55;
+    color:rgba(0,0,0,.82);
+  }
+</style>
+
+<!-- ===============================
+     JANUARY EFFECT
+     =============================== -->
+<section class="effect" id="january">
+  <h2>January Effect</h2>
+  <div class="effect-sub">Does January outperform the rest of the year?</div>
+
+  <div class="qbox">
+    <div class="qbox-top">
+      <div class="qbox-title">Detective Questions</div>
+      <div class="qbox-badge">What to look for</div>
+    </div>
+    <ul>
+      <li><b>January premium:</b> Is January return higher than the rest of the year?</li>
+      <li><b>Stability:</b> Does it show up across multiple decades?</li>
+      <li><b>Small vs large:</b> Does it concentrate in certain exchanges?</li>
+      <li><b>Crises:</b> Does January behave differently in Dot-Com / GFC?</li>
+    </ul>
+  </div>
+
+  <div class="lens-tabs">
+    <button class="active" data-lens="decades">Across Decades</button>
+    <button data-lens="exchanges">Across Exchanges</button>
+    <button data-lens="dotcom">Dot-Com Bubble</button>
+    <button data-lens="gfc">Global Financial Crisis</button>
+  </div>
+
+  <div id="january-decades" class="lens-content">
+    <img class="lens-media" src="{{ site.baseurl }}/assets/img/jan_decades.png" alt="January Effect - Across Decades">
+    <p></p>
+  </div>
+
+  <div id="january-exchanges" class="lens-content hidden">
+    <img class="lens-media" src="{{ site.baseurl }}/assets/img/jan_ex.png" alt="January Effect - Across Exchanges">
+  </div>
+
+  <div id="january-dotcom" class="lens-content hidden">
+    <img class="lens-media" src="{{ site.baseurl }}/assets/img/jan_dot.png" alt="January Effect - Dot-Com Bubble">
+  </div>
+
+  <div id="january-gfc" class="lens-content hidden">
+    <img class="lens-media" src="{{ site.baseurl }}/assets/img/jan_crisis.png" alt="January Effect - Global Financial Crisis">
+  </div>
+</section>
+
+<!-- ===============================
+     HALLOWEEN EFFECT (SELL IN MAY)
+     =============================== -->
 <section class="effect" id="halloween">
   <h2>Halloween Effect (Sell in May)</h2>
   <div class="effect-sub">Winter vs summer market performance.</div>
@@ -1484,8 +1553,6 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
     </ul>
   </div>
 
-  <!-- If your iframe files live elsewhere, just change this base path -->
-  <!-- Example: const IFRAME_BASE = "{{ site.baseurl }}/assets/html/"; -->
   <script>
     // Keep only one place to edit paths
     window.IFRAME_BASE = "{{ site.baseurl }}/assets/iframes/";
@@ -1502,100 +1569,67 @@ The reason why graph started to go up again in 2010s is mostly due to the financ
 
   <!-- CONTENTS -->
   <div id="halloween-decade" class="lens-content">
-    <iframe
-      class="lens-iframe"
-      loading="lazy"
-      src="{{ site.baseurl }}/assets/img/sell_in_may_decade.png"
-      style="display:block; margin:0 auto; width:100%; height:720px; border:0; border-radius:14px;"
-      title="Sell in May - Across Decades">
-    </iframe>
+    <img class="lens-media" src="{{ site.baseurl }}/assets/img/sell_in_may_decade.png" alt="Sell in May - Across Decades">
     <p>
-This bar chart shows the Sell in May effect by decade. Each bar represents the total difference between winter and summer returns for a given decade.
-
-From the figure, we can see that the winter–summer return difference is positive in all decades. This means that winter returns are higher than summer returns across different time periods. The strength of the effect changes over time, with stronger differences in the 1970s, 1980s, and 2010s, and weaker differences in the 1990s and 2000s.
-
-Overall, the chart suggests that the Sell in May effect is persistent across decades, even though its magnitude varies over time.
+      This bar chart shows the Sell in May effect by decade. Each bar represents the total difference between winter and summer returns for a given decade.
+      From the figure, we can see that the winter–summer return difference is positive in all decades. This means that winter returns are higher than summer returns across different time periods.
+      The strength of the effect changes over time, with stronger differences in the 1970s, 1980s, and 2010s, and weaker differences in the 1990s and 2000s.
+      Overall, the chart suggests that the Sell in May effect is persistent across decades, even though its magnitude varies over time.
     </p>
   </div>
 
   <div id="halloween-exchange" class="lens-content hidden">
-    <iframe
-      class="lens-iframe"
-      loading="lazy"
-      style="width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/img/sell_in_may_exchange.png"
-      title="Sell in May - Across Exchanges">
-    </iframe>
+    <img class="lens-media" src="{{ site.baseurl }}/assets/img/sell_in_may_exchange.png" alt="Sell in May - Across Exchanges">
     <p>
-This boxplot compares the Sell in May effect across different stock exchanges. For each exchange, the plot shows the distribution of the percentage of years in which winter returns are higher than summer returns.
-
-From the figure, we can see that the median value is above 50% for most exchanges. This means that, on average, winter outperforms summer in more than half of the years across different markets. However, the spread differs by exchange, and some markets show more variation than others.
-
-Overall, the results suggest that the Sell in May effect is present across exchanges, but its strength is not the same in every market.
+      This boxplot compares the Sell in May effect across different stock exchanges. For each exchange, the plot shows the distribution of the percentage of years in which winter returns are higher than summer returns.
+      From the figure, we can see that the median value is above 50% for most exchanges. This means that, on average, winter outperforms summer in more than half of the years across different markets.
+      However, the spread differs by exchange, and some markets show more variation than others.
+      Overall, the results suggest that the Sell in May effect is present across exchanges, but its strength is not the same in every market.
     </p>
   </div>
 
   <div id="halloween-heatmap" class="lens-content hidden">
-    <iframe
-      class="lens-iframe"
-      loading="lazy"
-      style="width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/img/sell_in_may_heeatmap.png"
-      title="Sell in May - Heatmap">
-    </iframe>
+    <img class="lens-media" src="{{ site.baseurl }}/assets/img/sell_in_may_heatmap.png" alt="Sell in May - Heatmap">
     <p>
-This heatmap shows monthly market returns across different years. The colors represent average returns, where red indicates positive returns and blue indicates negative returns.
-
-From the figure, we can see clear differences across months and years. Some months show more frequent positive returns, while others are more mixed or negative. This visual pattern supports the idea that returns are not evenly distributed over the calendar year. In particular, months in the winter period tend to show stronger and more stable performance compared to many summer months.
-
-Overall, the heatmap shows that monthly returns change depending on the season.
+      This heatmap shows monthly market returns across different years. The colors represent average returns, where red indicates positive returns and blue indicates negative returns.
+      From the figure, we can see clear differences across months and years. Some months show more frequent positive returns, while others are more mixed or negative.
+      In particular, months in the winter period tend to show stronger and more stable performance compared to many summer months.
+      Overall, the heatmap shows that monthly returns change depending on the season.
     </p>
   </div>
 
   <div id="halloween-volatility" class="lens-content hidden">
-    <iframe
-      class="lens-iframe"
-      loading="lazy"
-      style="width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/img/sell_in_may_volatility.png"
-      title="Sell in May - Volatility Regime">
-    </iframe>
+    <img class="lens-media" src="{{ site.baseurl }}/assets/img/sell_in_may_volatility.png" alt="Sell in May - Volatility Regime">
     <p>
-    This figure shows average monthly log returns for winter and summer under different volatility conditions. The points represent the mean returns, and the vertical lines show the 95% confidence intervals. The dashed line marks zero return.
-    In both high-volatility and low-volatility periods, winter returns are higher than summer returns. The difference is larger during high-volatility periods, where winter returns are clearly positive while summer returns are close to zero. In low-      volatility periods, the gap becomes smaller, but winter still performs better.
-    Overall, the figure suggests that the Sell in May effect is stronger when market volatility is high and weaker when volatility is low.
+      This figure shows average monthly log returns for winter and summer under different volatility conditions. The points represent the mean returns, and the vertical lines show the 95% confidence intervals.
+      In both high-volatility and low-volatility periods, winter returns are higher than summer returns. The difference is larger during high-volatility periods.
+      In low-volatility periods, the gap becomes smaller, but winter still performs better.
+      Overall, the figure suggests that the Sell in May effect is stronger when market volatility is high and weaker when volatility is low.
     </p>
   </div>
 
   <div id="halloween-yearbyyear" class="lens-content hidden">
-    <iframe
-      class="lens-iframe"
-      loading="lazy"
-      style="width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/img/sell_in_may_year_by_year.png"
-      title="Sell in May - Year by Year">
-    </iframe>
+    <img class="lens-media" src="{{ site.baseurl }}/assets/img/sell_in_may_year_by_year.png" alt="Sell in May - Year by Year">
     <p>
-    The figure shows the yearly return difference between the winter period (November–May) and the summer period (May–November). This difference is the main idea behind the Sell in May effect. The data covers 58 years. In 45 years, winter returns are higher than summer returns, while in 13 years the opposite happens. From this visual result, we can already see that winter returns are usually higher than summer returns in the NASDAQ market.
-
-To support this observation, a one-sample t-test is applied. The test checks whether the average difference between winter and summer returns is equal to zero. The obtained p-value is about 0.0001, which is much smaller than 0.05. Therefore, we reject the null hypothesis. This result shows that the higher winter returns are not due to random chance. In conclusion, the Sell in May (also called the Halloween) effect is clearly observed in the NASDAQ data.
+      The figure shows the yearly return difference between the winter period and the summer period. The data covers 58 years.
+      In 45 years, winter returns are higher than summer returns, while in 13 years the opposite happens.
+      To support this observation, a one-sample t-test is applied. The obtained p-value is about 0.0001, which is much smaller than 0.05.
+      Therefore, we reject the null hypothesis. This result shows that the higher winter returns are not due to random chance.
+      In conclusion, the Sell in May (also called the Halloween) effect is clearly observed in the NASDAQ data.
     </p>
   </div>
 
   <div id="halloween-crises" class="lens-content hidden">
-    <iframe
-      class="lens-iframe"
-      loading="lazy"
-      style="display:block; margin:0 auto; width:100%; height:720px; border:0; border-radius:14px;"
-      src="{{ site.baseurl }}/assets/img/sell_in_may_crises.png"
-      title="Sell in May - Crisis Zoom">
-    </iframe>
+    <img class="lens-media" src="{{ site.baseurl }}/assets/img/sell_in_may_crises.png" alt="Sell in May - Crisis Zoom">
     <p>
-    From the graph, we can see that winter returns are positive in all crisis periods, while summer returns are negative or close to zero. This pattern appears during the Dot-com Bubble, Black Monday, and the Global Financial Crisis.
-    Overall, the figure suggests that during crisis periods, winter performs much better than summer. This means that the Sell in May (Halloween) effect becomes more visible in times of market stress.
+      From the graph, we can see that winter returns are positive in all crisis periods, while summer returns are negative or close to zero.
+      This pattern appears during the Dot-com Bubble, Black Monday, and the Global Financial Crisis.
+      Overall, the figure suggests that during crisis periods, winter performs much better than summer.
+      This means that the Sell in May (Halloween) effect becomes more visible in times of market stress.
     </p>
   </div>
 </section>
+
 
 
 <!-- ===============================
